@@ -6,7 +6,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       <Sidebar role={actor.role} />
-      <main className="min-w-0 flex-1 px-4 py-5 md:px-8 md:py-6">{children}</main>
+      <main className="min-w-0 flex-1 px-4 py-6 md:px-10 md:py-8">{children}</main>
     </div>
   );
 }
