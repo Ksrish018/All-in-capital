@@ -107,7 +107,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
                 {flags.map((fl) => {
                   const tone = fl.id === "portfolio_conflict" ? "hold" : fl.severity === "Soft" ? "needs-human" : "flag";
                   return (
-                    <article key={fl.id} className={`relative overflow-hidden rounded-lg border border-border bg-surface p-5 before:absolute before:inset-y-0 before:left-0 before:w-[2px] ${FLAG_TONE[tone].edge}`}>
+                    <article key={fl.id} className={`relative overflow-hidden panel p-5 before:absolute before:inset-y-0 before:left-0 before:w-[2px] ${FLAG_TONE[tone].edge}`}>
                       <div className="flex items-baseline justify-between gap-3">
                         <h2 className="text-[22px] leading-tight">{fl.label}{fl.with ? <span className="text-muted">: {fl.with}</span> : null}</h2>
                         <span className={`shrink-0 text-[10px] tracking-[0.14em] uppercase ${FLAG_TONE[tone].text}`}>
@@ -136,7 +136,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
           {brief ? (
             <section aria-label="Recommendation">
               <div className="eyebrow">Recommendation</div>
-              <div className="mt-3 rounded-lg border border-border bg-surface p-6">
+              <div className="mt-3 panel p-6">
                 {rec ? (
                   <div className={`font-display text-[30px] leading-tight ${rec.tone}`}>{rec.label}</div>
                 ) : (
@@ -168,7 +168,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
           {form ? (
             <section aria-label="Form answers">
               <div className="eyebrow">Form answers</div>
-              <dl className="mt-3 divide-y divide-border rounded-lg border border-border bg-surface">
+              <dl className="mt-3 divide-y divide-border panel">
                 {form.fields.map((fl) => (
                   <div key={fl.key} className="grid gap-1 px-5 py-3 sm:grid-cols-[200px_minmax(0,1fr)] sm:gap-6">
                     <dt className="text-[12px] text-muted">{fl.label}</dt>
@@ -180,7 +180,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
           ) : app.intro_notes ? (
             <section aria-label="Warm intro notes">
               <div className="eyebrow">Notes from the warm intro</div>
-              <p className="mt-3 rounded-lg border border-border bg-surface p-5">{app.intro_notes}</p>
+              <p className="mt-3 panel p-5">{app.intro_notes}</p>
             </section>
           ) : null}
 
@@ -189,7 +189,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
               <div className="eyebrow">Deck · {deck.pages.length} pages</div>
               <div className="mt-3 space-y-2">
                 {deck.pages.map((p) => (
-                  <details key={p.page} className="rounded-lg border border-border bg-surface px-5 py-3">
+                  <details key={p.page} className="panel px-5 py-3">
                     <summary className="cursor-pointer text-[13px]">
                       <span className="text-brass">Deck, page {p.page}</span>{" "}
                       <span className="text-muted">{p.text.split("\n")[0]?.slice(0, 80)}</span>
@@ -205,7 +205,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
         {/* Side panel: actions, founders, trail */}
         <aside className="space-y-6 lg:sticky lg:top-8 lg:self-start">
           {app.status === "short_circuited" && can.gate1(actor.role) ? (
-            <div className="rounded-lg border border-brass/60 bg-surface p-5">
+            <div className="panel border-brass/60 p-5">
               <div className="eyebrow text-brass">Research was skipped</div>
               <p className="mt-2 text-[13px] text-muted">A cheap check hit, so the costly research did not run. If you think the flag is wrong, send it back for the full review.</p>
               <div className="mt-4"><Requeue id={app.id} mode="full_review" label="Run full review anyway" /></div>
@@ -213,7 +213,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
           ) : null}
 
           {founders?.length ? (
-            <div className="rounded-lg border border-border bg-surface p-5">
+            <div className="panel p-5">
               <div className="eyebrow">Founders</div>
               <ul className="mt-3 space-y-3">
                 {founders.map((fd) => (
@@ -229,7 +229,7 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
             </div>
           ) : null}
 
-          <div className="rounded-lg border border-border bg-surface p-5">
+          <div className="panel p-5">
             <div className="eyebrow">Trail</div>
             <ol className="mt-3 space-y-2">
               {(events ?? []).map((e) => (

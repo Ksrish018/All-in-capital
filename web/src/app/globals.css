@@ -31,6 +31,8 @@
   --stage-5: #b89b62;
   --stage-6: #26231f;
   --display: var(--font-instrument), Georgia, serif;
+  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --ring: rgba(208, 74, 60, 0.45);
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,6 +61,8 @@
     --stage-5: #1b1a17;
     --stage-6: #e0d5c1;
     --display: var(--font-fraunces), Georgia, serif;
+    --shadow: 0 1px 2px rgba(27, 26, 23, 0.04), 0 6px 20px rgba(27, 26, 23, 0.05);
+    --ring: rgba(122, 31, 27, 0.3);
   }
 }
 
@@ -94,10 +98,68 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  /* Apple's system font where it exists (SF Pro), Inter everywhere else. */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), system-ui, sans-serif;
   font-size: 14px;
+  line-height: 1.5;
   font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Grouped surfaces, like inset grouped lists on macOS and iOS. */
+.panel {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.panel-sm {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+/* A segmented control. */
+.segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.segmented > * {
+  border-radius: 7px;
+  padding: 5px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.segmented > [aria-selected="true"],
+.segmented > [aria-pressed="true"] {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+/* Buttons. One filled action per view, the rest quiet. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.4; pointer-events: none; }
+.btn-primary { background: var(--accent-strong); color: var(--on-accent); }
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--border-strong); }
 
 /* Serif headlines at a regular weight. Grandeur comes from size and space, not boldness. */
 h1, h2, h3, .font-display {
@@ -145,8 +207,8 @@ h1, h2, h3, .font-display {
 }
 
 :focus-visible {
-  outline: 1px solid var(--brass);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
 }
 
 ::selection {

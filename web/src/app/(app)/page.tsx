@@ -79,14 +79,14 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/applications/new"
-              className="rounded-full bg-accent-strong px-4 py-1 text-[12px] tracking-wide text-on-accent transition-opacity duration-300 hover:opacity-90"
+              className="btn btn-primary"
             >
               Add applications
             </Link>
             <LiveRefresh paused={sample} />
             <Link
               href={sample ? "/" : "/?sample=1"}
-              className="rounded-full border border-border px-3.5 py-1 text-[12px] text-muted transition-colors duration-300 hover:border-brass hover:text-text"
+              className="btn btn-secondary"
             >
               {sample ? "Show real data" : "Preview with sample data"}
             </Link>
@@ -107,7 +107,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
 
       {/* The flow and the live feed */}
       <section aria-label="Where every application is" className="rise mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]" style={{ animationDelay: "80ms" }}>
-        <div className="flex flex-col rounded-lg border border-border bg-surface p-6 md:p-8">
+        <div className="flex flex-col panel p-6 md:p-8">
           <div className="flex flex-wrap items-end gap-x-9 gap-y-5">
             <div>
               <div className="font-display text-[84px] leading-[0.85] tabular-nums">{total}</div>
@@ -163,7 +163,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
           ) : null}
         </div>
 
-        <div className="rounded-lg border border-border bg-surface p-6 md:p-8">
+        <div className="panel p-6 md:p-8">
           <div className="flex items-center justify-between">
             <h2 className="text-[24px]">What just happened</h2>
             {!sample ? <span className="live-dot" aria-hidden="true" /> : null}
@@ -225,7 +225,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
               return (
                 <div
                   key={s.id}
-                  className={`flex min-h-72 flex-col rounded-lg border p-3 ${yours ? "border-brass/70 bg-surface" : "border-border bg-surface-2/40"}`}
+                  className={`flex min-h-72 flex-col rounded-[14px] border p-3 ${yours ? "border-brass/70 bg-surface" : "border-border bg-surface-2/40"}`}
                 >
                   <div className="px-1 pt-1 pb-3">
                     <div className="flex items-baseline justify-between gap-2">
@@ -256,13 +256,13 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
       </section>
 
       {total === 0 && !sample ? (
-        <div className="rise mt-10 rounded-lg border border-border bg-surface px-6 py-12 text-center">
+        <div className="rise mt-10 panel px-6 py-12 text-center">
           <div className="eyebrow">Ready when they are</div>
           <div className="mt-2 font-display text-[34px] leading-tight">No applications yet</div>
           <p className="mx-auto mt-2 max-w-md text-muted">Upload a form and deck, or add a warm intro. You can also preview the board with sample data.</p>
           <Link
             href="/applications/new"
-            className="mt-6 inline-block rounded-full bg-accent-strong px-6 py-2.5 text-[13px] tracking-wide text-on-accent transition-opacity duration-300 hover:opacity-90"
+            className="btn btn-primary mt-6"
           >
             Add applications
           </Link>
@@ -289,7 +289,7 @@ function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number })
     <Link
       href={a.id.startsWith("s") && a.id.length < 4 ? "#" : `/applications/${a.id}`}
       style={{ animationDelay: `${delay}ms` }}
-      className={`rise relative block overflow-hidden rounded-md border border-border bg-surface p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
+      className={`rise relative block overflow-hidden panel-sm p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <h3 className="min-w-0 text-[19px] leading-tight break-words">{a.company_name}</h3>

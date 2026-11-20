@@ -24,14 +24,13 @@ export function Uploader() {
   const [mode, setMode] = useState<"files" | "warm">("files");
   return (
     <div className="mt-8">
-      <div className="inline-flex rounded-full border border-border p-1" role="tablist">
+      <div className="segmented" role="tablist">
         {(["files", "warm"] as const).map((m) => (
           <button
             key={m}
             role="tab"
             aria-selected={mode === m}
             onClick={() => setMode(m)}
-            className={`rounded-full px-4 py-1.5 text-[13px] transition-colors duration-300 ${mode === m ? "bg-surface-2 text-text" : "text-muted hover:text-text"}`}
           >
             {m === "files" ? "Public form applications" : "Add a warm intro"}
           </button>
@@ -107,7 +106,7 @@ function Files() {
         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") input.current?.click(); }}
         role="button"
         tabIndex={0}
-        className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed px-6 py-14 text-center transition-colors duration-300 ${over ? "border-brass bg-surface" : "border-border-strong bg-surface/60 hover:border-brass"}`}
+        className={`flex cursor-pointer flex-col items-center justify-center rounded-[14px] border border-dashed px-6 py-14 text-center transition-colors duration-300 ${over ? "border-brass bg-surface" : "border-border-strong bg-surface/60 hover:border-brass"}`}
       >
         <div className="font-display text-[26px] leading-tight">Drop forms and decks here</div>
         <p className="mt-2 text-[13px] text-muted">PDF only, up to 25 MB each. Or click to choose files.</p>
@@ -120,15 +119,15 @@ function Files() {
       ) : null}
 
       {rows.length > 0 ? (
-        <div className="mt-6 overflow-hidden rounded-lg border border-border bg-surface">
+        <div className="mt-6 overflow-hidden panel">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3">
             <div className="eyebrow">{rows.length} {rows.length === 1 ? "application" : "applications"}</div>
             <div className="flex items-center gap-2">
-              {sentCount ? <Link href="/" className="rounded-full border border-border px-4 py-1.5 text-[13px] hover:border-brass">See the pipeline</Link> : null}
+              {sentCount ? <Link href="/" className="btn btn-secondary">See the pipeline</Link> : null}
               <button
                 onClick={sendAll}
                 disabled={readyCount === 0}
-                className="rounded-full bg-accent-strong px-5 py-1.5 text-[13px] text-on-accent transition-opacity duration-300 hover:opacity-90 disabled:opacity-40"
+                className="btn btn-primary"
               >
                 Send {readyCount || ""} to the queue
               </button>
@@ -181,9 +180,9 @@ function WarmIntro() {
     setState(res.ok ? { kind: "sent", id: body.id, note: body.position ? `In queue, number ${body.position}` : "In queue" } : { kind: "error", note: body.error ?? "Could not be saved." });
   }
 
-  const field = "mt-1.5 w-full rounded-md border border-border bg-surface px-3 py-2 text-[14px] outline-none transition-colors focus:border-brass";
+  const field = "mt-1.5 w-full panel-sm px-3 py-2 text-[14px] outline-none transition-colors focus:border-brass";
   return (
-    <form action={submit} className="mt-6 grid max-w-3xl gap-5 rounded-lg border border-border bg-surface p-6 md:grid-cols-2 md:p-8">
+    <form action={submit} className="mt-6 grid max-w-3xl gap-5 panel p-6 md:grid-cols-2 md:p-8">
       <label className="block">
         <span className="eyebrow">Company name</span>
         <input name="company_name" required className={field} placeholder="StockSathi" />
@@ -211,7 +210,7 @@ function WarmIntro() {
       <div className="flex flex-wrap items-center gap-4 md:col-span-2">
         <button
           disabled={state.kind === "sending"}
-          className="rounded-full bg-accent-strong px-6 py-2 text-[13px] text-on-accent transition-opacity duration-300 hover:opacity-90 disabled:opacity-40"
+          className="btn btn-primary"
         >
           {state.kind === "sending" ? "Adding" : "Add warm intro"}
         </button>

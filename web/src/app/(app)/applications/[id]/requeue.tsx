@@ -22,7 +22,7 @@ export function Requeue({ id, mode, label }: { id: string; mode: "full_review" |
           setState({ busy: false });
           router.refresh();
         }}
-        className="rounded-full bg-accent-strong px-5 py-2 text-[13px] text-on-accent transition-opacity duration-300 hover:opacity-90 disabled:opacity-40"
+        className="btn btn-primary"
       >
         {state.busy ? "Sending" : label}
       </button>

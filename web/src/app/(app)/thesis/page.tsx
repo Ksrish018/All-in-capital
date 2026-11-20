@@ -76,7 +76,7 @@ export default async function ThesisPage() {
         <p className="mt-1 text-muted">
           Each criterion is rated 0 to 4. A missing fact counts as 1, so it pulls the score down. The two weight columns are the two lenses.
         </p>
-        <div className="mt-3 overflow-x-auto rounded-lg border border-border bg-surface">
+        <div className="mt-3 overflow-x-auto panel">
           <table className="w-full min-w-[720px] border-collapse text-[13px]">
             <thead className="text-left text-muted">
               <tr className="border-b border-border">
@@ -118,7 +118,7 @@ export default async function ThesisPage() {
       </section>
 
       <section className="mt-12 grid gap-4 md:grid-cols-2">
-        <div className="rounded-lg border border-border bg-surface p-6">
+        <div className="panel p-6">
           <h2 className="text-[26px] leading-tight">Rules that override the score</h2>
           <ul className="mt-2 space-y-2">
             {(card.hard_flags as { id: string; when: string; effect: string; note: string }[]).map((f) => (
@@ -132,7 +132,7 @@ export default async function ThesisPage() {
             GO from a weighted score of {card.thresholds.go_min}. PASS at or below {card.thresholds.pass_max}. In between, a person decides.
           </p>
         </div>
-        <div className="rounded-lg border border-border bg-surface p-6">
+        <div className="panel p-6">
           <h2 className="text-[26px] leading-tight">Partner rules</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {(card.partner_rules as string[]).map((r) => <li key={r}>{r}</li>)}
@@ -145,7 +145,7 @@ export default async function ThesisPage() {
       <section className="mt-12">
         <h2 className="text-[26px] leading-tight">What the fund says publicly</h2>
         <div className="mt-3 grid gap-4 md:grid-cols-2">
-          <div className="rounded-lg border border-border bg-surface p-6">
+          <div className="panel p-6">
             <h3 className="font-display text-[17px]">Found</h3>
             <ul className="mt-2 space-y-2">
               {register.findings.map((f) => (
@@ -172,7 +172,7 @@ export default async function ThesisPage() {
       </section>
 
       <section className="mt-12 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-lg border border-border bg-surface p-6">
+        <div className="panel p-6">
           <h2 className="text-[26px] leading-tight">Portfolio ({portfolio?.length ?? 0})</h2>
           <p className="mt-1 text-muted">Every application is checked against this list. Kushal must confirm the full list of about 80.</p>
           <ul className="mt-3 max-h-80 space-y-1 overflow-y-auto pr-2">
@@ -186,7 +186,7 @@ export default async function ThesisPage() {
             ))}
           </ul>
         </div>
-        <div className="rounded-lg border border-border bg-surface p-6">
+        <div className="panel p-6">
           <h2 className="text-[26px] leading-tight">Memo passages ({passages?.length ?? 0})</h2>
           <p className="mt-1 text-muted">Scoring pulls only the few passages that match a criterion. The test set is never used to shape the card.</p>
           <ul className="mt-3 space-y-1">
