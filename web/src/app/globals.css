@@ -1,45 +1,64 @@
 @import "tailwindcss";
 
 /*
-  Design tokens. Inspired by allincapital.vc: charcoal ground, one coral red accent,
-  bold grotesk headlines, pill buttons. Dark is the default look. Light mode follows the
-  system setting, like the light content panels on their site.
+  Two themes, one brand.
+  Dark  = "Black tie": near black, ivory text, oxblood red, brass hairlines, Instrument Serif.
+  Light = "Ivory and ink": cream paper, black ink, oxblood accent, Fraunces.
+  Both keep the All In red. Brass is only ever a thin line, never a large area.
 */
 :root {
-  --bg: #181818;
-  --sidebar: #1f1f1f;
-  --surface: #242424;
-  --surface-2: #2e2e2e;
-  --text: #f4f4f4;
-  --muted: #a3a3a3;
-  --border: #353535;
-  --accent: #ff534f;
-  --accent-strong: #c62f2b;
-  --on-accent: #ffffff;
-  --go: #4cc28f;
-  --pass: #9a9a9a;
-  --needs-human: #f2b84b;
-  --flag: #ff6b66;
-  --hold: #b39cf5;
+  --bg: #0d0d0c;
+  --sidebar: #090908;
+  --surface: #141312;
+  --surface-2: #1b1a18;
+  --text: #f1ebe0;
+  --muted: #958c7e;
+  --border: #2a2620;
+  --border-strong: #3b352c;
+  --accent: #d04a3c;
+  --accent-strong: #a3231f;
+  --on-accent: #f1ebe0;
+  --brass: #b89b62;
+  --go: #8cbf97;
+  --pass: #958c7e;
+  --needs-human: #d9a95a;
+  --flag: #d65a4c;
+  --hold: #b4a0e0;
+  --stage-1: #3a3631;
+  --stage-2: #5e1d1a;
+  --stage-3: #7d221e;
+  --stage-4: #a3231f;
+  --stage-5: #b89b62;
+  --stage-6: #26231f;
+  --display: var(--font-instrument), Georgia, serif;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #efefef;
-    --sidebar: #1f1f1f;
-    --surface: #ffffff;
-    --surface-2: #f5f5f5;
-    --text: #1f1f1f;
-    --muted: #5c5c5c;
-    --border: #dedede;
-    --accent: #c62f2b;
-    --accent-strong: #c62f2b;
-    --on-accent: #ffffff;
-    --go: #1e7b55;
-    --pass: #6b6b6b;
-    --needs-human: #a8650f;
-    --flag: #c62f2b;
-    --hold: #6d4fc2;
+    --bg: #f5efe3;
+    --sidebar: #151412;
+    --surface: #fbf7ef;
+    --surface-2: #efe7d8;
+    --text: #1b1a17;
+    --muted: #6c6455;
+    --border: #e0d5c1;
+    --border-strong: #c9bba1;
+    --accent: #7a1f1b;
+    --accent-strong: #7a1f1b;
+    --on-accent: #fbf7ef;
+    --brass: #9c7f45;
+    --go: #2f6b45;
+    --pass: #6c6455;
+    --needs-human: #94600f;
+    --flag: #9b2a22;
+    --hold: #5b4a91;
+    --stage-1: #d9cfbb;
+    --stage-2: #b9a98b;
+    --stage-3: #9b5a4a;
+    --stage-4: #7a1f1b;
+    --stage-5: #1b1a17;
+    --stage-6: #e0d5c1;
+    --display: var(--font-fraunces), Georgia, serif;
   }
 }
 
@@ -51,16 +70,24 @@
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
   --color-on-accent: var(--on-accent);
+  --color-brass: var(--brass);
   --color-go: var(--go);
   --color-pass: var(--pass);
   --color-needs-human: var(--needs-human);
   --color-flag: var(--flag);
   --color-hold: var(--hold);
+  --color-stage-1: var(--stage-1);
+  --color-stage-2: var(--stage-2);
+  --color-stage-3: var(--stage-3);
+  --color-stage-4: var(--stage-4);
+  --color-stage-5: var(--stage-5);
+  --color-stage-6: var(--stage-6);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-display-face);
+  --font-display: var(--display);
   --font-mono: var(--font-mono-face);
 }
 
@@ -69,31 +96,60 @@ body {
   color: var(--text);
   font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 14px;
+  font-feature-settings: "ss01", "cv11";
 }
 
-h1, h2, h3 {
-  font-family: var(--font-display-face), var(--font-inter), sans-serif;
-  letter-spacing: -0.01em;
+/* Serif headlines at a regular weight. Grandeur comes from size and space, not boldness. */
+h1, h2, h3, .font-display {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }
 
-/* A soft pulse for work happening right now. Off for people who ask for less motion. */
+/* Small spaced capitals for labels. */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* A brass hairline that fades out to the right. */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, var(--brass), transparent 85%);
+}
+
 @keyframes live-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.8); }
+  50% { opacity: 0.3; transform: scale(0.75); }
 }
 .live-dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 9999px;
   background: var(--accent);
-  animation: live-pulse 1.4s ease-in-out infinite;
+  animation: live-pulse 1.8s ease-in-out infinite;
 }
+
+/* Cards settle in gently. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
 @media (prefers-reduced-motion: reduce) {
-  .live-dot { animation: none; }
+  .live-dot, .rise { animation: none; }
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 1px solid var(--brass);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent-strong);
+  color: var(--on-accent);
 }

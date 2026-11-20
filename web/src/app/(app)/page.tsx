@@ -7,23 +7,23 @@ import {
 } from "@/lib/pipeline";
 import { LiveRefresh } from "./live";
 
-// Flow bar shades: grey at intake, deepening to the fund's red at the gates.
+// Flow bar shades come from the theme: quiet at intake, oxblood at the gates, brass for Kushal.
 const SHADE: Record<StageId, string> = {
-  intake: "bg-[#6b6b6b]",
-  checks: "bg-[#8a3a37]",
-  research: "bg-[#a8322f]",
-  riya: "bg-[#c62f2b]",
-  kushal: "bg-[#ff534f]",
-  decided: "bg-[#3d3d3d]",
+  intake: "bg-stage-1",
+  checks: "bg-stage-2",
+  research: "bg-stage-3",
+  riya: "bg-stage-4",
+  kushal: "bg-stage-5",
+  decided: "bg-stage-6",
 };
 
 const TONE_TEXT: Record<Tone, string> = {
   go: "text-go", pass: "text-pass", hold: "text-hold", flag: "text-flag",
   "needs-human": "text-needs-human", active: "text-accent", plain: "text-muted",
 };
-const TONE_RING: Record<Tone, string> = {
-  go: "border-go/50", pass: "border-border", hold: "border-hold/60", flag: "border-flag/50",
-  "needs-human": "border-needs-human", active: "border-accent/60", plain: "border-border",
+const TONE_EDGE: Record<Tone, string> = {
+  go: "before:bg-go", pass: "before:bg-transparent", hold: "before:bg-hold", flag: "before:bg-flag",
+  "needs-human": "before:bg-needs-human", active: "before:bg-accent", plain: "before:bg-transparent",
 };
 
 async function load(): Promise<{ apps: PipelineApp[]; events: PipelineEvent[] }> {
@@ -71,88 +71,84 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
     .slice(0, 3);
 
   return (
-    <div className="max-w-[1400px]">
+    <div className="mx-auto max-w-[1400px]">
       {/* Header */}
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="text-[28px] leading-tight font-bold md:text-[34px]">
-            Every application, <span className="relative inline-block italic text-accent">live
-              <svg aria-hidden="true" viewBox="0 0 100 12" preserveAspectRatio="none" className="absolute -bottom-1.5 left-0 h-2 w-full text-accent">
-                <path d="M2 8 C 25 3, 45 11, 62 6 S 90 4, 98 7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h1>
-          <p className="mt-2 text-muted">From arrival to Kushal&apos;s sign off. People decide every outcome.</p>
+      <header className="rise">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="eyebrow">All In Capital · Pipeline</div>
+          <div className="flex flex-wrap items-center gap-2">
+            <LiveRefresh paused={sample} />
+            <Link
+              href={sample ? "/" : "/?sample=1"}
+              className="rounded-full border border-border px-3.5 py-1 text-[12px] text-muted transition-colors duration-300 hover:border-brass hover:text-text"
+            >
+              {sample ? "Show real data" : "Preview with sample data"}
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <LiveRefresh paused={sample} />
-          <Link
-            href={sample ? "/" : "/?sample=1"}
-            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted hover:border-accent hover:text-text"
-          >
-            {sample ? "Show real data" : "Preview with sample data"}
-          </Link>
-        </div>
-      </div>
+        <h1 className="mt-3 text-[40px] leading-[1.05] md:text-[60px]">
+          Every application, <em className="text-accent">live</em>
+        </h1>
+        <p className="mt-3 max-w-xl text-[15px] text-muted">From arrival to Kushal&apos;s sign off. People decide every outcome.</p>
+        <div className="hairline mt-6" />
+      </header>
 
       {sample ? (
-        <p role="note" className="mt-4 rounded-xl border border-needs-human/60 bg-needs-human/10 px-4 py-2 text-needs-human">
-          Sample data. These are the ten case applicants placed at made-up stages to preview the design. Nothing here is real.
+        <p role="note" className="mt-6 border-l border-needs-human pl-4 text-[13px] text-needs-human">
+          Sample data. The ten case applicants, placed at made-up stages to preview the design. Nothing here is real.
         </p>
       ) : null}
 
-      {/* C: the flow and the live feed */}
-      <section aria-label="Where every application is" className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-        <div className="flex flex-col rounded-2xl border border-border bg-surface p-5 md:p-6">
-          <div className="flex flex-wrap items-baseline gap-x-8 gap-y-3">
+      {/* The flow and the live feed */}
+      <section aria-label="Where every application is" className="rise mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]" style={{ animationDelay: "80ms" }}>
+        <div className="flex flex-col rounded-lg border border-border bg-surface p-6 md:p-8">
+          <div className="flex flex-wrap items-end gap-x-9 gap-y-5">
             <div>
-              <div className="font-display text-[44px] leading-none font-extrabold tabular-nums">{total}</div>
-              <div className="mt-1 text-muted">applications in the pipeline</div>
+              <div className="font-display text-[84px] leading-[0.85] tabular-nums">{total}</div>
+              <div className="eyebrow mt-3">In the pipeline</div>
             </div>
-            <Stat n={working} label="being worked on now" tone="text-accent" />
-            <Stat n={attention} label="need attention" tone={attention ? "text-needs-human" : "text-muted"} />
-            {mine ? <Stat n={waiting} label={`waiting on ${actor.name}`} tone={waiting ? "text-text" : "text-muted"} /> : null}
+            <Stat n={working} label="Being worked on" tone="text-accent" />
+            <Stat n={attention} label="Need attention" tone={attention ? "text-needs-human" : "text-muted"} />
+            {mine ? <Stat n={waiting} label={`Waiting on ${actor.name}`} tone={waiting ? "text-text" : "text-muted"} /> : null}
           </div>
 
-          {/* One bar, one segment per stage, width by count */}
-          <div className="mt-6 flex h-9 w-full gap-1 overflow-hidden rounded-full bg-surface-2" role="img"
-            aria-label={STAGES.map((s) => `${s.label}: ${byStage[s.id].length}`).join(", ")}>
+          {/* One fine bar, one segment per stage, width by count */}
+          <div
+            className="mt-8 flex h-2 w-full gap-[3px]"
+            role="img"
+            aria-label={STAGES.map((s) => `${s.label}: ${byStage[s.id].length}`).join(", ")}
+          >
             {total === 0 ? (
-              <div className="flex flex-1 items-center justify-center text-[12px] text-muted">Empty. The bar fills as applications arrive.</div>
+              <div className="h-full flex-1 rounded-full bg-surface-2" />
             ) : (
               STAGES.filter((s) => byStage[s.id].length > 0).map((s) => (
-                <div
-                  key={s.id}
-                  style={{ flexGrow: byStage[s.id].length }}
-                  className={`${SHADE[s.id]} flex min-w-9 basis-0 items-center justify-center font-semibold text-white tabular-nums`}
-                  title={`${s.label}: ${byStage[s.id].length}`}
-                >
-                  {byStage[s.id].length}
-                </div>
+                <div key={s.id} style={{ flexGrow: byStage[s.id].length }} className={`${SHADE[s.id]} h-full basis-0 rounded-full`} title={`${s.label}: ${byStage[s.id].length}`} />
               ))
             )}
           </div>
-          <ol className="mt-3 mb-5 grid grid-cols-3 gap-x-4 gap-y-2 sm:grid-cols-6">
+          <ol className="mt-5 mb-6 grid grid-cols-3 gap-x-4 gap-y-4 sm:grid-cols-6">
             {STAGES.map((s) => (
               <li key={s.id} className="min-w-0">
-                <div className="flex items-center gap-1.5">
-                  <span className={`size-2.5 shrink-0 rounded-full ${SHADE[s.id]}`} aria-hidden="true" />
-                  <span className="text-[12px] whitespace-nowrap text-muted">{s.label.replace("Cheap checks", "Checks")}</span>
+                <div className="flex items-center gap-2">
+                  <span className={`h-px w-4 shrink-0 ${SHADE[s.id]} h-[3px] rounded-full`} aria-hidden="true" />
+                  <span className="text-[11px] tracking-[0.12em] whitespace-nowrap text-muted uppercase">{s.label.replace("Cheap checks", "Checks")}</span>
                 </div>
-                <div className="pl-4 font-semibold tabular-nums">{byStage[s.id].length}</div>
+                <div className="mt-1 font-display text-[26px] leading-none tabular-nums">{byStage[s.id].length}</div>
               </li>
             ))}
           </ol>
 
-          {longest.length > 0 ? (
-            <div className="mt-auto border-t border-border pt-4">
-              <div className="text-[12px] tracking-wide text-muted uppercase">Waiting longest</div>
-              <ul className="mt-2 flex flex-wrap gap-2">
+          {total === 0 ? (
+            <p className="mt-auto text-[13px] text-muted">The bar fills as applications arrive.</p>
+          ) : longest.length > 0 ? (
+            <div className="mt-auto border-t border-border pt-5">
+              <div className="eyebrow">Waiting longest</div>
+              <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
                 {longest.map((a) => (
-                  <li key={a.id} className="rounded-full border border-border bg-surface-2 px-3 py-1 text-[13px]">
-                    <span className="font-semibold">{a.company_name}</span>{" "}
+                  <li key={a.id} className="text-[13px]">
+                    <span className="font-display text-[17px]">{a.company_name}</span>{" "}
                     <span className="text-muted">
-                      in {STAGES.find((s) => s.id === stageOf(a.status, a.last_step))!.label} · {ago(a.received_at, now)}
+                      {STAGES.find((s) => s.id === stageOf(a.status, a.last_step))!.label} · {ago(a.received_at, now)}
                     </span>
                   </li>
                 ))}
@@ -161,28 +157,29 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
           ) : null}
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface p-5 md:p-6">
+        <div className="rounded-lg border border-border bg-surface p-6 md:p-8">
           <div className="flex items-center justify-between">
-            <h2 className="text-[16px] font-bold">What just happened</h2>
+            <h2 className="text-[24px]">What just happened</h2>
             {!sample ? <span className="live-dot" aria-hidden="true" /> : null}
           </div>
+          <div className="hairline mt-3 mb-4" />
           {events.length === 0 ? (
-            <p className="mt-4 text-muted">Nothing yet. Each step every application takes will show here as it happens.</p>
+            <p className="text-muted">Nothing yet. Each step every application takes will show here as it happens.</p>
           ) : (
-            <ol className="mt-3 space-y-0">
+            <ol>
               {events.map((e, i) => (
-                <li key={e.id} className="relative flex gap-3 pb-3 last:pb-0">
+                <li key={e.id} className="flex gap-3 pb-3.5 last:pb-0">
                   <div className="flex flex-col items-center">
-                    <span className={`mt-1.5 size-2.5 rounded-full ${i === 0 ? "bg-accent" : "bg-border"}`} aria-hidden="true" />
+                    <span className={`mt-[7px] size-[7px] rounded-full ${i === 0 ? "bg-accent" : "border border-border-strong"}`} aria-hidden="true" />
                     {i < events.length - 1 ? <span className="mt-1 w-px flex-1 bg-border" aria-hidden="true" /> : null}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="truncate">
-                        <span className="font-semibold">{e.company}</span>{" "}
-                        <span className={TONE_TEXT[toneOf(e.to_status)]}>{STATUS_LABEL[e.to_status].toLowerCase()}</span>
+                        <span className="font-display text-[16px]">{e.company}</span>{" "}
+                        <span className={`text-[13px] ${TONE_TEXT[toneOf(e.to_status)]}`}>{STATUS_LABEL[e.to_status].toLowerCase()}</span>
                       </span>
-                      <span className="shrink-0 text-[12px] text-muted tabular-nums">{ago(e.at, now)}</span>
+                      <span className="shrink-0 text-[11px] text-muted tabular-nums">{ago(e.at, now)}</span>
                     </div>
                     {e.note || e.actor !== "system" ? (
                       <div className="truncate text-[12px] text-muted">
@@ -199,41 +196,50 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
         </div>
       </section>
 
-      {/* A: the board */}
-      <section aria-label="Pipeline board" className="mt-8">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-[18px] font-bold">Board</h2>
-          <p className="text-[12px] text-muted">
-            <span className="live-dot mr-1.5 align-middle" aria-hidden="true" />working now
-            <span className="mx-2">·</span><span className="text-flag">red edge</span> flagged
-            <span className="mx-2">·</span><span className="text-needs-human">amber edge</span> needs attention
+      {/* The board */}
+      <section aria-label="Pipeline board" className="rise mt-12" style={{ animationDelay: "160ms" }}>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <div className="eyebrow">Stage by stage</div>
+            <h2 className="mt-1 text-[32px] leading-none">The board</h2>
+          </div>
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-muted">
+            <span><span className="live-dot mr-1.5 align-middle" aria-hidden="true" />working now</span>
+            <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-flag align-middle" />flagged</span>
+            <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-needs-human align-middle" />needs attention</span>
+            <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-hold align-middle" />held</span>
           </p>
         </div>
-        <div className="mt-3 -mx-4 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0">
-          <div className="grid min-w-[1080px] grid-cols-6 gap-3">
+        <div className="hairline mt-4" />
+        <div className="mt-5 -mx-4 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0">
+          <div className="grid min-w-[1080px] grid-cols-6 gap-4">
             {STAGES.map((s, i) => {
               const cards = byStage[s.id];
               const yours = s.id === mine;
               return (
-                <div key={s.id} className={`flex min-h-64 flex-col rounded-2xl p-2.5 ${yours ? "bg-accent/10 ring-1 ring-accent/40" : "bg-surface-2/60"}`}>
-                  <div className="px-1.5 pt-1 pb-2.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-display font-bold">
-                        <span className="mr-1 text-muted">{i + 1}</span>{s.label}
+                <div
+                  key={s.id}
+                  className={`flex min-h-72 flex-col rounded-lg border p-3 ${yours ? "border-brass/70 bg-surface" : "border-border bg-surface-2/40"}`}
+                >
+                  <div className="px-1 pt-1 pb-3">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <span className="font-display text-[20px] leading-none">
+                        <span className="mr-1.5 text-[13px] text-muted italic">{["i", "ii", "iii", "iv", "v", "vi"][i]}</span>
+                        {s.label}
                       </span>
-                      <span className={`rounded-full px-2 text-[12px] font-semibold tabular-nums ${cards.length ? "bg-text text-bg" : "bg-surface text-muted"}`}>
-                        {cards.length}
-                      </span>
+                      <span className="font-display text-[20px] leading-none text-muted tabular-nums">{cards.length}</span>
                     </div>
-                    <div className="text-[12px] text-muted">{yours ? "Waiting on you" : s.hint}</div>
+                    <div className={`mt-1.5 text-[11px] tracking-[0.12em] uppercase ${yours ? "text-brass" : "text-muted"}`}>
+                      {yours ? "Waiting on you" : s.hint}
+                    </div>
                   </div>
-                  <div className="flex flex-1 flex-col gap-2">
+                  <div className="flex flex-1 flex-col gap-2.5">
                     {cards.length === 0 ? (
-                      <div className="flex flex-1 items-center justify-center rounded-xl border border-dashed border-border px-3 py-6 text-center text-[12px] text-muted">
+                      <div className="flex flex-1 items-center justify-center rounded-md border border-dashed border-border px-3 py-6 text-center text-[12px] text-muted italic">
                         Nothing here
                       </div>
                     ) : (
-                      cards.map((a) => <Card key={a.id} a={a} now={now} />)
+                      cards.map((a, j) => <Card key={a.id} a={a} now={now} delay={200 + j * 60} />)
                     )}
                   </div>
                 </div>
@@ -244,10 +250,14 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
       </section>
 
       {total === 0 && !sample ? (
-        <div className="mt-6 rounded-2xl border border-dashed border-border bg-surface px-6 py-8 text-center">
-          <div className="font-display text-[18px] font-bold">No applications yet</div>
-          <p className="mt-1 text-muted">Upload arrives in milestone M2. Until then, preview the board with sample data.</p>
-          <Link href="/?sample=1" className="mt-4 inline-block rounded-full bg-accent-strong px-5 py-2 font-semibold text-white hover:opacity-90">
+        <div className="rise mt-10 rounded-lg border border-border bg-surface px-6 py-12 text-center">
+          <div className="eyebrow">Ready when they are</div>
+          <div className="mt-2 font-display text-[34px] leading-tight">No applications yet</div>
+          <p className="mx-auto mt-2 max-w-md text-muted">Upload arrives in milestone M2. Until then, preview the board with sample data.</p>
+          <Link
+            href="/?sample=1"
+            className="mt-6 inline-block rounded-full bg-accent-strong px-6 py-2.5 text-[13px] tracking-wide text-on-accent transition-opacity duration-300 hover:opacity-90"
+          >
             Preview with sample data
           </Link>
         </div>
@@ -259,36 +269,40 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
 function Stat({ n, label, tone }: { n: number; label: string; tone: string }) {
   return (
     <div>
-      <div className={`font-display text-[24px] leading-none font-bold tabular-nums ${tone}`}>{n}</div>
-      <div className="mt-1 text-[12px] text-muted">{label}</div>
+      <div className={`font-display text-[40px] leading-[0.9] tabular-nums ${tone}`}>{n}</div>
+      <div className="eyebrow mt-2">{label}</div>
     </div>
   );
 }
 
-function Card({ a, now }: { a: PipelineApp; now: number }) {
+function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number }) {
   const tone = toneOf(a.status, a.short_circuit_flags);
   const working = ACTIVE.includes(a.status);
+  const statusTone: Tone = working ? "active" : tone === "flag" ? "plain" : tone;
   return (
-    <article className={`rounded-xl border bg-surface p-3 transition-colors hover:border-accent ${TONE_RING[tone]}`}>
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-        <h3 className="min-w-0 text-[14px] font-bold break-words">{a.company_name}</h3>
+    <article
+      style={{ animationDelay: `${delay}ms` }}
+      className={`rise relative overflow-hidden rounded-md border border-border bg-surface p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
+    >
+      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+        <h3 className="min-w-0 text-[19px] leading-tight break-words">{a.company_name}</h3>
         {a.source === "warm_intro" ? (
-          <span className="rounded-full bg-hold/15 px-2 text-[11px] font-medium text-hold">Warm intro</span>
+          <span className="text-[10px] tracking-[0.14em] text-brass uppercase">Warm intro</span>
         ) : null}
       </div>
-      <div className={`mt-1 flex items-center gap-1.5 text-[12px] ${TONE_TEXT[tone === "flag" ? (working ? "active" : "plain") : tone]}`}>
+      <div className={`mt-1 flex items-center gap-1.5 text-[12px] ${TONE_TEXT[statusTone]}`}>
         {working ? <span className="live-dot" aria-hidden="true" /> : null}
         <span>{STATUS_LABEL[a.status]}</span>
       </div>
       {a.status_reason ? <p className="mt-1.5 line-clamp-2 text-[12px] text-muted">{a.status_reason}</p> : null}
       {a.short_circuit_flags.length > 0 ? (
-        <div className="mt-2 flex flex-wrap gap-1">
+        <div className="mt-2.5 flex flex-wrap gap-1">
           {a.short_circuit_flags.map((f) => (
-            <span key={f} className="rounded-full border border-flag/50 px-2 text-[11px] text-flag">{flagLabel(f)}</span>
+            <span key={f} className="rounded-[3px] border border-flag/40 px-1.5 py-px text-[10.5px] leading-snug text-flag">{flagLabel(f)}</span>
           ))}
         </div>
       ) : null}
-      <div className="mt-2 text-[11px] text-muted tabular-nums">Arrived {ago(a.received_at, now)}</div>
+      <div className="mt-2.5 text-[11px] text-muted tabular-nums">Arrived {ago(a.received_at, now)}</div>
     </article>
   );
 }

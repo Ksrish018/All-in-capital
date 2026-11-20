@@ -26,7 +26,7 @@ export default async function ThesisPage() {
   if (!card) {
     return (
       <div>
-        <h1 className="text-[28px] leading-tight font-bold md:text-[34px]">Thesis Card</h1>
+        <h1 className="text-[40px] leading-[1.05] md:text-[60px]">Thesis Card</h1>
         <p className="mt-4 text-muted">No Thesis Card yet. Run <code>npm run db:seed</code>.</p>
       </div>
     );
@@ -48,14 +48,15 @@ export default async function ThesisPage() {
   const canApprove = can.approveThesis(actor.role);
 
   return (
-    <div className="max-w-6xl">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+    <div className="rise mx-auto max-w-[1400px]">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-[28px] leading-tight font-bold md:text-[34px]">Thesis Card</h1>
-          <p className="mt-1 text-muted">What every application is scored against. Internal only. Never shared with founders.</p>
+          <div className="eyebrow">All In Capital · Internal</div>
+          <h1 className="mt-3 text-[40px] leading-[1.05] md:text-[60px]">The <em className="text-accent">Thesis</em> Card</h1>
+          <p className="mt-3 text-[15px] text-muted">What every application is scored against. Internal only. Never shared with founders.</p>
         </div>
         <div className="flex items-center gap-3">
-          <span className="rounded-full border border-needs-human px-3 py-1 font-medium text-needs-human">
+          <span className="rounded-full border border-brass/70 px-3.5 py-1 text-[12px] tracking-[0.12em] text-brass uppercase">
             Version {card.version} · {card.status === "approved" ? "Approved" : "Draft"}
           </span>
           <button
@@ -67,14 +68,15 @@ export default async function ThesisPage() {
           </button>
         </div>
       </div>
-      {card.note ? <p className="mt-4 rounded-2xl border border-border bg-surface px-4 py-3 text-muted">{card.note}</p> : null}
+      <div className="hairline mt-6" />
+      {card.note ? <p className="mt-6 max-w-4xl border-l border-brass pl-4 font-display text-[18px] leading-snug text-muted italic">{card.note}</p> : null}
 
-      <section className="mt-8">
-        <h2 className="text-[18px] font-bold">Criteria</h2>
+      <section className="mt-12">
+        <h2 className="text-[26px] leading-tight">Criteria</h2>
         <p className="mt-1 text-muted">
           Each criterion is rated 0 to 4. A missing fact counts as 1, so it pulls the score down. The two weight columns are the two lenses.
         </p>
-        <div className="mt-3 overflow-x-auto rounded-2xl border border-border bg-surface">
+        <div className="mt-3 overflow-x-auto rounded-lg border border-border bg-surface">
           <table className="w-full min-w-[720px] border-collapse text-[13px]">
             <thead className="text-left text-muted">
               <tr className="border-b border-border">
@@ -89,7 +91,7 @@ export default async function ThesisPage() {
                 <tr key={c.id} className="border-b border-border align-top last:border-0">
                   <td className="px-3 py-3">
                     <div className="font-mono text-muted">{c.id}</div>
-                    <div className="font-display font-bold">{c.name}</div>
+                    <div className="font-display text-[17px]">{c.name}</div>
                     {c.deal_breaker ? (
                       <span className="mt-1 inline-block rounded-full border border-flag/50 px-2 text-[12px] text-flag">Can rule out</span>
                     ) : null}
@@ -115,9 +117,9 @@ export default async function ThesisPage() {
         </p>
       </section>
 
-      <section className="mt-8 grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <h2 className="text-[18px] font-bold">Rules that override the score</h2>
+      <section className="mt-12 grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <h2 className="text-[26px] leading-tight">Rules that override the score</h2>
           <ul className="mt-2 space-y-2">
             {(card.hard_flags as { id: string; when: string; effect: string; note: string }[]).map((f) => (
               <li key={f.id}>
@@ -130,21 +132,21 @@ export default async function ThesisPage() {
             GO from a weighted score of {card.thresholds.go_min}. PASS at or below {card.thresholds.pass_max}. In between, a person decides.
           </p>
         </div>
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <h2 className="text-[18px] font-bold">Partner rules</h2>
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <h2 className="text-[26px] leading-tight">Partner rules</h2>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {(card.partner_rules as string[]).map((r) => <li key={r}>{r}</li>)}
           </ul>
-          <h3 className="mt-4 font-medium">Pending rule corrections</h3>
+          <h3 className="mt-5 text-[18px]">Pending rule corrections</h3>
           <p className="text-muted">None yet. Riya&apos;s rule corrections will collect here for Kushal (milestone M4).</p>
         </div>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-[18px] font-bold">What the fund says publicly</h2>
+      <section className="mt-12">
+        <h2 className="text-[26px] leading-tight">What the fund says publicly</h2>
         <div className="mt-3 grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-surface p-4">
-            <h3 className="font-display font-bold">Found</h3>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <h3 className="font-display text-[17px]">Found</h3>
             <ul className="mt-2 space-y-2">
               {register.findings.map((f) => (
                 <li key={f.topic}>
@@ -156,8 +158,8 @@ export default async function ThesisPage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-needs-human/50 bg-surface p-4">
-            <h3 className="font-display font-bold">Not found, and what it costs</h3>
+          <div className="rounded-lg border border-needs-human/50 bg-surface p-6">
+            <h3 className="font-display text-[17px]">Not found, and what it costs</h3>
             <ul className="mt-2 space-y-2">
               {register.gaps.map((g) => (
                 <li key={g.item}>
@@ -169,9 +171,9 @@ export default async function ThesisPage() {
         </div>
       </section>
 
-      <section className="mt-8 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <h2 className="text-[18px] font-bold">Portfolio ({portfolio?.length ?? 0})</h2>
+      <section className="mt-12 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <h2 className="text-[26px] leading-tight">Portfolio ({portfolio?.length ?? 0})</h2>
           <p className="mt-1 text-muted">Every application is checked against this list. Kushal must confirm the full list of about 80.</p>
           <ul className="mt-3 max-h-80 space-y-1 overflow-y-auto pr-2">
             {(portfolio ?? []).map((p) => (
@@ -184,8 +186,8 @@ export default async function ThesisPage() {
             ))}
           </ul>
         </div>
-        <div className="rounded-2xl border border-border bg-surface p-4">
-          <h2 className="text-[18px] font-bold">Memo passages ({passages?.length ?? 0})</h2>
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <h2 className="text-[26px] leading-tight">Memo passages ({passages?.length ?? 0})</h2>
           <p className="mt-1 text-muted">Scoring pulls only the few passages that match a criterion. The test set is never used to shape the card.</p>
           <ul className="mt-3 space-y-1">
             {memos.map((m) => (
