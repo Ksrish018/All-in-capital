@@ -1527,6 +1527,8 @@ We revisit this if the agent ever needs open-ended planning. The screening pipel
 
 ### 15.7 Folder layout
 
+The Next.js app lives in `web/`, so the paths below starting with `/app` and `/lib` sit under `web/src/`. Database migrations, seed data, evals and CI sit at the repository root.
+
 ```
 /app                 Screens and server routes
 /lib/pipeline        One file per step: intake, parse, redact, checks, extract,

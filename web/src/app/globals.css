@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Design tokens from PRD Section 14.2 */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #52606d;
+  --border: #e4e7eb;
+  --accent: #2f5da8;
+  --on-accent: #ffffff;
+  --go: #1e7b55;
+  --pass: #6b7280;
+  --needs-human: #b7791f;
+  --flag: #c0392b;
+  --hold: #6d4fc2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1218;
+    --surface: #171b23;
+    --text: #e6e9ef;
+    --muted: #9aa5b1;
+    --border: #2a303b;
+    --accent: #7fa6e8;
+    --on-accent: #0f1218;
+    --go: #4cc28f;
+    --pass: #a0a7b4;
+    --needs-human: #e3a84a;
+    --flag: #ef6f61;
+    --hold: #a890f0;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-go: var(--go);
+  --color-pass: var(--pass);
+  --color-needs-human: var(--needs-human);
+  --color-flag: var(--flag);
+  --color-hold: var(--hold);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono-face);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+}
