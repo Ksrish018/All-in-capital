@@ -1,0 +1,29 @@
+{
+  "note": "Tags for the 12 deal memos. No memo text is stored here, because the repository is public. web/scripts/load-memos.mjs reads the text from the local PDF and joins it with these tags. Each memo has four sections: what (what it does), founder (founder assessment), risks (risks and open questions), why (why we invested or passed). Split follows PRD step S4.",
+  "memos": [
+    {"n": 1, "id": "eplane", "company": "The ePlane Company", "decision": "invested", "sector": "Deeptech", "split": "build",
+     "tags": {"what": ["C2"], "founder": ["C5", "C6", "C11"], "risks": ["C3", "C8", "C9"], "why": ["C5", "C8", "C9"]}},
+    {"n": 2, "id": "petalry", "company": "Petalry", "decision": "passed", "sector": "Consumer brand", "split": "build",
+     "tags": {"what": ["C2"], "founder": ["C7", "C11"], "risks": ["C7", "C10"], "why": ["C7", "C11"]}},
+    {"n": 3, "id": "unbox", "company": "Unbox Robotics", "decision": "invested", "sector": "Deeptech", "split": "build",
+     "tags": {"what": ["C2", "C8"], "founder": ["C6", "C11"], "risks": ["C8", "C10"], "why": ["C6", "C8"]}},
+    {"n": 4, "id": "hopbox", "company": "HopBox", "decision": "passed", "sector": "Consumer tech", "split": "build",
+     "tags": {"what": ["C9"], "founder": ["C5", "C6"], "risks": ["C9", "C10"], "why": ["C1", "C9"]}},
+    {"n": 5, "id": "wint", "company": "Wint Wealth", "decision": "invested", "sector": "Fintech", "split": "build",
+     "tags": {"what": ["C2"], "founder": ["C6"], "risks": ["C3", "C8"], "why": ["C5", "C6"]}},
+    {"n": 6, "id": "campuscredit", "company": "CampusCredit", "decision": "passed", "sector": "Fintech", "split": "build",
+     "tags": {"what": ["C2"], "founder": ["C5", "C11"], "risks": ["C3", "C8"], "why": ["C5"]}},
+    {"n": 7, "id": "giva", "company": "Giva", "decision": "invested", "sector": "Consumer brand", "split": "test",
+     "tags": {"what": ["C2"], "founder": ["C7"], "risks": ["C9", "C10"], "why": ["C7"]}},
+    {"n": 8, "id": "aerodrop", "company": "AeroDrop", "decision": "passed", "sector": "Deeptech", "split": "build",
+     "tags": {"what": ["C8"], "founder": ["C5", "C8", "C11"], "risks": ["C3", "C8"], "why": ["C5", "C8"]}},
+    {"n": 9, "id": "superk", "company": "SuperK", "decision": "invested", "sector": "Consumer tech", "split": "test",
+     "tags": {"what": ["C2"], "founder": ["C6", "C11"], "risks": ["C9"], "why": ["C6", "C10"]}},
+    {"n": 10, "id": "coinlane", "company": "Coinlane", "decision": "passed", "sector": "Web3", "split": "test",
+     "tags": {"what": ["C2"], "founder": ["C3"], "risks": ["C3", "C10"], "why": ["C2", "C3"]}},
+    {"n": 11, "id": "jaikisan", "company": "Jai Kisan", "decision": "invested", "sector": "Fintech", "split": "build",
+     "tags": {"what": ["C2"], "founder": ["C6"], "risks": ["C3", "C8"], "why": ["C2", "C5", "C6"]}},
+    {"n": 12, "id": "prepnest", "company": "Prepnest", "decision": "passed", "sector": "Consumer tech", "split": "test",
+     "tags": {"what": ["C2"], "founder": ["C5", "C7", "C10"], "risks": ["C7", "C10"], "why": ["C5", "C10"]}}
+  ]
+}

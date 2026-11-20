@@ -31,4 +31,30 @@ for (const co of portfolio.companies) {
   );
 }
 console.log(`portfolio: ${portfolio.companies.length} companies`);
+
+// Thesis Card v1 draft. Never overwrites a version that Kushal has approved.
+const card = JSON.parse(fs.readFileSync(path.join(root, "seed", "fund", "thesis_card_v1.json"), "utf8"));
+const existing = await c.query("select status from public.thesis_cards where version = $1", [card.version]);
+if (existing.rows[0] && existing.rows[0].status !== "draft") {
+  console.log(`thesis card v${card.version}: already ${existing.rows[0].status}, left unchanged`);
+} else {
+  await c.query(
+    `insert into public.thesis_cards
+       (version, status, note, criteria, weights_public, weights_revealed, thresholds, hard_flags,
+        partner_rules, rating_scale, public_register, public_thesis_sources)
+     values ($1, 'draft', $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+     on conflict (version) do update set note = excluded.note, criteria = excluded.criteria,
+       weights_public = excluded.weights_public, weights_revealed = excluded.weights_revealed,
+       thresholds = excluded.thresholds, hard_flags = excluded.hard_flags, partner_rules = excluded.partner_rules,
+       rating_scale = excluded.rating_scale, public_register = excluded.public_register,
+       public_thesis_sources = excluded.public_thesis_sources`,
+    [
+      card.version, card.note, JSON.stringify(card.criteria), JSON.stringify(card.weights_public),
+      JSON.stringify(card.weights_revealed), JSON.stringify(card.thresholds), JSON.stringify(card.hard_flags),
+      JSON.stringify(card.partner_rules), JSON.stringify(card.rating_scale), JSON.stringify(card.public_register),
+      JSON.stringify(card.public_register.sources),
+    ],
+  );
+  console.log(`thesis card v${card.version}: draft saved`);
+}
 await c.end();

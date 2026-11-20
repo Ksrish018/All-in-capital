@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "status": "draft",
+  "note": "Draft built 20 Nov 2026 from the 12 deal memos, the 5 partner meeting notes and the fund's public pages. Weights and thresholds are starting values. The back test (milestone M5) adjusts them, and only Kushal can approve a version.",
+  "rating_scale": [
+    {"rating": 4, "label": "Strong", "meaning": "Clear evidence, with at least one source outside the deck and form. Code blocks a Strong rating that rests only on founder claims."},
+    {"rating": 3, "label": "Adequate", "meaning": "Evidence present, mostly from the deck or form."},
+    {"rating": 2, "label": "Weak", "meaning": "Thin, vague or mixed evidence."},
+    {"rating": 1, "label": "Missing", "meaning": "The key fact is not there. Counts against the company."},
+    {"rating": 0, "label": "Fails", "meaning": "Evidence shows it does not meet the criterion."}
+  ],
+  "criteria": [
+    {
+      "id": "C1", "name": "Stage fit",
+      "meaning": "Truly pre-seed or seed. The round suits a first cheque of about $250K to $500K, and the fund could lead it (rounds under $1M) or commit early.",
+      "rate_4": "Pre-seed or seed, raise under $1M, outside sources agree.",
+      "rate_0": "Named Series A or later, or a raise far above what the fund leads.",
+      "sources": ["Public FAQ (P2)", "HopBox memo", "Settlr test case"],
+      "evidence_fields": ["stage.selected", "stage.amount_raising", "stage.existing_investors", "stage.past_rounds"],
+      "deal_breaker": true
+    },
+    {
+      "id": "C2", "name": "Sector fit",
+      "meaning": "Fits the fund's areas. The case names fintech, deeptech, consumer tech and consumer brands, but the fund publicly calls itself sector-agnostic. Founder behaviour matters more than the label.",
+      "rate_4": "Clearly in a core area, and the founder's chosen label matches what the product is.",
+      "rate_0": "Far outside, such as capital-heavy physical healthcare. Shown as a soft flag by default.",
+      "sources": ["Public blog (P4)", "Jai Kisan memo", "Meeting 2"],
+      "evidence_fields": ["company.sector_selected", "company.sector_inferred", "company.who_pays"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C3", "name": "Not a regulatory bet",
+      "meaning": "The business must not depend on the rules getting friendlier. A long but mapped regulatory path is acceptable when the founders have a milestone plan.",
+      "rate_4": "No dependency on a rule change, or a clear, founder-owned path through the regulator.",
+      "rate_0": "Only works if regulation becomes friendlier, with no plan if it does not.",
+      "sources": ["Coinlane memo", "AeroDrop memo", "ePlane memo"],
+      "evidence_fields": ["risk.depends_on_rule_change", "risk.regulatory_path_described", "risk.key_risks"],
+      "deal_breaker": true
+    },
+    {
+      "id": "C4", "name": "No portfolio conflict",
+      "meaning": "No overlap with a company the fund already backs. Checked against the full portfolio list. A conflict holds the application for Kushal.",
+      "rate_4": "Clearly no overlap with any portfolio company.",
+      "rate_0": "Direct overlap with a portfolio company.",
+      "sources": ["Meeting 4", "Public portfolio (P3)"],
+      "evidence_fields": ["fund.portfolio_overlap"],
+      "deal_breaker": true
+    },
+    {
+      "id": "C5", "name": "Founder owns the hard part",
+      "meaning": "The founder treats the core risk of the business as their own problem: credit risk in lending, density in delivery, the regulator in deeptech, retention in content.",
+      "rate_4": "The founder names the core risk and a concrete plan they own, confirmed outside the deck or in a call.",
+      "rate_0": "The founder says the core risk is someone else's problem.",
+      "sources": ["CampusCredit memo", "Jai Kisan memo", "HopBox memo", "AeroDrop memo", "ePlane memo"],
+      "evidence_fields": ["founders.owns_core_risk", "risk.key_risks"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C6", "name": "Founder did the groundwork",
+      "meaning": "The founders went to the customer first and did unscalable things: field visits, manual operations, pilots treated as learning.",
+      "rate_4": "Specific, checkable groundwork with customers or the field.",
+      "rate_0": "Built around an assumption with no contact with real customers.",
+      "sources": ["Wint Wealth memo", "SuperK memo", "Jai Kisan memo", "Unbox Robotics memo"],
+      "evidence_fields": ["traction.paying_customers", "traction.pilots", "founders.past_roles", "company.what_built"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C7", "name": "Knows the numbers",
+      "meaning": "The founder knows the numbers that matter for this business: repeat and cohorts for consumer brands, margin, acquisition cost by channel, retention. A missing number that the business should have drags the rating down. Revenue is not required for a pre-product company.",
+      "rate_4": "Cohort or retention data, margin and acquisition cost by channel, consistent across deck and form.",
+      "rate_0": "Numbers contradict each other, or volume is presented as revenue.",
+      "sources": ["Giva memo", "Petalry memo", "Prepnest memo", "Meeting 1", "Public blog (P4)"],
+      "evidence_fields": ["traction.revenue", "traction.revenue_is_net", "traction.repeat_rate", "traction.cohort_data", "unit.gross_margin", "unit.cac"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C8", "name": "Path to market",
+      "meaning": "A clear route to paying customers, and through any regulator. Rated apart from founder quality.",
+      "rate_4": "Paying customers or signed pilots, and a concrete plan for any regulatory step.",
+      "rate_0": "No customer, no route through the regulator, and no answer on who pays.",
+      "sources": ["ePlane memo", "AeroDrop memo", "Unbox Robotics memo", "Meeting 3"],
+      "evidence_fields": ["traction.paying_customers", "traction.pilots", "company.who_pays", "risk.regulatory_path_described"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C9", "name": "Capital fits the model",
+      "meaning": "The business does not need far more capital than a pre-seed fund can give before it proves itself.",
+      "rate_4": "Can reach the next milestone on this round.",
+      "rate_0": "Only works with very large capital, such as dense dark stores or many physical sites.",
+      "sources": ["HopBox memo", "ePlane memo (cheque sized for a long path)"],
+      "evidence_fields": ["capital.intensity", "capital.use_of_funds", "stage.amount_raising"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C10", "name": "Defensibility",
+      "meaning": "The company can survive a bigger, better-funded player copying it.",
+      "rate_4": "A hard-to-copy edge, such as field execution, data or distribution.",
+      "rate_0": "Easy to copy and the founder will not engage with the question.",
+      "sources": ["Prepnest memo", "SuperK memo"],
+      "evidence_fields": ["market.competitors_named", "market.edge"],
+      "deal_breaker": false
+    },
+    {
+      "id": "C11", "name": "Team covers the gaps",
+      "meaning": "Someone owns operations, commercial and technology. A solo or one-sided team needs a plan to fill the gap.",
+      "rate_4": "All three covered by named founders or leads.",
+      "rate_0": "A critical gap with no plan, such as no one owning operations in a consumer brand.",
+      "sources": ["Petalry memo", "AeroDrop memo", "ePlane memo"],
+      "evidence_fields": ["team.covers_ops", "team.covers_commercial", "team.covers_tech"],
+      "deal_breaker": false
+    }
+  ],
+  "weights_public": {
+    "_reading": "The fund's public words: sector-agnostic, founders who go all in, very early, revenue not required.",
+    "C1": 0.10, "C2": 0.04, "C3": 0.08, "C4": 0.00, "C5": 0.18, "C6": 0.12,
+    "C7": 0.08, "C8": 0.12, "C9": 0.10, "C10": 0.08, "C11": 0.10
+  },
+  "weights_revealed": {
+    "_reading": "What the memos show the fund actually backs: groundwork in the field, real repeat and margins, founders who own the risk.",
+    "C1": 0.08, "C2": 0.02, "C3": 0.08, "C4": 0.00, "C5": 0.18, "C6": 0.18,
+    "C7": 0.14, "C8": 0.10, "C9": 0.08, "C10": 0.06, "C11": 0.08
+  },
+  "thresholds": {
+    "_reading": "Weighted average of ratings on the 0 to 4 scale. Starting values, tuned in the back test.",
+    "go_min": 2.8,
+    "pass_max": 1.9,
+    "max_missing_for_go": 3
+  },
+  "hard_flags": [
+    {"id": "later_stage", "when": "C1 rated 0", "effect": "pass", "note": "Recommendation cannot be GO. A person still decides."},
+    {"id": "regulatory_bet", "when": "C3 rated 0", "effect": "pass", "note": "Recommendation cannot be GO. A person still decides."},
+    {"id": "out_of_sector", "when": "C2 rated 0", "effect": "needs_human", "note": "Soft by default, because the fund publicly calls itself sector-agnostic. Kushal can make it hard in settings."},
+    {"id": "portfolio_conflict", "when": "C4 rated 0", "effect": "hold", "note": "Held for Kushal, who speaks to the portfolio founder first (Meeting 4)."},
+    {"id": "unknown_deal_breaker", "when": "C1, C3 or C4 rated 1", "effect": "needs_human", "note": "Something that could rule the company out is unknown, so a person decides."}
+  ],
+  "partner_rules": [
+    "A missing number drags the score. It is never skipped. (Meeting 1)",
+    "Score the evidence, not the pedigree. (Meeting 3)",
+    "Founder quality and path to market are rated separately. (Meeting 3)",
+    "Say which thesis lens was used and why. (Meeting 5)",
+    "The Thesis Card is internal. It is never shared with founders. (Meeting 2)"
+  ],
+  "public_register": {
+    "built": "2026-11-20",
+    "detail": "seed/fund/public_thesis.md",
+    "findings": [
+      {"topic": "Stage", "says": "Pre-seed and seed. Often the first institutional cheque.", "sources": ["P2", "P4", "P7"]},
+      {"topic": "Revenue", "says": "Most first cheques are pre-product and almost all are pre-revenue.", "sources": ["P4", "P5"]},
+      {"topic": "Cheque size", "says": "About $250K to $500K first cheque. Leads rounds under $1M.", "sources": ["P2", "P6", "P7"]},
+      {"topic": "Sector", "says": "Sector-agnostic in the fund's own words.", "sources": ["P4", "P6", "P7"]},
+      {"topic": "Response promise", "says": "Reply to every form within 3 days, decision within about 10.", "sources": ["P2"]}
+    ],
+    "gaps": [
+      {"item": "Written criteria", "status": "Not public", "cost": "Rubric is inferred from memos. Must pass the back test and Kushal's approval."},
+      {"item": "Exclusion list", "status": "Not public", "cost": "Excluded-category check only flags."},
+      {"item": "Full portfolio", "status": "Partly public (25 of about 80)", "cost": "Conflict check can miss a clash. Kushal must confirm the list."},
+      {"item": "Ownership target", "status": "Not public", "cost": "Stage check uses round size and cheque range only."},
+      {"item": "Applicant facts beyond the deck", "status": "Placeholders in the seed data", "cost": "Most claims stay 'founder says'."}
+    ],
+    "sources": {
+      "P1": "https://www.allincapital.vc",
+      "P2": "https://www.allincapital.vc/apply_now",
+      "P3": "https://www.allincapital.vc/portfolio",
+      "P4": "https://substack.com/home/post/p-58362358",
+      "P5": "https://thestorywatch.com/kushal-bhagia-and-aditya-singh-launch-a-10-million-fund-all-in-capital-to-back-early-stage-companies",
+      "P6": "https://www.indianvcs.com/investor/all-in-capital",
+      "P7": "https://f4.fund/firms/all-in-capital"
+    }
+  }
+}

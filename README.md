@@ -32,6 +32,7 @@ cd web
 npm install
 npm run db:migrate
 npm run db:seed
+npm run db:memos   # needs the local memo PDF in Decks/
 ```
 
 3. Start the app at http://localhost:3000. There is no login. Pick who is working in the sidebar.
