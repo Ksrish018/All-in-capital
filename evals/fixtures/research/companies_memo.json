@@ -1,0 +1,17 @@
+{
+  "note": "The 12 deal memo companies. The six invested companies are real and have a public web presence. The six passed companies appear to be made up for the case. Founder names come from the memos.",
+  "companies": [
+    {"company": "ePlane Company", "is_real": true, "city": "Chennai", "product": "electric air taxi", "founders": "Pranjal Mehta Satyanarayanan Chakravarthy"},
+    {"company": "Unbox Robotics", "is_real": true, "city": "Pune", "product": "warehouse sorting robots", "founders": "Pramod Ghadge Shahid Memon"},
+    {"company": "Wint Wealth", "is_real": true, "city": "Bengaluru", "product": "bonds investing platform", "founders": "Ajinkya Kulkarni"},
+    {"company": "GIVA", "is_real": true, "city": "Bengaluru", "product": "silver jewellery brand", "founders": "Ishendra Agarwal"},
+    {"company": "SuperK", "is_real": true, "city": "Andhra Pradesh", "product": "small town supermarket chain", "founders": "Anil Thontepu Neeraj Menta"},
+    {"company": "Jai Kisan", "is_real": true, "city": "Mumbai", "product": "rural agri credit", "founders": "Arjun Ahluwalia Adriel Maniego"},
+    {"company": "Petalry", "is_real": false, "city": "India", "product": "D2C skincare brand", "founders": "Anika Rao"},
+    {"company": "HopBox", "is_real": false, "city": "India", "product": "10-minute delivery", "founders": "Varun Malhotra Dev Sethi"},
+    {"company": "CampusCredit", "is_real": false, "city": "India", "product": "student credit", "founders": "Rohan Iyer"},
+    {"company": "AeroDrop", "is_real": false, "city": "India", "product": "drone delivery", "founders": "Meera Kapoor"},
+    {"company": "Coinlane", "is_real": false, "city": "India", "product": "crypto exchange and wallet", "founders": "Siddharth Menon"},
+    {"company": "Prepnest", "is_real": false, "city": "India", "product": "exam prep app", "founders": "Neha Bhatt"}
+  ]
+}

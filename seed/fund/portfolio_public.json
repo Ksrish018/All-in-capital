@@ -1,0 +1,103 @@
+{
+  "source": "https://www.allincapital.vc/portfolio",
+  "fetched": "2026-11-20",
+  "note": "Public portfolio as listed on the fund website. Tags are added by hand in portfolio.json. Kushal must confirm the full list (the site also links a Notion list that could not be fetched).",
+  "companies": [
+    {
+      "name": "MeetRecord",
+      "sector_label": "SaaS",
+      "description": "MeetRecord is a SAAS product that helps sales and CS teams capture intelligence from online meetings to accelerate sales and implement real-world coaching. Intelligence like - What are the top 5 questions asked by customers? Did CXO engage during the meeting? How many times did pricing come up in discussions last week? Targeted at the US SME market - easy to use, self- serve, cost effective for SMEs.",
+      "website": "https://www.meetrecord.com/"
+    },
+    {
+      "name": "Spiti.xyz",
+      "sector_label": "SaaS",
+      "description": "An Internal YouTube for remote teams. A place to store, curate and consume all the video content that teams create (all hands videos/ sales calls/ product walk throughs / code reviews etc).",
+      "website": "https://spiti.xyz/"
+    },
+    {
+      "name": "Suitable.ai",
+      "sector_label": "SaaS",
+      "description": "A SAAS platform for recruiters that makes referral requests to employees a 1-Click experience.",
+      "website": "https://suitable.ai/"
+    },
+    {
+      "name": "Bitespeed",
+      "sector_label": "eCommerce",
+      "description": "In the Movie “Catch me if you can,” Leonardo DiCaprio’s character plays the role of Frank Abagnale – a fugitive who is running from Tom Hanks’ character, an FBI agent.",
+      "website": null
+    },
+    {
+      "name": "Anar",
+      "sector_label": "",
+      "description": "Anar is a platform where businesses can create a free profile and grow their business network all over India. They are empowering small and medium enterprises across the value chain—from manufacturers, retailers and resellers— helping them connect and interact with one another.",
+      "website": "https://anar.biz/"
+    },
+    {
+      "name": "Rocketlane",
+      "sector_label": "",
+      "description": "Rocketlane is purpose-built software to accelerate and streamline implementation and customer onboarding. With its unified workspace, it’s easy to collaborate with customers and deliver projects consistently and transparently.",
+      "website": "https://www.rocketlane.com/"
+    },
+    {
+      "name": "Wint Wealth",
+      "sector_label": "",
+      "description": "Wint Wealth is an alternate debt assets platform that lets you invest in financial products that give higher returns than FDs, but that are not as risky or volatile as equities.",
+      "website": "https://www.wintwealth.com/"
+    },
+    {
+      "name": "Super K",
+      "sector_label": "",
+      "description": "SuperK is Oyo for kirana stores. They are rebranding existing small format retail stores by selectively franchising and providing them with benefits of scale in procurement, tech systems, intelligence, marketing, and customer engagement to create a chain of mini supermarkets in Tier 2,3 towns.",
+      "website": "https://www.superk.in/"
+    },
+    {
+      "name": "mailmodo",
+      "sector_label": "",
+      "description": "Mailmodo is an email marketing platform that empowers marketers to create “app-like” interactive emails with no-coding required.",
+      "website": "https://www.mailmodo.com/"
+    },
+    {
+      "name": "FleetX",
+      "sector_label": "",
+      "description": "Fleetx is an intelligent fleet management SAAS which uses AI, machine learning, sensors and predictive analytics to help fleet owners improve their efficiency",
+      "website": "https://www.fleetx.io/"
+    },
+    {
+      "name": "FASHINZA",
+      "sector_label": "",
+      "description": "Fashinza is a managed marketplace for the fashion supply chain.",
+      "website": "https://fashinza.com/"
+    },
+    {
+      "name": "GIVA",
+      "sector_label": "",
+      "description": "Giva is a jewellery brand for Indian millennials. They provide modern, authentic and affordable silver jewellery which they co-create with their customers.",
+      "website": "https://www.giva.co/"
+    },
+    {
+      "name": "RevenueHero",
+      "sector_label": "",
+      "description": "RevenueHero helps sales reps identify accounts that are most likely to convert and prioritize them.",
+      "website": "https://revenuehero.io/"
+    },
+    {
+      "name": "ePlane",
+      "sector_label": "",
+      "description": "The ePlane Company, founded in 2017 and launched in 2019, is the brainchild of aerospace engineering professor, Satya Chakravarthy and his student, Pranjal Mehta. The company aspires to build the world's most compact flying taxi called the e200 for passengers as well as cargo transport that could help reduce congestion on the roads and emissions from ground transport and lower the risk of road accidents.",
+      "website": "https://eplane.ai"
+    },
+    {
+      "name": "Jai Kisan",
+      "sector_label": "",
+      "description": "Jai Kisan is a technology platform which focuses on providing credit as well as a suite of financial products to the rural economy. It partners with equipment dealers, agriculture retailers, collection centers and market linkage platforms, to directly provide credit to farmers, working in the agriculture, poultry and dairy value chain.",
+      "website": "https://www.jai-kisan.com/"
+    },
+    {
+      "name": "q.",
+      "sector_label": "",
+      "description": "Unbox Robotics builds software-defined robotics systems to enable logistics players to automate and radically improve their operations on-demand in a limited footprint and capital.",
+      "website": "https://unboxrobotics.com/"
+    }
+  ]
+}

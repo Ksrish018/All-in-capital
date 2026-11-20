@@ -1,0 +1,208 @@
+{
+  "company": "Jai Kisan",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "Jai Kisan Mumbai rural agri credit",
+      "results": [
+        {
+          "url": "https://www.cbinsights.com/company/jai-kisan",
+          "title": "Jai Kisan - Products, Competitors, Financials, Employees, Headquarters Locations",
+          "snippet": "## About Jai Kisan\n\nJai Kisan is a company focused on providing financial services and credit solutions within the agricultural and rural sectors. They offer credit options, supply chain financing, and digital platforms to manage receivables and credit operations. Jai Kisan primarily serves farmers,",
+          "published": null,
+          "score": 0.7403621
+        },
+        {
+          "url": "https://www.preqin.com/data/profile/asset/jai-kisan/316772",
+          "title": "Jai Kisan Asset Profile | Preqin | BlackRock",
+          "snippet": "Jai Kisan is a financial services company that empowers farmers and small businesses in rural India with innovative financial solutions, enhancing their access to credit and streamlining payment processes. Founded in 2017, Jai Kisan operates from Mumbai, India, and focuses on providing financial ser",
+          "published": null,
+          "score": 0.7264256
+        },
+        {
+          "url": "https://techcrunch.com/2021/05/30/jai-kisan-a-fintech-startup-aimed-at-rural-india-raises-30-million",
+          "title": "Jai Kisan, a fintech startup aimed at rural India, raises $30 million | TechCrunch",
+          "snippet": "Much of the credit these people do raise ends up getting invested in unproductive usage, which leads to higher interest and default rates.\n\nThree-year-old Mumbai-headquartered Jai Kisan is attempting to address this by treating farmers and other similar professionals as businesses instead of consume",
+          "published": null,
+          "score": 0.6713628
+        },
+        {
+          "url": "https://blume.vc/commentaries/bridging-the-india-bharat-divide-jai-kisans-journey-to-empower-a-billion-indians",
+          "title": "Bridging the India-Bharat Divide: Jai Kisan's Journey to Empower a Billion Indians - Blume",
+          "snippet": "Arjun: ​“This village was eight hours from Mumbai, four hours from Nasik. Someone we knew had a sugar mill there. So we took a store outside that mill, half the size of this room, and filled it with pesticides and seeds. We sold these goods to farmers for six to eight months.”\n\nThey noticed that nea",
+          "published": null,
+          "score": 0.65885663
+        },
+        {
+          "url": "https://bfsi.eletsonline.com/fintech-startup-jai-kisan-raises-rs-26-5-crore-in-series-b-funding",
+          "title": "Fintech Startup Jai Kisan Raises Rs 26.5 Crore in Series B Funding - Elets BFSI",
+          "snippet": "Established in 2017 by Adriel Maniego and Arjun Ahluwalia, Jai Kisan exists between rural commerce and financial services. The startup deals in digital financing and credit, which is specialised for rural economies and the farm sector in India. Through facilitating the absence of formal financial in",
+          "published": null,
+          "score": 0.6173396
+        }
+      ]
+    },
+    "founders": {
+      "query": "Arjun Ahluwalia Adriel Maniego Jai Kisan founder background",
+      "results": [
+        {
+          "url": "https://www.jai-kisan.com/about",
+          "title": "Jai Kisan: Credit & Financing solutions for rural India",
+          "snippet": "While fintech startups might be under the RBI scanner, agri-fintech startups are filling in critical gaps in...\n\nForbes 30 Under 30 Asia List\n\n###### Forbes 30 Under 30 Asia List\n\nArjun Ahluwalia and Adriel Maniego quit their high-paying finance jobs in the U.S. and moved to an Indian village to sta",
+          "published": null,
+          "score": 0.7298087
+        },
+        {
+          "url": "https://insights.iimaventures.com/works/jai-kisan-farmers-gateway-to-quality-financial-services",
+          "title": "Jai Kisan: Farmer’s gateway to quality financial services - IIMA Ventures Insights",
+          "snippet": "Co-founders Arjun (CEO) and Adriel (COO), graduated from Texas A&M University with expertise in investing, structuring, and operations. They got early exposure to solutions, thought leaders, and professors who championed the idea of serving the consumers at the bottom of the socioeconomic pyramid. H",
+          "published": null,
+          "score": 0.72845864
+        },
+        {
+          "url": "https://www.preqin.com/data/profile/asset/jai-kisan/316772",
+          "title": "Jai Kisan Asset Profile | Preqin | BlackRock",
+          "snippet": "totaling INR 265 million from Blume Ventures, Mirae Asset Capital, and Unitary Fund. The founders, Arjun Ahluwalia, Adriel Maniego, and Tracy deSouza, established the company to create sustainable financial solutions for underserved markets, with Arjun Ahluwalia currently serving as CEO. [...] Jai K",
+          "published": null,
+          "score": 0.6931614
+        },
+        {
+          "url": "https://inc42.com/company/jai-kisan/people",
+          "title": "Jai Kisan Key People 2026 – Founders, CEO & CXOs",
+          "snippet": "- Key People8\n- Total Employee662\n\n## Jai KisanFounders\n\n## FAQs on Key People of Jai Kisan\n\nJai Kisan was founded by Adriel Maniego, Arjun Ahluwalia.\n\nCXO(s) of Jai Kisan include Mrityunjaya Yeli (Chief Technology Officer).\n\nFunctional leader(s) of Jai Kisan include Rahul Chandra (Member Board of D",
+          "published": null,
+          "score": 0.6645403
+        },
+        {
+          "url": "https://blume.vc/jai-kisan",
+          "title": "Jai Kisan - Blume",
+          "snippet": "Logo of Jai Kisan\n\n## Jai Kisan\n\nInfo\n:   Founded 2017\n\nInfo\n:   Active Funding\n\nInfo\n:   Fund III\n\nImage showing Arjun Ahluwalia and Adriel Maniego (founders, Jai Kisan) standing together in front of a branded backdrop.\n\n## Founders\n\n Arjun Ahluwalia\n Adriel Maniego\n\n## Investment Lead\n\n Profile ph",
+          "published": null,
+          "score": 0.6057407
+        }
+      ]
+    },
+    "market": {
+      "query": "rural agri credit India competitors market",
+      "results": [
+        {
+          "url": "https://www.researchandmarkets.com/reports/6211238/india-agri-fintech-rural-credit-market",
+          "title": "India Agri Fintech and Rural Credit Market - Research and Markets",
+          "snippet": "The India Agri Fintech and Rural Credit Market is characterized by a dynamic mix of regional and international players. Leading participants such as NABARD, Mahindra Finance, IDFC FIRST Bank, HDFC Bank, Axis Bank, RBL Bank, Ujjivan Small Finance Bank, Bandhan Bank, Paytm Payments Bank, Agribazaar, K",
+          "published": null,
+          "score": 0.7309625
+        },
+        {
+          "url": "https://www.marketresearch.com/Ken-Research-v3771/India-Agri-Fintech-Rural-Credit-44321724",
+          "title": "India Agri Fintech and Rural Credit Market",
+          "snippet": "The India Agri Fintech and Rural Credit Market is characterized by a dynamic mix of regional and international players. Leading participants such as NABARD, Mahindra Finance, IDFC FIRST Bank, HDFC Bank, Axis Bank, RBL Bank, Ujjivan Small Finance Bank, Bandhan Bank, Paytm Payments Bank, Agribazaar, K",
+          "published": null,
+          "score": 0.7279754
+        },
+        {
+          "url": "https://ageconsearch.umn.edu/record/204442/files/02-Thorat_s%20President%20Address.pdf",
+          "title": "Rural Credit in India: Issues and Concerns* - AgEcon Search",
+          "snippet": "issues - are generally expressed in terms of – Inadequacy of credit, Constraints on timely availability of credit, High interest rates, Neglect of small and marginal farmers, Low credit-deposit ratios in several states and Continued presence of informal markets. Speaking in this regard the RBI Gover",
+          "published": null,
+          "score": 0.53373164
+        },
+        {
+          "url": "https://bisresearch.com/industry-report/agri-fintech-market.html",
+          "title": "Agri-Fintech Market Report I BIS Research",
+          "snippet": "Asia-Pacific dominates the global agri-fintech market, fueled by its vast farming population and rapid digital adoption. The region’s digital lending platforms address critical credit gaps for smallholders in countries like India, Indonesia, and Vietnam, offering micro loans, input financing, and ha",
+          "published": null,
+          "score": 0.45665208
+        },
+        {
+          "url": "https://documents1.worldbank.org/curated/en/552841468767072501/pdf/multi-page.pdf",
+          "title": "Imperfect Information and Rural Credit Markets-Puzzles and Policy ...",
+          "snippet": "This argument is supported by evidence from India that rural areas with higher average incomes and farmers whose incomes increase seem to face lower inter-est rates from moneylenders: A high [interest rate] r is the effect of the high-risk premium that the village moneylenders usually charge for len",
+          "published": null,
+          "score": 0.43080574
+        }
+      ]
+    },
+    "news": {
+      "query": "Jai Kisan funding news",
+      "results": [
+        {
+          "url": "https://bfsi.eletsonline.com/fintech-startup-jai-kisan-raises-rs-26-5-crore-in-series-b-funding",
+          "title": "Fintech Startup Jai Kisan Raises Rs 26.5 Crore in Series B Funding - Elets BFSI",
+          "snippet": "Jai Kisan, a Mumbai-based fintech startup transforming rural financial services, has raised Rs 26.5 crore (about USD 3 million) in an extended Series B funding round. The funding was led by existing investors Mirae Asset Venture Investments, Unitary Fund, and Blume Ventures. This marks a significant",
+          "published": null,
+          "score": 0.8429925
+        },
+        {
+          "url": "https://www.jai-kisan.com/press-release",
+          "title": "Press Release",
+          "snippet": "Mumbai, May 31st, 2021: Rural Fintech Startup Jai Kisan has raised US$ 30mn (INR 217 Crores) in a combination of equity and debt in a Series A round of funding led by Mirae Asset. Syngenta Ventures, existing investors Blume, Arkam Ventures, NABVENTURES (NABARD), Prophetic Ventures and Better, other ",
+          "published": null,
+          "score": 0.83973396
+        },
+        {
+          "url": "https://agfundernews.com/jai-kisan-raises-30m-from-mirae-asset-syngenta",
+          "title": "Jai Kisan nets $30m Series A funding from Mirae Asset, Syngenta",
+          "snippet": "and Adriel Maniego (R). Image credit: Jai Kisan\n\nIndian ag fintech startup Jai Kisan has raised ₹2.17 billion ($30 million) in a Series A round comprising equity and debt funding.\n\nSouth Korea’s Mirae Asset led the round, with existing investors Arkam Ventures, Better Capital, Blume Ventures, Nabven",
+          "published": null,
+          "score": 0.83682144
+        },
+        {
+          "url": "https://www.ipoplatform.com/startup-business-funding/jai-kisan-farm-products-and-cold-chains-private-limited/100452",
+          "title": "Jai Kisan latest Startup funding and investors",
+          "snippet": "Jai Kisan has raised ₹26.50 Cr. in this funding round, equivalent to $3.13 Mn. The funds will support the company’s growth, operational expansion, and strategic initiatives in Financial Services - Fintech - Lending, helping strengthen its market presence and future business opportunities.\n\n### What ",
+          "published": null,
+          "score": 0.8269914
+        },
+        {
+          "url": "https://inc42.com/buzz/rural-fintech-startup-jai-kisan-nets-inr-26-5-cr-from-existing-investors",
+          "title": "Rural Fintech Startup Jai Kisan Nets INR 26.5 Cr From Existing Investors",
+          "snippet": "In April 2020, Jai Kisan launched a digital lender for rural businesses called Bharat Khata which claims to have clocked more than 100K rural businesses and served over 5 Mn individual customers to date.\n\nSo far, the startup claims to have catered to 8 Lakh farmers, worked with 1 Lakh rural business",
+          "published": null,
+          "score": 0.82090056
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "Jai Kisan lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://www.jai-kisan.com/privacy",
+          "title": "Jai Kisan: Easy loans for farmers, retailers & Businesses",
+          "snippet": "We may release Personal Information when we believe in good faith that release is necessary to comply with laws of India; enforce or apply our conditions of use and/or other agreements; or protect the rights, property, or safety of Jai Kisan, our employees, our users, or others. We may exchange info",
+          "published": null,
+          "score": 0.37353298
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zs867pFszGc",
+          "title": "“Farmers Protest Against Jai Kisan Private Market in Belagavi Over ...",
+          "snippet": "“Farmers Protest Against Jai Kisan Private Market in Belagavi Over Deposit Fraud”. @KMMbelagavimarathi2313 likes1.5K views1 year ago more.",
+          "published": null,
+          "score": 0.35588682
+        },
+        {
+          "url": "https://myinternships.in/internships/jai-kisan-fraud-and-aml-kyc-analyst-intern-chennai-db9b20",
+          "title": "Fraud & AML/KYC Analyst Intern at Jai Kisan in Chennai",
+          "snippet": "- Pursuing or recently completed B.Com/BBA/MBA/B.A./any graduate with a compliance interest — 2026 freshers & final-year students welcome\n- Working knowledge of AML & KYC, Transaction Monitoring, Fraud Detection (or a genuine willingness to learn them)\n- Strong fundamentals in your discipline and cl",
+          "published": null,
+          "score": 0.22627032
+        },
+        {
+          "url": "https://timesofindia.indiatimes.com/city/hubballi/farmers-demand-action-against-office-bearers-of-jai-kisan-market/articleshow/123927712.cms",
+          "title": "Farmers demand action against office bearers of Jai Kisan Market | Hubballi News - The Times of India",
+          "snippet": "Staying close: From Lions to Chimpanzees, 10 animals that live in highly organised groups [...] Apurva Gore shines in graceful draped sarees\n\n10 unique baby girl names beginning with S\n\nUshasi Ray’s top stylish looks\n\nBigg Boss Telugu 9: Stunning weekend looks of contestants\n\nFerocious falcons: 10 b",
+          "published": null,
+          "score": 0.22270013
+        },
+        {
+          "url": "https://www.glassdoor.com/Reviews/Employee-Review-Jai-Kisan-E2555731-RVW98490416.htm",
+          "title": "Just a moment...",
+          "snippet": "# Humans only\n\nGlassdoor has been built on the contributions of real employees and job seekers. We use advanced security systems to keep our site safe and prevent misuse or unauthorized access.\n\nIn rare cases, security protections may mistakenly block legitimate activity from real users. If you have",
+          "published": null,
+          "score": 0.008711385
+        }
+      ]
+    }
+  }
+}

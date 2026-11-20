@@ -1,0 +1,208 @@
+{
+  "company": "Wint Wealth",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "Wint Wealth Bengaluru bonds investing platform",
+      "results": [
+        {
+          "url": "https://jmfl.com/Common/getFile/232",
+          "title": "The Sebi wrench in Wint Wealth’s online bond trading plans",
+          "snippet": "In January, Ajinkya Kulkarni, chief executive (CEO) and co-founder of online bond trading platform Wint Wealth, tweeted this eye- catcher.\n\nGetting the whos-who of India’s finfluencer world to act as its brand ambassadors in exchange for equity stakes was a coup of sorts. The Bengaluru-based company",
+          "published": null,
+          "score": 0.642881
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/HAupONyudd43",
+          "title": "Wint Wealth",
+          "snippet": "# Wint Wealth\nID: HAupONyudd43\nWebsite: www.wintwealth.com\nLegal name: FOURDEGREEWATER CAPITAL PVT LTD\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/wintwealth · 56,332 followers\nIndustry: Financial Services\nCompany type: Privately Held\nFounded: 2020\nBusiness model: B2",
+          "published": null,
+          "score": 0.5267688
+        },
+        {
+          "url": "https://www.wintwealth.com",
+          "title": "Invest in Bonds with 9-12% fixed returns: Start with ₹1000",
+          "snippet": "wint logo\n\n# Invest in bonds with 9-12% fixed returns\n\nSEBI Registered Broker | Start with just ₹1,000 today | Sell anytime\n\n## Zero defaults\n\ntill date\n\nIllustration of a zero indication zero defaults in bond repayments\n\nBonds sold so far\n\nAlready repaid\n\n“Zero defaults till date” indicates that, a",
+          "published": null,
+          "score": 0.50374216
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=x-AjBs56Na0",
+          "title": "An Honest Review of Wint Wealth Bonds",
+          "snippet": "[19:10] the link is there in the video’s description 2. The user interface is quick and user-friendly It’s not very hotch-potch like what I’ve  seen with some of the other bond platforms\n[19:19] 3. The safety factors have been taken into account Both – in terms of SEBI regulations and also   the fac",
+          "published": null,
+          "score": 0.5018244
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Q9unT7Yks2E",
+          "title": "Wint Wealth Review | Wint Wealth Bond Investment Review | Is Wint Wealth Safe or Not",
+          "snippet": "[5:50] ना आपको सिक्योर बॉन्ड्स के अंदर इन्वेस्ट करना चाहिए। जैसे अगर आप विंड वेल पे किसी भी बॉन्ड की यहां पे प्रोफाइल देखेंगे अगर आप बॉटम की साइड में जाएंगे तो हाईलाइट्स\n[5:58] में उसका आपको सिक्योरिटी कवर देखने को मिल जाता है। प्लस यहां पे अच्छी बात यह है कि यहां पे स्किन द गेन करता है वेंट वेल्थ य",
+          "published": null,
+          "score": 0.4347013
+        }
+      ]
+    },
+    "founders": {
+      "query": "Ajinkya Kulkarni Wint Wealth founder background",
+      "results": [
+        {
+          "url": "https://www.youtube.com/watch?v=HAy-Abr2LTY",
+          "title": "The Untold Truth About Bonds – Ajinkya Kulkarni, CEO of Wint Wealth Reveals It! | Ask FinTree #32",
+          "snippet": "[36:42] did CFA and then uh came into finance and so that's how he got opportunity because he did CF he doesn't have a CA degree he's from\n[36:51] it rout understood so you I think both of you are from I's both the founders right we are co-founders five are from\n[36:59] it one is from n six co-found",
+          "published": null,
+          "score": 0.69771194
+        },
+        {
+          "url": "https://www.lokcapital.com/portfolio/wint-wealth",
+          "title": "Wint Wealth - Lok Capital",
+          "snippet": "LOK CAPITAL\n\n# Wint Wealth\n\nLok IV\n\n## Founder(s):\n\n## Ajinkya Kulkarni, Abhik Patel, Anshul Gupta\n\nGo to Website\n\nWint Wealth is a digital investment platform expanding access to corporate bonds for retail investors, driving greater financial inclusion in fixed-income investing.\n\n### Financial Serv",
+          "published": null,
+          "score": 0.55874836
+        },
+        {
+          "url": "https://tracxn.com/d/companies/wint-wealth/__T1FbxNqojY0uy1FMTkBijOblM_krA5I1vBpM4kjBv1Y",
+          "title": "Wint Wealth - 2026 Company Profile, Team, Funding, Competitors & Financials - Tracxn",
+          "snippet": "| Shareholders Name | Post Round Holding % | Net worth | Cumulative Investment | Realised Returns | Unrealised Returns | Return Multiple |\n ---  ---  --- \n| Founder | 31.50% | 242Cr | 4250302 | 4102461 | 8689808 | 2068447 |\n| Ajinkya Mukund Kulkarni | 8429930 | 4624704 | 2868002 | 3737303 | 4449831 ",
+          "published": null,
+          "score": 0.5296892
+        },
+        {
+          "url": "https://www.allincapital.vc/wint_wealth_founder_story",
+          "title": "All In Capital | Founder Stories - Wint Wealth",
+          "snippet": "- Ajinkya Kulkarni, Founder and CEO of Wint Wealth\n\n## Other Founder Stories\n\na\n\n### MasterChow\n\nHelped connect us to the lead investors of both our rounds! \n\n### MailModo\n\nFrom introduction to leading the pre-seed round, all in just 2 weeks \n\n### Wint Wealth\n\nHelping at every step of the journey \n\n",
+          "published": null,
+          "score": 0.50924575
+        },
+        {
+          "url": "https://equityzen.com/company/growfix",
+          "title": "Invest In Wint Wealth Stock | Buy Pre-IPO Shares | EquityZen",
+          "snippet": "##### Care.fi Raises $8 Mn To Scale Its Healthcare Revenue Cycle Management Infra\n\ninc42 • Feb 11, 2026\n\n## Wint Wealth Management\n\nLeadership team at Wint Wealth\n\n##### Co-Founder & CPO\n\nAbhik Patel\n\n##### Co-Founder & CEO\n\nAjinkya Kulkarni\n\nLocked Features\n\n## Join now and verify your accreditatio",
+          "published": null,
+          "score": 0.47353554
+        }
+      ]
+    },
+    "market": {
+      "query": "bonds investing platform India competitors market",
+      "results": [
+        {
+          "url": "https://primeinvestor.in/reports/best-bond-investment-platform-in-india",
+          "title": "How to Choose the Best Bond Investment Platform in India - PrimeInvestor",
+          "snippet": "Several OBPPs have established themselves in the market, including Golden Pi, India Bonds, Wintwealth, and Grip Invest. Each has its characteristics and offerings. Some non-OBPP platforms like Giraffe, CreditX, and Golden Pi Plus (for deposits) operate in the unlisted bond space, and these come with",
+          "published": null,
+          "score": 0.6846858
+        },
+        {
+          "url": "https://goldenpi.com",
+          "title": "Buy Bonds & Fixed Income Investments Online in India | GoldenPi",
+          "snippet": "₹3000 Cr+\n\nworth of bonds available on the platform everyday\n\nTrusted by leading financial institutions\n\nAxisSecurities - GoldenPi\n\nAnandRathi - GoldenPi\n\nSakthi-Finance - GoldenPi\n\ncentrum - GoldenPi\n\n## Fixed Income Investments in India 2026\n\nExplore our curated selection of investment solutions t",
+          "published": null,
+          "score": 0.56895477
+        },
+        {
+          "url": "https://www.aspero.in",
+          "title": "Aspero — Bond Investing for Modern India",
+          "snippet": "> \"Aspero made bond investing feel incredibly simple. Returns are transparent, and I love being able to track everything in one place.\"\n\nRohit Sharma\n\nProduct Manager · Flipkart\n\n> \"I moved a portion of my savings into bonds through Aspero. Fixed returns, no surprises — it beats every other investin",
+          "published": null,
+          "score": 0.53603965
+        },
+        {
+          "url": "https://www.gripinvest.in",
+          "title": "Grip Invest: Buy Bonds & FDs",
+          "snippet": "bulb-image\n\n#### Last year Institutional Investors invested INR 10 lakh Cr in similar instruments\n\nGrip(R) (1).svg\n\nGrip Invest is a SEBI-regulated platform for high-yield, fixed income investments like Corporate Bonds, SDIs and Fixed Deposits. Our mission is to enable all Indians to invest in regul",
+          "published": null,
+          "score": 0.48157573
+        },
+        {
+          "url": "https://www.thefixedincome.com",
+          "title": "An Online Bond Platform in India - Invest with TheFixedIncome",
+          "snippet": "Sunil S\n\nThefixedincome.com website is one of the best websites for investment into bonds / debentures as it offers a comprehensive collection of investment options across duration and credit parameters. The interface is easy to use and the onboarding process is seamless and easy to execute. The web",
+          "published": null,
+          "score": 0.46790916
+        }
+      ]
+    },
+    "news": {
+      "query": "Wint Wealth funding news",
+      "results": [
+        {
+          "url": "https://fintech.global/2026/01/14/wint-wealth-raises-inr-250-cr-in-series-b-funding",
+          "title": "Wint Wealth raises INR 250 Cr in Series B funding",
+          "snippet": "Wint Wealth, an India-based online bond portfolio platform enabling retail participation in corporate bonds, has reportedly secured INR 250 Cr ($27m) in Series B funding to expand its offerings and scale operations.\n\nThe funding round was led by Vertex Ventures SEA and India, with participation from",
+          "published": null,
+          "score": 0.8352149
+        },
+        {
+          "url": "https://www.vertexventures.sg/news/wint-wealth-secures-rs-250-crore-in-series-b-funding",
+          "title": "Wint Wealth secures Rs 250 crore in series B funding | Vertex Ventures SEA",
+          "snippet": "Kulkarni said the funds will primarily be used to grow the business and strengthen its credit offerings. “Wint Wealth’s Online Bond Platform Provider(OBPP) arm has grown new sign-ups 10 times, strengthening its lead in India’s retail bond market and encouraging wider corporate bond adoption,” said K",
+          "published": null,
+          "score": 0.8250265
+        },
+        {
+          "url": "https://b2b.economictimes.indiatimes.com/news/entrepreneur/wint-wealth-bags-250-crore-in-series-b-led-by-vertex-ventures/126520157",
+          "title": "Wint Wealth bags ₹250 crore in Series B led by Vertex Ventures, EconomictimesB2B",
+          "snippet": "- Entrepreneur\n- 1 min read\n\n# Wint Wealth bags ₹250 crore in Series B led by Vertex Ventures\n\nThe fresh capital will be used to expand its corporate bond offerings, strengthen investor education initiatives and scale its technology and operations.\n\nRetail online bond portfolio platform Wint Wealth ",
+          "published": null,
+          "score": 0.8171371
+        },
+        {
+          "url": "https://tracxn.com/d/companies/wint-wealth/__T1FbxNqojY0uy1FMTkBijOblM_krA5I1vBpM4kjBv1Y",
+          "title": "Wint Wealth - 2026 Company Profile, Team, Funding, Competitors & Financials - Tracxn",
+          "snippet": "PDF Illustration Image\n\n## Wint Wealth's funding and investors\n\nWint Wealth has raised a total funding of $54M over 9 rounds. Its latest funding round was a Series B round on Nov 26, 2025 for  $\\\\\\\\\\. 8 investors participated in its latest round.  Wint Wealth has 43 institutional investors and 77 an",
+          "published": null,
+          "score": 0.79865825
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/HAupONyudd43",
+          "title": "Wint Wealth",
+          "snippet": "# Wint Wealth\nID: HAupONyudd43\nWebsite: www.wintwealth.com\nLegal name: FOURDEGREEWATER CAPITAL PVT LTD\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/wintwealth · 56,332 followers\nIndustry: Financial Services\nCompany type: Privately Held\nFounded: 2020\nBusiness model: B2",
+          "published": null,
+          "score": 0.7505527
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "Wint Wealth lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://knowyourbrokerage.in/bonds/wint-wealth-review",
+          "title": "Wint Wealth Review 2026: Is It Safe? Fees & Verdict",
+          "snippet": "default, and gave due regard to the company's genuine technical difficulties with the RFQ system. The adjudication proceedings against the four directors then in charge were disposed of without any penalty, as SEBI found no material attributing a personal role to them (a non-attribution of personal ",
+          "published": null,
+          "score": 0.4502385
+        },
+        {
+          "url": "https://jmfl.com/Common/getFile/232",
+          "title": "The Sebi wrench in Wint Wealth’s online bond trading plans",
+          "snippet": "Currently, Wint Wealth claims to have sold over Rs 400 crore ($50 million) of bonds to about 29,000 investors. Not quite the scorching growth it envisaged in January, but still enough to get on Sebi’s radar. In July, it proposed a regulatory framework for online bond trading platforms, recommending ",
+          "published": null,
+          "score": 0.42393497
+        },
+        {
+          "url": "https://www.wintwealth.com/terms-and-conditions",
+          "title": "Terms & Conditions | Wint wealth",
+          "snippet": "If any dispute arises between you and Wint Wealth during your use of the Website or thereafter, in connection with the validity, interpretation, implementation or alleged breach of any provision of these User Terms, or the documents they incorporate by reference, the dispute will be referred to a so",
+          "published": null,
+          "score": 0.38219908
+        },
+        {
+          "url": "https://apps.apple.com/in/app/6446472037?l=hi&see-all=reviews&platform=iphone",
+          "title": "‎WintWealth: 9-12% Fixed Return - रेटिंग और समीक्षाएँ - App Store",
+          "snippet": "am having horrible experience with this platform and after a month its ordeal still continues. I cn surely say thy are fraud. Thy pay up intrests on time, but last transaction with principal & intrest, thy skip saying its paid to account. Most investors are stuck with same issue. They do not have cu",
+          "published": null,
+          "score": 0.37341872
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/HAupONyudd43",
+          "title": "Wint Wealth",
+          "snippet": "# Wint Wealth\nID: HAupONyudd43\nWebsite: www.wintwealth.com\nLegal name: FOURDEGREEWATER CAPITAL PVT LTD\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/wintwealth · 56,332 followers\nIndustry: Financial Services\nCompany type: Privately Held\nFounded: 2020\nBusiness model: B2",
+          "published": null,
+          "score": 0.30808616
+        }
+      ]
+    }
+  }
+}

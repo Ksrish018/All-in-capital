@@ -1,0 +1,208 @@
+{
+  "company": "CampusCredit",
+  "is_real": false,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "CampusCredit India student credit",
+      "results": [
+        {
+          "url": "https://cosmosiq.ai/CampusCredit",
+          "title": "CampusCredit® — Education EMI from ₹999/month | India",
+          "snippet": "pay MBA, MCA, BBA & university fees in easy EMI from ₹999/mo. Zero collateral, 4-hour approval, flexible tenure. 15+ partner universities.",
+          "published": null,
+          "score": 0.72036827
+        },
+        {
+          "url": "https://cosmosiq.ai/campuscredit/blog/campuscredit-0-emi-education-financing",
+          "title": "CampusCredit 0% EMI Education Loan | Zero Interest | How It Works",
+          "snippet": "CampusCredit offers 0% EMI education financing for UGC-approved online universities. Learn how it works, partner universities,",
+          "published": null,
+          "score": 0.54210585
+        },
+        {
+          "url": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/credit-card-for-students.amp.html",
+          "title": "Apply Student Credit Card Online with Zero Annual Fee - Kotak Bank",
+          "snippet": "Indian resident students in the age group of 18 to 25 years, and pursuing professional courses are eligible to open the Uni Student Bank Account. And thereby, also become eligible to apply for the 811 #DreamDifferent Credit Card for students. All you need to do is book a fixed deposit of Rupees 15,0",
+          "published": null,
+          "score": 0.30860683
+        },
+        {
+          "url": "https://www.credila.com",
+          "title": "Educational Loans: Apply for Student Loan in India | Credila",
+          "snippet": "| Feature | Details |\n --- |\n| Maximum Loan Amount | No Limit\\ |\n| Expenses Covered | Tuition fees, living expenses, visas, and study materials |\n| Margin Money Required | No |\n| Secured Loan Amount | No limit\\ |\n| Interest Rate | Floating   Secured Loans starting from 9.95%\\ p.a.   Unsecured Loans ",
+          "published": null,
+          "score": 0.2596379
+        },
+        {
+          "url": "https://indianbank.bank.in/en/ib-education-loan-iba",
+          "title": "Education Loan India - Study Without Limits - Indian Bank",
+          "snippet": "| Credit Guarantee Fund Scheme for Education Loans (CGFSEL) |  Educational loans sanctioned up to a limit of Rs.7.50 lakh under IBA Scheme are eligible under Credit Guarantee Fund Scheme for Educational Loans scheme (CGFSEL).  Third party guarantee / Collateral is waived.  Parents / spouse to be co-",
+          "published": null,
+          "score": 0.19042274
+        }
+      ]
+    },
+    "founders": {
+      "query": "Rohan Iyer CampusCredit founder background",
+      "results": [
+        {
+          "url": "https://www.cornellakpsi.org/rohan-iyer",
+          "title": "Rohan Iyer — Cornell AKPsi",
+          "snippet": "Title: Rohan Iyer — Cornell AKPsi\n### Rohan Iyer. Major: Applied Economics and Management**. In past summers, Rohan has worked as a Summer Analyst at RC Capital, a Leasing Agent at Kulkarni Properties and a Summer Law Clerk at Reardon and Chasar. This summer, he will be working as an Investment Bank",
+          "published": null,
+          "score": 0.20465964
+        },
+        {
+          "url": "https://www.unsw.edu.au/hdr/rohan-iyer",
+          "title": "Rohan Iyer",
+          "snippet": "Title: Rohan Iyer\n## Study options. ## Discover UNSW. ## How to apply. ## Help centre. ## Research strengths. ## Partner with us. ## Facilities & infrastructure. ## Higher degree research. ## Our faculties. ## Engage with UNSW. ## Giving. ## Alumni. ## Find an expert. ## Industry partnerships. ## Ou",
+          "published": null,
+          "score": 0.16926852
+        },
+        {
+          "url": "https://unsw.edu.au/hdr/rohan-iyer",
+          "title": "Rohan Iyer",
+          "snippet": "Title: Rohan Iyer\n## Follow. # Rohan Iyer. School of the Arts & Media. **Email: rohan.iyer@unsw.edu.au**. **Supervisors:**John Napier, Manolete Mora. Rohan specialises in the study of music from Indonesia. He holds an MMus in ethnomusicology from SOAS, University of London and a MusB (Hons) in music",
+          "published": null,
+          "score": 0.14730968
+        },
+        {
+          "url": "https://www.filmibeat.com/celebs/rohan-iyer.html",
+          "title": "Rohan Iyer Movies | Rohan Iyer: Height, Age, Wife, Girlfriend, Biography - Filmibeat",
+          "snippet": "Clear All;)\n\nNo Notifications\n\n Home\n Bollywood\n TV\n Movies\n Tamil\n Telugu\n Kannada\n Malayalam\n Trending\n Bigg Boss\n + OTT\n  + Celebs\n  + Photos\n  + Toplisting\n\n ALL\n Ott Dates\n Bollywood\n Hollywood\n Tamil\n Telugu\n Malayalam\n Kannada\n Celebs\n Top Listing\n Upcoming Movies\n Web Series\n Box Office\n\nX\n\n",
+          "published": null,
+          "score": 0.063134894
+        },
+        {
+          "url": "https://issuu.com/brunswickschool/docs/brunstobsum2012w",
+          "title": "Times of Brunswick Summer 2012 by Brunswick School - Issuu",
+          "snippet": "Canva\n\nCreate professional content with Canva, including presentations, catalogs, and more.\n\nAdobe Express\n\nGo from Adobe Express creation to Issuu publication.\n\nAdobe InDesign\n\nDesign pixel-perfect content like flyers, magazines and more with Adobe InDesign.\n\nUse Cases\n\nIndustry\n\nArt, Architecture,",
+          "published": null,
+          "score": 0.0014953384
+        }
+      ]
+    },
+    "market": {
+      "query": "student credit India competitors market",
+      "results": [
+        {
+          "url": "https://www.kenresearch.com/industry-reports/india-edufin-market",
+          "title": "India EduFin Market Share, Companies & Trends Report 2025-2032",
+          "snippet": "India ranks first in the selected specialist education-finance peer set after normalizing markets to a comparable lender-revenue lens. India's specialist market has a materially larger balance-sheet base than Indonesia, Malaysia, Thailand and Vietnam and is forecast to grow faster. Indonesia is the ",
+          "published": null,
+          "score": 0.6583077
+        },
+        {
+          "url": "https://www.businesswire.com/news/home/20251211701167/en/%24587-Billion-Starter-Credit-Cards-Market-Growth-Opportunities-2025-2030---Embedded-Rewards-and-Cashback-Incentives-Improve-Engagement-in-Gen-Z-and-Student-Segments---ResearchAndMarkets.com",
+          "title": "$587+ Billion Starter Credit Cards Market Growth Opportunities, 2025-2030 - Embedded Rewards and Cashback Incentives Improve Engagement in Gen Z and Student Segments - ResearchAndMarkets.com",
+          "snippet": "As the credit landscape continues to evolve, the market's future growth will depend on how effectively issuers can balance accessibility, risk control, and user empowerment. Whether traditional banks and fintech disruptors can collaborate or compete to deliver inclusive, data-driven, and sustainable",
+          "published": null,
+          "score": 0.2232077
+        },
+        {
+          "url": "https://www.encoura.org",
+          "title": "Encoura - Empowering Institutions Across the Full Student Lifecycle",
+          "snippet": "Execute targeted campaigns with expert support and strategy.\n\nLearn More\n\n## Academic Program Strategy Quick Links\n\n### Program Assessment & Innovation\n\nUse demand and labor data to build strong, future-ready programs.\n\nLearn More\n\n### Prospective Student Brand Research\n\nLearn how students view your",
+          "published": null,
+          "score": 0.12896329
+        },
+        {
+          "url": "https://www.kansascityfed.org/research/payments-system-research-briefings/the-role-of-nonbanks-and-fintechs-in-boosting-indias-upi-person-to-merchant-transactions",
+          "title": "The Role of Nonbanks and Fintechs in Boosting India’s UPI Person-to-Merchant Transactions\n        \n        \n        \n        - Federal Reserve Bank of Kansas City",
+          "snippet": "Third, some TPAPs provide consumers a credit line on a UPI payment, sometimes through a partnership with another nonbank or fintech. These credit lines are similar to buy now, pay later services in the United States. For example, PhonePe enables consumers who made purchases through Flipkart, an e-co",
+          "published": null,
+          "score": 0.097734325
+        },
+        {
+          "url": "https://wheatoncollege.edu/news/student-teams-win-first-and-third-in-international-marketing-competition",
+          "title": "Student teams win first and third in international marketing competition",
+          "snippet": "“A lot of credit has to go to Professor Chapman, because he was able to break the steps of the planning process down in class, leading right up to the deadline for submitting proposals,” McLemore said. “We did a lot of the initial work in class, and we were able to delegate who did what very well ba",
+          "published": null,
+          "score": 0.043936532
+        }
+      ]
+    },
+    "news": {
+      "query": "CampusCredit funding news",
+      "results": [
+        {
+          "url": "https://www.campuscu.org",
+          "title": "Campus Credit Union | Checking, Loans & Banking in Wichita, KS",
+          "snippet": "Skip to content\n\nCampus Credit Union logo\n\nWE FIGHT FOR WICHITA\n\n# Bank Local. Support Wichita.\n\nEvery purchase with your We Fight for Wichita Fund Debit Card helps support Wichita State student-athletes at no additional cost to you.\n\nLearn How it Works\n\nLearn How It Works\n\nCampus Student 1\n\n# Your ",
+          "published": null,
+          "score": 0.2863688
+        },
+        {
+          "url": "https://wallethub.com/profile/campus-usa-credit-union-13313912i",
+          "title": "CAMPUS USA Credit Union Reviews: 22 User Ratings",
+          "snippet": "We applied for an Equity Loan with Campus in April. We only wanted a fraction of our total equity. They got all our financial info and we filled out the on line application (which by the way was beautifully designed and a piece of cake to work with) early. After waiting until mid August we got a cal",
+          "published": null,
+          "score": 0.253861
+        },
+        {
+          "url": "https://campuscu.com/make-a-payment",
+          "title": "Make a Loan Payment | CAMPUS USA Credit Union",
+          "snippet": "For help, call or visit one of our convenient service centers. To sign up for automatic payments you will need to provide the routing number and account number from which your payment will be withdrawn from each month.\n\n#### Automatic Payment Offer\n\nEarn $25 with Automatic Loan Payment1\n\n Learn More",
+          "published": null,
+          "score": 0.19759925
+        },
+        {
+          "url": "https://apps.apple.com/us/app/campus-usa-credit-union/id1113007184",
+          "title": "‎CAMPUS USA Credit Union App - App Store",
+          "snippet": "The minimum repayment period is 60 days, and the maximum repayment period is 120 months. The Credit Union permits early payoff without penalty. The maximum Annual Percentage Rate (APR) is 17.99%. For example, a $30,100 loan at 8.69% for 48 months would require 47 monthly payments of $747.32 and a fi",
+          "published": null,
+          "score": 0.13128456
+        },
+        {
+          "url": "https://creditunions.com/blogs/my-generation/credit-unions-on-campus",
+          "title": "Credit Unions On Campus",
+          "snippet": "The students who run the initiative hope to not only offer the benefits of a traditional credit union — higher interest rates on savings, lower rates on loans, and member ownership of the institution — but they also plan to provide services tailored to the unique needs of college students, such as i",
+          "published": null,
+          "score": 0.1161611
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "CampusCredit lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://www.campuscu.org/resources/security-fraud-protection",
+          "title": "Security & Fraud Protection Tips | Campus Credit Union",
+          "snippet": "Campus Credit Union helps protect your accounts with fraud prevention resources, Call us at (316) 867-4700 or visit our How to Report Fraud page for additional",
+          "published": null,
+          "score": 0.28806815
+        },
+        {
+          "url": "https://campuscu.com/security",
+          "title": "CAMPUS USA Credit Union: Fraud Prevention Center",
+          "snippet": "Identity Fraud: Identity fraud is usually limited attempts to steal funds from an existing bank account or through a credit/debit card transaction. An example of identity fraud is when a thief impersonates you at your financial institution attempting to cash a stolen check or withdraw money from you",
+          "published": null,
+          "score": 0.25813892
+        },
+        {
+          "url": "https://verafin.com/resource/campus-usa-cu-stops-two-fraud-rings",
+          "title": "Campus USA CU Stops Two Fraud Rings",
+          "snippet": "and deliver clear, evidence‑based cases to law enforcement. [...] Campus USA Credit Union (CAMPUS) has put people first since 1935. This philosophy, combined with Nasdaq Verafin technology and close collaboration across departments, has translated into real-world impact when the credit union stopped",
+          "published": null,
+          "score": 0.14330755
+        },
+        {
+          "url": "https://wallethub.com/profile/campus-usa-credit-union-13313912i",
+          "title": "CAMPUS USA Credit Union Reviews: 22 User Ratings",
+          "snippet": "I WOULDN'T RECOMMEND THIS BANK TO ANYONE FOR ANY TYPE OF BUSINESS. I HAVE A CAR LOAN THROUGH CAMPUS AND IT HAS BEEN NOTHING BUT A NIGHTMARE DEALING WITH THEM. MY PAYMENT'S ARE DIRECTLY TAKEN OUT OF MY ACCOUNT EVERY FRIDAY AND ARE TOTALLY CURRENT AND I'VE BEEN WITH THEM FOR A FEW YEARS NOW, WELL RECE",
+          "published": null,
+          "score": 0.10837754
+        },
+        {
+          "url": "https://www.campusfederal.org",
+          "title": "Campus Federal | Credit Union & Banking Services in Louisiana -…",
+          "snippet": "This link is provided for your convenience. Campus Federal does not host or operate this site and as such is not responsible for the content, security or privacy policies.\n\nProceed Back [...] Start strong with a checking account built for real life. Open your account with as little as $25 and enjoy ",
+          "published": null,
+          "score": 0.04418332
+        }
+      ]
+    }
+  }
+}

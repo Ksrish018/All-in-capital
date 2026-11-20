@@ -1,0 +1,208 @@
+{
+  "company": "SuperK",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "SuperK Andhra Pradesh small town supermarket chain",
+      "results": [
+        {
+          "url": "https://theindianpivot.substack.com/p/modern-retail-supermarkets-india",
+          "title": "Modern Retail and Supermarkets in a Box",
+          "snippet": "> SuperK is the fastest growing supermarket chain in Andhra Pradesh, driven by its mission to bring modern retail experiences to the tier 3 and beyond towns of India. Started by experienced entrepreneurs from BITS Pilani, SuperK is empowering entrepreneurs from small towns to easily own and operate ",
+          "published": null,
+          "score": 0.8190264
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=A8Nv3RnWvts",
+          "title": "Introducing SuperK - Fastest growing supermarket chain in Andhra Pradesh | Blume Fund IV",
+          "snippet": "SuperK is the fastest growing supermarket chain in Andhra Pradesh, driven by its mission to bring modern retail experiences to the tier 3 and beyond towns of India. Started by experienced entrepreneurs from BITS Pilani, SuperK is empowering entrepreneurs from small towns to easily own and operate su",
+          "published": null,
+          "score": 0.8156734
+        },
+        {
+          "url": "https://dealroom.co/companies/superk",
+          "title": "SuperK — venture-backed company profile | Dealroom",
+          "snippet": "## About SuperK\n\nSuperK is a rapidly expanding supermarket chain based in Andhra Pradesh, India. The company's primary objective is to modernize retail experiences in tier 3 and smaller towns across the country. SuperK's founders, who are experienced entrepreneurs from BITS Pilani, have developed a ",
+          "published": null,
+          "score": 0.8110782
+        },
+        {
+          "url": "https://www.biftoday.com/post/franchised-supermarket-chain-superk-is-expanding-its-footprint-in-telugu-states",
+          "title": "Franchised Supermarket chain - SuperK is expanding its footprint in Telugu States",
+          "snippet": "SuperK is targeting to launch over 1300 stores in Andhra Pradesh and expand to Telangana by Q3 2023 and Karnataka by Q3 2024. SuperK is on track to reach INR 100 Cr in revenue this financial year. SuperK’s warehouse currently employs over 250 people from Kadapa district across multiple functions.\n\nS",
+          "published": null,
+          "score": 0.6534587
+        },
+        {
+          "url": "https://www.scribd.com/document/724890721/Super-k-company-profile-1",
+          "title": "Super-K: Revolutionizing Retail in India | PDF | Strategic Management | Supermarket",
+          "snippet": "Scribd\n\n# Super-K: Revolutionizing Retail in India\n\nSuper-K is a franchised mini-mart chain for small towns in India, bringing modern retail experiences. Founded by entrepreneurs from BITS Pilani, it uses a tech-enabled and inventory-light model to empower store owners. The document provides details",
+          "published": null,
+          "score": 0.4900068
+        }
+      ]
+    },
+    "founders": {
+      "query": "Anil Thontepu Neeraj Menta SuperK founder background",
+      "results": [
+        {
+          "url": "https://yourstory.com/2021/04/funding-rural-retail-aggregator-superk-seed-round-strive-vc",
+          "title": "[Funding alert] Rural retail aggregator SuperK raises Rs 6 Cr in seed round led by STRIVE VC | YourStory",
+          "snippet": "Bengaluru and Kadapa (AP) based SuperK is a tech-enabled grocery retail aggregator enabling local entrepreneurs to set up and operate mini supermarkets and provide a modern retail experience to customers of Tier III, IV, V towns of India. Batchmates at BITS Pilani, Neeraj Menta and Anil Thontepu fou",
+          "published": null,
+          "score": 0.7297124
+        },
+        {
+          "url": "https://seedtable.com/companies/superk",
+          "title": "SuperK — Funding, Investors & Team - Seedtable",
+          "snippet": "SuperK, founded in 2020 by BITS Pilani alumni Anil Thontepu and Neeraj Menta, raised $11.7M in Series B funding to grow its franchise-led grocery stores in",
+          "published": null,
+          "score": 0.7191864
+        },
+        {
+          "url": "https://infullblume.substack.com/p/in-full-blume-from-corner-shops-to",
+          "title": "In Full Blume | From Corner Shops to Cosmic Shots | July 2025",
+          "snippet": "Founded by Anil Thontepu and Neeraj Menta, SuperK operates 130 stores in 80+ towns in Andhra Pradesh, powered by proprietary technology and a successful Gold membership program driving 75% of sales. The fresh capital will fuel expansion into 300 new towns across three states, strengthening their mis",
+          "published": null,
+          "score": 0.6573185
+        },
+        {
+          "url": "https://blume.vc/superk",
+          "title": "SuperK - Blume",
+          "snippet": "Website\n\n## On this page\n\n About SuperK\n\nLogo of SuperK\n\n## SuperK\n\nInfo\n:   Partnered in 2024\n\nInfo\n:   Active Funding\n\nInfo\n:   Fund IV\n\nImage showing Anil Thontepu, and Neeraj Menta, co-founders of SuperK, standing with a blurred background\n\n## Founders\n\n Anil Thontepu\n Neeraj Menta\n\n## Investmen",
+          "published": null,
+          "score": 0.5932558
+        },
+        {
+          "url": "https://www.scribd.com/document/724890721/Super-k-company-profile-1",
+          "title": "Super-K: Revolutionizing Retail in India | PDF | Strategic Management | Supermarket",
+          "snippet": "Scribd\n\n# Super-K: Revolutionizing Retail in India\n\nSuper-K is a franchised mini-mart chain for small towns in India, bringing modern retail experiences. Founded by entrepreneurs from BITS Pilani, it uses a tech-enabled and inventory-light model to empower store owners. The document provides details",
+          "published": null,
+          "score": 0.33469814
+        }
+      ]
+    },
+    "market": {
+      "query": "small town supermarket chain India competitors market",
+      "results": [
+        {
+          "url": "https://www.kenresearch.com/industry-reports/india-supermarket-market",
+          "title": "India Supermarket Market Share, Companies & Trends Report 2025-2032",
+          "snippet": "| Company Name | Market Share | Headquarters | Founding Year | Core Market Focus |\n| Reliance Retail | 53.3% | Mumbai, India | 2006 | Smart Bazaar, Reliance Smart and Reliance Fresh physical grocery formats |\n| Avenue Supermarts | 27.2% | Mumbai, India | 2000 | DMart value supermarkets and store-ena",
+          "published": null,
+          "score": 0.50694615
+        },
+        {
+          "url": "https://ageconsearch.umn.edu/record/42479/files/ifpridp00752.pdf",
+          "title": "The Rise of Supermarkets and Their Development Implications",
+          "snippet": "The shop gains visibility, quality standard branding, a mass marketing program, product price discounts, and special procurement deals with suppliers (Metro Group 2007). Similar operations are being run in India by ITC, Carrefour, and Wal-Mart (with Bharti). A close relative of the cash-and-carry ch",
+          "published": null,
+          "score": 0.45096377
+        },
+        {
+          "url": "https://www.rimisp.org/wp-content/files_mf/135905114812.pdf",
+          "title": "The Rapid Rise of Supermarkets in Developing Countries - RIMISP",
+          "snippet": "selling fresh local products on one side, and efficient global chain competitors like Wal-Mart on the other side. The procurement officers strive to meet this pressure by reducing purchase and transaction costs and raising product quality. Reflecting the varied demand of consumers, procurement offic",
+          "published": null,
+          "score": 0.18039525
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3412023",
+          "title": "Supermarket revolution in Asia and emerging development strategies to include small farmers",
+          "snippet": "A “supermarket revolution” has occurred in developing countries in the past 2 decades. We focus on three specific issues that reflect the impact of this revolution, particularly in Asia: continuity in transformation, innovation in transformation, and unique development strategies. First, the record ",
+          "published": null,
+          "score": 0.16344544
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Supermarket",
+          "title": "Supermarket - Wikipedia",
+          "snippet": "Kingdom) |  |  v  t  e  List of supermarket chains in Asia |  | Sovereign states |  Afghanistan  Armenia  Azerbaijan  Bahrain  Bangladesh  Bhutan\")  Brunei\")  Cambodia\")  China  Cyprus  Egypt  Georgia \"List of supermarket chains in Georgia (country)\")  India  Indonesia  Iran  Iraq\")  Israel  Japan\")",
+          "published": null,
+          "score": 0.12646118
+        }
+      ]
+    },
+    "news": {
+      "query": "SuperK funding news",
+      "results": [
+        {
+          "url": "https://entrackr.com/news/superk-raises-rs-100-cr-led-by-binny-bansal-and-mithun-sacheti-9529906",
+          "title": "SuperK raises Rs 100 Cr led by Binny Bansal and Mithun Sacheti",
+          "snippet": "New Update\n\nSuperK, a branded franchised retail chain focused on small towns in India, has raised Rs 100 crore (approximately $11.7 million) in a Series B funding round led by Binny Bansal’s 3STATE Ventures and Mithun Sancheti, founder and former CEO of CaratLane. The round also saw participation fr",
+          "published": null,
+          "score": 0.8327813
+        },
+        {
+          "url": "https://m.economictimes.com/tech/funding/value-retailer-superk-raises-rs-100-crore-co-led-by-binny-bansal-mithun-sacheti-cricketer-shubman-gill-joins-as-investor/articleshow/122872814.cms",
+          "title": "Value retailer SuperK raises Rs 100 crore co-led by Binny Bansal, Mithun Sacheti; cricketer Shubman Gill joins as investor - The Economic Times",
+          "snippet": "SuperK, a value retail chain focussed on small towns of India, has raised Rs 100 crore in fresh capital from Flipkart cofounder Binny Bansal’s 3State Ventures and CaratLane founder Mithun Sacheti, according to a company statement on Thursday. Cricketer Shubman Gill and existing backers Blume Venture",
+          "published": null,
+          "score": 0.82768893
+        },
+        {
+          "url": "https://economictimes.indiatimes.com/topic/superk-funding",
+          "title": "superk funding: Latest News & Videos, Photos about superk funding | The Economic Times - Page 1",
+          "snippet": "Four investors — led by Prosus — moved the NCLT, seeking a stay on the planned EGM to effectively block the rights issue. The matter will now be heard on April 4.\n  \n  ## Small town-focused retailer SuperK raises $6 million from Blume Ventures, others\n  \n  SuperK, a retail supermarket chain, raised ",
+          "published": null,
+          "score": 0.82432055
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=7c7wNy-bf34",
+          "title": "SuperK Raises ₹100 Cr In Series B Round Of Funding | Co Aims To Be Bharat's Costco | CNBC TV18",
+          "snippet": "### Transcript\n[0:00] packing for you this evening on what's brewing today. Value first retail chain for small towns of India Super K has\n[0:07] raised 100 cr rupes in series B round of funding led by Bini Bansil's three-state ventures and Mitun Sacheti. The round also saw Indian test cricket captai",
+          "published": null,
+          "score": 0.81242126
+        },
+        {
+          "url": "https://www.vccircle.com/tag/superk",
+          "title": "Latest SuperK News | SuperK News | SuperK Funding | SuperK Fund - vccircle",
+          "snippet": "Advertisement\n\n# SuperK\n\n### Consumer\n\n24 July, 2025\n\n#### Binny Bansal, Mithun Sacheti lead SuperK's Series B round\n\nSuperK, a franchised retail chain operating in small towns in India, has raised Rs 100 crore ($11.6 million) in its ......\n\n### Consumer\n\n27 March, 2024\n\n#### Consumer brands Superk,",
+          "published": null,
+          "score": 0.787768
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "SuperK lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://tavily.com/knowledge/company/nedyqKypv2R8",
+          "title": "SuperK",
+          "snippet": "# SuperK\nID: nedyqKypv2R8\nWebsite: www.superk.in\nLegal name: Localbuy Technologies Pvt. Ltd.\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/superk · 8,717 followers\nIndustry: Retail\nCompany type: Privately Held\nFounded: 2019\nBusiness model: B2C, B2B\nSaaS: no [...] Descr",
+          "published": null,
+          "score": 0.28298813
+        },
+        {
+          "url": "https://www.nktphotonics.com/wp-json/nktphotonics/v1/download/SuperK-COMPACT/SuperK%20COMPACT%20Product%20Guide.pdf",
+          "title": "SuperK COMPACT Product Guide | NKT Photonics",
+          "snippet": "following states: • ON Green – The laser emission can be enabled. • ON Red – There is a fault and a fault message is displayed; laser emission is shutdown and cannot be enabled. [...] Safety WARNING: SuperK COMPACTs are rated as Class 3B lasers and are therefore hazardous. Before turning on the lase",
+          "published": null,
+          "score": 0.16264586
+        },
+        {
+          "url": "https://img1.17img.cn/17img/old/literature/C181139.pdf",
+          "title": "SuperK EXTREME Supercontinuum Fiber Laser Series",
+          "snippet": "Mode Constant Pulse Energy --- Changing Repetition Rate 1) < 1 s Timing Trigger Output Jitter < 150 ps NIM Trigger Output (BNC) 0.1 – 1 V peak --- Monitor Trigger Output (BNC) 0 – 1 V Gate Trigger Output (BNC) 0 – 1 V Delay Shift between Pulse Picker Ration 2) < ± 250 ps Adjustable Trigger Delay Tim",
+          "published": null,
+          "score": 0.14306793
+        },
+        {
+          "url": "https://lf.hamamatsu.com/knowledge-zone/quantum-and-nano-industries",
+          "title": "Knowledge Zone Industries Quantum and Nano - Hamamatsu Photonics",
+          "snippet": "components and materials. Whether you are measuring thickness, reflectivity, or spectral response, SuperK gives you the accuracy and reliability your metrology demands. [...] SuperK supercontinuum lasers are ideal for exciting and probing NV centers in diamond. Their broad, stable spectrum, spanning",
+          "published": null,
+          "score": 0.10302442
+        },
+        {
+          "url": "https://www.slac.stanford.edu/econf/C040802/lec_notes/Casper/Casper.pdf",
+          "title": "The Super-Kamiokande Experiment",
+          "snippet": "analysis, and search for νe appearance Indicator of non-zero θ13 Our current limits do not improve on those set by the CHOOZ experiment Atmospheric Neutrino Summary Super-K atmospheric neutrino data show strong evidence for νµ→ντ oscillation, with near-maximal mixing and ∆m2 23 ~ (2-3)×10-3 eV2 Sear",
+          "published": null,
+          "score": 0.064653486
+        }
+      ]
+    }
+  }
+}

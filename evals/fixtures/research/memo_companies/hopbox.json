@@ -1,0 +1,208 @@
+{
+  "company": "HopBox",
+  "is_real": false,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "HopBox India 10-minute delivery",
+      "results": [
+        {
+          "url": "https://blogs.hopbox.net/blog/how-a-hopbox-goes-from-box-to-live-branch-in-10-minutes",
+          "title": "How a Hopbox Goes from Box to Live Branch in 10 Minutes | HopBox",
+          "snippet": "No static IP is required at the branch for the default DHCP path. The VPN tunnels work behind CGNAT, behind double-NAT, behind whatever the ISP puts in the way. This matters in India, where ISP infrastructure varies wildly between cities and between providers in the same city.\n\n### What you get at s",
+          "published": null,
+          "score": 0.61745495
+        },
+        {
+          "url": "https://hopbox.net",
+          "title": "Hopbox",
+          "snippet": "Hopbox is developed by Unmukti Technology Pvt Ltd. Their contact address is in Gurugram, India.\n\nCan't find what you're looking for? Contact our customer support team\n\n## Start Automating Your Network\n\nLet Hopbox handle connectivity, resilience and security — so your team can focus on higher value g",
+          "published": null,
+          "score": 0.24544658
+        },
+        {
+          "url": "https://www.indiamart.com/proddetail/hopbox-sd-wan-services-2851529604555.html",
+          "title": "Hopbox SD WAN Services at ₹ 1500/day in Gurugram | ID: 2851529604555",
+          "snippet": "Unmukti Technology Private Limited\n\nGST 16 yrs\n\n- Legal Status of Firm\n  \n  #### Limited Company\n  \n  Limited Company\n- GST Registration Date\n  \n  #### 2022\n  \n  2022\n- Annual Turnover\n  \n  #### 1.5 - 5 Cr\n  \n  1.5 - 5 Cr\n- Indiamart Member Since\n  \n  #### Oct 2010\n  \n  Oct 2010\n\n# Hopbox SD WAN Ser",
+          "published": null,
+          "score": 0.199308
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/vk6Ivzm5g7RN",
+          "title": "Hopbox",
+          "snippet": "# Hopbox\nID: vk6Ivzm5g7RN\nWebsite: www.hopbox.co.nz\nHeadquarters: Wellington, Wellington, New Zealand\nLinkedIn: www.linkedin.com/company/hopboxnz · 7 followers\nIndustry: Food and Beverage Services\nCompany type: Privately Held\nFounded: 2016\nSocial profiles: www.facebook.com/hopbox, www.crunchbase.com",
+          "published": null,
+          "score": 0.19314739
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/DR6wnLJeroZB",
+          "title": "HopBox",
+          "snippet": "# HopBox\nID: DR6wnLJeroZB\nWebsite: www.hopbox.co/\nLinkedIn: www.linkedin.com/company/hopboxjhu · 2 followers\nIndustry: Housing Programs\nCompany type: Privately Held [...] ## Headcount\n- Now: 2 · 0 yearly (0%) · 0 quarterly · 0 monthly\n  - Northern America: 1\n  - Eastern Europe: 0\n  - Latin America: ",
+          "published": null,
+          "score": 0.1425897
+        }
+      ]
+    },
+    "founders": {
+      "query": "Varun Malhotra Dev Sethi HopBox founder background",
+      "results": [
+        {
+          "url": "https://starsunfolded.com/varun-malhotra",
+          "title": "Varun Malhotra Age, Wife, Family, Biography & More » StarsUnfolded",
+          "snippet": "# Varun Malhotra Age, Wife, Family, Biography & More. ## Some Lesser Known Facts About Varun Malhotra. * Varun Malhotra is the director and founder of EIFS Pvt. Ltd., a Delhi-based investment consultancy firm. * In 2009, Varun set up Edge Institute for Financial Studies Pvt. Ltd. Varun Malhotra cond",
+          "published": null,
+          "score": 0.2216875
+        },
+        {
+          "url": "https://www.forbes.com/profile/varun-malhotra",
+          "title": "Varun Malhotra",
+          "snippet": "Varun Malhotra is vice president of Quona Capital, a venture capital firm centered around the idea that technology has the power to improve financial services for underserved consumers and businesses. After joining in 2015 as an associate, Malhotra was quickly promoted to vice president in 2016 and ",
+          "published": null,
+          "score": 0.20946968
+        },
+        {
+          "url": "https://quona.com/team/varun-malhotra",
+          "title": "Varun Malhotra - Quona Capital",
+          "snippet": "Varun focuses on Quona’s investment activities and portfolio in South and Southeast Asia.\n\nPrior to Quona, he worked in investment roles across Oak Investment Partners, Lok Capital and the D.E. Shaw Group.\n\nVarun was recognized as part of Forbes 30 under 30 for Finance & Venture Capital in Asia, and",
+          "published": null,
+          "score": 0.19636346
+        },
+        {
+          "url": "https://blogs.hopbox.net/blog/welcome-blog",
+          "title": "Welcome to Hopbox Blog | HopBox",
+          "snippet": "Skip to content\n\nHopBox\n\nGitlabRSS\n\n# Welcome to Hopbox Blog\n\nHopbox team\n\nHopbox team\n\nprajwal\n\nprajwal\n\nFrontend Engineer\n\nWelcome to the official Hopbox blog! This is where we’ll share product updates, technical tutorials, networking insights, and stories from the team behind HopBox.\n\n## What to ",
+          "published": null,
+          "score": 0.1334152
+        },
+        {
+          "url": "https://hopbox.net/en/appliances",
+          "title": "Hopbox Appliances | Hopbox",
+          "snippet": "Retail Chain Rollout\n\nDeploy compact R750 or MT64R512 appliances to hundreds of stores with zero-touch provisioning and central firmware management.\n\nCorporate Headquarters\n\nInstall XD appliances with 10GbE connectivity at HQ for high-throughput SD-WAN aggregation and security processing.\n\nWarehouse",
+          "published": null,
+          "score": 0.09756223
+        }
+      ]
+    },
+    "market": {
+      "query": "10-minute delivery India competitors market",
+      "results": [
+        {
+          "url": "https://www.youtube.com/watch?v=ubstyU8mYy0",
+          "title": "India’s Fastest 10-Min Delivery App Raises $450M | Quick Commerce Market Hype Explained",
+          "snippet": "India’s quick commerce battle is on fire! Zepto has just raised $450 million, pushing its valuation to $7 billion. Founded in 2021, Zepto’s 10-minute delivery model now powers a $1.3B revenue engine — but it’s not alone. Blinkit, backed by Zomato, is scaling fast, and Swiggy Instamart, BigBasket, Fl",
+          "published": null,
+          "score": 0.81375694
+        },
+        {
+          "url": "https://www.bloomberg.com/features/2025-India-instant-shopping",
+          "title": "Amazon, Walmart, Race India’s Unicorns to Deliver Everything in 10 Minutes",
+          "snippet": "India’s 10-minute sector surged during Covid lockdowns as consumers turned to apps for everything from toothpaste to tomatoes. Today, impulsive orders — like a pinch of salt or a missing spice mid-recipe — are common.\n\nBlinkit and Zepto are market leaders, claiming over 16 million average monthly tr",
+          "published": null,
+          "score": 0.77864933
+        },
+        {
+          "url": "https://www.bbc.com/news/articles/cvgx7ykl12go",
+          "title": "Blinkit, Swiggy, Instamart, Zepto: Inside India's ultra-fast grocery deliveries",
+          "snippet": "\"In other countries platforms avoid committing to a fixed 10-minute promise and instead use terms like 'very fast' - thus lowering customer expectations. They also charge a premium for faster delivery, but in India there are no such constraints,\" Vasudevan adds.\n\nHere, you can even order a single av",
+          "published": null,
+          "score": 0.6801355
+        },
+        {
+          "url": "https://sg.finance.yahoo.com/news/india-reins-booming-quick-commerce-134914851.html",
+          "title": "India reins in booming quick-commerce sector over '10-minute' delivery claim",
+          "snippet": "NEW DELHI, Jan 13 (Reuters) - India's government has ordered Blinkit, Zepto and Swiggy ​to stop promoting their grocery deliveries as a \"10-minute\" service, ‌two sources said, in a setback for a sector that has changed the ‌way Indians in cities shop and is sought after by investors. [...] However, ",
+          "published": null,
+          "score": 0.66725606
+        },
+        {
+          "url": "https://infinitietech.com/blog/quick-commerce-is-booming-in-india-how-to-start-your-own-10-minute-delivery-business-in-2026",
+          "title": "Quick Commerce Is Booming in India: How to Start Your Own 10-Minute Delivery Business in 2026 | Infinitietech",
+          "snippet": "Quick commerce 10-minute delivery boom in India 2026\n\n## The 10-minute delivery boom, by the numbers\n\nBlinkit, Zepto, and Swiggy Instamart made \"I'll just order it\" mean \"it's here in minutes.\" Now the numbers are catching up with the hype: [...] ## Trend 3: Local beats big in the last mile\n\nQuick c",
+          "published": null,
+          "score": 0.64980084
+        }
+      ]
+    },
+    "news": {
+      "query": "HopBox funding news",
+      "results": [
+        {
+          "url": "https://inc42.com/company/hopbox/latest",
+          "title": "Hopbox Latest News 2026 – Funding, Financials & Updates",
+          "snippet": "Hopbox\n\n# Hopbox - Latest News, Analysis, Funding, Financials & More\n\n2010\n\n2010\n\nFounded in 2010, Hopbox operates in Advanced Hardware & Technology offering development of network appliances and IoT devices on embedded hardware platforms. The company utilises the best available Fr...\n\nCompany Type:",
+          "published": null,
+          "score": 0.6003641
+        },
+        {
+          "url": "https://www.hopbox.life/pages/earn-with-hopbox",
+          "title": "Become a HOP Affiliate – HOP Box",
+          "snippet": "\\ Every month that you sell at least 2 HOP Boxes to your audience, you’ll receive a FREE HOP Box right to your doorstep.\n\nHOP-Box-Logo-White 1.svg__PID:9a0ab52f-2378-4cda-b7f8-4ae716498d59\n\n### Quicklinks\n\nOur IngredientsFAQsHOP BlogShopAffiliate ProgramContact Us\n\n### Privacy\n\nRefund PolicyPrivacy ",
+          "published": null,
+          "score": 0.2338813
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/DR6wnLJeroZB",
+          "title": "HopBox",
+          "snippet": "# HopBox\nID: DR6wnLJeroZB\nWebsite: www.hopbox.co/\nLinkedIn: www.linkedin.com/company/hopboxjhu · 2 followers\nIndustry: Housing Programs\nCompany type: Privately Held [...] ## Headcount\n- Now: 2 · 0 yearly (0%) · 0 quarterly · 0 monthly\n  - Northern America: 1\n  - Eastern Europe: 0\n  - Latin America: ",
+          "published": null,
+          "score": 0.21321331
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/vk6Ivzm5g7RN",
+          "title": "Hopbox",
+          "snippet": "# Hopbox\nID: vk6Ivzm5g7RN\nWebsite: www.hopbox.co.nz\nHeadquarters: Wellington, Wellington, New Zealand\nLinkedIn: www.linkedin.com/company/hopboxnz · 7 followers\nIndustry: Food and Beverage Services\nCompany type: Privately Held\nFounded: 2016\nSocial profiles: www.facebook.com/hopbox, www.crunchbase.com",
+          "published": null,
+          "score": 0.20402452
+        },
+        {
+          "url": "https://hopbox.net",
+          "title": "Hopbox",
+          "snippet": "Hopbox is a managed SD-WAN / network orchestration platform by Unmukti Technology, which helps optimise, secure, and automate multi-link networks.\n\nHopbox automatically establishes encrypted SSL VPN tunnels across all locations with sub-second failover, and uses Forward Error Correction (FEC) to red",
+          "published": null,
+          "score": 0.19682622
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "HopBox lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://www.hopbox.life/policies/privacy-policy",
+          "title": "Privacy policy – HOP Box",
+          "snippet": "Security and Fraud Prevention. We use your personal information to detect, investigate or take action regarding possible fraudulent, illegal or malicious activity. If you choose to use the Services and register an account, you are responsible for keeping your account credentials safe. We highly reco",
+          "published": null,
+          "score": 0.31174105
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/DR6wnLJeroZB",
+          "title": "HopBox",
+          "snippet": "# HopBox\nID: DR6wnLJeroZB\nWebsite: www.hopbox.co/\nLinkedIn: www.linkedin.com/company/hopboxjhu · 2 followers\nIndustry: Housing Programs\nCompany type: Privately Held [...] ## Headcount\n- Now: 2 · 0 yearly (0%) · 0 quarterly · 0 monthly\n  - Northern America: 1\n  - Eastern Europe: 0\n  - Latin America: ",
+          "published": null,
+          "score": 0.19790912
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/vk6Ivzm5g7RN",
+          "title": "Hopbox",
+          "snippet": "# Hopbox\nID: vk6Ivzm5g7RN\nWebsite: www.hopbox.co.nz\nHeadquarters: Wellington, Wellington, New Zealand\nLinkedIn: www.linkedin.com/company/hopboxnz · 7 followers\nIndustry: Food and Beverage Services\nCompany type: Privately Held\nFounded: 2016\nSocial profiles: www.facebook.com/hopbox, www.crunchbase.com",
+          "published": null,
+          "score": 0.16954333
+        },
+        {
+          "url": "https://www.oneidacountywi.gov/departments/rd",
+          "title": "Register of Deeds – Oneida County, WI",
+          "snippet": "Indecomm Global Services  \n  \n732-404-0081CSC (Corporation Service Company)  \n  \n866-652-0111HopBox  \n  \nE-Mail: sales@hopdox.com  \n385-501-5103\n\nePN (eRecording Partners Network)  \n  \n888-325-3365Simplifile  \n  \n800-460-5657\n\n## Services\n\nPlease note: The Register of Deeds office cannot draft docum",
+          "published": null,
+          "score": 0.1534223
+        },
+        {
+          "url": "https://hopbox.net/en/privacy",
+          "title": "Privacy Policy | Hopbox",
+          "snippet": "## Data Security\n\nWe implement appropriate security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. We adhere to a strict no-logs policy for VPN traffic.\n\nHopbox\n\n + Remote / Roadwarrior\n  + Security\n  + Web Access Control\n  + Central Dashboard\n",
+          "published": null,
+          "score": 0.117572136
+        }
+      ]
+    }
+  }
+}

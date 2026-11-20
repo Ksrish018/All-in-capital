@@ -1,0 +1,208 @@
+{
+  "company": "ePlane Company",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "ePlane Company Chennai electric air taxi",
+      "results": [
+        {
+          "url": "https://udyaibase.com/startups/the-eplane-company",
+          "title": "The ePlane Company - All-electric, zero-emission air taxi, designed as one of the most compact eVTOL aircraft | Udyaibase | Udyaibase",
+          "snippet": "The ePlane Company is headquartered in Chennai, India, where it was founded in 2019. Chennai is a key technology hub with expertise in AI and automotive tech.\n\nThe ePlane Company was founded in 2019 by Satya Chakravarthy, Jayakrishnan Ramaswamy. Since then, it has grown to 500+ employees and has bee",
+          "published": null,
+          "score": 0.82432055
+        },
+        {
+          "url": "https://evreporter.com/the-eplane-company-showcases-full-scale-e200x-pt-01-electric-air-taxi-prototype",
+          "title": "The ePlane Company Showcases Full-Scale e200X PT-01 Electric Air Taxi Prototype • EVreporter",
+          "snippet": "Founded in 2019 and incubated at IIT Madras, The ePlane Company operates an integrated eVTOL prototyping, manufacturing and testing facility at the IIT Madras Discovery Campus in Thaiyur, Chennai. The company is backed by investors including Speciale Invest, Antares Ventures and Naval Ravikant. [...",
+          "published": null,
+          "score": 0.8095773
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=mSLsHERGuQQ",
+          "title": "Building India’s First Electric Air Taxi: e200X PT-01 Full Walkaround | The ePlane Company",
+          "snippet": "Founded in 2019 and incubated at the Indian Institute of Technology Madras (IIT Madras) Incubation Cell, The ePlane Company (Ubifly Technologies Pvt. Ltd.) is India's leading deep-tech aerospace manufacturer pioneering the global transition to Advanced Air Mobility (AAM). Headquartered at the 163-ac",
+          "published": null,
+          "score": 0.80837
+        },
+        {
+          "url": "https://x.com/ePlaneCompany",
+          "title": "The ePlane Company (@ePlaneCompany) / X",
+          "snippet": "Log inSign up\n\nLog inSign up\n\nThe ePlane Company\n\n487 posts\n\nThe ePlane Company profile banner\n\n@ePlaneCompany\n\n# The ePlane Company\n\n@ePlaneCompany\n\nBuilding the e200X: the world’s most compact electric air taxi & ambulance in its class. Turning 1.5-hour city gridlock into 10-minute flights.\n\nChenn",
+          "published": null,
+          "score": 0.7409249
+        },
+        {
+          "url": "https://dealroom.co/companies/the-eplane-company",
+          "title": "The ePlane Company — venture-backed company profile | Dealroom",
+          "snippet": "The company is developing electric Vertical Takeoff and Landing (eVTOL) aircraft for both passenger and cargo transport. Its flagship product is the ePlane e200x, a two-seater electric air taxi designed for intra-city travel, promising commutes up to seven times faster than ground transport. The air",
+          "published": null,
+          "score": 0.6145675
+        }
+      ]
+    },
+    "founders": {
+      "query": "Pranjal Mehta Satyanarayanan Chakravarthy ePlane Company founder background",
+      "results": [
+        {
+          "url": "https://dealroom.co/companies/the-eplane-company",
+          "title": "The ePlane Company — venture-backed company profile | Dealroom",
+          "snippet": "The ePlane Company is an Indian aerospace firm focused on the Urban Air Mobility (UAM) market, aiming to alleviate urban traffic congestion. It was founded in 2019 by Professor Satya Chakravarthy and Pranjal Mehta and incubated at the Indian Institute of Technology (IIT) Madras. Chakravarthy, a prof",
+          "published": null,
+          "score": 0.8100285
+        },
+        {
+          "url": "https://inc42.com/company/the-eplane-company",
+          "title": "The ePlane Company — Funding & Revenue (2026)",
+          "snippet": "The ePlane Company was founded by Pranjal Mehta, Satyanarayanan Chakravarthy in 2019. company based in Chennai, Tamil Nadu, India, established by Pranjal Mehta",
+          "published": null,
+          "score": 0.6775807
+        },
+        {
+          "url": "https://www.eplane.ai/about",
+          "title": "Company · The ePlane Company",
+          "snippet": "## The Genesis\n\n   Officially incorporated as Ubifly Technologies Pvt. Ltd. at IIT Madras by Prof. Satya Chakravarthy and core engineering leads. Developed the core concept of the Synergistic Lift architecture, decoupling vertical rotors from forward flight wings to optimize energy consumption.\n2. [",
+          "published": null,
+          "score": 0.5780909
+        },
+        {
+          "url": "https://tracxn.com/d/legal-entities/india/ubifly-technologies-private-limited/__RNblcpbiw7Tfw5r_YyXc1Z0XCtsT5AEQo4Y2SDRT_6Y",
+          "title": "UBIFLY TECHNOLOGIES PRIVATE LIMITED - 2026 Company Profile, Financials & Shareholding - Tracxn",
+          "snippet": "| Shareholders Name | Post Round Holding % | Net worth | Cumulative Investment | Realised Returns | Unrealised Returns | Return Multiple |\n ---  ---  --- \n| Founder | 33.55% | 129Cr | 6904893 | 7684415 | 6718538 | 5169796 |\n| Satya Chakravarthy | 3816199 | 5112137 | 6941096 | 9024838 | 1510858 | 990",
+          "published": null,
+          "score": 0.30569732
+        },
+        {
+          "url": "https://inc42.com/company/the-eplane-company/funding",
+          "title": "The ePlane Company Funding 2026 – Total Funding, Rounds & Investors",
+          "snippet": "2019\n\n2019\n\nFounded in 2019, The ePlane Company operates in Clean Tech industry. Originally focused on developing eVTOL prototypes, the company has evolved to focus on commercially viable eVTOL aircraft.\n\nFunding stage:\n\nSeries B\n\nLast funding:\n\n13/11/2024\n\nTotal funding:\n\n$20.00 Mn+\n\nRevenue:\n\n₹2.2",
+          "published": null,
+          "score": 0.23970512
+        }
+      ]
+    },
+    "market": {
+      "query": "electric air taxi India competitors market",
+      "results": [
+        {
+          "url": "https://www.sphericalinsights.com/reports/india-electric-air-taxi-market",
+          "title": "India Electric Air Taxi Market Size, Share, Forecasts to 2033",
+          "snippet": "List of Key Companies\n\n- Joby Aviation, Inc.\n- IndiGo\n- Boeing\n- Airbus SE\n- Wisk Aero, Inc.\n- Archer Aviation, Inc.\n- Hyundai Motor Group,\n- Electra Aero Inc\n- Jaunt Air Mobility LLC\n- Others\n\nKey Target Audience\n\n- Market Players\n- Investors\n- End-users\n- Government Authorities\n- Consulting and Re",
+          "published": null,
+          "score": 0.77696157
+        },
+        {
+          "url": "https://brandessenceresearch.com/automotive-and-transport/electric-air-taxi-market",
+          "title": "Electric Air Taxi Market Size, Share & Competitive Landscape",
+          "snippet": "### Asia-Pacific\n\n- South Korea\n- Japan\n- China\n- India\n- Australia\n- Philippines\n- Singapore\n- Malaysia\n- Thailand\n- Indonesia\n- Rest of APAC\n\n### Latin America\n\n- Mexico\n- Colombia\n- Brazil\n- Argentina\n- Peru\n- Rest of South America\n\n### Middle East and Africa\n\n- Saudi Arabia\n- UAE\n- Egypt\n- South",
+          "published": null,
+          "score": 0.7255514
+        },
+        {
+          "url": "https://www.imarcgroup.com/air-taxi-market",
+          "title": "Air Taxi Market Share, Size, Growth, Trends | Forecast 2034",
+          "snippet": "April 2024: INDIGO partnered with US-based Archer Aviation to launch an all-electric air taxi service in India. The joint company intends to redefine urban transportation by providing efficient, environmentally friendly air travel options for passengers traveling between Delhi and Gurugram. [...] VT",
+          "published": null,
+          "score": 0.5176776
+        },
+        {
+          "url": "https://www.mordorintelligence.com/industry-reports/air-taxi-market",
+          "title": "Air Taxi Market - Size, Share & Industry Analysis",
+          "snippet": "Asia-Pacific is accelerating at a 25.20% CAGR. China’s low-altitude economy blueprint green-lights EHang and AutoFlight to scale commercial fleets beyond pilot programs, while Japan’s Osaka Expo is set to showcase daily passenger services in 2025. India’s tier-2 city network opens new miles under mi",
+          "published": null,
+          "score": 0.38879207
+        },
+        {
+          "url": "https://ig.ft.com/flying-taxis",
+          "title": "Which flying taxi will take off first?",
+          "snippet": "## Important year\n\nExecutives at several air taxi companies are gearing up for what they say will be a critical year for electric, vertical flight. Dirk Hoke, chief executive of Volocopter, wants to be the first to market, to become the world’s first air taxi operator, both for the history books and",
+          "published": null,
+          "score": 0.19072403
+        }
+      ]
+    },
+    "news": {
+      "query": "ePlane Company funding news",
+      "results": [
+        {
+          "url": "https://timesofindia.indiatimes.com/city/chennai/with-rdi-backing-eplane-eyes-50-mn-funding-close-as-it-builds-full-scale-evtol-aircraft/articleshow/131962871.cms",
+          "title": "With RDI backing, ePlane eyes $50 mn funding close as it builds full-scale eVTOL aircraft | Chennai News - The Times of India",
+          "snippet": "about Rs 285 crore as optionally convertible debt, and is considered the single largest allocation under the country’s ambitious push to spur deep-tech activity. The company expects to close the round within four months by raising capital to match the RDI funding, and has so far secured around Rs 82",
+          "published": null,
+          "score": 0.8342719
+        },
+        {
+          "url": "https://www.ipoplatform.com/startup-business-funding/ubifly-technologies-private-limited/101219",
+          "title": "The ePlane latest Startup funding and investors",
+          "snippet": "The ePlane Company has raised ₹118.38 Cr. in this funding round, equivalent to $14.00 Mn. The funds will support the company’s growth, operational expansion, and strategic initiatives in Aerospace, helping strengthen its market presence and future business opportunities.\n\n### What funding stage is T",
+          "published": null,
+          "score": 0.8240375
+        },
+        {
+          "url": "https://www.hardwarefyi.com/startup-news/the-eplane-company-announced-a-5-million-series-a-round-led-by-deep",
+          "title": "The ePlane Company Announced a $5 Million Series A Round, Led by Deep-Tech Venture Capitalist Speciale Invest and EV/climate-focused Fund Micelio",
+          "snippet": "The ePlane Company announced a $5 million series A round, led by deep-tech venture capitalist Speciale Invest and EV/climate-focused fund Micelio All Startup News|Jan 11, 2022|Deal The ePlane Company announced a $5 million series A round, led by deep-tech venture capitalist Speciale Invest and EV/cl",
+          "published": null,
+          "score": 0.81757444
+        },
+        {
+          "url": "https://tracxn.com/d/companies/eplane/__J4KkZxdPMmkvGTc3E4XfWD81eMJgZMtwcgkfiHS01_w",
+          "title": "ePlane - 2026 Company Profile, Team, Funding, Competitors & Financials - Tracxn",
+          "snippet": "ePlane has raised a total funding of $29.5M over 10 rounds. Its first funding round was on Dec 02, 2020. Its latest funding round was a Series B round on Dec 24, 2025 for  $\\\\\\\\\\. 9 investors participated in its latest round.  ePlane has 48 institutional investors and 46 angel investors.\n\nlock [...]",
+          "published": null,
+          "score": 0.81331253
+        },
+        {
+          "url": "https://www.crunchbase.com/organization/the-e-plane-company",
+          "title": "The ePlane Company - Crunchbase Company Profile & Funding",
+          "snippet": "Total Funding\n\n84\n\n67\n\nTotal FundingSeries B raised\n\nGrowth Score84in past quarter\n\n-12 pts\n\nHeat Score 67in past quarter\n\n-8 pts\n\n## Company Performance Metrics\n\nScore\n\nTrend\n\nAI Content may contain mistakes and is not legal, financial or investment advice.Learn more.\n\nGrowth Score - The measure of",
+          "published": null,
+          "score": 0.6753365
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "ePlane Company lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://www.3ds.com/insights/customer-stories/the-eplane-company-urban-air-mobility",
+          "title": "The ePlane Company: Urban Air Mobility | Dassault Systèmes",
+          "snippet": "As part of the flight safety certification process, The ePlane Company must comply with a large variety of regulatory requirements. For example, when working on the antenna design (the device used for all air traffic communication), the team must generate comprehensive analysis reports to prove that",
+          "published": null,
+          "score": 0.3377494
+        },
+        {
+          "url": "https://timesofindia.indiatimes.com/business/india-business/eplane-company-becomes-first-indian-electric-aircraft-maker-to-bag-regulator-approval/articleshow/100451756.cms",
+          "title": "ePlane Company becomes first Indian electric aircraft maker to bag ...",
+          "snippet": "ePlane Company becomes first Indian electric aircraft maker to bag regulator approval · No negligence, Bhutanese-origin girl Sophia Subedi's",
+          "published": null,
+          "score": 0.31997076
+        },
+        {
+          "url": "https://finance.yahoo.com/technology/ai/articles/eplane-company-selects-lynx-mosa-140100338.html",
+          "title": "The ePlane Company Selects LYNX MOSA.ic to Run Mixed Criticality Software Side by Side on the e200X eVTOL",
+          "snippet": "Founded in 2019 and incubated at the Indian Institute of Technology Madras (IIT Madras) Incubation Cell, The ePlane Company (Ubifly Technologies Pvt. Ltd.) is India's leading deep-tech aerospace manufacturer pioneering the global transition to Advanced Air Mobility (AAM). Headquartered at the 163-ac",
+          "published": null,
+          "score": 0.26874945
+        },
+        {
+          "url": "https://www.reuters.com/world/india/indian-air-taxi-startup-eplane-co-raises-14-mln-eyes-mid-2025-testing-2024-11-14",
+          "title": "Indian air taxi startup ePlane Co raises $14 mln; eyes mid-2025 testing",
+          "snippet": "The ePlane Company, an Indian electric air taxi startup, has raised $14 million as it sets its sights on starting manned air taxi testing by",
+          "published": null,
+          "score": 0.2501793
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=-mGJkNl715w",
+          "title": "The ePlane Company - Urban Air Mobility - Dassault Systèmes",
+          "snippet": "an eVTOL with an ultra-compact wingspan and patented low-speed flight technology. [...] Indian startup The ePlane Company is taking on one of India’s most pressing problems: how to move people more efficiently through its gridlocked cities. To make its  vision of urban air mobility a reality, The eP",
+          "published": null,
+          "score": 0.22850065
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "company": "GIVA",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "GIVA Bengaluru silver jewellery brand",
+      "results": [
+        {
+          "url": "https://www.giva.co/pages/about-giva",
+          "title": "About Us | Online Jewellery Store – GIVA",
+          "snippet": "View cart\n\n## About GIVA\n\nAbout GIVA(jee-va)\n\nGIVA is a fine jewellery brand of Silver, Gold, and Lab-Grown Diamonds, headquartered in Bengaluru. We have grown to become the largest D2C jewellery brand in India, earning people's trust as the go-to choice for gifting. GIVA's journey shines even brigh",
+          "published": null,
+          "score": 0.8149381
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/QWcX7VEJkZOt",
+          "title": "GIVA",
+          "snippet": "# GIVA\nID: QWcX7VEJkZOt\nWebsite: www.giva.co\nLegal name: Indiejewel Fashions Private Limited\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/giva-co · 370,502 followers\nIndustry: Retail Luxury Goods and Jewelry\nIndustry codes: SIC 59, 594, NAICS 44, 448\nCompany type: Pri",
+          "published": null,
+          "score": 0.6260099
+        },
+        {
+          "url": "https://www.giva.co/collections/mens-silver-jewellery",
+          "title": "Buy Latest Silver Jewellery for Men & 925 Silver Designs\n\n– GIVA",
+          "snippet": "Returns\n\n## Info\n\n## Contact us\n\nBIS : HM/C - 6290031216\n\nFor any suggestions, queries or complaints please contact us:\n\nINDIEJEWEL FASHIONS PRIVATE LIMITED\n\nCIN: U51909KA2019PTC218533\n\nPlot No. 60, 3rd Floor, Doddakallsandra, Kanakapura Main Road, Bangalore South, Bangalore – 560062, Karnataka, Ind",
+          "published": null,
+          "score": 0.60533255
+        },
+        {
+          "url": "https://www.giva.co",
+          "title": "Buy Gold & Lab Grown Diamond Jewellery | Silver Jewellery – GIVA",
+          "snippet": "GIVA’s Journey\n\nIn 2019, GIVA came to life, founded by three dynamic young leaders: Ishendra Agarwal, Nikita Prasad, and Sachin Shetty. Today, we proudly stand as one of India's fastest-growing direct-to-consumer (D2C) brands. GIVA's expertise lies in crafting authentic 925 fine silver jewellery, en",
+          "published": null,
+          "score": 0.6022955
+        },
+        {
+          "url": "https://www.giva.co/collections/bestsellers",
+          "title": "GIVA Bestsellers\n\n– GIVA",
+          "snippet": "Silver Zircon Leaf Ring\nSilver Zircon Leaf Ring\n\n### Silver Zircon Leaf Ring\n\nRose Gold Shining Hoop Earrings\nRose Gold Shining Hoop Earrings\n\n### Rose Gold Shining Hoop Earrings\n\nKriti Sanon Silver Zircon Layered Ring\nKriti Sanon Silver Zircon Layered Ring\n\n### Kriti Sanon Silver Zircon Layered Rin",
+          "published": null,
+          "score": 0.46326214
+        }
+      ]
+    },
+    "founders": {
+      "query": "Ishendra Agarwal GIVA founder background",
+      "results": [
+        {
+          "url": "https://www.giva.co/pages/about-giva",
+          "title": "About Us | Online Jewellery Store – GIVA",
+          "snippet": "Ishendra Agarwal, Founder and CEO at GIVA, graduated from the prestigious Indian Institute of Technology (IIT Kanpur), where he honed his technical and business expertise. He founded GIVA, a clutter-breaking silver jewellery brand and scaled it to be the leading name in the silver jewellery industry",
+          "published": null,
+          "score": 0.8507168
+        },
+        {
+          "url": "https://yourstory.com/weekender/ishendra-agarwal-entrepreneur-jewellery-startup-giva",
+          "title": "I believe in high risk and high returns, says entrepreneur Ishendra Agarwal | YourStory",
+          "snippet": "He started his corporate journey with ﻿Twigly﻿, a D2C food startup. Post which he joined the Boston Consulting Group (BCG) as a management consultant, followed by a stint in the VC industry.\n\n> With an aim to provide premium jewellery at affordable prices, Ishendra launched ﻿GIVA Jewellery﻿in April ",
+          "published": null,
+          "score": 0.8003801
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Zmy-SPKncqA",
+          "title": "From One Order to India's Fastest Growing Jewellery Brand | Ishendra Agarwal | The Rockford Circle",
+          "snippet": "### Description\n4,645,555 views\nPosted: 2026-04-24\nNo family legacy. No generational credibility. Just a founder from Agra who walked into India's oldest and most traditional industry and decided to rebuild it from scratch. Ishendra Agarwal gets candid about building GIVA from one order a day in the",
+          "published": null,
+          "score": 0.78082967
+        },
+        {
+          "url": "https://www.cbinsights.com/company/giva/people",
+          "title": "Giva CEO, Founder, Key Executive Team, Board of Directors & Employees",
+          "snippet": "|  |  |  |  |  |  |\n ---  ---  --- |\n| Name | Ishendra Agarwal | Subscribe to see more | Subscribe to see more | Subscribe to see more | Subscribe to see more |\n| Work History | Guild Capital, Boston Consulting Group, and Syracuse University | Subscribe to see more | Subscribe to see more | Subscrib",
+          "published": null,
+          "score": 0.74632394
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=leMg_kCqc9w",
+          "title": "Understanding Indian consumers & breaking down jewellery brands w/ GIVA Founder Ishendra Agarwal",
+          "snippet": "[12:50] My father has been a businessman, actually, I come from a business family. And so I was at my home till I was 18.\n[13:00] After that I went to college. When you were serving the market, right to start a silver jewellery business?\n[13:08] How did you stumble upon this because it is a complete",
+          "published": null,
+          "score": 0.71393055
+        }
+      ]
+    },
+    "market": {
+      "query": "silver jewellery brand India competitors market",
+      "results": [
+        {
+          "url": "https://analysis.technavio.org/ipo-report/silver-jewelry-market-india",
+          "title": "Silver Jewelry Market in India | Trends & Analysis | Technavio",
+          "snippet": "Titan Company\n Kalyan Jewellers India\n PC Jeweller\n P N Gadgil Jewellers\n Amrapali Jewels\n Others\n\n## IPO Company Overview: Kabra Jewels in the Indian silver jewelry market [...] Titan Company\n Kalyan Jewellers India\n PC Jeweller\n P N Gadgil Jewellers\n Amrapali Jewels\n Others\n\n## IPO Company Overvie",
+          "published": null,
+          "score": 0.6646491
+        },
+        {
+          "url": "https://www.indianjeweller.in/Indian-Jewellery-News/15337/indias-silver-jewellery-boom",
+          "title": "India's silver jewellery boom",
+          "snippet": "Unlike competitors such as Thailand, Italy, and Mexico, India benefits from a diverse skillset of artisans who specialize in intricate designs,",
+          "published": null,
+          "score": 0.5777932
+        },
+        {
+          "url": "https://gjepc.org/solitaire/silver-jewellerys-untapped-market-potential",
+          "title": "Silver Jewellery’s Untapped Market Potential - jewellery magazine",
+          "snippet": "RM: India is one of the largest consumers of silver articles and jewellery globally. The country has a vast market, and the demand for silver products is robust. While there are many national gold jewellery brands, the silver articles segment has a significant gap to fill. This presents many opportu",
+          "published": null,
+          "score": 0.5657786
+        },
+        {
+          "url": "https://touch925.com/blogs/buying-guides-budget/top-5-silver-jewellery-brands-online-in-india",
+          "title": "Top 5 Silver Jewellery Brands Online in India - Touch925",
+          "snippet": "Shaya by Caratlane is at the forefront of the silver jewellery market, offering an impressive range of 92.5 sterling silver pieces. The brand is known for its innovative and modern designs that cater to the contemporary Indian woman. Backed by the Tata Group, Shaya's commitment to quality is unquest",
+          "published": null,
+          "score": 0.5637383
+        },
+        {
+          "url": "https://www.kenresearch.com/industry-reports/india-jewelry-market",
+          "title": "India Jewelry Market Share, Companies & Trends Report 2026-2032",
+          "snippet": "## CHAPTER 9 - Competitive Landscape\n\n## Competitive Landscape Overview\n\nCompetition remains fragmented but is steadily consolidating around national and regional chains with procurement scale, trusted hallmarking, strong exchange programs, localized bridal assortments and accelerating store network",
+          "published": null,
+          "score": 0.50788814
+        }
+      ]
+    },
+    "news": {
+      "query": "GIVA funding news",
+      "results": [
+        {
+          "url": "https://retail.economictimes.indiatimes.com/news/apparel-fashion/jewellery/giva-raises-100-million-plus-targets-rs-1250-crore-revenue-in-fy27/135492036",
+          "title": "GIVA Secures $100 Million Funding, Aims for Rs 1,250 Crore Revenue by FY27, ETRetail",
+          "snippet": "Bengaluru: GIVA has raised over $100 million in a funding round led by Multiples Alternate Asset Management, marking what the company describes as the largest investment in an Indian new-age jewellery brand. Existing investors Epiq Capital and Edelweiss Discovery Fund also participated in the round.",
+          "published": null,
+          "score": 0.82460326
+        },
+        {
+          "url": "https://www.ipoplatform.com/startup-business-funding/indiejewel-fashions-private-limited/100240",
+          "title": "GIVA latest Startup funding and investors",
+          "snippet": "GIVA is headquartered in Bengaluru. The company operates from this location and serves as the central hub for its strategic, operational, and management activities.\n\n### How much Fundraise has GIVA secured in this round?\n\nGIVA has raised ₹450.00 Cr. in this funding round, equivalent to $52.51 Mn. Th",
+          "published": null,
+          "score": 0.8200375
+        },
+        {
+          "url": "https://www.caplight.com/company/giva-jewellery",
+          "title": "GIVA Valuation & Funding History | Caplight",
+          "snippet": "When was GIVA's last funding round?\n\nGIVA's most recent funding round was Private Equity on November 3, 2026.\n\nWho are the main investors in GIVA?\n\nKey investors in GIVA include Multiples Alternate Asset Management, Alteria Capital, Sixth Sense Ventures, A91 Partners, Premji Invest.\n\nWill GIVA IPO s",
+          "published": null,
+          "score": 0.8091252
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/QWcX7VEJkZOt",
+          "title": "GIVA",
+          "snippet": "# GIVA\nID: QWcX7VEJkZOt\nWebsite: www.giva.co\nLegal name: Indiejewel Fashions Private Limited\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/giva-co · 370,502 followers\nIndustry: Retail Luxury Goods and Jewelry\nIndustry codes: SIC 59, 594, NAICS 44, 448\nCompany type: Pri",
+          "published": null,
+          "score": 0.80609053
+        },
+        {
+          "url": "https://m.economictimes.com/tech/funding/giva-in-talks-to-close-rs-150-200-crore-funding-at-rs-4400-crore-valuation/articleshow/127182615.cms",
+          "title": "Giva in talks to close Rs 150-200 crore funding at Rs 4,400-crore valuation - The Economic Times",
+          "snippet": "### Synopsis\n\nSilver jewellery brand Giva is closing a Rs 150-200 crore funding round led by Premji Invest and Creaegis, with participation from Titan and Kenro Capital. The deal, partly primary and partly secondary, values the company at around Rs 4,200-4,400 crore. Giva is expected to post Rs 800-",
+          "published": null,
+          "score": 0.805173
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "GIVA lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://apps.apple.com/au/app/1627169923?see-all=reviews&platform=iphone",
+          "title": "‎GIVA: Silver & Gold Jewellery - Ratings & Reviews - App Store",
+          "snippet": "- Always the best 👌🏻👌🏻👌🏻\n- this is the worst app i had ever used , they are totally fraud , and their agent are more worst , i had connected with them more them 20 times each day , and their response is always same , i had talked with the agent in the delivery day about my problems and they never fi",
+          "published": null,
+          "score": 0.27503237
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/QWcX7VEJkZOt",
+          "title": "GIVA",
+          "snippet": "# GIVA\nID: QWcX7VEJkZOt\nWebsite: www.giva.co\nLegal name: Indiejewel Fashions Private Limited\nHeadquarters: Bangalore, Karnataka, India\nLinkedIn: www.linkedin.com/company/giva-co · 370,502 followers\nIndustry: Retail Luxury Goods and Jewelry\nIndustry codes: SIC 59, 594, NAICS 44, 448\nCompany type: Pri",
+          "published": null,
+          "score": 0.18388654
+        },
+        {
+          "url": "https://datos-insights.com/fraud-orchestration-hub",
+          "title": "Fraud Orchestration & AML Research | Datos Insights",
+          "snippet": "AI has lowered the cost and raised the scale of social engineering, synthetic identity creation, and automated attacks. Institutions solely relying on rules-based systems are defending against a threat that has already moved on.\n\n### Undetected fraud and the regulatory exposure that follows [...] Or",
+          "published": null,
+          "score": 0.035078675
+        },
+        {
+          "url": "https://www.federalregister.gov/documents/2023/12/08/2023-26338/protecting-consumers-from-sim-swap-and-port-out-fraud",
+          "title": "Federal Register :: Protecting Consumers from SIM-Swap and Port-Out Fraud",
+          "snippet": "86. The Report and Order establishes protections to address SIM swap and port-out fraud. With SIM swap fraud, a bad actor impersonates a customer of a wireless provider and convinces the provider to reassign the customer's SIM from the customer's device to a device controlled by the bad actor. Simil",
+          "published": null,
+          "score": 0.022586042
+        },
+        {
+          "url": "https://www.feedzai.com/blog/feedzai-fusion",
+          "title": "Feedzai Fusion London 2026 Takeaways | Feedzai",
+          "snippet": "That’s where real-time, AI-powered detection, good data, and customer experience come together, embedding fraud as a control within the business process rather than treating it as something that happens afterward.\n\nBut some of the signals needed to make these decisions may sit outside the organizati",
+          "published": null,
+          "score": 0.02145073
+        }
+      ]
+    }
+  }
+}

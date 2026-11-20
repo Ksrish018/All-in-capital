@@ -1,0 +1,208 @@
+{
+  "company": "Unbox Robotics",
+  "is_real": true,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "Unbox Robotics Pune warehouse sorting robots",
+      "results": [
+        {
+          "url": "https://unboxrobotics.com/newsroom",
+          "title": "Newsroom | Unbox Robotics Warehouse Automation News",
+          "snippet": "This is Business\n\nIndia moves around 30 million packages a day through warehouses that still sort by hand. This is Business visits Pune to show what changes when each robot is its own module, so a failed unit is pulled out and the fleet keeps running. It also sets out the two ways the system is paid",
+          "published": null,
+          "score": 0.7264256
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=EdGxtvzlAaU",
+          "title": "Why India’s Warehouses Are Becoming Automated  | Unbox Robotics | This is Business",
+          "snippet": "together in perfect coordination, sorting [music] and dispatching products. That's what Unbox Robotics is trying to build here in Pune. They're not just trying to automate warehouses, but completely rethink how India's logistics backbone actually works. And I'm here [music] to see how. Let's go. [mu",
+          "published": null,
+          "score": 0.682891
+        },
+        {
+          "url": "https://unboxrobotics.com/solutions-unbox-sort",
+          "title": "UnboxSort | Unbox Robotics",
+          "snippet": "A modular, multi-level binning system that uses vertical space to support high destination density, enabling organized parcel placement and faster consolidation within a compact footprint.\n\nMeet the sr series\n\nThe UnboxSort solution utilizes the SR series which features vertical lift robots engineer",
+          "published": null,
+          "score": 0.6029971
+        },
+        {
+          "url": "https://unboxrobotics.com",
+          "title": "Unbox Robotics - Redefining New Age Warehousing",
+          "snippet": "What is UnboxSort?\n\nUnboxSort is a modular, vertical robotic parcel sortation system that uses autonomous robots and intelligent software to sort parcels into destinations such as orders, routes, stores, or carriers. It is designed to operate in compact spaces while maintaining high accuracy and thr",
+          "published": null,
+          "score": 0.5923719
+        },
+        {
+          "url": "https://www.mobile-robots.com/manufacturer/unbox-robotics",
+          "title": "Unbox Robotics vendor profile in the Mobile Robot Directory",
+          "snippet": "#### Improved Productivity\n\nIncreased Efficiency: Unbox Robotics’ mobile robots are designed to automate and improve logistics operations, resulting in increased productivity and faster order fulfillment.\n\n#### Efficient Space Utilization\n\nSpace Optimization: Their innovative and compact vertical so",
+          "published": null,
+          "score": 0.5338836
+        }
+      ]
+    },
+    "founders": {
+      "query": "Pramod Ghadge Shahid Memon Unbox Robotics founder background",
+      "results": [
+        {
+          "url": "https://www.forbesindia.com/article/innovation/unbox-robotics-labs-overhauling-warehouse-automation/88999/1",
+          "title": "Unbox Robotics Labs: Overhauling warehouse automation",
+          "snippet": "Founders Pramod Ghadge and Shahid Memon started the company in 2019, initially in Bengaluru, but moved back home to Pune, after previously working at other firms, including Flipkart. “There, I was on the other side of the table,\" says Ghadge, who was exposed first-hand to deploying robotics and auto",
+          "published": null,
+          "score": 0.82190347
+        },
+        {
+          "url": "https://thestartupspectrum.com/unboxrobotics-transforms-order-fulfillment-with-advanced-swarm-robotics",
+          "title": "UnboxRobotics Transforms Order Fulfillment with Advanced Swarm Robotics",
+          "snippet": "## The Journey So Far\n\nThe journey of UnboxRobotics began with the vision of its founders, Pramod Ghadge and Shahid Memon, to revolutionize logistics and fulfillment operations.\n\nDrawing from their backgrounds in technology and supply chain management, the duo recognized a gap in the market for a ro",
+          "published": null,
+          "score": 0.7397986
+        },
+        {
+          "url": "https://medium.com/unbox-robotics/unbox-robotics-an-early-stage-startup-from-the-maiden-cohort-of-entrepreneur-first-receives-an-de23642271d8",
+          "title": "Unbox Robotics, an early-stage startup from the maiden cohort of Entrepreneur First, receives an…",
+          "snippet": "and SOSV also participated in this round. Unbox Robotics was co-founded by Pramod Ghadge, Shahid Memon through the Entrepreneur First is a talent investor, founded in London in 2011 by Matt Clifford and Alice Bentinck to support the world’s most ambitious individuals build globally important compani",
+          "published": null,
+          "score": 0.70821255
+        },
+        {
+          "url": "https://unboxrobotics.com/about-us",
+          "title": "About Us | Unbox Robotics",
+          "snippet": "What we do?\n\nWe engineer next-generation intelligent robotics and AI-driven software to transform warehouse sortation and fulfillment. Our systems ensure unprecedented vertical efficiency and scalable throughput for every growing business worldwide.\n\nOur tech evolves with you, delivering efficiency ",
+          "published": null,
+          "score": 0.6894102
+        },
+        {
+          "url": "https://yourstory.com/2021/12/logistics-automation-startup-unbox-robotics-seriesa-funding",
+          "title": "[Funding alert] Logistics automation startup Unbox Robotics raises $7M in Series A from 3one4 Capital, Sixth Sense Ventures, others | YourStory",
+          "snippet": "Pramod Ghadge, CEO and Co-founder of Unbox Robotics, said, “We are obsessed with improving the ways packages are handled, distributed, and delivered to end customers. We believe there’s a massive potential for building and deploying robotics tech to deliver more packages using smaller footprints at ",
+          "published": null,
+          "score": 0.48369414
+        }
+      ]
+    },
+    "market": {
+      "query": "warehouse sorting robots India competitors market",
+      "results": [
+        {
+          "url": "https://www.robolabs.ai/resources/blog/agriculture-warehouse-logistics-robotics-india",
+          "title": "Agriculture, Warehouse, and Logistics Robotics in India",
+          "snippet": "●Addverb's Atom sortation robot is exported to over 25 countries, demonstrating that Indian warehouse robotics companies can compete globally\n ●The company brings AI and edge computing to warehouse robotics, building homegrown technology\n ●Addverb operates one of the largest robotics manufacturing f",
+          "published": null,
+          "score": 0.647241
+        },
+        {
+          "url": "https://www.researchandmarkets.com/report/india-warehouse-automation-market",
+          "title": "India Warehouse Automation Market Size & Competitors",
+          "snippet": "The india warehouse automation market size is expected to grow from USD 560 million in 2025 to USD 659.96 million in 2026 and is forecast to reach USD 1.5 billion by 2031 at 17.84% CAGR over 2026-2031. This report is Segmented by Component (Hardware, Software, and Services), Automation Level (Basic ",
+          "published": null,
+          "score": 0.63204867
+        },
+        {
+          "url": "https://www.mordorintelligence.com/industry-reports/indian-warehouse-automation-market",
+          "title": "India Warehouse Automation Market Size & Forecast 2031",
+          "snippet": "The market size for the Indian warehouse automation market (henceforth referred to as the market studied) was evaluated by analyzing the independent type of solutions, such as conveyor and sortation systems, palletizers, mobile robots (AGV/AMR), vision inspection equipment, and labeling equipment th",
+          "published": null,
+          "score": 0.57731664
+        },
+        {
+          "url": "https://www.futuremarketinsights.com/reports/warehouse-robotics-market",
+          "title": "Warehouse Robotics Market | Global Market Analysis Report - 2035",
+          "snippet": "+ Australia is expected to lead country-level expansion as logistics operators automate long-distance supply chain operations.\n  + India is likely to record strong demand as e-commerce networks and organized warehousing expand across major cities.\n  + Companies with stronger robotics software and se",
+          "published": null,
+          "score": 0.48638487
+        },
+        {
+          "url": "https://www.maximizemarketresearch.com/market-report/global-warehouse-robotics-market/33454",
+          "title": "Warehouse Robotics Market: Industry Analysis and Forecast",
+          "snippet": "Asia Pacific dominated the largest Warehouse Robotics Market share in 2025. The Asia Pacific Warehouse Robotics Market is experiencing rapid growth due to expanding e-commerce, rising labor costs, and increasing investments in smart logistics infrastructure across China, Japan, South Korea, and Indi",
+          "published": null,
+          "score": 0.4711928
+        }
+      ]
+    },
+    "news": {
+      "query": "Unbox Robotics funding news",
+      "results": [
+        {
+          "url": "https://www.automatedwarehouseonline.com/unbox-robotics-raises-28m-to-scale-modular-warehouse-robots",
+          "title": "Unbox Robotics raises $28M to scale modular warehouse robots - Automated Warehouse",
+          "snippet": "Unbox Robotics last week announced that it has secured $28 million in Series B funding. The company said it plans to use the funding to expand its engineering and leadership teams, accelerate product development, and expand its presence across India and select markets. [...] ICICI Venture and Redsta",
+          "published": null,
+          "score": 0.8451773
+        },
+        {
+          "url": "https://www.prnewswire.com/news-releases/unbox-robotics-secures-us28-million-in-series-b-fundraise-led-by-icici-venture-302665476.html",
+          "title": "Unbox Robotics Secures US$28 million in Series B Fundraise Led by ICICI Venture",
+          "snippet": "PUNE, India, Jan. 21, 2026 /PRNewswire/ -- Unbox Robotics, a leading supply chain robotics technology company, today announced that it has secured US$28 million (INR 243 crore) in Series B funding, led by ICICI Venture and Redstart Labs (Infoedge), with co-investment from F-Prime, 3one4 Capital, Nav",
+          "published": null,
+          "score": 0.8440237
+        },
+        {
+          "url": "https://unboxrobotics.com/newsroom",
+          "title": "Newsroom | Unbox Robotics Warehouse Automation News",
+          "snippet": "### Series B, US$28 million, led by ICICI Venture\n\nUnbox Robotics has closed US$28 million in Series B funding led by ICICI Venture and Redstart Labs, backing a push into engineering, product and new markets ......",
+          "published": null,
+          "score": 0.8251675
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/PmZ6OS2MkMLz",
+          "title": "Unbox Robotics",
+          "snippet": "# Unbox Robotics\nID: PmZ6OS2MkMLz\nWebsite: www.unboxrobotics.com\nLegal name: UnboxRobotics Labs Private Limited\nHeadquarters: Pune, Maharashtra, India\nLinkedIn: www.linkedin.com/company/unboxrobotics · 38,314 followers\nIndustry: Automation Machinery Manufacturing\nCompany type: Privately Held\nFounded",
+          "published": null,
+          "score": 0.8062431
+        },
+        {
+          "url": "https://tracxn.com/d/companies/unbox-robotics/__b2SdPlacpjWiGETVrwgh2F050wXTAzNNMxmJ4eejVlA",
+          "title": "Unbox Robotics - 2026 Company Profile, Team, Funding, Competitors & Financials - Tracxn",
+          "snippet": "## Unbox Robotics's funding and investors\n\nUnbox Robotics has raised a total funding of $28.2M over 10 rounds. Its latest funding round was a Series B round on Jan 05, 2026 for  $\\\\\\\\\\. 11 investors participated in its latest round.  Unbox Robotics has 32 institutional investors and 24 angel investo",
+          "published": null,
+          "score": 0.8054792
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "Unbox Robotics lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://www.f6s.com/company/unboxrobotics1",
+          "title": "Unbox Robotics - F6S",
+          "snippet": "Unbox Robotics builds software-defined robotics systems to enable logistics players to automate and radically improve their operations on-demand in a",
+          "published": null,
+          "score": 0.24562746
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/PmZ6OS2MkMLz",
+          "title": "Unbox Robotics",
+          "snippet": "# Unbox Robotics\nID: PmZ6OS2MkMLz\nWebsite: www.unboxrobotics.com\nLegal name: UnboxRobotics Labs Private Limited\nHeadquarters: Pune, Maharashtra, India\nLinkedIn: www.linkedin.com/company/unboxrobotics · 38,314 followers\nIndustry: Automation Machinery Manufacturing\nCompany type: Privately Held\nFounded",
+          "published": null,
+          "score": 0.23757592
+        },
+        {
+          "url": "https://unboxrobotics.com",
+          "title": "Unbox Robotics - Redefining New Age Warehousing",
+          "snippet": "Unbox Robotics is a warehouse automation company that designs and deploys intelligent robotic systems for parcel sortation and order consolidation. Its flagship solution, UnboxSort, is a vertical robotic sortation system built to deliver high throughput, space efficiency, and operational flexibility",
+          "published": null,
+          "score": 0.23057307
+        },
+        {
+          "url": "https://unboxrobotics.com/gdpr-compliance",
+          "title": "GDPR Compliance Statement | Unbox Robotics",
+          "snippet": "Home Solutions Solutions Overview Explore All UnboxSort Vertical Robotic Sortation Explore All Coming Soon Technology Industry Resources Blogs Case Study Newsroom Company About us Events Careers Get In Touch GDPR Compliance Statement",
+          "published": null,
+          "score": 0.14342749
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=q-0MfjYV5UA",
+          "title": "Robot Dog Plagiarism? | Boston Dynamics sues",
+          "snippet": "[0:48] spot they write quote Boston Dynamics early Success With The Spot robot did not go unnoticed by competitors in the robotics industry including ghost\n[0:57] robotics whoa just take it easy man the complaint also makes mention of some past visits that ghost robotics has made\n[1:04] to Air Force",
+          "published": null,
+          "score": 0.07765744
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "company": "Prepnest",
+  "is_real": false,
+  "recorded": "2026-11-20",
+  "warning": "Contains information from after the fund's decision. Use only to test research quality. Never use in the back test.",
+  "checks": {
+    "exists": {
+      "query": "Prepnest India exam prep app",
+      "results": [
+        {
+          "url": "https://www.appbrain.com/app/prepnest/com.cocode.prepnest",
+          "title": "PrepNest - Free App for Android",
+          "snippet": "Comprehensive Resource Library: Access a curated collection of high-quality materials and quizzes for \\[mention target audience/subjects, e.g., competitive exams, skill development, or school coursework].\n\nPerformance Analytics: Gain deep insights into your strengths and weaknesses with detailed gra",
+          "published": null,
+          "score": 0.5378001
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/7zGzrET4i2aB",
+          "title": "PrepNest - Leverage Your IB Career",
+          "snippet": "# PrepNest - Leverage Your IB Career\nID: 7zGzrET4i2aB\nWebsite: www.prepnest.app\nLinkedIn: www.linkedin.com/company/prepnestib · 0 followers\nIndustry: Higher Education\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes [...] ## Products and services\nBusiness areas: Investment Ba",
+          "published": null,
+          "score": 0.45901552
+        },
+        {
+          "url": "https://internshala.com/company/prepnest-1745916964",
+          "title": "PrepNest Company Profile & Overview",
+          "snippet": "We combine AI-powered resume reviews, automated mock interviews, and real-time mentorship to help candidates get job-ready faster. Our mission is to level the",
+          "published": null,
+          "score": 0.24725965
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/xHxxP23uQq0A",
+          "title": "TalentGPT by PrepNest",
+          "snippet": "# TalentGPT by PrepNest\nID: xHxxP23uQq0A\nWebsite: www.talentgpt.world\nLinkedIn: www.linkedin.com/company/prepnest · 170 followers\nIndustry: Software Development\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes\nSocial profiles: www.instagram.com/prepnest_official\nEmail: sahib@",
+          "published": null,
+          "score": 0.23405631
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/CgrgodrLmG5D",
+          "title": "PrepNest Logistics",
+          "snippet": "# PrepNest Logistics\nID: CgrgodrLmG5D\nLinkedIn: www.linkedin.com/company/prepnest-logistics · 2 followers\nIndustry: Transportation, Logistics, Supply Chain and Storage\nCompany type: Privately Held\nFounded: 2000 [...] ## Headcount\n- Now: 2 · 0 monthly\n  - Southern Asia: 1\n  - Eastern Europe: 0\n  - La",
+          "published": null,
+          "score": 0.063831605
+        }
+      ]
+    },
+    "founders": {
+      "query": "Neha Bhatt Prepnest founder background",
+      "results": [
+        {
+          "url": "https://www.penguin.co.in/book_author/neha-bhatt",
+          "title": "Neha Bhatt - Penguin Random House India",
+          "snippet": "has also written widely on books, film and culture. She holds a postgraduate diploma from the AsianCollege of Journalism. She is an advocate for conscious parenting and co-founder of the pioneering support network, Gentle Baby SleepIndia. Neha is based in Gurugram, where she lives with her husband a",
+          "published": null,
+          "score": 0.32552055
+        },
+        {
+          "url": "https://www.penguin.co.in?p=110546",
+          "title": "Neha Bhatt - Penguin Random House India",
+          "snippet": "has also written widely on books, film and culture. She holds a postgraduate diploma from the AsianCollege of Journalism. She is an advocate for conscious parenting and co-founder of the pioneering support network, Gentle Baby SleepIndia. Neha is based in Gurugram, where she lives with her husband a",
+          "published": null,
+          "score": 0.32552055
+        },
+        {
+          "url": "https://www.livemint.com/authors/neha-bhatt",
+          "title": "Neha Bhatt: Read stories by Neha Bhatt on Mint.",
+          "snippet": "Share Via\n\nThe Indian publishing industry has entered a phase of steady growth. Premium\n\n## Publishing boom opens new chapter for books\n\n 10 min read . 11 Mar 2026 \n\nShare Via\n\nFile photo of the University of Southampton’s reception area in Gurugram. (Neha Bhatt) Premium\n\n## Beyond the visa: Why for",
+          "published": null,
+          "score": 0.10266401
+        },
+        {
+          "url": "https://eshe.in/tag/neha-bhatt",
+          "title": "neha bhatt – eShe",
+          "snippet": "Title: neha bhatt – eShe\n# Tag: neha bhatt. by eShe  January 10, 2022   Number of comments0. ## “Indian children are among the most sleep-deprived in the world”: New book for Indian parents offers baby-sleep guidance. Blending traditional wisdom and modern sleep research, this new book aims to be a ",
+          "published": null,
+          "score": 0.06669065
+        },
+        {
+          "url": "https://nycstemclub.com/nyc-top-shsat-prep-program",
+          "title": "NYC's #1 SHSAT Prep | 90%+ Specialized HS Acceptance",
+          "snippet": "Top SHSAT prep in NYC. 90+% acceptance and over 50% to Stuyvesant. Year-long programs + bootcamps in Manhattan. Enroll now.",
+          "published": null,
+          "score": 0.003324437
+        }
+      ]
+    },
+    "market": {
+      "query": "exam prep app India competitors market",
+      "results": [
+        {
+          "url": "https://www.kenresearch.com/industry-reports/india-test-preparation-market",
+          "title": "India Test Preparation Market Share, Companies & Trends Report 2025-2032",
+          "snippet": "## CHAPTER 9 - Competitive Landscape\n\n## Competitive Landscape Overview\n\nThe market is fragmented across national chains, regional specialists and digital-first platforms. Brand outcomes, faculty quality, content depth, learner acquisition economics and hybrid center execution constitute the princip",
+          "published": null,
+          "score": 0.6435533
+        },
+        {
+          "url": "https://tracxn.com/d/companies/online-mock-test/__BwILfHmNZLIdgTkehTfTM-IT3uOk3v1Tb8vePJoiCo0",
+          "title": "Online Mock Test - 2026 Company Profile & Competitors - Tracxn",
+          "snippet": "| 5th | Logo for Exampur  Exampur 2018, Ghaziabad  (India), Acquired | Mobile-based platform providing government exam preparation solutions | $1.62M | Solis Innoventures, UpGrad  & 25 others | 51/100 |\n| 6th | Logo for Oliveboard  Oliveboard 2012, Bengaluru  (India), Seed | Provider of online test ",
+          "published": null,
+          "score": 0.6173396
+        },
+        {
+          "url": "https://loestroadvisors.medium.com/from-coaching-centers-to-cloud-classrooms-tapping-into-indias-test-prep-cee1fad8b0e7",
+          "title": "Medium",
+          "snippet": "## The Titans of India’s Test Prep\n\nIndia’s test prep market is dominated by tech-driven startups (Online-first) and traditional coaching giants (Offline-first). The following are the sector’s top players and account for a staggering $2.5Bn+ in revenue, commanding 35% of the market share:\n\n### 1. On",
+          "published": null,
+          "score": 0.6048658
+        },
+        {
+          "url": "https://markets.apistemic.com/companies/testbook-com-lg2yw",
+          "title": "Top Testbook Competitors & Lookalikes",
+          "snippet": "Discover Testbook's top competitors: Adda247, Gradeup (Gradestack Learning Pvt Ltd), PW (PhysicsWallah) and others. a knockout Android App. India's largest",
+          "published": null,
+          "score": 0.5783887
+        },
+        {
+          "url": "https://www.imarcgroup.com/india-online-test-preparation-market",
+          "title": "India Online Test Preparation Market Size and Report 2034",
+          "snippet": "The India online test preparation market size increased from USD 11.9 Million in 2025 to USD 12.6 Million in 2026.",
+          "published": null,
+          "score": 0.33155245
+        }
+      ]
+    },
+    "news": {
+      "query": "Prepnest funding news",
+      "results": [
+        {
+          "url": "https://tavily.com/knowledge/company/7zGzrET4i2aB",
+          "title": "PrepNest - Leverage Your IB Career",
+          "snippet": "# PrepNest - Leverage Your IB Career\nID: 7zGzrET4i2aB\nWebsite: www.prepnest.app\nLinkedIn: www.linkedin.com/company/prepnestib · 0 followers\nIndustry: Higher Education\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes [...] Description: PrepNest — The Investment Banking Platfor",
+          "published": null,
+          "score": 0.23074637
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/xHxxP23uQq0A",
+          "title": "TalentGPT by PrepNest",
+          "snippet": "# TalentGPT by PrepNest\nID: xHxxP23uQq0A\nWebsite: www.talentgpt.world\nLinkedIn: www.linkedin.com/company/prepnest · 170 followers\nIndustry: Software Development\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes\nSocial profiles: www.instagram.com/prepnest_official\nEmail: sahib@",
+          "published": null,
+          "score": 0.19544049
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/CgrgodrLmG5D",
+          "title": "PrepNest Logistics",
+          "snippet": "# PrepNest Logistics\nID: CgrgodrLmG5D\nLinkedIn: www.linkedin.com/company/prepnest-logistics · 2 followers\nIndustry: Transportation, Logistics, Supply Chain and Storage\nCompany type: Privately Held\nFounded: 2000 [...] Founded: 2000\nDescription: At PrepNest Logistics, we deliver premium third-party lo",
+          "published": null,
+          "score": 0.18300885
+        },
+        {
+          "url": "https://www.renaissance.com/resources/funding",
+          "title": "K–12 Education Funding Resources | Renaissance",
+          "snippet": "Preschool Development Grants support the strengthening of early care and education systems through initiatives that enhance high-quality early childhood experiences to prepare children from low-income families to be successful in school.\n\n### Did your state receive a Comprehensive Literacy State Dev",
+          "published": null,
+          "score": 0.1266771
+        },
+        {
+          "url": "https://www.k12dive.com/news/school-districts-federal-funding-freeze-afterschool-English-learners/752848",
+          "title": "School districts grapple with ‘budgetary chaos’ in wake of federal funding freeze",
+          "snippet": "The funding hold has already led to staff layoffs, program delays and cancellations of services, the House members said.\n\n### Spending under review\n\nThe withheld funds were appropriated by Congress and approved by President Donald Trump earlier this year. States expected to gain access to the monies",
+          "published": null,
+          "score": 0.090092994
+        }
+      ]
+    },
+    "red_flags": {
+      "query": "Prepnest lawsuit OR shutdown OR fraud OR regulator",
+      "results": [
+        {
+          "url": "https://tavily.com/knowledge/company/7zGzrET4i2aB",
+          "title": "PrepNest - Leverage Your IB Career",
+          "snippet": "# PrepNest - Leverage Your IB Career\nID: 7zGzrET4i2aB\nWebsite: www.prepnest.app\nLinkedIn: www.linkedin.com/company/prepnestib · 0 followers\nIndustry: Higher Education\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes [...] Description: PrepNest — The Investment Banking Platfor",
+          "published": null,
+          "score": 0.11940814
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/xHxxP23uQq0A",
+          "title": "TalentGPT by PrepNest",
+          "snippet": "# TalentGPT by PrepNest\nID: xHxxP23uQq0A\nWebsite: www.talentgpt.world\nLinkedIn: www.linkedin.com/company/prepnest · 170 followers\nIndustry: Software Development\nCompany type: Privately Held\nFounded: 2025\nBusiness model: B2C\nSaaS: yes\nSocial profiles: www.instagram.com/prepnest_official\nEmail: sahib@",
+          "published": null,
+          "score": 0.11576065
+        },
+        {
+          "url": "https://tavily.com/knowledge/company/CgrgodrLmG5D",
+          "title": "PrepNest Logistics",
+          "snippet": "# PrepNest Logistics\nID: CgrgodrLmG5D\nLinkedIn: www.linkedin.com/company/prepnest-logistics · 2 followers\nIndustry: Transportation, Logistics, Supply Chain and Storage\nCompany type: Privately Held\nFounded: 2000 [...] Founded: 2000\nDescription: At PrepNest Logistics, we deliver premium third-party lo",
+          "published": null,
+          "score": 0.111821815
+        },
+        {
+          "url": "https://www.dms.myflorida.com/content/download/169444/file/Vendy%20Group%20LLC%20-%20Product%20Catalog.pdf",
+          "title": "Refined - Florida Department of Management Services",
+          "snippet": "Kanauga Pen Customized Supplies 4.33 6.55 50 1 This contemporary style executive push retractable metal Kanauga Pen comes in high gloss enamel and with a shining silver cap. It features anti-fraud black ink.\nHissop Pen Customized Supplies 4.31 6.12 50 1 The marble look center band and silver accents",
+          "published": null,
+          "score": 0.012479699
+        },
+        {
+          "url": "https://cancerchat.cancerresearchuk.org/f/pre-diagnosis-signs-symptoms/133035/failing-bowel-prep---nest-steps-please",
+          "title": "Failing bowel prep - Pre-Diagnosis, Signs & Symptoms",
+          "snippet": "Hi, I'm sorry to bother you but I don't know who else to ask! My daughter is only 24, so appreciate the chances of her having bowel cancer is slim.",
+          "published": null,
+          "score": 0.008644178
+        }
+      ]
+    }
+  }
+}

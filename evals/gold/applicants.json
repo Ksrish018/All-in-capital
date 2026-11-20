@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "status": "draft. Built from the forms and decks on 20 Nov 2026. Needs a review by the team, and Kushal for the recommendation bands.",
+  "how_to_read": "Each applicant lists checks the system must pass. 'extract' values are what A1 must pull out, with the source. 'inconsistencies' are deck versus form gaps that must appear on the brief. 'flags' must be raised. 'allowed_recommendations' limits the headline recommendation. It is a range, not a single answer, because people decide. Severity follows PRD Section 19.0.",
+  "applicants": [
+    {
+      "id": "settlr",
+      "files": {"form": "Decks/Settlr_Form.pdf", "deck": "Decks/Settlr_Deck.pdf"},
+      "source": "public_form",
+      "flags": [{"flag": "later_stage", "why": "Stage selected is Series A. Raising INR 30 Cr. Seed of INR 9 Cr already raised in 2024.", "severity": "High"}],
+      "short_circuit": true,
+      "research_runs": 0,
+      "extract": {
+        "stage_selected": "Series A",
+        "amount_raising": "INR 30 Cr",
+        "payment_volume_monthly": "INR 86 Cr",
+        "net_revenue_monthly": "INR 78 L",
+        "revenue_is_net_revenue": "yes, net revenue stated separately from volume"
+      },
+      "inconsistencies": [],
+      "allowed_recommendations": ["pass", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "Strong company, wrong stage. The brief should say so kindly. Pass on structure, not people."
+    },
+    {
+      "id": "talkbook",
+      "files": {"form": "Decks/Talkbook_Form.pdf", "deck": "Decks/Talkbook_Deck.pdf"},
+      "source": "public_form",
+      "flags": [
+        {"flag": "portfolio_conflict", "with": "MeetRecord", "why": "Both capture and summarise sales calls for sales teams.", "severity": "Critical"},
+        {"flag": "sector_label_mismatch", "why": "Selected consumer tech. It sells to sales teams, so it is B2B software.", "severity": "High"}
+      ],
+      "short_circuit": true,
+      "status": "hold_conflict",
+      "extract": {
+        "mrr_form": "INR 1.9 L",
+        "paying_customers": "16 teams, 340 seats",
+        "cac": "about INR 48,000 per team",
+        "gross_margin": "70%"
+      },
+      "inconsistencies": [{"field": "mrr", "form": "INR 1.9 L", "deck": "INR 2.1 L", "gap_percent": 10.5, "severity": "High"}],
+      "allowed_recommendations": ["hold"],
+      "aditya_on_call": false,
+      "notes": "Meeting 4 is this exact case. Kushal speaks to the MeetRecord founder first. RevenueHero (sales scheduling) is adjacent but should not be flagged as a conflict."
+    },
+    {
+      "id": "capilot",
+      "files": {"form": "Decks/CAPilot_Form.pdf", "deck": null},
+      "source": "public_form",
+      "flags": [],
+      "short_circuit": false,
+      "extract": {
+        "mrr": "INR 78,000",
+        "paying_customers": "24 CA firms, 7 on trial",
+        "churn": "2 firms churned",
+        "cac": "unknown. Founders say they have not measured it."
+      },
+      "gaps": ["no deck", "customer acquisition cost not measured"],
+      "inconsistencies": [],
+      "allowed_recommendations": ["go", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "Must run fully on the form alone and name the missing deck as a gap. The founder is a practising CA, so founder-market fit is strong on the form, but stays 'founder says' until confirmed."
+    },
+    {
+      "id": "carecorner",
+      "files": {"form": "Decks/CareCorner_Form.pdf", "deck": "Decks/CareCorner_Deck.pdf"},
+      "source": "public_form",
+      "flags": [{"flag": "outside_core_sectors", "why": "Selected Other (Healthcare). Physical clinics.", "severity": "High", "strength": "soft. The fund's public record says sector-agnostic, see seed/fund/public_thesis.md"}],
+      "short_circuit": true,
+      "extract": {
+        "revenue_monthly": "INR 9.8 L across three clinics, October 2026",
+        "capex_per_clinic": "INR 28 L",
+        "debt": "INR 40 L bank loan"
+      },
+      "criteria_expectations": [{"criterion": "C9", "rating_max": 1, "why": "INR 28 L capex per clinic and a plan for five more clinics needs far more capital than a pre-seed cheque."}],
+      "inconsistencies": [],
+      "allowed_recommendations": ["pass", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "Like HopBox: good operators, capital-heavy model. Pass on structure, not people."
+    },
+    {
+      "id": "earnwise",
+      "files": {"form": "Decks/EarnWise_Form.pdf", "deck": "Decks/EarnWise_Deck.pdf"},
+      "source": "public_form",
+      "flags": [{"flag": "regulatory_exposure", "why": "Digital lending rules. Advances funded partly by the founder's savings and an NBFC agreement only in principle.", "severity": "High"}],
+      "short_circuit": false,
+      "extract": {
+        "disbursed": "INR 38 L since July 2026",
+        "workers_enabled": "1,600",
+        "enterprise_clients": "1 live, 2 in pilot",
+        "cofounder_left": "yes, July 2026"
+      },
+      "gaps": ["founder track record thin: short internship and contract roles listed", "no revenue figure given, only amount disbursed"],
+      "criteria_expectations": [
+        {"criterion": "C11", "rating_max": 2, "why": "Solo founder after a co-founder left. Two developers are outsourced."},
+        {"criterion": "C7", "rating_max": 1, "why": "Disbursed amount is not revenue. No take rate or loss figure given."}
+      ],
+      "inconsistencies": [],
+      "allowed_recommendations": ["pass", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "The system must not puff up a thin record. Short roles must be described as they are."
+    },
+    {
+      "id": "rentroute",
+      "files": {"form": "Decks/RentRoute_Form.pdf", "deck": "Decks/RentRoute_Deck.pdf"},
+      "source": "public_form",
+      "flags": [{"flag": "regulatory_bet", "why": "Depends on card networks and banks allowing rent payments by card. They have changed these rules before.", "severity": "High"}],
+      "short_circuit": false,
+      "extract": {
+        "payment_volume": "INR 6.1 Cr since July 2026",
+        "gross_fees": "INR 11 L",
+        "net_revenue": "INR 5.5 L",
+        "revenue_is_net_revenue": "no. The deck calls INR 11 L gross fees revenue."
+      },
+      "inconsistencies": [{"field": "revenue", "form": "net revenue INR 5.5 L", "deck": "INR 11 L revenue (1.8% fee)", "note": "Gross fee shown as revenue in the deck", "severity": "High"}],
+      "criteria_expectations": [{"criterion": "C3", "rating_max": 1}, {"criterion": "C10", "rating_max": 2, "why": "Deck says no direct competitors. Research should find card-rent payment apps."}],
+      "allowed_recommendations": ["pass", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "Volume must never be read as revenue. Coinlane-style dependency on friendlier rules."
+    },
+    {
+      "id": "grainkind",
+      "files": {"form": "Decks/GrainKind_Form.pdf", "deck": "Decks/GrainKind_Deck.pdf"},
+      "source": "public_form",
+      "flags": [],
+      "short_circuit": false,
+      "extract": {
+        "revenue_monthly": "INR 16.5 L, October 2026",
+        "repeat_90_day": "31% June, 34% July, 38% August cohorts",
+        "cohort_customers": "3,100",
+        "gross_margin": "48%",
+        "blended_cac": "INR 340",
+        "contribution_after_cac": "11%",
+        "ltv_to_cac": "about 1.8x"
+      },
+      "criteria_expectations": [{"criterion": "C7", "rating_min": 3, "why": "Shares cohort repeat data, the exact number Petalry lacked."}],
+      "risks_to_surface": ["single co-packer", "rising paid social cost"],
+      "inconsistencies": [],
+      "allowed_recommendations": ["go", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "The opposite of Petalry. The Giva memo passage on repeat should be pulled as context."
+    },
+    {
+      "id": "stocksathi",
+      "files": {"form": "Decks/StockSathi_Form Response.pdf", "deck": "Decks/StockSathi_Deck.pdf"},
+      "source": "warm_intro",
+      "flags": [{"flag": "regulatory_exposure", "why": "Takes first-loss credit risk and is not a registered NBFC.", "severity": "High"}],
+      "short_circuit": false,
+      "extract": {
+        "stores_onboarded_form": "42",
+        "repeat_stores": "22 ordered more than once",
+        "gmv": "about INR 9 L in three months",
+        "credit_outstanding": "about INR 85,000 across 12 retailers",
+        "source_of_intro": "a founder in the Fund I portfolio"
+      },
+      "inconsistencies": [
+        {"field": "cac", "form": "under INR 2,000 per store", "deck": "INR 2,860 blended, October", "severity": "High"},
+        {"field": "nbfc_partner", "form": "credit provided through our NBFC partner", "deck": "NBFC partnership in discussion", "severity": "High"},
+        {"field": "stores", "form": "42 onboarded", "deck": "38 stores", "severity": "Low"}
+      ],
+      "lens_expectation": "The public and revealed lenses should differ. Revealed lens leans positive (SuperK-like small-town commerce with repeat). Public wording leans less positive. The brief must explain the difference.",
+      "allowed_recommendations": ["go", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "The drift example from Meeting 5. Warm intro from a portfolio founder."
+    },
+    {
+      "id": "pumpwise",
+      "files": {"form": "Decks/Pumpwise_Form.pdf", "deck": "Decks/Pumpwise_Deck.pdf"},
+      "source": "public_form",
+      "flags": [],
+      "short_circuit": false,
+      "extract": {
+        "paid_customers": "6 of 11 pilots",
+        "sensors": "140",
+        "revenue_cumulative": "INR 14.2 L, of which hardware INR 13.3 L",
+        "mrr_subscription": "INR 1.05 L",
+        "cac": "about INR 73,000 per paid customer, excludes founder time",
+        "value_evidence": "customer-reported, not audited"
+      },
+      "criteria_expectations": [{"criterion": "C8", "note": "Rated apart from founder quality, per Meeting 3. Paid pilots count as evidence for path to market."}],
+      "evidence_strength_expectation": "Downtime savings must be labelled 'founder says, customer-reported', never confirmed.",
+      "inconsistencies": [],
+      "allowed_recommendations": ["go", "needs_human"],
+      "aditya_on_call": true,
+      "notes": "Deeptech, so Aditya joins the call."
+    },
+    {
+      "id": "yatrika",
+      "files": {"form": "Decks/Yatrika_Form.pdf", "deck": "Decks/Yatrika_Deck.pdf"},
+      "source": "public_form",
+      "flags": [{"flag": "vague_deck", "why": "Deck has no numbers: 'thousands of travellers', '3x growth', 'many 5-star reviews', and no raise amount.", "severity": "High"}],
+      "short_circuit": false,
+      "extract": {
+        "bookings": "410",
+        "travellers": "about 1,300",
+        "booking_value": "INR 38.6 L",
+        "commission": "12%",
+        "revenue": "INR 4.6 L",
+        "revenue_type": "commission, not booking value",
+        "repeat": "14% booked a second trip"
+      },
+      "inconsistencies": [{"field": "travellers", "form": "about 1,300", "deck": "thousands of travellers", "severity": "High"}],
+      "redaction_check": "The deck contains hello@yatrika.example. It must be replaced with [EMAIL] before any model call.",
+      "allowed_recommendations": ["pass", "needs_human"],
+      "aditya_on_call": false,
+      "notes": "Vague claims cannot be rated above Weak. Numbers come only from the form."
+    }
+  ],
+  "global_checks": [
+    {"id": "placeholder_sites", "check": "Every .example website is marked unknown with the reason 'site could not be reached'. No made-up facts.", "severity": "Critical"},
+    {"id": "no_pii_to_model", "check": "No founder name, email, phone or LinkedIn link appears in any logged model input.", "severity": "Critical"},
+    {"id": "same_name_trap", "check": "Research results about real companies or people with the same name are dropped. See evals/fixtures/research/memo_companies for real lookalikes.", "severity": "High"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "status": "draft, needs Kushal to confirm",
+  "built": "2026-11-20",
+  "how_built": "Merged from the public portfolio page (portfolio_public.json), the founder stories on allincapital.vc, the invested companies in the deal memos, MeetRecord from meeting notes 4, and the F4 research brief. Tags drive the portfolio conflict check, so they describe what the product does and who buys it.",
+  "sources": {
+    "site": "https://www.allincapital.vc/portfolio",
+    "memos": "Decks/MESA_T2_Case 03_Deal Memos.pdf",
+    "meeting_notes": "Decks/MESA_T2_Case 03_Partner Meeting Notes.pdf",
+    "f4": "https://f4.fund/firms/all-in-capital"
+  },
+  "companies": [
+    {"name": "MeetRecord", "sector": "B2B SaaS", "description": "Captures intelligence from online sales and customer success meetings for coaching and deal insight.", "buyer": "sales and CS teams", "tags": ["call recording", "meeting notes", "call summaries", "transcription", "sales intelligence", "sales coaching", "conversation intelligence"], "source": ["site", "meeting_notes"]},
+    {"name": "Spiti.xyz", "sector": "B2B SaaS", "description": "Internal video library for remote teams: all hands, sales calls, product walk-throughs.", "buyer": "companies", "tags": ["video library", "internal video", "sales call recordings", "knowledge sharing"], "source": ["site"]},
+    {"name": "Suitable.ai", "sector": "B2B SaaS", "description": "Makes employee referral requests a one-click experience for recruiters.", "buyer": "recruiters", "tags": ["recruiting", "employee referrals", "HR tech"], "source": ["site"]},
+    {"name": "Bitespeed", "sector": "eCommerce software", "description": "Marketing and customer engagement software for online stores.", "buyer": "D2C brands", "tags": ["ecommerce marketing", "customer engagement", "D2C tools"], "source": ["site"]},
+    {"name": "Anar", "sector": "B2B network", "description": "Business networking platform for Indian SMEs across manufacturers, retailers and resellers.", "buyer": "SMEs", "tags": ["SME network", "B2B marketplace", "trade network"], "source": ["site"]},
+    {"name": "Rocketlane", "sector": "B2B SaaS", "description": "Software for customer onboarding and implementation projects.", "buyer": "B2B software companies", "tags": ["customer onboarding", "implementation", "project collaboration"], "source": ["site", "f4"]},
+    {"name": "Wint Wealth", "sector": "Fintech", "description": "Platform to invest in alternative fixed income and bonds.", "buyer": "retail investors", "tags": ["bonds", "fixed income", "retail investing", "wealth"], "source": ["site", "memos"]},
+    {"name": "SuperK", "sector": "Commerce infrastructure", "description": "Franchises small kirana stores into a chain of mini supermarkets in tier 2 and 3 towns.", "buyer": "store owners and shoppers", "tags": ["kirana", "small-town retail", "franchise", "grocery", "retail infrastructure"], "source": ["site", "memos"]},
+    {"name": "Mailmodo", "sector": "B2B SaaS", "description": "Interactive email marketing without code.", "buyer": "marketers", "tags": ["email marketing", "interactive email", "marketing automation"], "source": ["site", "f4"]},
+    {"name": "Fleetx", "sector": "B2B SaaS", "description": "Fleet management and logistics software.", "buyer": "fleet operators", "tags": ["fleet management", "logistics software", "telematics"], "source": ["site"]},
+    {"name": "Fashinza", "sector": "B2B marketplace", "description": "Apparel manufacturing marketplace connecting brands and factories.", "buyer": "fashion brands", "tags": ["apparel sourcing", "manufacturing marketplace", "fashion supply chain"], "source": ["site", "f4"]},
+    {"name": "GIVA", "sector": "Consumer brand", "description": "Silver jewellery brand selling online and in stores.", "buyer": "consumers", "tags": ["jewellery", "D2C", "silver", "consumer brand"], "source": ["site", "memos", "f4"]},
+    {"name": "RevenueHero", "sector": "B2B SaaS", "description": "Inbound lead routing and meeting scheduling for sales teams.", "buyer": "sales teams", "tags": ["meeting scheduling", "lead routing", "sales tools", "inbound conversion"], "source": ["site"]},
+    {"name": "ePlane", "sector": "Deeptech", "description": "Electric vertical take-off aircraft for urban air mobility.", "buyer": "operators and cities", "tags": ["eVTOL", "electric aircraft", "aerospace", "urban air mobility"], "source": ["site", "memos"]},
+    {"name": "Jai Kisan", "sector": "Fintech", "description": "Rural and agricultural credit through channel partners.", "buyer": "farmers and rural businesses", "tags": ["rural credit", "agri lending", "farm finance"], "source": ["site", "memos", "f4"]},
+    {"name": "Questionbook", "sector": "Consumer tech", "description": "Listed on the site as q. Description to confirm.", "buyer": "to confirm", "tags": ["to confirm"], "source": ["site"]},
+    {"name": "Rigi", "sector": "Consumer tech", "description": "Creator monetisation platform. Description to confirm.", "buyer": "creators", "tags": ["creator economy", "community monetisation"], "source": ["site"]},
+    {"name": "Unbox Robotics", "sector": "Deeptech", "description": "Warehouse robotics for parcel sortation.", "buyer": "logistics and ecommerce warehouses", "tags": ["warehouse robotics", "parcel sorting", "logistics automation"], "source": ["site", "memos", "f4"]},
+    {"name": "PierSight", "sector": "Deeptech", "description": "Satellite radar for maritime monitoring.", "buyer": "governments and maritime operators", "tags": ["satellites", "SAR radar", "space tech", "maritime surveillance"], "source": ["site founder story", "f4"]},
+    {"name": "NewMe", "sector": "Consumer brand", "description": "Fashion brand for young women. Description to confirm.", "buyer": "consumers", "tags": ["fashion", "apparel", "D2C"], "source": ["site founder story"]},
+    {"name": "Broccoli AI", "sector": "To confirm", "description": "Founder story on the site. Description to confirm.", "buyer": "to confirm", "tags": ["to confirm"], "source": ["site founder story"]},
+    {"name": "Magma", "sector": "To confirm", "description": "Founder story on the site. Description to confirm.", "buyer": "to confirm", "tags": ["to confirm"], "source": ["site founder story"]},
+    {"name": "NPrep", "sector": "Consumer tech", "description": "Exam preparation for nursing students.", "buyer": "nursing students", "tags": ["exam prep", "edtech", "nursing"], "source": ["f4"]},
+    {"name": "MagicStudio", "sector": "Consumer tech", "description": "Generative AI photo editing.", "buyer": "consumers and sellers", "tags": ["AI photo editing", "generative AI", "image tools"], "source": ["f4"]},
+    {"name": "Vaaree", "sector": "Consumer commerce", "description": "Online home decor and furnishing store.", "buyer": "consumers", "tags": ["home decor", "furnishing", "ecommerce"], "source": ["f4"]}
+  ],
+  "open_items": [
+    "The site's full list (Notion) could not be fetched. Kushal should paste or confirm the full portfolio of about 80 companies.",
+    "Entries marked 'to confirm' need a one-line description and tags before the conflict check relies on them."
+  ]
+}
