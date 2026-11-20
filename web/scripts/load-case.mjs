@@ -38,7 +38,10 @@ if (arg("clean")) {
 }
 
 const files = fs.readdirSync(decks);
-const companies = [...new Set(files.filter((f) => /_(Form|Deck)/.test(f) && !/MESA/.test(f)).map((f) => f.split("_")[0]))].sort();
+const only = process.argv.includes("--only") ? process.argv[process.argv.indexOf("--only") + 1].split(",") : null;
+const companies = [...new Set(files.filter((f) => /_(Form|Deck)/.test(f) && !/MESA/.test(f)).map((f) => f.split("_")[0]))]
+  .filter((c) => !only || only.includes(c))
+  .sort();
 const blob = (f) => new Blob([fs.readFileSync(path.join(decks, f))], { type: "application/pdf" });
 
 async function send(co) {
@@ -70,11 +73,11 @@ console.log(`sent ${ids.length} applications in ${((Date.now() - started) / 1000
 const kick = () => fetch(`${BASE}/api/worker/screening`, { method: "POST", headers: { authorization: `Bearer ${process.env.WORKER_SECRET}` } }).catch(() => {});
 kick();
 
-const busy = ["received", "queued", "parsing"];
+const busy = ["received", "queued", "parsing", "screening", "extracting", "researching", "scoring"];
 let rows = [];
-for (let i = 0; i < 120; i++) {
+for (let i = 0; i < 200; i++) {
   rows = (await db.query("select id, company_name, status, last_step, short_circuit_flags, status_reason from public.applications where id = any($1)", [ids])).rows;
-  const waiting = rows.filter((r) => busy.includes(r.status) || (r.status === "screening" && r.last_step !== "cheap_checks_done"));
+  const waiting = rows.filter((r) => busy.includes(r.status));
   process.stdout.write(`\r${rows.length - waiting.length}/${ids.length} settled   `);
   if (waiting.length === 0) break;
   if (i % 10 === 9) kick();

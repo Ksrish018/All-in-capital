@@ -31,7 +31,17 @@ export function redactText(text: string, founders: FounderRef[]): string {
   // Longest names first, so "Dr. Lakshmi Reddy" goes before "Lakshmi".
   const pairs = founders.flatMap((f) => nameParts(f.name).map((p) => [p, f.id] as const)).sort((a, b) => b[0].length - a[0].length);
   for (const [part, id] of pairs) out = out.replace(new RegExp(`(?<![A-Za-z])${escape(part)}(?![A-Za-z])`, "g"), id);
+  // Names written as link slugs, such as "dhruv-shah" in a URL.
+  for (const f of founders) for (const slug of slugs(f.name)) out = out.replace(new RegExp(escape(slug), "gi"), f.id.toLowerCase());
   return out;
+}
+
+/** "Dr. Nila Rao" becomes "nila-rao", "nila_rao" and "nilarao". */
+export function slugs(name: string | null): string[] {
+  if (!name) return [];
+  const parts = name.replace(/^(Dr|Mr|Mrs|Ms|Prof)\.?\s+/i, "").trim().toLowerCase().split(/\s+/);
+  if (parts.length < 2) return [];
+  return [parts.join("-"), parts.join("_"), parts.join("")];
 }
 
 /** N6 guard. Lists anything that identifies a founder. An empty list means the text is safe to send. */
@@ -44,6 +54,7 @@ export function findPii(text: string, founders: FounderRef[]): string[] {
     for (const part of nameParts(f.name)) {
       if (new RegExp(`(?<![A-Za-z])${escape(part)}(?![A-Za-z])`).test(text)) leaks.push(`name ${f.id}`);
     }
+    if (slugs(f.name).some((sl) => text.toLowerCase().includes(sl))) leaks.push(`name ${f.id} (as a link slug)`);
     if (f.email && text.includes(f.email)) leaks.push(`email ${f.id}`);
     if (f.phone && text.replace(/\D/g, "").includes(f.phone.replace(/\D/g, ""))) leaks.push(`phone ${f.id}`);
   }

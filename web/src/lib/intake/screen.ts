@@ -1,6 +1,7 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/server";
-import { CostCapReached, PiiBlocked, spentTodayUsd } from "@/lib/ai/gemini";
+import { BadModelOutput, CostCapReached, PiiBlocked, spentTodayUsd } from "@/lib/ai/gemini";
+import { runScreening } from "@/lib/screening/run";
 import { queue } from "@/lib/db";
 import { parseFormItems, parseFounder, type FormField } from "./form";
 import { UnreadablePdf, deckPages, looksScanned, pdfItems, type DeckPage } from "./pdf";
@@ -18,6 +19,8 @@ export const CHEAP_CHECKS_DONE = "cheap_checks_done";
 
 /** Waiting for work that a person or a later milestone must do. Never processed again by this worker. */
 const SETTLED = new Set(["short_circuited", "hold_conflict", "brief_ready", "riya_decided", "signed_off_go", "signed_off_pass", "hold"]);
+/** Steps after the cheap checks. An application on one of these resumes full screening. */
+const FULL_STEPS = new Set([CHEAP_CHECKS_DONE, "extracting", "extracted", "researching", "researched", "compared", "scoring", "scored"]);
 
 class NeedsAttention extends Error {}
 
@@ -40,7 +43,12 @@ export async function screenApplication(id: string): Promise<void> {
   const db = createAdminClient();
   const { data: app } = await db.from("applications").select("*").eq("id", id).single();
   if (!app) return; // deleted while waiting
-  if (SETTLED.has(app.status) || (app.status === "screening" && app.last_step === CHEAP_CHECKS_DONE)) return;
+  if (SETTLED.has(app.status)) return;
+  // Cheap checks already passed: carry on with full screening from the last saved step.
+  if (FULL_STEPS.has(app.last_step ?? "")) {
+    await runScreening(id, "full");
+    return;
+  }
 
   // Step 3. Parse.
   if (app.last_step !== "parsed") {
@@ -150,7 +158,7 @@ export async function screenApplication(id: string): Promise<void> {
       ? `Held for Kushal: possible portfolio conflict with ${flags.find((f) => f.id === "portfolio_conflict")?.with}. Kushal speaks to the portfolio founder first.`
       : result === "short_circuited"
         ? `Likely pass, needs a person: ${hitLabels.join(", ")}. Research was skipped to save cost.`
-        : `Cheap checks done${flags.length ? `. ${flags.length === 1 ? "One flag is" : `${flags.length} flags are`} kept for the full review` : ", nothing found"}${fresh.full_review ? ". Full review asked for by a person" : ""}. Full screening arrives in milestone M3.`;
+        : `Cheap checks done${flags.length ? `. ${flags.length === 1 ? "One flag is" : `${flags.length} flags are`} kept for the full review` : ", nothing found"}${fresh.full_review ? ". Full review asked for by a person" : ""}.`;
 
   await db.from("briefs").upsert(
     {
@@ -165,13 +173,23 @@ export async function screenApplication(id: string): Promise<void> {
     { onConflict: "application_id" },
   );
 
-  const flagIds = briefFlags.map((f) => f.id);
+  if (result === "continue") {
+    await setStatus(id, "screening", { short_circuit_flags: briefFlags.map((f) => f.id), last_step: CHEAP_CHECKS_DONE, status_reason: null });
+    await runScreening(id, "full");
+    return;
+  }
+
+  // Short path: read the deck and form and compare them, so Riya still sees where they disagree.
+  // Research and scoring are skipped to save cost (PRD Step 5).
+  const short = await runScreening(id, "short");
+  const merged = [...briefFlags];
+  for (const f of short.flags) if (!merged.some((m) => m.id === f.id)) merged.push(f as never);
+  await db.from("briefs").update({ flags: merged, inconsistencies: short.inconsistencies }).eq("application_id", id);
+  const flagIds = merged.map((f) => f.id);
   if (result === "hold_conflict") {
     await setStatus(id, "hold_conflict", { short_circuit_flags: flagIds, last_step: "cheap_checks", status_reason: summary });
-  } else if (result === "short_circuited") {
-    await setStatus(id, "short_circuited", { short_circuit_flags: flagIds, last_step: "cheap_checks", status_reason: summary, brief_ready_at: new Date().toISOString() });
   } else {
-    await setStatus(id, "screening", { short_circuit_flags: flagIds, last_step: CHEAP_CHECKS_DONE, status_reason: "Cheap checks done. Waiting for full screening (milestone M3)." });
+    await setStatus(id, "short_circuited", { short_circuit_flags: flagIds, last_step: "cheap_checks", status_reason: summary, brief_ready_at: new Date().toISOString() });
   }
 }
 
@@ -195,7 +213,8 @@ export async function runScreeningWorker(opts: { budgetMs?: number } = {}): Prom
   }
 
   while (Date.now() < deadline) {
-    const batch = await queue.read<ScreeningJob>(QUEUE, 300, concurrency);
+    // Full screening can take a few minutes, so a message stays hidden for ten before it comes back.
+    const batch = await queue.read<ScreeningJob>(QUEUE, 600, concurrency);
     if (batch.length === 0) break;
     await Promise.all(
       batch.map(async (msg) => {
@@ -210,9 +229,10 @@ export async function runScreeningWorker(opts: { budgetMs?: number } = {}): Prom
           if (e instanceof CostCapReached) {
             await setStatus(id, "paused_cost_cap", { status_reason: reason });
             await queue.remove(QUEUE, msg.msg_id);
-          } else if (e instanceof NeedsAttention || e instanceof PiiBlocked || msg.read_ct >= 3) {
+          } else if (e instanceof NeedsAttention || e instanceof PiiBlocked || e instanceof BadModelOutput || msg.read_ct >= 3) {
             // Nothing is silently dropped: the application keeps a plain reason and Riya can re-queue it.
-            await setStatus(id, "needs_attention", { status_reason: msg.read_ct >= 3 && !(e instanceof NeedsAttention) ? `Failed three times. Last error: ${reason}` : reason });
+            const plain = e instanceof BadModelOutput ? `The model gave a bad answer twice (${reason}).` : reason;
+            await setStatus(id, "needs_attention", { status_reason: msg.read_ct >= 3 && !(e instanceof NeedsAttention || e instanceof BadModelOutput) ? `Failed three times. Last error: ${reason}` : plain });
             await queue.remove(QUEUE, msg.msg_id);
           }
           // Otherwise the message reappears after its timeout and is tried again.

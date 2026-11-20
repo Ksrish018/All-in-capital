@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "db:memos": "node scripts/load-memos.mjs",
     "case:load": "node scripts/load-case.mjs",
-    "audit:n6": "tsx scripts/audit-n6.mts"
+    "audit:n6": "tsx scripts/audit-n6.mts",
+    "eval:seed": "node scripts/eval-seed.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

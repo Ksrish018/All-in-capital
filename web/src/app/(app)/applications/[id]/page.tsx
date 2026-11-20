@@ -5,6 +5,7 @@ import { can, currentActor } from "@/lib/actor";
 import { STATUS_LABEL, ago, isWorking, type Status } from "@/lib/pipeline";
 import type { FormField } from "@/lib/intake/form";
 import { Requeue } from "./requeue";
+import { CallSignals, Criteria, Disagree, Lenses, Research, type CriterionScore, type Ev } from "./sections";
 import { LiveRefresh } from "../../live";
 
 type BriefFlag = { id: string; label: string; severity: string; short_circuit: boolean; why: string; with?: string; evidence: { quote: string; source: string; ref: string }[] };
@@ -32,14 +33,17 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
   if (!/^[0-9a-f-]{36}$/i.test(id)) notFound();
   const db = createAdminClient();
   const actor = await currentActor();
-  const [{ data: app }, { data: brief }, { data: docs }, { data: founders }, { data: calls }, { data: events }, { data: card }] = await Promise.all([
+  const [{ data: app }, { data: brief }, { data: docs }, { data: founders }, { data: calls }, { data: events }, { data: card }, { data: scores }, { data: evidenceRows }, { data: fetches }] = await Promise.all([
     db.from("applications").select("*").eq("id", id).maybeSingle(),
     db.from("briefs").select("*").eq("application_id", id).maybeSingle(),
     db.from("documents").select("kind, parsed").eq("application_id", id),
     db.from("founders").select("founder_key, name, role, bio, linkedin_url").eq("application_id", id).order("founder_key"),
     db.from("llm_calls").select("call_type, prompt_name, prompt_version, model, cost_usd, status, created_at").eq("application_id", id).order("created_at"),
     db.from("events").select("id, actor, from_status, to_status, note, at").eq("application_id", id).order("at"),
-    db.from("thesis_cards").select("version, status").order("version", { ascending: false }).limit(1).maybeSingle(),
+    db.from("thesis_cards").select("version, status, criteria").order("version", { ascending: false }).limit(1).maybeSingle(),
+    db.from("criterion_scores").select("criterion_id, rating, strength, reason, evidence_refs, memo_refs, missing, capped_note").eq("application_id", id),
+    db.from("evidence").select("id, field, quote, source_ref, url, strength, track, check_id, vague, value").eq("application_id", id),
+    db.from("research_fetches").select("check_id, outcome, error, query_or_url").eq("application_id", id),
   ]);
   if (!app) notFound();
 
@@ -52,6 +56,13 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
   const working = isWorking(status, app.last_step) || ["received", "queued"].includes(status);
   const now = await readClock();
   const rec = brief?.rec_revealed ? REC[brief.rec_revealed] : null;
+  const scored = (scores ?? []).length > 0;
+  const evidence = new Map(((evidenceRows ?? []) as Ev[]).map((e) => [e.id, e]));
+  const web = ((evidenceRows ?? []) as Ev[]).filter((e) => e.track === "2");
+  const names = Object.fromEntries(((card?.criteria ?? []) as { id: string; name: string }[]).map((c) => [c.id, c.name]));
+  const memoIds = [...new Set((scores ?? []).flatMap((x) => x.memo_refs as string[]))];
+  const { data: memoRows } = memoIds.length ? await db.from("memo_passages").select("id, company, section, decision").in("id", memoIds) : { data: [] };
+  const memos = new Map((memoRows ?? []).map((m) => [m.id as string, { company: m.company as string, section: m.section as string, decision: m.decision as string }]));
 
   return (
     <div className="rise mx-auto max-w-[1400px]">
@@ -132,8 +143,9 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
             )}
           </section>
 
-          {/* 3. Recommendation, worked out in code */}
-          {brief ? (
+          {/* 3. Recommendation, worked out in code. Both lenses once scored. */}
+          {brief && scored ? <Lenses brief={brief} /> : null}
+          {brief && !scored ? (
             <section aria-label="Recommendation">
               <div className="eyebrow">Recommendation</div>
               <div className="mt-3 panel p-6">
@@ -150,10 +162,22 @@ export default async function ApplicationPage({ params }: PageProps<"/applicatio
             </section>
           ) : null}
 
+          {/* 4. Each criterion with its evidence */}
+          <Criteria scores={(scores ?? []) as CriterionScore[]} names={names} evidence={evidence} memos={memos} />
+
+          {/* 6. Deck and form disagree */}
+          <Disagree items={(brief?.inconsistencies ?? []) as never} />
+
+          {/* 7. Only a call can tell */}
+          <CallSignals signals={(brief?.call_only_signals ?? []) as string[]} aditya={Boolean(brief?.aditya_on_call)} />
+
+          {/* Our research, kept apart from the founder's story */}
+          <Research web={web} fetches={fetches ?? []} mode={brief?.research_mode ?? null} />
+
           {/* 5. What we could not find */}
           {gaps.length ? (
             <section aria-label="Gaps">
-              <div className="eyebrow">What is missing</div>
+              <div className="eyebrow">What we could not find</div>
               <ul className="mt-3 space-y-2">
                 {gaps.map((g) => (
                   <li key={g.item} className="border-l border-border-strong pl-4">
