@@ -20,6 +20,8 @@ Built for the MESA Term 2 case (All In Capital). The full specification is in [P
 
 Course PDFs and seed decks are kept out of this public repository on purpose.
 
+The app has no login by design. Do not expose it to the internet without a hosting-level password.
+
 ## Run it locally
 
 1. Copy `.env.example` to `.env` in the repository root and fill in the keys.
@@ -32,7 +34,7 @@ npm run db:migrate
 npm run db:seed
 ```
 
-3. Start the app at http://localhost:3000:
+3. Start the app at http://localhost:3000. There is no login. Pick who is working in the sidebar.
 
 ```
 npm run dev

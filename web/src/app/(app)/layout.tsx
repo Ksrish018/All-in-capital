@@ -1,11 +1,11 @@
-import { requireMember } from "@/lib/auth";
+import { currentActor } from "@/lib/actor";
 import { Sidebar } from "./sidebar";
 
 export default async function AppLayout({ children }: LayoutProps<"/">) {
-  const member = await requireMember();
+  const actor = await currentActor();
   return (
     <div className="flex min-h-screen">
-      <Sidebar name={member.name} role={member.role} />
+      <Sidebar role={actor.role} />
       <main className="flex-1 px-8 py-6">{children}</main>
     </div>
   );

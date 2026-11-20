@@ -36,7 +36,7 @@ check(bucket.rows.length === 1 && bucket.rows[0].public === false, "applications
 await c.end();
 
 // An anonymous browser (publishable key, no sign-in) must read nothing.
-for (const table of ["settings", "applications", "founders", "allowed_emails"]) {
+for (const table of ["settings", "applications", "founders", "users"]) {
   const r = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${table}?select=*`, {
     headers: { apikey: process.env.SUPABASE_PUBLISHABLE_KEY },
   });

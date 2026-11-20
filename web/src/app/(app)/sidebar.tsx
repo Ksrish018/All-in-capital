@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { setWorkingAs } from "./actions";
 
 export const NAV = [
   { href: "/", label: "Inbox" },
@@ -15,7 +16,13 @@ export const NAV = [
   { href: "/settings", label: "Settings" },
 ] as const;
 
-export function Sidebar({ name, role }: { name: string; role: string }) {
+const PEOPLE = [
+  { role: "riya", name: "Riya" },
+  { role: "kushal", name: "Kushal" },
+  { role: "aditya", name: "Aditya" },
+] as const;
+
+export function Sidebar({ role }: { role: string }) {
   const path = usePathname();
   return (
     <aside className="flex w-56 shrink-0 flex-col border-r border-border bg-surface">
@@ -38,13 +45,24 @@ export function Sidebar({ name, role }: { name: string; role: string }) {
           );
         })}
       </nav>
-      <div className="border-t border-border px-5 py-4">
-        <div className="font-medium">{name}</div>
-        <div className="text-muted capitalize">{role}</div>
-        <form action="/auth/sign-out" method="post" className="mt-2">
-          <button className="text-accent underline">Sign out</button>
-        </form>
-      </div>
+      <form action={setWorkingAs} className="border-t border-border px-5 py-4">
+        <div className="text-muted">Working as</div>
+        <div className="mt-2 flex gap-1" role="group" aria-label="Working as">
+          {PEOPLE.map((p) => (
+            <button
+              key={p.role}
+              name="role"
+              value={p.role}
+              aria-pressed={p.role === role}
+              className={`flex-1 rounded-md border px-2 py-1 ${
+                p.role === role ? "border-accent bg-accent text-on-accent" : "border-border hover:bg-bg"
+              }`}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+      </form>
     </aside>
   );
 }

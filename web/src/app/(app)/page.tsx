@@ -1,4 +1,4 @@
-import { createUserClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/server";
 
 // Launch day strip groups (PRD Section 13.3). The numbers must always add up to the total.
 const GROUPS: { label: string; statuses: string[]; tone: string }[] = [
@@ -21,7 +21,7 @@ const GROUPS: { label: string; statuses: string[]; tone: string }[] = [
 ];
 
 export default async function InboxPage() {
-  const supabase = await createUserClient();
+  const supabase = createAdminClient();
   const { data: apps } = await supabase
     .from("applications")
     .select("id, company_name, source, status, received_at")
@@ -34,7 +34,7 @@ export default async function InboxPage() {
       <h1 className="text-[22px] font-semibold">Inbox</h1>
       <p className="mt-1 text-muted">Every application, from arrival to decision.</p>
 
-      <section aria-label="Where every application is" className="mt-6 grid grid-cols-5 gap-3">
+      <section aria-label="Where every application is" className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(9rem,1fr))] gap-3">
         {GROUPS.map((g, i) => (
           <div key={g.label} className="rounded-lg border border-border bg-surface px-4 py-3">
             <div className={`text-[22px] font-semibold ${g.tone}`}>{counts[i]}</div>

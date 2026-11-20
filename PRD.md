@@ -963,7 +963,7 @@ Riya's sense of fit has moved over time. If her corrections flowed straight into
 
 ## 12. Data model
 
-All tables live in Supabase Postgres. Row Level Security is on for every table. The server uses the secret key. The browser uses the publishable key and sees only what policies allow, which means only signed-in fund members.
+All tables live in Supabase Postgres. Row Level Security is on for every table. The server uses the secret key. The app has no sign-in, so the browser never talks to the database. Every read and write goes through the server. Row Level Security still blocks any direct access with the publishable key, and Supabase sign-ups are switched off.
 
 ### 12.1 Tables
 
@@ -971,10 +971,10 @@ All tables live in Supabase Postgres. Row Level Security is on for every table. 
 
 | Column | Type | Notes |
 |---|---|---|
-| id | uuid | From Supabase Auth |
+| id | uuid | Generated |
 | name | text | |
-| email | text | Must be on the allow list |
-| role | text | riya, kushal, aditya, admin |
+| email | text | Optional. Used later for calendar invites. |
+| role | text | riya, kushal or aditya. One row each, seeded by migration. |
 
 **thesis_cards**
 
@@ -1285,12 +1285,15 @@ A left sidebar with:
 8. **Cost.**
 9. **Settings.**
 
-A count badge sits next to Review, Sign off and Outreach. It shows the items waiting on the signed-in person.
+A count badge sits next to Review, Sign off and Outreach. It shows the items waiting on the person currently working.
 
-### 13.2 Sign in
+### 13.2 No sign-in, a "working as" switch
 
-* Sign in with Google through Supabase Auth.
-* Only emails on the allow list get in. Everyone else sees a polite "not on the list" page.
+* The team chose no login for version one (20 Nov 2026).
+* The sidebar shows "Working as: Riya, Kushal, Aditya". The choice is remembered in the browser.
+* Roles still limit actions (Section 3.2). For example, only Kushal sees the Gate 2 buttons, and only Riya can send email.
+* Every gate action records the person who was selected.
+* Because anyone who can open the app can act as anyone, the app must never be reachable by the public. See 16.2.
 
 ### 13.3 Inbox
 
@@ -1387,7 +1390,7 @@ On the right sits a sticky action panel for Gate 1. The deck opens in a side dra
 * Blind sample rate.
 * Call slot window and attendees.
 * Style notes, with version history and roll back (Riya).
-* Allow list of users (admin).
+* People list: names and calendar emails for Riya, Kushal and Aditya.
 
 ### 13.14 Empty, loading and error states
 
@@ -1511,7 +1514,7 @@ We revisit this if the agent ever needs open-ended planning. The screening pipel
 
 | Route | Purpose | Who can call it |
 |---|---|---|
-| `POST /api/applications` | Create an application and upload files | Signed-in users |
+| `POST /api/applications` | Create an application and upload files | Anyone using the app |
 | `POST /api/applications/:id/requeue` | Re-queue after a fix, or run full review | Riya, Kushal |
 | `POST /api/applications/:id/research` | Ask for more research on a named question | Riya, Kushal |
 | `POST /api/reviews` | Record a Gate 1 or Gate 2 decision | Riya for Gate 1, Kushal for Gate 2 |
@@ -1577,7 +1580,7 @@ Still to add at build time: `WORKER_SECRET` for the worker routes.
 
 ### 16.2 Access
 
-* Only allow-listed fund members can sign in.
+* There is no login. Access to the app itself must be limited at the network or hosting level: run it only on the team's own machines for now, and when deployed, put it behind the host's password protection (for example Vercel Deployment Protection). This is a release blocker (Q13).
 * Row Level Security is on for every table.
 * The secret Supabase key, the Gemini key, the gateway token and the Google secrets live on the server only.
 * Worker routes need a shared secret.
@@ -1799,7 +1802,7 @@ Each milestone ends with something we can show and check.
 | # | Milestone | What is built | Done when |
 |---|---|---|---|
 | Pre-build | Groundwork (done 20 Nov 2026) | Public thesis register, portfolio draft, gold labels for the 10 applicants, recorded real research, synthetic web fixtures, git repository | Files in `seed/fund/` and `evals/`. Pushed to GitHub. |
-| M0 | Foundation | Next.js app, Supabase schema and policies, sign in with the allow list, design tokens, the eval runner skeleton, and the quick checks CI job | A signed-in user sees an empty Inbox. CI runs on every push. |
+| M0 | Foundation | Next.js app, Supabase schema and policies, a "working as" switch instead of sign-in, design tokens, the eval runner skeleton, and the quick checks CI job | The Inbox opens with no login and the switch changes who is working. CI runs on every push. |
 | M1 | Setup data | Thesis Card v1 draft, portfolio list loaded from `seed/fund/portfolio.json`, memo passages, seed files loaded | The Thesis Card page shows v1 and the public thesis register. The portfolio list includes MeetRecord. |
 | M2 | Intake to cheap checks | Upload, queue, parse, redact, cheap checks, short briefs | Settlr flagged, Talkbook held, CareCorner flagged. N5 and N6 pass. |
 | M3 | Full screening | Track 1, sufficiency, Track 2 with replay mode, compare step, context packs, scoring, recommend, brief | All ten seed tests in 19.2 and the research tests in 19.2a pass. N2 and N3 pass. |
@@ -1829,6 +1832,7 @@ The order matters. The Thesis Card and the back test come before outreach, becau
 | Q10 | The fund says publicly it is sector-agnostic. Should "outside the four sectors" stay a soft signal? | Kushal | Soft signal |
 | Q11 | Is the first cheque now $250K to $500K? | Kushal | Yes, from the fund's FAQ |
 | Q12 | Can you share the full portfolio list (about 80 companies)? | Kushal | Use the 25 in seed/fund/portfolio.json |
+| Q13 | The app has no login. How will we keep it private once it is online? | Team | Local only until a hosting password is in place |
 
 ---
 
