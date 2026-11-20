@@ -342,6 +342,9 @@ These run first because they are cheap and can save all the later work.
 * **What a hit does.** A hit never rejects. It sets a short circuit flag. The application then skips the expensive research loop to save cost. It still gets a short brief that shows the flag, its evidence, and a recommendation of "Likely pass, needs human" or "Hold for Kushal" for conflicts. Riya can click "Run full review anyway" and it goes back into the queue for the full path.
 * **Conflict rule.** A portfolio conflict always goes to Kushal, with the status `hold_conflict`. Meeting 4 says the default is no, and Kushal speaks to the portfolio founder first.
 * **Bias.** Kushal said he would rather get a flag on a false alarm than miss a real conflict. So the conflict check leans towards flagging.
+* **Built in M2. How the conflict is decided.** A0 does not decide. For up to three close portfolio companies it writes who pays each one and for what job, then answers three yes or no questions: same buyer, same job, would a buyer pick one instead of the other. Code decides. All three yes is a conflict and the application is held for Kushal. Same job but they could work together (customer, supplier or partner) is shown as a soft note, "Worth checking against the portfolio", and does not hold the application. Every company A0 names must exist in the portfolio list, or the reply is rejected and retried. This was tuned on the ten seed applications: an earlier prompt that let the model decide held StockSathi against SuperK (SuperK runs kirana stores, StockSathi supplies them) and Settlr against Anar.
+* **Built in M2. Capital intensity.** A capex answer, or a build-out cost per site of INR 10 L or more (clinic, store, outlet, kitchen, plant), raises "Heavy on capital" and skips research. This is how CareCorner stops early, as the gold set expects, while its sector flag stays soft.
+* **Built in M2. Duplicates.** A second application with the same name or website gets "Possible duplicate" and skips research. It is never dropped.
 
 #### The two research tracks
 
@@ -1804,7 +1807,7 @@ Each milestone ends with something we can show and check.
 | Pre-build | Groundwork (done 20 Nov 2026) | Public thesis register, portfolio draft, gold labels for the 10 applicants, recorded real research, synthetic web fixtures, git repository | Files in `seed/fund/` and `evals/`. Pushed to GitHub. |
 | M0 | Foundation | Next.js app, Supabase schema and policies, a "working as" switch instead of sign-in, design tokens, the eval runner skeleton, and the quick checks CI job | The Inbox opens with no login and the switch changes who is working. CI runs on every push. |
 | M1 | Setup data | Thesis Card v1 draft, portfolio list loaded from `seed/fund/portfolio.json`, memo passages, seed files loaded | The Thesis Card page shows v1 and the public thesis register. The portfolio list includes MeetRecord. |
-| M2 | Intake to cheap checks | Upload, queue, parse, redact, cheap checks, short briefs | Settlr flagged, Talkbook held, CareCorner flagged. N5 and N6 pass. |
+| M2 | Intake to cheap checks | Upload, queue, parse, redact, cheap checks, short briefs | Settlr flagged, Talkbook held, CareCorner flagged. N5 and N6 pass. **Done.** N5 passed with 20 at once. N6 audit runs in CI. Langfuse tracing moves to M3: every model input and output is already logged in `llm_calls`. |
 | M3 | Full screening | Track 1, sufficiency, Track 2 with replay mode, compare step, context packs, scoring, recommend, brief | All ten seed tests in 19.2 and the research tests in 19.2a pass. N2 and N3 pass. |
 | M4 | Gates 1 and 2 | Review screen, blind sample, corrections, Sign off board | Riya can review all ten. Kushal can sign off. Times are recorded. |
 | M5 | Back test and evals | Back test page, eval runner, tricky inputs | The back test runs on v1. N1 passes. Kushal approves v1. |
@@ -1833,6 +1836,7 @@ The order matters. The Thesis Card and the back test come before outreach, becau
 | Q11 | Is the first cheque now $250K to $500K? | Kushal | Yes, from the fund's FAQ |
 | Q12 | Can you share the full portfolio list (about 80 companies)? | Kushal | Use the 25 in seed/fund/portfolio.json |
 | Q13 | The app has no login. How will we keep it private once it is online? | Team | Local only until a hosting password is in place |
+| Q14 | Model prices in `model_prices` are estimates, set on the high side so the cost cap trips early. Check them against Google's pricing page. | Team | Keep the high estimates |
 
 ---
 

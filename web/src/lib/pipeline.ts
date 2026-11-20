@@ -24,6 +24,13 @@ export const STALLED: readonly Status[] = ["needs_attention", "paused_cost_cap"]
 /** Work the system is doing right now. These cards pulse. */
 export const ACTIVE: readonly Status[] = ["parsing", "screening", "extracting", "researching", "scoring"];
 
+/** Cheap checks are done and the application waits for full screening (milestone M3). Not working, just waiting. */
+export const WAITING_STEP = "cheap_checks_done";
+
+export function isWorking(status: Status, lastStep?: string | null): boolean {
+  return ACTIVE.includes(status) && lastStep !== WAITING_STEP;
+}
+
 export const STATUS_LABEL: Record<Status, string> = {
   received: "Received",
   queued: "Waiting in queue",
@@ -44,13 +51,13 @@ export const STATUS_LABEL: Record<Status, string> = {
 };
 
 export type Tone = "go" | "pass" | "hold" | "flag" | "needs-human" | "active" | "plain";
-export function toneOf(status: Status, flags: string[] = []): Tone {
+export function toneOf(status: Status, flags: string[] = [], lastStep?: string | null): Tone {
   if (status === "signed_off_go") return "go";
   if (status === "signed_off_pass") return "pass";
   if (status === "hold" || status === "hold_conflict") return "hold";
   if (STALLED.includes(status)) return "needs-human";
-  if (status === "short_circuited" || flags.length > 0) return "flag";
-  if (ACTIVE.includes(status)) return "active";
+  if (status === "short_circuited" || flags.some((f) => !SOFT_FLAGS.includes(f))) return "flag";
+  if (isWorking(status, lastStep)) return "active";
   return "plain";
 }
 
@@ -64,7 +71,22 @@ export function waitingOn(role: string): StageId | null {
   return role === "riya" ? "riya" : role === "kushal" ? "kushal" : null;
 }
 
+/** Flags that inform but never stop an application. Shown, but not as a red edge. */
+export const SOFT_FLAGS = ["outside_core_sectors", "portfolio_overlap_note"];
+
+const FLAG_LABEL: Record<string, string> = {
+  later_stage: "Later stage",
+  outside_core_sectors: "Outside the four sectors",
+  capital_intensive: "Heavy on capital",
+  likely_excluded: "Likely excluded",
+  portfolio_conflict: "Portfolio conflict",
+  portfolio_overlap_note: "Check portfolio",
+  possible_duplicate: "Possible duplicate",
+  injection_attempt: "Text aimed at the AI",
+};
+
 export function flagLabel(flag: string): string {
+  if (FLAG_LABEL[flag]) return FLAG_LABEL[flag];
   const s = flag.replaceAll("_", " ");
   return s.charAt(0).toUpperCase() + s.slice(1);
 }

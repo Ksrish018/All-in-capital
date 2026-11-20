@@ -76,3 +76,6 @@ jobs:
       - name: Row Level Security, queues, bucket and anonymous access
         if: steps.gate.outputs.run == 'true'
         run: node scripts/verify-db.mjs --strict
+      - name: N6, no founder detail in any logged model input
+        if: steps.gate.outputs.run == 'true'
+        run: npm run audit:n6

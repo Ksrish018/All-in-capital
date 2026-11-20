@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
-// Keys live in the repo root .env, loaded by node --env-file in package.json scripts.
+// Keys live in the repo root .env, loaded by scripts/next.mjs before Next starts.
 
 const nextConfig: NextConfig = {
-  // Every page in this internal tool needs a signed-in user and fresh data,
+  // Every page in this internal tool shows fresh data,
   // so static prerendering (Cache Components) adds complexity without benefit.
   cacheComponents: false,
+  // Server-only libraries that should load from node_modules as they are.
+  serverExternalPackages: ["pg", "unpdf"],
   // Only these two values reach the browser. Both are safe to expose:
   // the publishable key works only with Row Level Security on.
   env: {

@@ -41,6 +41,15 @@ npm run db:memos   # needs the local memo PDF in Decks/
 npm run dev
 ```
 
+4. Add applications from the Pipeline page ("Add applications"), or send all ten case applications through the real upload route:
+
+```
+npm run case:load -- --clean            # needs the case PDFs in Decks/ and the app running
+npm run case:load -- --clean --copies 2 # N5 volume test: 20 at once, none may vanish
+```
+
+The screening worker runs straight after each upload. A scheduler can also call `POST /api/worker/screening` with `Authorization: Bearer $WORKER_SECRET`.
+
 ## Checks
 
 ```
@@ -49,4 +58,7 @@ npm test            # quick checks, no keys needed
 npm run typecheck
 npm run lint
 node scripts/verify-db.mjs --strict   # live database checks, needs .env
+npm run audit:n6    # N6: no founder name, email, phone or link in any logged model input
 ```
+
+Tests on the ten case files run when `Decks/` is present and skip in CI, because the PDFs stay out of this repository.

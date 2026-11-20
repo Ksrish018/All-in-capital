@@ -11,7 +11,9 @@
     "db:seed": "node scripts/seed.mjs",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "db:memos": "node scripts/load-memos.mjs"
+    "db:memos": "node scripts/load-memos.mjs",
+    "case:load": "node scripts/load-case.mjs",
+    "audit:n6": "tsx scripts/audit-n6.mts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
@@ -33,6 +35,7 @@
     "eslint-config-next": "16.4.6",
     "pg": "^8.23.1",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.1"
   }

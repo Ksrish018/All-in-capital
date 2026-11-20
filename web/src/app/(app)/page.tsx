@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/server";
 import { currentActor } from "@/lib/actor";
 import {
-  ACTIVE, STAGES, STATUS_LABEL, ago, flagLabel, samplePipeline, stageOf, toneOf, waitingOn,
+  STAGES, STATUS_LABEL, ago, flagLabel, isWorking, samplePipeline, stageOf, toneOf, waitingOn,
   type PipelineApp, type PipelineEvent, type StageId, type Tone,
 } from "@/lib/pipeline";
 import { LiveRefresh } from "./live";
@@ -64,7 +64,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
   const mine = waitingOn(actor.role);
   const waiting = mine ? byStage[mine].length : 0;
   const attention = apps.filter((a) => toneOf(a.status) === "needs-human").length;
-  const working = apps.filter((a) => ACTIVE.includes(a.status)).length;
+  const working = apps.filter((a) => isWorking(a.status, a.last_step)).length;
   const longest = apps
     .filter((a) => stageOf(a.status, a.last_step) !== "decided")
     .sort((x, y) => x.received_at.localeCompare(y.received_at))
@@ -77,6 +77,12 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="eyebrow">All In Capital · Pipeline</div>
           <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/applications/new"
+              className="rounded-full bg-accent-strong px-4 py-1 text-[12px] tracking-wide text-on-accent transition-opacity duration-300 hover:opacity-90"
+            >
+              Add applications
+            </Link>
             <LiveRefresh paused={sample} />
             <Link
               href={sample ? "/" : "/?sample=1"}
@@ -253,12 +259,12 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
         <div className="rise mt-10 rounded-lg border border-border bg-surface px-6 py-12 text-center">
           <div className="eyebrow">Ready when they are</div>
           <div className="mt-2 font-display text-[34px] leading-tight">No applications yet</div>
-          <p className="mx-auto mt-2 max-w-md text-muted">Upload arrives in milestone M2. Until then, preview the board with sample data.</p>
+          <p className="mx-auto mt-2 max-w-md text-muted">Upload a form and deck, or add a warm intro. You can also preview the board with sample data.</p>
           <Link
-            href="/?sample=1"
+            href="/applications/new"
             className="mt-6 inline-block rounded-full bg-accent-strong px-6 py-2.5 text-[13px] tracking-wide text-on-accent transition-opacity duration-300 hover:opacity-90"
           >
-            Preview with sample data
+            Add applications
           </Link>
         </div>
       ) : null}
@@ -276,13 +282,14 @@ function Stat({ n, label, tone }: { n: number; label: string; tone: string }) {
 }
 
 function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number }) {
-  const tone = toneOf(a.status, a.short_circuit_flags);
-  const working = ACTIVE.includes(a.status);
+  const tone = toneOf(a.status, a.short_circuit_flags, a.last_step);
+  const working = isWorking(a.status, a.last_step);
   const statusTone: Tone = working ? "active" : tone === "flag" ? "plain" : tone;
   return (
-    <article
+    <Link
+      href={a.id.startsWith("s") && a.id.length < 4 ? "#" : `/applications/${a.id}`}
       style={{ animationDelay: `${delay}ms` }}
-      className={`rise relative overflow-hidden rounded-md border border-border bg-surface p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
+      className={`rise relative block overflow-hidden rounded-md border border-border bg-surface p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <h3 className="min-w-0 text-[19px] leading-tight break-words">{a.company_name}</h3>
@@ -292,9 +299,9 @@ function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number })
       </div>
       <div className={`mt-1 flex items-center gap-1.5 text-[12px] ${TONE_TEXT[statusTone]}`}>
         {working ? <span className="live-dot" aria-hidden="true" /> : null}
-        <span>{STATUS_LABEL[a.status]}</span>
+        <span>{a.last_step === "cheap_checks_done" ? "Checks done, waiting" : STATUS_LABEL[a.status]}</span>
       </div>
-      {a.status_reason ? <p className="mt-1.5 line-clamp-2 text-[12px] text-muted">{a.status_reason}</p> : null}
+      {a.status_reason && a.last_step !== "cheap_checks_done" ? <p className="mt-1.5 line-clamp-2 text-[12px] text-muted">{a.status_reason}</p> : null}
       {a.short_circuit_flags.length > 0 ? (
         <div className="mt-2.5 flex flex-wrap gap-1">
           {a.short_circuit_flags.map((f) => (
@@ -303,6 +310,6 @@ function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number })
         </div>
       ) : null}
       <div className="mt-2.5 text-[11px] text-muted tabular-nums">Arrived {ago(a.received_at, now)}</div>
-    </article>
+    </Link>
   );
 }
