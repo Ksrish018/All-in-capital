@@ -9,6 +9,7 @@ Built for the MESA Term 2 case (All In Capital). The full specification is in [P
 | Path | What it holds |
 |---|---|
 | `PRD.md` | The build document: workflow, data model, screens, tests, milestones |
+| `PILOT.md` | The pilot runbook: what must be true before day one, Riya's day, Kushal's week, the stop list |
 | `PLANNING.md`, `PRELIMINARY_CHECKS.md`, `REFERENCE_GUIDE.md` | The thinking before the build |
 | `Components_Map.png` | The whole system on one picture |
 | `web/` | The Next.js app (screens, server routes, workers) |
@@ -20,7 +21,11 @@ Built for the MESA Term 2 case (All In Capital). The full specification is in [P
 
 Course PDFs and seed decks are kept out of this public repository on purpose.
 
-The app has no login by design. Do not expose it to the internet without a hosting-level password.
+The app has no login by design. Before it is reachable online, set `APP_PASSWORD`: every page then asks for it. Keep it on the team's own machines until then.
+
+## Status
+
+All milestones M0 to M7 are built and checked. M8, the pilot week, is for the team to run with Riya: see [PILOT.md](PILOT.md) for the checklist. Two decisions wait for people: Kushal approves Thesis Card v2 after reading its back test, and the team says when outreach may go live (it runs in simulate mode until then).
 
 ## Run it locally
 
@@ -54,11 +59,17 @@ The screening worker runs straight after each upload. A scheduler can also call 
 
 ```
 cd web
-npm test            # quick checks, no keys needed
+npm test            # quick checks, no keys needed (127 tests)
 npm run typecheck
 npm run lint
 node scripts/verify-db.mjs --strict   # live database checks, needs .env
 npm run audit:n6    # N6: no founder name, email, phone or link in any logged model input
+npm run eval        # quick tests, tricky inputs, N6 and N1 together (app running)
+npm run eval:seed   # the ten case applications against the gold set (after case:load)
+npm run eval:gates -- <id>   # Gate 1 and Gate 2 permissions with real cookies
+npm run eval:outreach        # the outreach agent end to end, simulate mode only
+npm run eval:cap    # the cost cap pauses and resumes cleanly
+npm run backtest    # the back test on the latest Thesis Card
 ```
 
-Tests on the ten case files run when `Decks/` is present and skip in CI, because the PDFs stay out of this repository.
+Tests on the ten case files run when `Decks/` is present and skip in CI, because the PDFs stay out of this repository. Generated PDF fixtures test the parser in CI instead.

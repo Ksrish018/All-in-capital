@@ -8,7 +8,7 @@ export const maxDuration = 300;
 // POST /api/worker/outreach. Called every 10 minutes by the scheduler, with the shared secret (PRD 15.4).
 // In simulate mode a test may pass ?now= to move the clock forward, so follow ups on day 3 and day 7 can be checked.
 export async function POST(req: Request) {
-  const secret = process.env.WORKER_SECRET ?? "";
+  const secret = process.env.WORKER_SECRET ?? process.env.CRON_SECRET ?? "";
   const given = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
   if (!(secret.length > 0 && given.length === secret.length && timingSafeEqual(Buffer.from(given), Buffer.from(secret)))) {
     return NextResponse.json({ error: "Not allowed" }, { status: 401 });
@@ -22,3 +22,6 @@ export async function POST(req: Request) {
   }
   return NextResponse.json(await runOutreachTick(now));
 }
+
+// Vercel Cron calls GET with "Authorization: Bearer $CRON_SECRET". Set CRON_SECRET to the same value as WORKER_SECRET.
+export const GET = POST;
