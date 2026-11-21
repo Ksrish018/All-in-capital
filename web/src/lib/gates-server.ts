@@ -1,6 +1,7 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/server";
 import { ThesisCardSchema } from "@/lib/thesis/card";
+import { currentCardRow } from "@/lib/thesis/current";
 import { label, recommend, type Ratings } from "@/lib/thesis/recommend";
 import { companyTags, joinsBlindSample, systemPosition, validateCorrection, validateGate1, type Decision, type SystemRec } from "./gates";
 import type { Role } from "./actor";
@@ -22,7 +23,7 @@ async function userId(role: Role): Promise<string> {
 export async function recomputeRecommendation(id: string): Promise<void> {
   const db = createAdminClient();
   const [{ data: cardRow }, { data: scores }, { data: settings }] = await Promise.all([
-    db.from("thesis_cards").select("*").order("version", { ascending: false }).limit(1).single(),
+    currentCardRow().then((data) => ({ data })),
     db.from("criterion_scores").select("criterion_id, rating").eq("application_id", id),
     db.from("settings").select("key, value"),
   ]);

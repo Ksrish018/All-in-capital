@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/server";
 import { can, currentActor } from "@/lib/actor";
 import { CRITERIA, type CriterionId } from "@/lib/thesis/card";
@@ -63,15 +64,11 @@ export default async function ThesisPage() {
         </div>
         <div className="flex items-center gap-3">
           <span className="rounded-full border border-brass/70 px-3.5 py-1 text-[12px] tracking-[0.12em] text-brass uppercase">
-            Version {card.version} · {card.status === "approved" ? "Approved" : "Draft"}
+            Version {card.version} · {card.status === "approved" ? "Approved" : card.status === "retired" ? "Retired" : "Draft"}
           </span>
-          <button
-            disabled
-            title={canApprove ? "Approve unlocks after the back test runs on this version (milestone M5)." : "Only Kushal can approve a version."}
-            className="rounded-full border border-border px-4 py-1.5 text-muted"
-          >
-            Approve
-          </button>
+          <Link href={`/backtest?version=${card.version}`} className={`btn ${canApprove && card.status === "draft" ? "btn-primary" : "btn-secondary"}`}>
+            {canApprove && card.status === "draft" ? "Back test and approve" : "See the back test"}
+          </Link>
         </div>
       </div>
       <div className="hairline mt-6" />

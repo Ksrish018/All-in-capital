@@ -32,12 +32,16 @@ for (const co of portfolio.companies) {
 }
 console.log(`portfolio: ${portfolio.companies.length} companies`);
 
-// Thesis Card v1 draft. Never overwrites a version that Kushal has approved.
-const card = JSON.parse(fs.readFileSync(path.join(root, "seed", "fund", "thesis_card_v1.json"), "utf8"));
-const existing = await c.query("select status from public.thesis_cards where version = $1", [card.version]);
-if (existing.rows[0] && existing.rows[0].status !== "draft") {
-  console.log(`thesis card v${card.version}: already ${existing.rows[0].status}, left unchanged`);
-} else {
+// Thesis Card drafts, one file per version (thesis_card_v1.json, thesis_card_v2.json, ...).
+// Never overwrites a version that Kushal has approved.
+const cardFiles = fs.readdirSync(path.join(root, "seed", "fund")).filter((f) => /^thesis_card_v\d+\.json$/.test(f)).sort();
+for (const file of cardFiles) {
+  const card = JSON.parse(fs.readFileSync(path.join(root, "seed", "fund", file), "utf8"));
+  const existing = await c.query("select status from public.thesis_cards where version = $1", [card.version]);
+  if (existing.rows[0] && existing.rows[0].status !== "draft") {
+    console.log(`thesis card v${card.version}: already ${existing.rows[0].status}, left unchanged`);
+    continue;
+  }
   await c.query(
     `insert into public.thesis_cards
        (version, status, note, criteria, weights_public, weights_revealed, thresholds, hard_flags,

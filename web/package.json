@@ -14,7 +14,11 @@
     "db:memos": "node scripts/load-memos.mjs",
     "case:load": "node scripts/load-case.mjs",
     "audit:n6": "tsx scripts/audit-n6.mts",
-    "eval:seed": "node scripts/eval-seed.mjs"
+    "eval:seed": "node scripts/eval-seed.mjs",
+    "backtest": "tsx --conditions=react-server scripts/backtest.mts",
+    "eval:gates": "node scripts/eval-gates.mjs",
+    "eval:tricky": "node scripts/eval-tricky.mjs",
+    "eval": "node scripts/eval-all.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

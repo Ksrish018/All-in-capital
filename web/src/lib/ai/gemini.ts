@@ -36,6 +36,8 @@ export type CallArgs<T> = {
   validate: (v: unknown) => T;
   /** Gemini 3 thinking depth. Low keeps the judge fast and cheap. */
   thinking?: "minimal" | "low" | "medium" | "high";
+  /** A back test run, so its cost can be shown by call type. */
+  runId?: string;
 };
 
 function gatewayUrl(model: string): string {
@@ -148,7 +150,7 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
       await db.from("llm_calls").insert({
         application_id: args.applicationId, call_type: args.callType, model: args.model, prompt_name: args.promptName,
         prompt_version: args.promptVersion, input_tokens: inTok, output_tokens: outTok, cost_usd: cost, status,
-        input, output, error: status === "ok" ? null : lastError || null, langfuse_trace_id: traceId,
+        input, output, error: status === "ok" ? null : lastError || null, langfuse_trace_id: traceId, run_id: args.runId ?? null,
       });
       if (args.applicationId && cost > 0) {
         const { data: app } = await db.from("applications").select("cost_usd").eq("id", args.applicationId).single();

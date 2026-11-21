@@ -4,7 +4,7 @@ import { CRITERIA, ThesisCardSchema } from "@/lib/thesis/card";
 import { recommend, label, type Ratings } from "@/lib/thesis/recommend";
 import { redactText, type FounderRef } from "@/lib/intake/redact";
 import { normName } from "@/lib/intake/checks";
-import { MAX_FETCHES, ResearchClient, type ResearchMode } from "@/lib/research/client";
+import { MAX_FETCHES, ResearchClient, looksLikeInjection, type ResearchMode } from "@/lib/research/client";
 import { QUESTIONS } from "./fields";
 import { buildSources, extractTrack1, type Claim } from "./extract";
 import { readResult, runTrack2, type MatchFacts } from "./research";
@@ -12,6 +12,7 @@ import { applyLinks, compareDeckForm, fieldName, type Inconsistency, type Streng
 import { matchClaims } from "./match";
 import { A3_VERSION, buildPack, scoreCriterion, type CriterionDef, type EvidenceItem, type Score } from "./score";
 import { scrubNames } from "./memo";
+import { currentCardRow } from "@/lib/thesis/current";
 import { companyTags, recallCorrections } from "@/lib/gates";
 import { assignBlind } from "@/lib/gates-server";
 import { writeSummary } from "./summary";
@@ -77,7 +78,10 @@ export async function runScreening(id: string, mode: "full" | "short"): Promise<
       const { error } = await db.from("evidence").insert(rows);
       if (error) throw new Error(`Could not save evidence: ${error.message}`);
     }
-    if (injection) await db.from("evidence").insert({ id: ev("inj1"), application_id: id, field: "injection", status: "yes", track: "code", source_type: "system", note: "The deck or form contains text aimed at the AI. It was ignored." });
+    // Caught by the model or by code: text in the deck or form that tries to instruct the AI.
+    if (injection || [...sources.values()].some(looksLikeInjection)) {
+      await db.from("evidence").insert({ id: ev("inj1"), application_id: id, field: "injection", status: "yes", track: "code", source_type: "system", note: "The deck or form contains text aimed at the AI. It was ignored." });
+    }
     await step(id, null, last = "extracted");
   }
 
@@ -171,7 +175,7 @@ export async function runScreening(id: string, mode: "full" | "short"): Promise<
   if (mode === "short") return { inconsistencies, flags: flags.filter((f) => f.id !== "regulatory_exposure" || f.firm) };
 
   // Steps 10 and 11. Context packs and scores.
-  const { data: cardRow } = await db.from("thesis_cards").select("*").order("version", { ascending: false }).limit(1).single();
+  const cardRow = await currentCardRow();
   const card = ThesisCardSchema.parse({ ...cardRow, public_register: cardRow.public_register });
   const { data: brief } = await db.from("briefs").select("*").eq("application_id", id).maybeSingle();
   const cheapFlags = (brief?.flags ?? []) as { id: string; label: string; with?: string; severity: string; why: string; evidence: unknown[] }[];

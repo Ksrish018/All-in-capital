@@ -116,11 +116,12 @@ export function capRating(rating: number, refs: EvidenceItem[]): { rating: 0 | 1
 }
 
 export async function scoreCriterion(args: {
-  applicationId: string;
+  applicationId: string | null;
   criterion: CriterionDef;
   pack: ReturnType<typeof buildPack>;
   partnerRules: string[];
   founders: FounderRef[];
+  runId?: string;
 }): Promise<Score> {
   const { system, user } = buildA3Prompt(args.criterion, args.pack, args.partnerRules);
   const ids = new Map(args.pack.items.map((e) => [e.id, e]));
@@ -138,6 +139,7 @@ export async function scoreCriterion(args: {
     thinking: "low",
     applicationId: args.applicationId,
     founders: args.founders,
+    runId: args.runId,
     validate: (v) => {
       const o = v as { rating: number; evidence_strength: Strength; reason: string; evidence_refs: string[]; memo_refs: string[]; missing: string[]; injection_attempt: boolean };
       if (typeof o?.rating !== "number" || o.rating < 0 || o.rating > 4) throw new BadModelOutput("A3 rating is not on the 0 to 4 scale");

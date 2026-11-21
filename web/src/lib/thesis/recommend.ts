@@ -18,6 +18,12 @@ export type LensResult = {
 export type Options = {
   /** "soft" (default): out-of-sector lowers to NEEDS HUMAN. "hard": it forces PASS. */
   sectorFlag?: "soft" | "hard";
+  /**
+   * Back test only: criteria the memo never discusses. They are left out of the score (the other weights are
+   * rescaled) and do not count as missing. A memo is a partner's notes, not an application, so silence is not a
+   * missing number. Live screening never sets this: there, a missing fact always counts against the company.
+   */
+  notDiscussed?: CriterionId[];
 };
 
 const MISSING: Rating = 1;
@@ -30,8 +36,10 @@ function filled(ratings: Ratings): Record<CriterionId, Rating> {
 export function recommendForLens(card: ThesisCard, raw: Ratings, lens: Lens, opts: Options = {}): LensResult {
   const r = filled(raw);
   const w = lensWeights(card, lens);
-  const totalWeight = CRITERIA.reduce((s, c) => s + w[c], 0);
-  const score = Math.round((CRITERIA.reduce((s, c) => s + w[c] * r[c], 0) / totalWeight) * 100) / 100;
+  const skip = new Set(opts.notDiscussed ?? []);
+  const used = CRITERIA.filter((c) => !skip.has(c));
+  const totalWeight = used.reduce((s, c) => s + w[c], 0) || 1;
+  const score = Math.round((used.reduce((s, c) => s + w[c] * r[c], 0) / totalWeight) * 100) / 100;
   const reasons: string[] = [];
   const t = card.thresholds;
 
@@ -45,18 +53,24 @@ export function recommendForLens(card: ThesisCard, raw: Ratings, lens: Lens, opt
   if (r.C2 === 0 && opts.sectorFlag === "hard") reasons.push("Outside the fund's sectors.");
   if (reasons.length) return { lens, recommendation: "pass", score, reasons };
 
-  const unknownBreakers = (["C1", "C3", "C4"] as const).filter((c) => r[c] === MISSING);
+  const unknownBreakers = (["C1", "C3", "C4"] as const).filter((c) => r[c] === MISSING && !skip.has(c));
   if (unknownBreakers.length) {
     reasons.push(`Could not tell ${unknownBreakers.join(", ")}, which could rule the company out. A person decides.`);
     return { lens, recommendation: "needs_human", score, reasons };
   }
 
-  const missingCount = CRITERIA.filter((c) => r[c] === MISSING).length;
+  const missingCount = used.filter((c) => r[c] === MISSING).length;
   let rec: Recommendation;
   if (score >= t.go_min) rec = "go";
   else if (score <= t.pass_max) rec = "pass";
   else rec = "needs_human";
   reasons.push(`Weighted score ${score.toFixed(2)} of 4 (GO from ${t.go_min}, PASS at or below ${t.pass_max}).`);
+
+  // Card v2: missing evidence alone never makes a PASS. A PASS needs a criterion that fails on evidence.
+  if (rec === "pass" && t.pass_needs_failure && !used.some((c) => r[c] === 0)) {
+    rec = "needs_human";
+    reasons.push("The score is low because evidence is missing, but no criterion fails on evidence. A person decides.");
+  }
 
   if (rec === "go" && missingCount > t.max_missing_for_go) {
     rec = "needs_human";

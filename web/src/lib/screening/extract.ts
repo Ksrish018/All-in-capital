@@ -113,7 +113,7 @@ How to fill:
  * The form and the deck are read in two separate calls. In testing, one call over both often skipped the deck,
  * and then nothing could be compared. Two calls give each source its own entries.
  */
-export async function extractTrack1(args: { applicationId: string; sources: Sources; founders: FounderRef[] }): Promise<{ claims: Claim[]; dropped: number; injection: boolean }> {
+export async function extractTrack1(args: { applicationId: string | null; sources: Sources; founders: FounderRef[]; runId?: string }): Promise<{ claims: Claim[]; dropped: number; injection: boolean }> {
   const parts = (["form:", "deck:"] as const)
     .map((prefix) => new Map([...args.sources].filter(([k]) => k.startsWith(prefix))))
     .filter((m) => m.size > 0);
@@ -129,7 +129,7 @@ export async function extractTrack1(args: { applicationId: string; sources: Sour
   return { claims, dropped: results.reduce((s, r) => s + r.dropped, 0), injection: results.some((r) => r.injection) };
 }
 
-async function extractOne(args: { applicationId: string; sources: Sources; founders: FounderRef[] }): Promise<{ claims: Claim[]; dropped: number; injection: boolean }> {
+async function extractOne(args: { applicationId: string | null; sources: Sources; founders: FounderRef[]; runId?: string }): Promise<{ claims: Claim[]; dropped: number; injection: boolean }> {
   const { system, user } = buildA1Prompt(args.sources);
   return callModel({
     callType: "A1",
@@ -144,6 +144,7 @@ async function extractOne(args: { applicationId: string; sources: Sources; found
     thinking: "low",
     applicationId: args.applicationId,
     founders: args.founders,
+    runId: args.runId,
     validate: (v) => {
       const o = v as { fields?: Claim[]; injection_attempt?: boolean };
       if (!Array.isArray(o?.fields)) throw new BadModelOutput("A1 reply has no fields list");

@@ -31,6 +31,8 @@ export const ThesisCardSchema = z.object({
     go_min: z.number(),
     pass_max: z.number(),
     max_missing_for_go: z.number().int().min(0),
+    /** v2: a PASS from the score alone needs a criterion that fails on evidence. Otherwise a person decides. */
+    pass_needs_failure: z.boolean().optional(),
   }),
   hard_flags: z.array(z.object({ id: z.string(), when: z.string(), effect: z.string(), note: z.string() })),
   partner_rules: z.array(z.string()),
