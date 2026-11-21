@@ -5,7 +5,7 @@ import { GateError } from "@/lib/gates-server";
 import { runBacktest } from "@/lib/backtest/run";
 import { createAdminClient } from "@/lib/supabase/server";
 
-export const maxDuration = 800;
+export const maxDuration = 300; // Vercel Hobby limit. A full back test takes about 8 minutes: run it locally with npm run backtest.
 
 // POST /api/thesis/:version/backtest. Runs the back test on one Thesis Card version (Kushal).
 export async function POST(_req: Request, ctx: RouteContext<"/api/thesis/[version]/backtest">) {

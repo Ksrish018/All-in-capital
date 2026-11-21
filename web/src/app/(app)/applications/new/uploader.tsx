@@ -83,7 +83,7 @@ function Files() {
         fd.set("form", r.form, r.form.name);
         if (r.deck) fd.set("deck", r.deck, r.deck.name);
         const res = await fetch("/api/applications", { method: "POST", body: fd });
-        const body = await res.json().catch(() => ({}));
+        const body = res.status === 413 ? { error: "Too large for the hosted app: the form and deck together must be under 4.5 MB." } : await res.json().catch(() => ({}));
         setRows((prev) => prev.map((x, j) => (j === i
           ? res.ok
             ? { ...x, state: "sent", id: body.id, note: body.position ? `In queue, number ${body.position}` : "In queue" }
