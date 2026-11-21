@@ -19,7 +19,8 @@
     "eval:gates": "node scripts/eval-gates.mjs",
     "eval:tricky": "node scripts/eval-tricky.mjs",
     "eval": "node scripts/eval-all.mjs",
-    "eval:outreach": "node scripts/eval-outreach.mjs"
+    "eval:outreach": "node scripts/eval-outreach.mjs",
+    "eval:cap": "node scripts/eval-cap.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

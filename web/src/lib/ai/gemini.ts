@@ -47,11 +47,15 @@ function gatewayUrl(model: string): string {
   return `https://gateway.ai.cloudflare.com/v1/${acct}/${gw}/google-ai-studio/v1beta/models/${encodeURIComponent(model)}:generateContent`;
 }
 
+/** Midnight in India, where the fund works. The daily cap resets then. */
+export function startOfIndiaDay(now = Date.now()): Date {
+  const offset = 330 * 60_000;
+  return new Date(Math.floor((now + offset) / 86_400_000) * 86_400_000 - offset);
+}
+
 export async function spentTodayUsd(): Promise<number> {
   const db = createAdminClient();
-  const start = new Date();
-  start.setUTCHours(0, 0, 0, 0);
-  const { data } = await db.from("llm_calls").select("cost_usd").gte("created_at", start.toISOString());
+  const { data } = await db.from("llm_calls").select("cost_usd").gte("created_at", startOfIndiaDay().toISOString());
   return (data ?? []).reduce((s, r) => s + Number(r.cost_usd), 0);
 }
 
