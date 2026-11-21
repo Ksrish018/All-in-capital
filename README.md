@@ -23,6 +23,12 @@ Course PDFs and seed decks are kept out of this public repository on purpose.
 
 The app has no login by design. Before it is reachable online, set `APP_PASSWORD`: every page then asks for it. Keep it on the team's own machines until then.
 
+## Live demo
+
+https://all-in-capital-three.vercel.app (open to anyone with the link, no password, by the owner's choice).
+The hosted copy has no Google keys, so it cannot send email or touch a calendar; outreach there only runs in simulate mode.
+Real outreach runs from a local copy with the Google keys in `.env`.
+
 ## Status
 
 All milestones M0 to M7 are built and checked. M8, the pilot week, is for the team to run with Riya: see [PILOT.md](PILOT.md) for the checklist. Two decisions wait for people: Kushal approves Thesis Card v2 after reading its back test, and the team says when outreach may go live (it runs in simulate mode until then).
