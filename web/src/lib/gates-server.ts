@@ -1,4 +1,6 @@
 import "server-only";
+import { after } from "next/server";
+import { startOutreach } from "@/lib/outreach/agent";
 import { createAdminClient } from "@/lib/supabase/server";
 import { ThesisCardSchema } from "@/lib/thesis/card";
 import { currentCardRow } from "@/lib/thesis/current";
@@ -111,6 +113,11 @@ export async function recordGate2(input: { id: string; role: Role; decision: Dec
   });
   if (error) throw new GateError(error.message);
   const next = { go: "signed_off_go", pass: "signed_off_pass", hold: "hold", send_back: "brief_ready" }[input.decision];
+  // Step 14: GO and PASS start outreach. The first draft is written after this reply, for Riya to send.
+  if (input.decision === "go" || input.decision === "pass") {
+    const outcome = input.decision;
+    after(() => startOutreach(input.id, outcome).catch((e) => console.error("outreach start:", e)));
+  }
   await db.from("applications").update({
     status: next,
     status_reason: input.decision === "send_back" ? `Sent back by Kushal: ${input.note}` : `Kushal signed off ${input.decision.toUpperCase()}`,

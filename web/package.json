@@ -18,7 +18,8 @@
     "backtest": "tsx --conditions=react-server scripts/backtest.mts",
     "eval:gates": "node scripts/eval-gates.mjs",
     "eval:tricky": "node scripts/eval-tricky.mjs",
-    "eval": "node scripts/eval-all.mjs"
+    "eval": "node scripts/eval-all.mjs",
+    "eval:outreach": "node scripts/eval-outreach.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
