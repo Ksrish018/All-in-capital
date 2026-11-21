@@ -1923,6 +1923,19 @@ These are shapes, not final words. A5 writes the real drafts and Riya edits them
 
 ## 23. How this PRD answers the case and the course
 
+**Build status, 21 November 2026.** Everything below is built and checked, except these, which are partly done or wait for people:
+
+| Item | Status |
+|---|---|
+| Judge from a different model family | Deferred by choice. The blind check at Gate 1 runs instead. |
+| Prompts stored in Langfuse prompt management (9.5) | Partly. Prompts are versioned in code and every call's prompt name and version are traced to Langfuse. |
+| Break it on purpose, and a test meant to fail (19.4) | Partly. Repeat runs give the same answers (R10, and 20 at once gave matching results), but no deliberate break test is scripted. |
+| Weekly live-mode research run (19.2a) | Not scheduled. Research runs on recorded results until Kushal switches it to live. |
+| StockSathi: the two lenses differ (19.2) | Not checked by the eval. In the latest run both lenses said "needs a person". |
+| Full portfolio list | Partly. 25 of about 80 companies, until Kushal shares the full list. |
+| Live outreach | Checked once end to end on a real inbox and calendar (21 Nov 2026). Runs in simulate mode until the team switches it on. |
+| Thesis Card approval and the pilot week | Wait for Kushal and Riya (PILOT.md). |
+
 This section checks every requirement against the PRD. "Met" means the PRD specifies it fully. "Met, with a change" means we meet the goal by a different route, and the reason is given. "Deferred" means it is planned for later on purpose.
 
 ### 23.1 Case 03: Kushal's asks

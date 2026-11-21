@@ -1,166 +1,316 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2440" height="2700" viewBox="0 0 2440 2700">
-<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334e68"/></marker><marker id="mc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="ml" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="mh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/></marker><marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker></defs>
-<rect width="2440" height="2700" fill="#ffffff"/>
-<foreignObject x="20" y="18" width="2400" height="60"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-size:30px;font-weight:800">All In Capital Triage System: Components Map</div><div style="font-size:17px;color:#52606d">Part 1 of 2. Screening run, once per application. Rows are actors. Columns are stages. Red boxes are human gates.</div></div></foreignObject>
-<rect x="260" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="260" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Trigger</div></foreignObject>
-<rect x="620" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="620" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Input</div></foreignObject>
-<rect x="980" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="980" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Context</div></foreignObject>
-<rect x="1340" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="1340" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Processing</div></foreignObject>
-<rect x="1700" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="1700" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">AI</div></foreignObject>
-<rect x="2060" y="100" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="2060" y="100" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Output</div></foreignObject>
-<rect x="20" y="156" width="2400" height="196" fill="#fff7e6" rx="6"/>
-<foreignObject x="28" y="156" width="220" height="196"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Riya and Kushal</div><div style="font-size:14px;color:#52606d;font-weight:400">Owners and approvers</div></div></foreignObject>
-<rect x="20" y="358" width="2400" height="262" fill="#eef4fb" rx="6"/>
-<foreignObject x="28" y="358" width="220" height="262"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">The app</div><div style="font-size:14px;color:#52606d;font-weight:400">Orchestrates, stores, logs</div></div></foreignObject>
-<rect x="20" y="626" width="2400" height="176" fill="#f1f7f1" rx="6"/>
-<foreignObject x="28" y="626" width="220" height="176"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Web sources</div><div style="font-size:14px;color:#52606d;font-weight:400">Search API, company sites, news</div></div></foreignObject>
-<rect x="20" y="808" width="2400" height="206" fill="#f6f0fb" rx="6"/>
-<foreignObject x="28" y="808" width="220" height="206"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">AI models</div><div style="font-size:14px;color:#52606d;font-weight:400">Gemini, through Cloudflare</div></div></foreignObject>
-<rect x="20" y="1020" width="2400" height="140" fill="#f4f4f5" rx="6"/>
-<foreignObject x="28" y="1020" width="220" height="140"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Tracking</div><div style="font-size:14px;color:#52606d;font-weight:400">Cloudflare, Langfuse, cost</div></div></foreignObject>
-<rect x="260" y="172" width="350" height="164" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="260" y="172" width="350" height="164"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Founder applies</div><div style="color:#52606d;font-size:15px">Public form or a warm intro. Riya opens the week's batch.</div></div></foreignObject>
-<rect x="2060" y="262" width="350" height="84" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<foreignObject x="2060" y="262" width="350" height="84"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">GATE 1. Riya reviews</div><div style="color:#52606d;font-size:15px">Approve, reject or correct with a one-line reason.</div></div></foreignObject>
-<rect x="2060" y="164" width="350" height="76" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<foreignObject x="2060" y="164" width="350" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">GATE 2. Kushal signs off</div><div style="color:#52606d;font-size:15px">Sees every outcome. Nobody is auto-rejected or auto-advanced.</div></div></foreignObject>
-<rect x="620" y="372" width="350" height="234" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="620" y="372" width="350" height="234"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Deck and form</div><div style="color:#52606d;font-size:15px">Deck PDF plus form response. A missing deck is allowed and named as a gap.</div></div></foreignObject>
-<rect x="980" y="372" width="350" height="234" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="980" y="372" width="350" height="234"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Context pack</div><div style="color:#52606d;font-size:15px">Thesis Card, versioned. Only the relevant memo passages. Past corrections for similar companies. The full portfolio list.</div></div></foreignObject>
-<rect x="1340" y="372" width="350" height="234" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="372" width="350" height="234"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Prepare and check</div><div style="color:#52606d;font-size:15px">Parse. Swap names, emails and phones for a founder ID. Dedupe and queue. Cheap checks first: stage, excluded category, portfolio clash. Flag only. Code checks whether each field is filled.</div></div></foreignObject>
-<rect x="2060" y="372" width="350" height="234" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="372" width="350" height="234"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">The brief</div><div style="color:#52606d;font-size:15px">Each criterion as yes, no or unknown, with source and exact quote. Gaps named. GO, PASS or NEEDS HUMAN with reasons. Status: scored, queued or needs attention.</div></div></foreignObject>
-<rect x="980" y="640" width="350" height="148" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="980" y="640" width="350" height="148"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Clean public evidence</div><div style="color:#52606d;font-size:15px">Company site, search results, news. Cleaned and capped near 2,000 tokens. No logged-in scraping.</div></div></foreignObject>
-<rect x="1340" y="640" width="350" height="148" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="640" width="350" height="148"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Targeted fetch</div><div style="color:#52606d;font-size:15px">Fetch only the named source for an unknown field. On failure: unknown plus reason, then move on.</div></div></foreignObject>
-<rect x="1700" y="820" width="350" height="58" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1700" y="820" width="350" height="58"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Pull facts</b> into named fields</div></div></foreignObject>
-<rect x="1700" y="886" width="350" height="58" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1700" y="886" width="350" height="58"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Judge each criterion</b> against the Thesis Card</div></div></foreignObject>
-<rect x="1700" y="952" width="350" height="52" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1700" y="952" width="350" height="52"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Write</b> the two-line summary</div></div></foreignObject>
-<rect x="1340" y="1032" width="350" height="116" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="1032" width="350" height="116"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Cloudflare AI Gateway</div><div style="color:#52606d;font-size:15px">Routes every model call. Automatic retries.</div></div></foreignObject>
-<rect x="2060" y="1032" width="350" height="116" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="1032" width="350" height="116"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Langfuse and cost page</div><div style="color:#52606d;font-size:15px">Trace per application with prompt version. Cost per call. Daily cap pauses and alerts.</div></div></foreignObject>
-<path d="M435.0,336 L435.0,354.0 L795.0,354.0 L795.0,372" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M970,489.0 L980,489.0" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1330,489.0 L1340,489.0" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1690,559.2 L1695.0,559.2 L1695.0,849.0 L1700,849.0" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M2050,915.0 L2235.0,915.0 L2235.0,606" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<path d="M2235.0,372 L2235.0,346" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<path d="M1445.0,606 L1445.0,640" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<rect x="995" y="606" width="330" height="44" rx="5" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
-<foreignObject x="995" y="606" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#d97706;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Loop B. If a field is unknown. Max 2 per question, 8 per app.</div></foreignObject>
-<path d="M1602.5,640 L1602.5,606" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<path d="M1330,714.0 L1340,714.0" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<path d="M2060,304.0 L1155.0,304.0 L1155.0,372" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#ml)"/>
-<rect x="1000" y="246" width="360" height="44" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="1"/>
-<foreignObject x="1000" y="246" width="360" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#7c3aed;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Loop C. Correction and reason stored, then recalled for similar companies.</div></foreignObject>
-<path d="M2235.0,262 L2235.0,240" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<line x1="20" y1="1190" x2="2420" y2="1190" stroke="#bcccdc" stroke-width="2"/>
-<foreignObject x="20" y="1210" width="2400" height="60"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-size:30px;font-weight:800">Part 2 of 2. Outreach and scheduling run</div><div style="font-size:17px;color:#52606d">Starts only after Kushal signs off. The agent keeps a state record per founder and hands off at every limit.</div></div></foreignObject>
-<rect x="260" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="260" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Trigger</div></foreignObject>
-<rect x="620" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="620" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Input</div></foreignObject>
-<rect x="980" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="980" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Context</div></foreignObject>
-<rect x="1340" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="1340" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Processing</div></foreignObject>
-<rect x="1700" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="1700" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">AI</div></foreignObject>
-<rect x="2060" y="1292" width="350" height="44" rx="6" fill="#243b53"/>
-<foreignObject x="2060" y="1292" width="350" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:19px;line-height:1.3;color:#ffffff;font-weight:700;text-align:center;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Output</div></foreignObject>
-<rect x="20" y="1348" width="2400" height="250" fill="#fff7e6" rx="6"/>
-<foreignObject x="28" y="1348" width="220" height="250"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Riya and Kushal</div><div style="font-size:14px;color:#52606d;font-weight:400">Approvers</div></div></foreignObject>
-<rect x="20" y="1604" width="2400" height="190" fill="#f6f0fb" rx="6"/>
-<foreignObject x="28" y="1604" width="220" height="190"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">AI models</div><div style="font-size:14px;color:#52606d;font-weight:400">Gemini, through Cloudflare</div></div></foreignObject>
-<rect x="20" y="1800" width="2400" height="220" fill="#eef4fb" rx="6"/>
-<foreignObject x="28" y="1800" width="220" height="220"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">The app</div><div style="font-size:14px;color:#52606d;font-weight:400">State machine</div></div></foreignObject>
-<rect x="20" y="2026" width="2400" height="210" fill="#eef8f8" rx="6"/>
-<foreignObject x="28" y="2026" width="220" height="210"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Gmail and Calendar</div><div style="font-size:14px;color:#52606d;font-weight:400">Test Google account</div></div></foreignObject>
-<rect x="20" y="2242" width="2400" height="110" fill="#f4f4f5" rx="6"/>
-<foreignObject x="28" y="2242" width="220" height="110"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;font-size:19px">Tracking</div><div style="font-size:14px;color:#52606d;font-weight:400">Cloudflare, Langfuse, cost</div></div></foreignObject>
-<rect x="260" y="1360" width="350" height="226" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="260" y="1360" width="350" height="226"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Outcome signed off</div><div style="color:#52606d;font-size:15px">GO applicants get a call invite. PASS applicants get a kind note saying what would change our view.</div></div></foreignObject>
-<rect x="2060" y="1360" width="350" height="62" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="1360" width="350" height="62"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>After the call:</b> one tap. Was it worth 30 minutes? Logged for learning.</div></div></foreignObject>
-<rect x="2060" y="1430" width="350" height="62" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="1430" width="350" height="62"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Riya takes</b> unclear replies and any loop that hits its limit</div></div></foreignObject>
-<rect x="2060" y="1500" width="350" height="86" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<foreignObject x="2060" y="1500" width="350" height="86"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">GATE 3. Riya edits and sends</div><div style="color:#52606d;font-size:15px">Nothing leaves without her click.</div></div></foreignObject>
-<rect x="1700" y="1618" width="350" height="74" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1700" y="1618" width="350" height="74"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Draft</b> the GO invite or the PASS note, using the style notes</div></div></foreignObject>
-<rect x="1700" y="1706" width="350" height="76" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1700" y="1706" width="350" height="76"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="color:#52606d;font-size:15px"><b>Read the reply:</b> interested, not interested, unclear or none</div></div></foreignObject>
-<rect x="980" y="1814" width="350" height="190" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="980" y="1814" width="350" height="190"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">State record per founder</div><div style="color:#52606d;font-size:15px">Email status, reply type, follow-ups sent, slots offered and refused, round, meeting status. Style notes from past edits.</div></div></foreignObject>
-<rect x="1340" y="1814" width="350" height="190" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="1814" width="350" height="190"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Scheduler</div><div style="color:#52606d;font-size:15px">Follow up on day 3 and day 7, then stop. Tuesday or Thursday afternoon, 30 minutes. Add Aditya for deeptech. Retry table for every tool.</div></div></foreignObject>
-<rect x="620" y="2090" width="350" height="132" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="620" y="2090" width="350" height="132"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Founder replies</div><div style="color:#52606d;font-size:15px">The reply lands in Gmail.</div></div></foreignObject>
-<rect x="1340" y="2090" width="350" height="132" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="2090" width="350" height="132"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Calendar check</div><div style="color:#52606d;font-size:15px">Free or busy for Riya, and Aditya when needed.</div></div></foreignObject>
-<rect x="2060" y="2090" width="350" height="132" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="2090" width="350" height="132"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Sent and booked</div><div style="color:#52606d;font-size:15px">Email goes from Gmail. Invite lands on both calendars.</div></div></foreignObject>
-<rect x="1340" y="2254" width="350" height="86" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="1340" y="2254" width="350" height="86"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Cloudflare AI Gateway</div><div style="color:#52606d;font-size:15px">Every model call, with retries.</div></div></foreignObject>
-<rect x="2060" y="2254" width="350" height="86" rx="10" fill="#ffffff" stroke="#334e68" stroke-width="1.5"/>
-<foreignObject x="2060" y="2254" width="350" height="86"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;margin-bottom:3px">Langfuse and cost page</div><div style="color:#52606d;font-size:15px">Every step traced and costed.</div></div></foreignObject>
-<path d="M435,1586 L435,1655 L1700,1655" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M2050,1655 L2150,1655 L2150,1586" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<path d="M2320,1586 L2320,2090" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<rect x="2080" y="1860" width="230" height="44" rx="5" fill="#ffffff" stroke="#0f766e" stroke-width="1"/>
-<foreignObject x="2080" y="1860" width="230" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#0f766e;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Sends only after Riya clicks.</div></foreignObject>
-<path d="M795,2090 L795,1744 L1700,1744" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1780,1782 L1780,1909 L1690,1909" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1330,1909 L1340,1909" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1600,2004 L1600,2090" fill="none" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<path d="M1690,2156 L2060,2156" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<rect x="1710" y="2100" width="330" height="44" rx="5" fill="#ffffff" stroke="#0f766e" stroke-width="1"/>
-<foreignObject x="1710" y="2100" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#0f766e;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Book only after the founder confirms a slot.</div></foreignObject>
-<path d="M2050,1766 L2035,1766 L2035,1461 L2060,1461" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<rect x="1720" y="1406" width="290" height="44" rx="5" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
-<foreignObject x="1720" y="1406" width="290" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#d97706;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Unclear reply, or a limit is hit. Hand to Riya.</div></foreignObject>
-<path d="M1400,2004 C1400,2068 1510,2068 1510,2010" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<rect x="990" y="2032" width="330" height="44" rx="5" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
-<foreignObject x="990" y="2032" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#d97706;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Loop E. No reply: follow up, max 2.<br>Loop F. New time asked: recheck, max 2 rounds.</div></foreignObject>
-<path d="M2060,1522 L1155,1522 L1155,1814" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#ml)"/>
-<rect x="1000" y="1462" width="340" height="44" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="1"/>
-<foreignObject x="1000" y="1462" width="340" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:13.5px;line-height:1.3;color:#7c3aed;font-weight:600;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Loop D. Riya's edits become style notes for future drafts.</div></foreignObject>
-<foreignObject x="20" y="2390" width="2400" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:24px;line-height:1.3;color:#1f2933;font-weight:800;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">The seven loops. Each one has a limit and a hand-off to a person.</div></foreignObject>
-<rect x="20.0" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="20.0" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">A. Back test</div><div style="font-size:15px;color:#52606d">Run the rubric on past memos. Explain every disagreement. Kushal approves the next version.</div></div></foreignObject>
-<rect x="364.57142857142856" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="364.57142857142856" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">B. Research</div><div style="font-size:15px;color:#52606d">Unknown field, so fetch the named source. Max 2 per question, about 8 per application.</div></div></foreignObject>
-<rect x="709.1428571428571" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="709.1428571428571" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">C. Score corrections</div><div style="font-size:15px;color:#52606d">Fact fixes stay with one company. Rule fixes need Kushal before they change the rubric.</div></div></foreignObject>
-<rect x="1053.7142857142858" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="1053.7142857142858" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">D. Email edits</div><div style="font-size:15px;color:#52606d">Draft vs sent becomes versioned style notes. Riya can roll back.</div></div></foreignObject>
-<rect x="1398.2857142857142" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="1398.2857142857142" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">E. Follow ups</div><div style="font-size:15px;color:#52606d">Day 3, day 7, then stop. Mark no response and tell Riya.</div></div></foreignObject>
-<rect x="1742.8571428571427" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="1742.8571428571427" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">F. Scheduling</div><div style="font-size:15px;color:#52606d">Counter-proposal, so recheck. Never repeat a refused slot. Max 2 rounds.</div></div></foreignObject>
-<rect x="2087.4285714285716" y="2446" width="332.57142857142856" height="150" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-<foreignObject x="2087.4285714285716" y="2446" width="332.57142857142856" height="150"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:17px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center"><div style="font-weight:700;color:#7c3aed">G. Call outcome</div><div style="font-size:15px;color:#52606d">Was the call worth 30 minutes? Read weekly. Feeds loops A and C.</div></div></foreignObject>
-<path d="M20,2652 L90,2652" stroke="#334e68" stroke-width="2.5" marker-end="url(#m)"/>
-<foreignObject x="96" y="2630" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:16px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Main flow</div></foreignObject>
-<path d="M440,2652 L510,2652" stroke="#0f766e" stroke-width="2.5" marker-end="url(#mh)"/>
-<foreignObject x="516" y="2630" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:16px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Hand-off to a person or record</div></foreignObject>
-<path d="M860,2652 L930,2652" stroke="#d97706" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#mc)"/>
-<foreignObject x="936" y="2630" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:16px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Conditional path, with its limit</div></foreignObject>
-<path d="M1280,2652 L1350,2652" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="9 6" marker-end="url(#ml)"/>
-<foreignObject x="1356" y="2630" width="330" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:16px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Learning loop</div></foreignObject>
-<rect x="1700" y="2634" width="60" height="36" rx="6" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<foreignObject x="1766" y="2630" width="520" height="44"><div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Segoe UI,Arial,sans-serif;font-size:16px;line-height:1.3;color:#1f2933;font-weight:400;text-align:left;padding:8px 12px;box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center">Human gate. Placed before anything that cannot be undone.</div></foreignObject>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1660" viewBox="0 0 2400 1660" font-family="Segoe UI, Inter, Arial, sans-serif">
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334e68"/></marker><marker id="ml" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/></marker></defs>
+<rect width="2400" height="1660" fill="#ffffff"/>
+<text x="40" y="52" font-size="32" font-weight="800" fill="#1f2933" text-anchor="start">All In Capital Triage: Components Map</text>
+<text x="40" y="82" font-size="17" font-weight="400" fill="#52606d" text-anchor="start">The built system, 21 November 2026. Two loops joined at Kushal&#x27;s sign off. People decide every outcome; the system shows its work.</text>
+<rect x="1360" y="34" width="22" height="18" rx="4" fill="#eef2f7" stroke="#334e68" stroke-width="2"/>
+<text x="1390" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Code</text>
+<rect x="1560" y="34" width="22" height="18" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+<text x="1590" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">AI call (Gemini)</text>
+<rect x="1760" y="34" width="22" height="18" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+<text x="1790" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">A person decides</text>
+<rect x="1960" y="34" width="22" height="18" rx="4" fill="#e6f6f4" stroke="#0f766e" stroke-width="2"/>
+<text x="1990" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Data or outside service</text>
+<rect x="2160" y="34" width="22" height="18" rx="4" fill="#fff7e6" stroke="#b7791f" stroke-width="2"/>
+<text x="2190" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Set up before screening</text>
+<line x1="1360" y1="76" x2="1400" y2="76" stroke="#d97706" stroke-width="2.5" stroke-dasharray="8 6"/>
+<text x="1410" y="81" font-size="14" font-weight="500" fill="#d97706" text-anchor="start">Learning loop: what people decide comes back in (Loops A to G)</text>
+<rect x="40" y="150" width="300" height="150" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
+<text x="328" y="174" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S1</text>
+<text x="54" y="177" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Thesis Card</text>
+<text x="54" y="201" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">11 criteria, rated 0 to 4</text>
+<text x="54" y="221" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two lenses: public, revealed</text>
+<text x="54" y="241" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Rules that override the score</text>
+<text x="54" y="261" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">v2: a PASS needs a failure</text>
+<rect x="40" y="320" width="300" height="110" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
+<text x="328" y="344" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S2</text>
+<text x="54" y="347" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Portfolio list</text>
+<text x="54" y="371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">25 companies with tags</text>
+<text x="54" y="391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Used for the conflict check</text>
+<rect x="40" y="450" width="300" height="130" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
+<text x="328" y="474" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S3</text>
+<text x="54" y="477" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Memo passages</text>
+<text x="54" y="501" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">12 memos, 48 tagged passages</text>
+<text x="54" y="521" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Build set gives context</text>
+<text x="54" y="541" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Test set held out</text>
+<rect x="40" y="600" width="300" height="150" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
+<text x="328" y="624" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S4</text>
+<text x="54" y="627" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Back test (Loop A)</text>
+<text x="54" y="651" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Memo companies at decision</text>
+<text x="54" y="671" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">time, research off</text>
+<text x="54" y="691" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N1: no funded PASS unflagged</text>
+<text x="54" y="711" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Kushal approves a version</text>
+<polyline points="40,690 24,690 24,225 38,225" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
+<rect x="370" y="128" width="1360" height="830" rx="22" fill="none" stroke="#334e68" stroke-width="2.5" stroke-dasharray="2 0"/>
+<rect x="394" y="112" width="474.6" height="32" rx="16" fill="#334e68"/>
+<text x="410" y="134" font-size="18" font-weight="800" fill="#ffffff" text-anchor="start">LOOP 1  Screening</text>
+<text x="609" y="134" font-size="14" font-weight="500" fill="#ffffff" text-anchor="start">once per application, about $0.10</text>
+<rect x="400" y="160" width="240" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="628" y="184" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
+<text x="414" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">1 Intake</text>
+<text x="414" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Riya drops forms and decks</text>
+<text x="414" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">or adds a warm intro</text>
+<text x="414" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">PDF only, 25 MB</text>
+<rect x="665" y="160" width="240" height="130" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="893" y="184" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Supabase</text>
+<text x="679" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">2 Store and queue</text>
+<text x="679" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Private file storage</text>
+<text x="679" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Queue: none get lost (N5)</text>
+<text x="679" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">4 at a time</text>
+<rect x="930" y="160" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="944" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">3 Parse</text>
+<text x="944" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads form fields by</text>
+<text x="944" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">position on the page</text>
+<text x="944" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck kept page by page</text>
+<rect x="1195" y="160" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="1209" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">4 Redact</text>
+<text x="1209" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Founders become F1, F2</text>
+<text x="1209" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Emails, phones, links</text>
+<text x="1209" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">become tags (N6)</text>
+<rect x="1460" y="160" width="250" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="1698" y="184" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A0</text>
+<text x="1474" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">5 Cheap checks</text>
+<text x="1474" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Later stage, sector, capital,</text>
+<text x="1474" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">excluded, duplicate: code</text>
+<text x="1474" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Portfolio conflict: A0</text>
+<polyline points="640,225 663,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="905,225 928,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1170,225 1193,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1435,225 1458,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="400" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="628" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A1</text>
+<text x="414" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">6 Track 1</text>
+<text x="414" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck and form read as</text>
+<text x="414" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">the founder&#x27;s claims</text>
+<text x="414" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every quote checked</text>
+<rect x="665" y="330" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="679" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">7 Sufficiency</text>
+<text x="679" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Code lists the open</text>
+<text x="679" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">questions the deck and</text>
+<text x="679" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">form leave unanswered</text>
+<rect x="930" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="1158" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A2</text>
+<text x="944" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">8 Track 2 research</text>
+<text x="944" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Our own checks: exists,</text>
+<text x="944" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">founders, market, news,</text>
+<text x="944" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">red flags. 12 fetches max</text>
+<rect x="1195" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="1423" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A2</text>
+<text x="1209" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">9 Compare</text>
+<text x="1209" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Confirmed, founder says,</text>
+<text x="1209" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">conflict, found by us</text>
+<text x="1209" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck vs form: 5% rule</text>
+<rect x="1460" y="330" width="250" height="130" rx="12" fill="#ffffff" stroke="#9aa5b1" stroke-width="1.6"/>
+<text x="1474" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Stopped early</text>
+<text x="1474" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Short brief with the flag</text>
+<text x="1474" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Research skipped to save</text>
+<text x="1474" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">cost. Riya can run it all</text>
+<polyline points="1585,290 1585,328" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="1539.4" y="302" width="91.2" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1585" y="317" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">a check hit</text>
+<polyline points="1520,290 1520,310 520,310 520,328" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="968.4" y="297" width="163.20000000000002" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1050" y="312" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">clean: full screening</text>
+<polyline points="640,395 663,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="905,395 928,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1170,395 1193,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="400" y="500" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="414" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">10 Context packs</text>
+<text x="414" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Per criterion: its evidence,</text>
+<text x="414" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">3 memo passages, up to</text>
+<text x="414" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">3 of Riya&#x27;s rule corrections</text>
+<rect x="665" y="500" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="893" y="524" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A3</text>
+<text x="679" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">11 Score 11 criteria</text>
+<text x="679" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Rating 0 to 4 with reason</text>
+<text x="679" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Made-up citation fails (N2)</text>
+<text x="679" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Strong needs an outside source</text>
+<rect x="930" y="500" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="944" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">12 Recommend</text>
+<text x="944" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Code, never the model</text>
+<text x="944" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO, PASS, needs a person,</text>
+<text x="944" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">or HOLD, on both lenses</text>
+<rect x="1195" y="500" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="1423" y="524" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A4</text>
+<text x="1209" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">13 Brief</text>
+<text x="1209" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flags first, then evidence</text>
+<text x="1209" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">What we could not find</text>
+<text x="1209" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two-line summary</text>
+<polyline points="1315,460 1315,480 520,480 520,498" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="640,565 663,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="905,565 928,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1170,565 1193,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="340,225 356,225 356,530 398,530" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="340,515 356,515" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="665" y="700" width="400" height="170" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="1053" y="724" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
+<text x="679" y="727" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 1  Riya reviews</text>
+<text x="679" y="751" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Evidence first, oldest first</text>
+<text x="679" y="771" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Agree in one click, or change with a reason</text>
+<text x="679" y="791" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Blind check on 1 in 10 PASS calls</text>
+<text x="679" y="811" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Correct a rating: fact or rule</text>
+<text x="679" y="831" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Time on page recorded</text>
+<rect x="1195" y="700" width="400" height="170" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="1583" y="724" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Kushal</text>
+<text x="1209" y="727" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 2  Kushal signs off</text>
+<text x="1209" y="751" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Board in four columns</text>
+<text x="1209" y="771" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Bulk sign off only where Riya agreed</text>
+<text x="1209" y="791" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">and nothing is flagged</text>
+<text x="1209" y="811" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO, PASS, hold, or send back</text>
+<text x="1209" y="831" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Portfolio conflicts come here first</text>
+<polyline points="1315,630 1315,660 965,660 965,698" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1585,460 1585,640 1005,640 1005,698" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="1539.4" y="527" width="91.2" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1585" y="542" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">short brief</text>
+<polyline points="1065,770 1193,770" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="1070.0" y="747" width="120.0" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1130" y="762" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">Riya&#x27;s decision</text>
+<polyline points="1193,830 1067,830" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#mg)"/>
+<rect x="1091.6" y="827" width="76.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1130" y="842" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">send back</text>
+<polyline points="1710,255 1715,255 1715,720 1597,720" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#mg)"/>
+<rect x="1658.6" y="467" width="112.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1715" y="482" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">conflict: HOLD</text>
+<polyline points="705,700 705,660 1182,660 1182,440 1172,440" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
+<rect x="772.6" y="647" width="184.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="865" y="662" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop B: ask for research</text>
+<polyline points="675,740 460,740 460,632" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
+<rect x="401.2" y="727" width="177.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="490" y="742" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop C: rule correction</text>
+<polyline points="1395,870 1395,985 520,985 520,1058" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#mg)"/>
+<rect x="762.0" y="972" width="336.0" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="930" y="987" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">GO or PASS starts outreach   (HOLD: no email)</text>
+<rect x="370" y="1040" width="1360" height="470" rx="22" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-dasharray="2 0"/>
+<rect x="394" y="1024" width="666.4000000000001" height="32" rx="16" fill="#0f766e"/>
+<text x="410" y="1046" font-size="18" font-weight="800" fill="#ffffff" text-anchor="start">LOOP 2  Outreach agent</text>
+<text x="664" y="1046" font-size="14" font-weight="500" fill="#ffffff" text-anchor="start">one step every 10 minutes, nothing sent without Riya</text>
+<rect x="400" y="1075" width="240" height="150" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="628" y="1099" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A5</text>
+<text x="414" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">14 Draft the email</text>
+<text x="414" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO: invite with 3 slots</text>
+<text x="414" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">PASS: kind note, what would</text>
+<text x="414" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">change our view. No scores</text>
+<text x="414" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">First name added by code</text>
+<rect x="665" y="1075" width="240" height="150" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="893" y="1099" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
+<text x="679" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 3  Riya sends</text>
+<text x="679" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads and edits</text>
+<text x="679" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">&quot;Send from your Gmail&quot;</text>
+<text x="679" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">No send all (N4)</text>
+<text x="679" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Simulate mode until live</text>
+<rect x="930" y="1075" width="240" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1158" y="1099" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Gmail</text>
+<text x="944" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">15 Watch the thread</text>
+<text x="944" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads only the stored</text>
+<text x="944" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">thread, never other mail</text>
+<text x="944" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every 10 minutes</text>
+<rect x="1195" y="1075" width="240" height="150" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
+<text x="1423" y="1099" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A6</text>
+<text x="1209" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">16 Read the reply</text>
+<text x="1209" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Picked a slot, new time,</text>
+<text x="1209" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">no time, not interested,</text>
+<text x="1209" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">out of office, or unclear</text>
+<text x="1209" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Below 0.75 means unclear</text>
+<rect x="1460" y="1075" width="250" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1698" y="1099" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Calendar</text>
+<text x="1474" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">19 Book</text>
+<text x="1474" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Founder confirmed in writing</text>
+<text x="1474" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Slot checked free again</text>
+<text x="1474" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">30 minutes, Meet link</text>
+<text x="1474" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Aditya added for deeptech</text>
+<polyline points="640,1150 663,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="905,1150 928,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1170,1150 1193,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1435,1150 1458,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="665" y="1300" width="240" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="893" y="1324" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
+<text x="679" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">With Riya</text>
+<text x="679" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Unclear reply, a bounce,</text>
+<text x="679" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">a third new time, or no</text>
+<text x="679" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">reply after two follow ups</text>
+<rect x="930" y="1300" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="944" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">17 Follow ups</text>
+<text x="944" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">No reply: day 3 and day 7</text>
+<text x="944" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Then no response</text>
+<text x="944" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Never more than two</text>
+<rect x="1195" y="1300" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="1209" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">18 Scheduling</text>
+<text x="1209" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">New slots, never a refused</text>
+<text x="1209" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">one. Tue or Thu, 2 to 6 pm</text>
+<text x="1209" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two rounds, then Riya</text>
+<rect x="1460" y="1300" width="250" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+<text x="1698" y="1324" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Team</text>
+<text x="1474" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">20 After the call</text>
+<text x="1474" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">One tap: worth 30 minutes?</text>
+<text x="1474" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Plus call notes</text>
+<polyline points="1585,1225 1585,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="1315,1225 1315,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="1280.2" y="1230" width="69.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1315" y="1245" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">new time</text>
+<polyline points="1225,1225 1225,1260 865,1260 865,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="948.8" y="1247" width="62.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="980" y="1262" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">unclear</text>
+<polyline points="1050,1225 1050,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="1045.2" y="1230" width="69.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="1080" y="1245" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">no reply</text>
+<polyline points="1435,1400 1450,1400 1450,1460 560,1460 560,1227" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<rect x="714.2" y="1447" width="141.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="785" y="1462" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">new draft for Riya</text>
+<polyline points="970,1430 970,1460" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
+<polyline points="785,1225 785,1275 460,1275 460,1227" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
+<rect x="458.8" y="1262" width="242.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="580" y="1277" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop D: edits become style notes</text>
+<polyline points="1710,1365 1745,1365 1745,1560 190,1560 190,752" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ml)"/>
+<rect x="640.8" y="1547" width="638.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+<text x="960" y="1562" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop G: call outcomes join the back test set, so the Thesis Card learns from real calls</text>
+<rect x="1780" y="150" width="580" height="200" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1794" y="177" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Supabase (Postgres, storage, queues)</text>
+<text x="1794" y="201" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">applications, documents, founders (names stay here)</text>
+<text x="1794" y="221" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">evidence by track, research fetches, scores, briefs</text>
+<text x="1794" y="241" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">reviews, corrections, outreach, emails, replies</text>
+<text x="1794" y="261" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">thesis cards, back test results, model calls, events</text>
+<text x="1794" y="281" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Row Level Security on every table</text>
+<text x="1794" y="301" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Queues: screening and outreach</text>
+<rect x="1780" y="370" width="580" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1794" y="397" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Cloudflare AI Gateway to Gemini</text>
+<text x="1794" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flash Lite: A0, A2, A6 (cheap reads)</text>
+<text x="1794" y="441" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flash: A1 extract, A4 summary, A5 drafts</text>
+<text x="1794" y="461" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Pro: A3 scoring, thinking kept low</text>
+<text x="1794" y="481" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">JSON schema on every call, retry once</text>
+<rect x="1780" y="540" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1794" y="567" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Tavily research</text>
+<text x="1794" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Replay mode for tests, live web when switched on</text>
+<text x="1794" y="611" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Never LinkedIn, social or contact-data sites</text>
+<rect x="1780" y="670" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1794" y="697" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Google Gmail and Calendar</text>
+<text x="1794" y="721" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Send only from Riya&#x27;s click. Read only stored threads</text>
+<text x="1794" y="741" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Free and busy times, then the booked event</text>
+<rect x="1780" y="800" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
+<text x="1794" y="827" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Langfuse and our own logs</text>
+<text x="1794" y="851" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">A trace per application, a span per model call</text>
+<text x="1794" y="871" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every model input logged, so N6 can be audited</text>
+<rect x="1780" y="940" width="580" height="262" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
+<text x="1794" y="967" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Guards that are always on</text>
+<text x="1794" y="991" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N1  No funded company marked PASS with no flag</text>
+<text x="1794" y="1011" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N2  Every citation exists</text>
+<text x="1794" y="1031" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N3  A founder-only claim is never shown as confirmed</text>
+<text x="1794" y="1051" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N4  Only Riya&#x27;s click sends an email</text>
+<text x="1794" y="1071" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N5  No application vanishes, 20 at once tested</text>
+<text x="1794" y="1091" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N6  No founder name, email or phone reaches a model</text>
+<text x="1794" y="1111" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Text aimed at the AI is flagged and ignored</text>
+<text x="1794" y="1131" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Daily cost cap: pause at a saved step, then resume</text>
+<text x="1794" y="1151" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">APP_PASSWORD before the app goes online</text>
+<text x="1794" y="1171" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Scores and recommendation decided in code</text>
+<rect x="1780" y="1222" width="580" height="288" rx="12" fill="#ffffff" stroke="#9aa5b1" stroke-width="1.6"/>
+<text x="1794" y="1249" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Screens</text>
+<text x="1794" y="1273" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Pipeline: live flow bar, feed and board</text>
+<text x="1794" y="1293" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Review: Riya&#x27;s queue (J, K, A, C, R keys)</text>
+<text x="1794" y="1313" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Sign off: Kushal&#x27;s four columns</text>
+<text x="1794" y="1333" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Outreach: to send, live, with Riya, done</text>
+<text x="1794" y="1353" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Thesis Card: criteria, rules, pending corrections</text>
+<text x="1794" y="1373" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Back test: per company, verdicts, approve</text>
+<text x="1794" y="1393" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Dashboard: metrics and the stop list</text>
+<text x="1794" y="1413" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Cost: spend against the cap</text>
+<text x="1794" y="1433" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Settings: each one owned by one person</text>
+<text x="40" y="1625" font-size="15" font-weight="400" fill="#52606d" text-anchor="start">Steps are numbered as in PRD Section 5. Loops as in PRD Section 11. Gates are the only places an outcome is decided, always by a person.</text>
 </svg>

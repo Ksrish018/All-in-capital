@@ -11,7 +11,7 @@ Built for the MESA Term 2 case (All In Capital). The full specification is in [P
 | `PRD.md` | The build document: workflow, data model, screens, tests, milestones |
 | `PILOT.md` | The pilot runbook: what must be true before day one, Riya's day, Kushal's week, the stop list |
 | `PLANNING.md`, `PRELIMINARY_CHECKS.md`, `REFERENCE_GUIDE.md` | The thinking before the build |
-| `Components_Map.png` | The whole system on one picture |
+| `Components_Map.png` | The whole built system on one picture: Loop 1 screening, Loop 2 outreach, and the learning loops (redraw with `python scripts/components_map.py`) |
 | `web/` | The Next.js app (screens, server routes, workers) |
 | `supabase/migrations/` | Database schema, applied with `npm run db:migrate` |
 | `seed/fund/` | The fund's public thesis register and portfolio draft |
