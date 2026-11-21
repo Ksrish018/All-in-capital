@@ -1,6 +1,7 @@
 import { createAdminClient } from "@/lib/supabase/server";
 import { can, currentActor } from "@/lib/actor";
 import { CRITERIA, type CriterionId } from "@/lib/thesis/card";
+import { PendingRules, type RuleRow } from "./rules";
 
 type Criterion = {
   id: CriterionId; name: string; meaning: string; rate_4: string; rate_0: string;
@@ -46,6 +47,11 @@ export default async function ThesisPage() {
     ),
   );
   const canApprove = can.approveThesis(actor.role);
+  const { data: rules } = await db.from("corrections").select("id, criterion_id, old_rating, new_rating, reason, rule_status, tags, applications(company_name)").eq("kind", "rule").order("created_at", { ascending: false });
+  const ruleRows: RuleRow[] = (rules ?? []).map((r) => ({
+    id: r.id, criterion_id: r.criterion_id, old_rating: r.old_rating, new_rating: r.new_rating, reason: r.reason, rule_status: r.rule_status ?? "pending", tags: r.tags ?? [],
+    company: (r.applications as unknown as { company_name: string } | null)?.company_name ?? "an application",
+  }));
 
   return (
     <div className="rise mx-auto max-w-[1400px]">
@@ -138,7 +144,8 @@ export default async function ThesisPage() {
             {(card.partner_rules as string[]).map((r) => <li key={r}>{r}</li>)}
           </ul>
           <h3 className="mt-5 text-[18px]">Pending rule corrections</h3>
-          <p className="text-muted">None yet. Riya&apos;s rule corrections will collect here for Kushal (milestone M4).</p>
+          <p className="mb-2 text-[12px] text-muted">Recalled as context for similar companies. They never change the card: that needs a new version, a back test and your approval.</p>
+          <PendingRules rows={ruleRows} canDecide={actor.role === "kushal"} />
         </div>
       </section>
 

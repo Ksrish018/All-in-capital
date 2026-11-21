@@ -1,7 +1,8 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/server";
 import { BadModelOutput, CostCapReached, PiiBlocked, spentTodayUsd } from "@/lib/ai/gemini";
-import { runScreening } from "@/lib/screening/run";
+import { researchQuestion, runScreening } from "@/lib/screening/run";
+import { assignBlind } from "@/lib/gates-server";
 import { queue } from "@/lib/db";
 import { parseFormItems, parseFounder, type FormField } from "./form";
 import { UnreadablePdf, deckPages, looksScanned, pdfItems, type DeckPage } from "./pdf";
@@ -44,6 +45,12 @@ export async function screenApplication(id: string): Promise<void> {
   const { data: app } = await db.from("applications").select("*").eq("id", id).single();
   if (!app) return; // deleted while waiting
   if (SETTLED.has(app.status)) return;
+  // Riya asked for more research on a named question: one more round, then compare and score again.
+  if (app.last_step === "research_question") {
+    await researchQuestion(id);
+    await runScreening(id, "full");
+    return;
+  }
   // Cheap checks already passed: carry on with full screening from the last saved step.
   if (FULL_STEPS.has(app.last_step ?? "")) {
     await runScreening(id, "full");
@@ -190,6 +197,7 @@ export async function screenApplication(id: string): Promise<void> {
     await setStatus(id, "hold_conflict", { short_circuit_flags: flagIds, last_step: "cheap_checks", status_reason: summary });
   } else {
     await setStatus(id, "short_circuited", { short_circuit_flags: flagIds, last_step: "cheap_checks", status_reason: summary, brief_ready_at: new Date().toISOString() });
+    await assignBlind(id);
   }
 }
 

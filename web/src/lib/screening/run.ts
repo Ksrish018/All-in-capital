@@ -4,14 +4,16 @@ import { CRITERIA, ThesisCardSchema } from "@/lib/thesis/card";
 import { recommend, label, type Ratings } from "@/lib/thesis/recommend";
 import { redactText, type FounderRef } from "@/lib/intake/redact";
 import { normName } from "@/lib/intake/checks";
-import { ResearchClient, type ResearchMode } from "@/lib/research/client";
+import { MAX_FETCHES, ResearchClient, type ResearchMode } from "@/lib/research/client";
 import { QUESTIONS } from "./fields";
 import { buildSources, extractTrack1, type Claim } from "./extract";
-import { runTrack2, type MatchFacts } from "./research";
+import { readResult, runTrack2, type MatchFacts } from "./research";
 import { applyLinks, compareDeckForm, fieldName, type Inconsistency, type Strength } from "./compare";
 import { matchClaims } from "./match";
 import { A3_VERSION, buildPack, scoreCriterion, type CriterionDef, type EvidenceItem, type Score } from "./score";
 import { scrubNames } from "./memo";
+import { companyTags, recallCorrections } from "@/lib/gates";
+import { assignBlind } from "@/lib/gates-server";
 import { writeSummary } from "./summary";
 
 // Steps 6 to 13. "full" runs everything. "short" (a cheap check hit) reads the deck and form and compares them,
@@ -180,11 +182,21 @@ export async function runScreening(id: string, mode: "full" | "short"): Promise<
     const { data: memos } = await db.from("memo_passages").select("id, company, decision, criteria, text, split").eq("split", "build");
     const memoItems = (memos ?? []).map((m) => ({ id: m.id as string, company: m.company as string, decision: m.decision as string, text: scrubNames(m.text as string, [m.company as string]).slice(0, 900), criteria: m.criteria as string[] }));
     const evidence: (EvidenceItem & { check: string | null })[] = rows
-      .filter((r) => (r.track === "1" || r.track === "2") && r.quote)
-      .map((r) => ({ id: r.id.split("_").pop()!, field: r.field, source: redactText(r.source_ref ?? r.url ?? "", founders), quote: r.quote!, strength: r.strength, vague: r.vague, web: r.track === "2", check: r.check_id }));
+      .filter((r) => (r.track === "1" || r.track === "2" || r.track === "riya") && r.quote)
+      .map((r) => ({ id: r.id.split("_").pop()!, field: r.field, source: redactText(r.source_ref ?? r.url ?? "", founders), quote: redactText(r.quote!, founders), strength: r.strength, vague: r.vague, web: r.track === "2" || r.track === "riya", check: r.check_id }));
     const partnerRules = (cardRow.partner_rules ?? []) as string[];
+    // Loop C: up to three of Riya's rule corrections on similar companies, as context only.
+    const tags = companyTags({
+      sector: form?.find((f) => f.key === "sector")?.value,
+      sellsToBusinesses: valueOf("company.sells_to_businesses")?.status === "yes" ? true : valueOf("company.sells_to_businesses")?.status === "no" ? false : null,
+      revenueType: String(valueOf("traction.revenue_type")?.value ?? ""),
+    });
+    const { data: corrections } = await db.from("corrections").select("id, criterion_id, kind, rule_status, tags, created_at, old_rating, new_rating, reason").eq("kind", "rule").neq("application_id", id);
     const scored = await pool(card.criteria.filter((c) => c.id !== "C4"), 3, (c) =>
-      scoreCriterion({ applicationId: id, criterion: c as CriterionDef, pack: buildPack(c as CriterionDef, evidence, memoItems), partnerRules, founders }),
+      scoreCriterion({
+        applicationId: id, criterion: c as CriterionDef, partnerRules, founders,
+        pack: buildPack(c as CriterionDef, evidence, memoItems, recallCorrections(corrections ?? [], c.id, tags)),
+      }),
     );
     // C4 comes from the portfolio check, in code.
     const c4: Score = {
@@ -269,8 +281,9 @@ export async function runScreening(id: string, mode: "full" | "short"): Promise<
   }, { onConflict: "application_id" });
   await db.from("applications").update({
     status: "brief_ready", last_step: "brief", brief_ready_at: new Date().toISOString(),
-    status_reason: `${label(head.recommendation)} on the ${headline} lens`, short_circuit_flags: allFlags.map((f) => f.id),
+    status_reason: `${label(head.recommendation)} on the ${headline} lens`, short_circuit_flags: allFlags.map((f) => f.id), research_question: null,
   }).eq("id", id);
+  await assignBlind(id);
   return { inconsistencies, flags };
 }
 
@@ -327,3 +340,57 @@ export function codeFlags(rows: Pick<Row, "track" | "field" | "status" | "quote"
 }
 
 export { fieldName };
+
+/**
+ * Riya asked for more research on a named question (Gate 1). One more search, within the 12-fetch cap.
+ * New facts join Track 2, then compare and scoring run again from that point.
+ */
+export async function researchQuestion(id: string): Promise<void> {
+  const db = createAdminClient();
+  const { data: app } = await db.from("applications").select("*").eq("id", id).single();
+  const { count } = await db.from("research_fetches").select("id", { count: "exact", head: true }).eq("application_id", id);
+  const question = (app?.research_question ?? "").trim();
+  const done = async () => { await db.from("applications").update({ last_step: "researched" }).eq("id", id); };
+  if (!app || !question || (count ?? 0) >= MAX_FETCHES) {
+    if (app && (count ?? 0) >= MAX_FETCHES) {
+      await db.from("research_fetches").insert({ application_id: id, check_id: "question", attempt: 1, query_or_url: question, outcome: "failed", error: "fetch limit of 12 reached", mode: "off" });
+    }
+    return done();
+  }
+  const [{ data: founderRows }, { data: docs }, { data: settings }] = await Promise.all([
+    db.from("founders").select("founder_key, name, email, phone, linkedin_url, role, bio").eq("application_id", id).order("founder_key"),
+    db.from("documents").select("kind, redacted").eq("application_id", id),
+    db.from("settings").select("key, value"),
+  ]);
+  const founders: FounderRef[] = (founderRows ?? []).map((f) => ({ id: f.founder_key, name: f.name, linkedin: f.linkedin_url, email: f.email, phone: f.phone }));
+  const form = (docs?.find((d) => d.kind === "form")?.redacted as { fields?: { key: string; value: string }[] } | null)?.fields ?? null;
+  const mode = (process.env.RESEARCH_MODE ?? settings?.find((s) => s.key === "research_mode")?.value ?? "replay") as ResearchMode;
+  const client = new ResearchClient(mode, normName(app.company_name));
+  const match: MatchFacts = {
+    name: app.company_name,
+    city: form?.find((f) => f.key === "location")?.value ?? null,
+    product: form?.find((f) => f.key === "one_line")?.value ?? app.company_name,
+    sector: form?.find((f) => f.key === "sector")?.value ?? null,
+    founders: (founderRows ?? []).map((f) => ({ id: f.founder_key, summary: `${f.role ?? "founder"}. ${f.bio ?? ""}`.trim() })),
+  };
+  const query = `${app.company_name} ${question}`;
+  const res = await client.search("news", query);
+  const now = new Date().toISOString();
+  const { count: webCount } = await db.from("evidence").select("id", { count: "exact", head: true }).eq("application_id", id).eq("track", "2");
+  let n = webCount ?? 0;
+  if (!res.ok || res.results.length === 0) {
+    await db.from("research_fetches").insert({ application_id: id, check_id: "question", attempt: 1, query_or_url: query, outcome: res.ok ? "empty" : res.outcome, error: res.ok ? null : res.reason, mode });
+    return done();
+  }
+  for (const r of res.results.slice(0, 2)) {
+    const read = await readResult({ applicationId: id, check: "news", result: r, match, founders });
+    const outcome = read.injection ? "injection" : !read.same ? "wrong_match" : read.facts.length ? "filled" : "empty";
+    await db.from("research_fetches").insert({ application_id: id, check_id: "question", attempt: 1, query_or_url: r.url, outcome, error: outcome === "wrong_match" ? read.mismatch.slice(0, 2).join("; ") : null, mode });
+    if (outcome !== "filled") continue;
+    await db.from("evidence").insert(read.facts.map((f) => ({
+      id: `${id.slice(0, 8)}_w${++n}`, application_id: id, field: f.field ?? "web.question", status: "text", value: f.statement,
+      quote: f.quote, source_type: "web", source_ref: r.url, url: r.url, fetched_at: now, track: "2", check_id: "question", strength: "found_by_us",
+    })));
+  }
+  return done();
+}

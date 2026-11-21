@@ -1,3 +1,5 @@
+import { CorrectForm } from "./gate-panels";
+
 // The parts of the brief added in M3 (PRD 13.5): both lenses, each criterion with its evidence,
 // where the deck and form disagree, what research found, and what only a call can tell.
 
@@ -64,7 +66,7 @@ export function Lenses({ brief }: { brief: { rec_public: string | null; rec_reve
   );
 }
 
-export function Criteria({ scores, names, evidence, memos }: { scores: CriterionScore[]; names: Record<string, string>; evidence: Map<string, Ev>; memos: Map<string, { company: string; section: string; decision: string }> }) {
+export function Criteria({ scores, names, evidence, memos, correctFor = null }: { scores: CriterionScore[]; names: Record<string, string>; evidence: Map<string, Ev>; memos: Map<string, { company: string; section: string; decision: string }>; correctFor?: string | null }) {
   if (!scores.length) return null;
   const order = (id: string) => Number(id.slice(1));
   return (
@@ -114,6 +116,7 @@ export function Criteria({ scores, names, evidence, memos }: { scores: Criterion
                   </p>
                 ) : null}
                 {s.missing.length ? <p className="text-[12px] text-muted">Missing: {s.missing.join(", ")}</p> : null}
+                {correctFor ? <CorrectForm id={correctFor} criterion={s.criterion_id} rating={s.rating} /> : null}
               </div>
             </details>
           </li>

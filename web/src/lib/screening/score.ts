@@ -39,11 +39,13 @@ const CHECKS_FOR: Partial<Record<CriterionId, string[]>> = {
 const fieldMatches = (field: string | null, wanted: string[]) =>
   !!field && wanted.some((w) => field === w || field.startsWith(`${w}.`) || (w.endsWith("*") && field.startsWith(w.slice(0, -1))));
 
-export function buildPack(c: CriterionDef, evidence: (EvidenceItem & { check?: string | null })[], memos: (MemoItem & { criteria: string[] })[]) {
-  const items = evidence.filter((e) => fieldMatches(e.field, c.evidence_fields) || (e.web && CHECKS_FOR[c.id]?.includes(e.check ?? "")));
+export type Recalled = { id: string; old_rating: number | null; new_rating: number | null; reason: string };
+
+export function buildPack(c: CriterionDef, evidence: (EvidenceItem & { check?: string | null })[], memos: (MemoItem & { criteria: string[] })[], corrections: Recalled[] = []) {
+  const items = evidence.filter((e) => fieldMatches(e.field, c.evidence_fields) || (e.web && CHECKS_FOR[c.id]?.includes(e.check ?? "")) || e.field === `riya.${c.id}`);
   const filled = new Set(items.map((e) => e.field));
   const missing = c.evidence_fields.filter((f) => !filled.has(f));
-  return { items: items.slice(0, 30), memos: memos.filter((m) => m.criteria.includes(c.id)).slice(0, 3), missing };
+  return { items: items.slice(0, 30), memos: memos.filter((m) => m.criteria.includes(c.id)).slice(0, 3), missing, corrections: corrections.slice(0, 3) };
 }
 
 const SCHEMA = {
@@ -84,7 +86,8 @@ ${partnerRules.map((r) => `- ${r}`).join("\n")}
 - Founder quality and path to market are separate criteria. Rate only this one.
 
 Evidence strength: "confirmed" means an outside source agrees, "founder_says" means only the founder says it, "conflict" means sources disagree, "found_by_us" means only research found it.
-evidence_refs must be ids from <evidence>. memo_refs must be ids from <memos>. Use the memos only to see how the fund judged similar cases.`;
+evidence_refs must be ids from <evidence>. memo_refs must be ids from <memos>. Use the memos only to see how the fund judged similar cases.
+Past corrections are Riya's notes on similar companies. Weigh them as context. They do not change the scale.`;
   const user = `<evidence>
 ${pack.items.map((e) => `${e.id} | ${e.field ?? "web"} | ${e.strength}${e.vague ? " | vague" : ""} | ${e.source} | "${e.quote}"`).join("\n") || "(none)"}
 </evidence>
@@ -93,7 +96,10 @@ ${pack.missing.join(", ") || "(nothing)"}
 </not_stated>
 <memos>
 ${pack.memos.map((m) => `${m.id} | ${m.company} (${m.decision}) | ${m.text}`).join("\n") || "(none)"}
-</memos>`;
+</memos>
+<past_corrections>
+${pack.corrections.map((k) => `Riya changed ${c.id} on a similar company from ${k.old_rating} to ${k.new_rating}: ${k.reason}`).join("\n") || "(none)"}
+</past_corrections>`;
   return { system, user };
 }
 

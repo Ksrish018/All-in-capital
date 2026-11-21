@@ -43,7 +43,7 @@ const CHECK_GOAL: Record<CheckId, string> = {
   red_flags: "Lawsuits, shutdowns, regulator action, rule changes that hit the model, fraud reports.",
 };
 
-async function readResult(args: { applicationId: string; check: CheckId; result: WebResult; match: MatchFacts; founders: FounderRef[] }) {
+export async function readResult(args: { applicationId: string; check: CheckId; result: WebResult; match: MatchFacts; founders: FounderRef[] }) {
   const text = redactText(clean(args.result.text), args.founders);
   const title = redactText(args.result.title, args.founders);
   const url = redactText(args.result.url, args.founders);
