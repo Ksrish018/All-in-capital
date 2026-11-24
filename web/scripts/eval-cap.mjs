@@ -5,16 +5,19 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import nextEnv from "@next/env";
+import { clearUploadCount, refuseOnLive } from "./lib/guard.mjs";
 import { createClient } from "@supabase/supabase-js";
 import { makeForm, makePdf } from "./lib/pdf.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 nextEnv.loadEnvConfig(root);
+refuseOnLive("eval-cap");
 const BASE = process.env.APP_URL ?? "http://localhost:3000";
 const ref = new URL(process.env.SUPABASE_URL).hostname.split(".")[0];
 const db = new pg.Client({ host: process.env.SUPABASE_DB_HOST, port: 5432, user: `postgres.${ref}`, password: process.env.SUPABASE_DB_PASSWORD, database: "postgres", ssl: { rejectUnauthorized: false } });
 await db.connect();
 const q = async (sql, a = []) => (await db.query(sql, a)).rows;
+await clearUploadCount(q);
 const kick = () => fetch(`${BASE}/api/worker/screening`, { method: "POST", headers: { authorization: `Bearer ${process.env.WORKER_SECRET}` } }).catch(() => {});
 const waitFor = async (id, done, tries = 120) => {
   for (let i = 0; i < tries; i++) {
@@ -27,6 +30,12 @@ const waitFor = async (id, done, tries = 120) => {
 };
 
 const original = (await q("select value from settings where key = 'daily_cost_cap_usd'"))[0]?.value ?? 5;
+// A reused answer costs nothing, so the cap could never trip. The cache is off for this test and put back after.
+const cacheBefore = (await q("select value from settings where key = 'answer_cache'"))[0]?.value ?? "on";
+await q("update settings set value = '\"off\"' where key = 'answer_cache'");
+// The alert fires once a day. Clear today's mark so this run can see it fire (G6).
+await q("update settings set value = 'null' where key = 'cap_alert_sent_on'");
+const alertsBefore = (await q("select count(*)::int n from events where to_status = 'cost_cap_alert'"))[0].n;
 const spent = Number((await q("select coalesce(sum(cost_usd), 0) s from llm_calls where created_at >= date_trunc('day', now() at time zone 'utc')"))[0].s);
 const results = [];
 const check = (severity, id, title, ok, detail = "") => results.push({ severity, id, title, ok: Boolean(ok), detail });
@@ -36,6 +45,7 @@ try {
   await q("update settings set value = $1 where key = 'daily_cost_cap_usd'", [JSON.stringify(Math.round((spent + 0.012) * 1000) / 1000)]);
   const fd = new FormData();
   fd.set("source", "public_form");
+  fd.set("consent", "yes");
   fd.set("form", new Blob([makeForm([
     ["Company", [["Company name", "Eval Cap Labs (Eval Cap Labs Pvt. Ltd.)"], ["Website", "www.evalcaplabs.example"], ["Location", "Chennai, Tamil Nadu"], ["One-line description", "Scheduling software for physiotherapy clinics."], ["Sector (as selected)", "Consumer tech"], ["Stage (as selected)", "Pre-seed"]]],
     ["Founders", [["Founder 1", "Tara Menon, CEO. 7 years as a physiotherapist running two clinics."]]],
@@ -52,6 +62,9 @@ try {
   const page = await (await fetch(`${BASE}/`)).text();
   check("High", "CAP3", "Every page shows the cap alert", /daily cost cap is reached/i.test(page));
   const callsBefore = (await q("select count(*)::int n from llm_calls where application_id = $1 and status = 'ok'", [id]))[0].n;
+  const alerts = (await q("select count(*)::int n from events where to_status = 'cost_cap_alert'"))[0].n - alertsBefore;
+  const mark = (await q("select value from settings where key = 'cap_alert_sent_on'"))[0]?.value;
+  check("High", "CAP6", "The cap also raises one alert for Kushal and Riya, by email when their addresses are set", alerts === 1 && typeof mark === "string", `${alerts} alert(s) recorded, marked sent on ${mark}`);
 
   // Raising the cap lets it carry on from where it stopped.
   await fetch(`${BASE}/api/settings`, { method: "POST", headers: { "content-type": "application/json", cookie: "working_as=kushal" }, body: JSON.stringify({ key: "daily_cost_cap_usd", value: Number(original) }) });
@@ -62,6 +75,7 @@ try {
   check("High", "CAP5", "Work done before the pause was not repeated (extraction ran once)", a1 <= 2, `${a1} A1 calls (form and deck), ${callsBefore} calls before the pause`);
 } finally {
   await q("update settings set value = $1 where key = 'daily_cost_cap_usd'", [JSON.stringify(original)]);
+  await q("update settings set value = $1 where key = 'answer_cache'", [JSON.stringify(cacheBefore)]);
   if (id) {
     const paths = (await q("select storage_path from documents where application_id = $1", [id])).map((r) => r.storage_path);
     await createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SECRET_KEY, { auth: { persistSession: false } }).storage.from("applications").remove(paths);

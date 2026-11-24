@@ -33,6 +33,9 @@ export const SETTINGS: Record<string, Rule> = {
   outreach_mode: { who: ["kushal"], parse: oneOf("simulate", "live"), label: "Outreach mode" },
   attendees: { who: ["riya", "kushal"], parse: emails, label: "Call attendees" },
   inr_per_usd: { who: ["kushal"], parse: number(50, 150), label: "Rupees per US dollar" },
+  upload_limit_per_hour: { who: ["kushal"], parse: number(1, 1000), label: "Uploads per visitor per hour" },
+  answer_cache: { who: ["kushal"], parse: oneOf("on", "off"), label: "Reuse identical answers" },
+  input_retention_days: { who: ["kushal"], parse: number(7, 365), label: "Keep full model inputs for (days)" },
 };
 
 export function checkSetting(key: string, role: Role, value: unknown): { ok: true; value: unknown } | { ok: false; error: string; status: number } {

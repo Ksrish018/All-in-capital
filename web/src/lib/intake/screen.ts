@@ -1,9 +1,10 @@
 import "server-only";
+import { randomUUID } from "node:crypto";
 import { createAdminClient } from "@/lib/supabase/server";
-import { BadModelOutput, CostCapReached, PiiBlocked, spentTodayUsd } from "@/lib/ai/gemini";
+import { BadModelOutput, CostCapReached, ModelBusy, ModelRefused, PiiBlocked, spentTodayUsd } from "@/lib/ai/gemini";
 import { researchQuestion, runScreening } from "@/lib/screening/run";
 import { assignBlind } from "@/lib/gates-server";
-import { queue } from "@/lib/db";
+import { queue, slots } from "@/lib/db";
 import { parseFormItems, parseFounder, type FormField } from "./form";
 import { UnreadablePdf, deckPages, looksScanned, pdfItems, type DeckPage } from "./pdf";
 import { redactText, type FounderRef } from "./redact";
@@ -201,6 +202,9 @@ export async function screenApplication(id: string): Promise<void> {
   }
 }
 
+/** How many times a busy provider is waited out before a person is asked to look. */
+const BUSY_TRIES = 6;
+
 /** Runs queued applications until the queue is empty or the time budget is used. Never drops a job. */
 export async function runScreeningWorker(opts: { budgetMs?: number } = {}): Promise<{ processed: number; failed: number }> {
   const db = createAdminClient();
@@ -220,12 +224,17 @@ export async function runScreeningWorker(opts: { budgetMs?: number } = {}): Prom
     }
   }
 
+  const holder = randomUUID();
   while (Date.now() < deadline) {
+    // Only as many as there are free slots across every worker, so a burst never floods the model provider.
+    const mine = await slots.claim(concurrency, concurrency, holder);
+    if (mine.length === 0) break; // other workers hold every slot; they keep working the queue
     // Full screening can take a few minutes, so a message stays hidden for ten before it comes back.
-    const batch = await queue.read<ScreeningJob>(QUEUE, 600, concurrency);
+    const batch = await queue.read<ScreeningJob>(QUEUE, 600, mine.length);
+    for (const extra of mine.slice(batch.length)) await slots.release(extra, holder);
     if (batch.length === 0) break;
     await Promise.all(
-      batch.map(async (msg) => {
+      batch.map(async (msg, i) => {
         const id = msg.message.application_id;
         try {
           await screenApplication(id);
@@ -237,13 +246,22 @@ export async function runScreeningWorker(opts: { budgetMs?: number } = {}): Prom
           if (e instanceof CostCapReached) {
             await setStatus(id, "paused_cost_cap", { status_reason: reason });
             await queue.remove(QUEUE, msg.msg_id);
-          } else if (e instanceof NeedsAttention || e instanceof PiiBlocked || e instanceof BadModelOutput || msg.read_ct >= 3) {
+          } else if (e instanceof ModelBusy && msg.read_ct < BUSY_TRIES) {
+            // The provider was busy after 1, 2 and 4 second retries. It waits its turn in the queue, never lost.
+            await setStatus(id, "queued", { status_reason: "The AI model was busy. This application is waiting in the queue and will be tried again in about 10 minutes." });
+          } else if (e instanceof NeedsAttention || e instanceof PiiBlocked || e instanceof BadModelOutput || e instanceof ModelRefused || e instanceof ModelBusy || msg.read_ct >= 3) {
             // Nothing is silently dropped: the application keeps a plain reason and Riya can re-queue it.
-            const plain = e instanceof BadModelOutput ? `The model gave a bad answer twice (${reason}).` : reason;
-            await setStatus(id, "needs_attention", { status_reason: msg.read_ct >= 3 && !(e instanceof NeedsAttention || e instanceof BadModelOutput) ? `Failed three times. Last error: ${reason}` : plain });
+            const plain = e instanceof BadModelOutput ? `The model gave a bad answer twice (${reason}).`
+              : e instanceof ModelBusy ? `The AI model stayed busy over ${BUSY_TRIES} rounds of retries. Re-queue it when the provider is back.`
+              : e instanceof ModelRefused ? `The AI provider refused the request (${reason}). Check the keys in Settings or .env.`
+              : reason;
+            const known = e instanceof NeedsAttention || e instanceof BadModelOutput || e instanceof ModelBusy || e instanceof ModelRefused || e instanceof PiiBlocked;
+            await setStatus(id, "needs_attention", { status_reason: !known ? `Failed three times. Last error: ${reason}` : plain });
             await queue.remove(QUEUE, msg.msg_id);
           }
           // Otherwise the message reappears after its timeout and is tried again.
+        } finally {
+          await slots.release(mine[i], holder);
         }
       }),
     );

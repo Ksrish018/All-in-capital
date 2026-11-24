@@ -5,9 +5,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import nextEnv from "@next/env";
+import { refuseOnLive } from "./lib/guard.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 nextEnv.loadEnvConfig(root);
+refuseOnLive("eval-outreach");
 const BASE = process.env.APP_URL ?? "http://localhost:3000";
 const ref = new URL(process.env.SUPABASE_URL).hostname.split(".")[0];
 const db = new pg.Client({ host: process.env.SUPABASE_DB_HOST, port: 5432, user: `postgres.${ref}`, password: process.env.SUPABASE_DB_PASSWORD, database: "postgres", ssl: { rejectUnauthorized: false } });

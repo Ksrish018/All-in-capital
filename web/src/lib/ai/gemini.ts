@@ -1,7 +1,12 @@
 import "server-only";
 import { createAdminClient } from "@/lib/supabase/server";
 import { findPii, type FounderRef } from "@/lib/intake/redact";
+import { createHash } from "node:crypto";
+import { pool } from "@/lib/db";
 import { sendSpan } from "./trace";
+import { ModelBusy, ModelRefused, sendWithBackoff } from "./route";
+
+export { ModelBusy, ModelRefused };
 
 // Every model call goes through here (PRD 15.2):
 // cost cap check, founder data guard (N6), Cloudflare AI Gateway to Gemini, JSON check, cost, and a log row.
@@ -38,13 +43,35 @@ export type CallArgs<T> = {
   thinking?: "minimal" | "low" | "medium" | "high";
   /** A back test run, so its cost can be shown by call type. */
   runId?: string;
+  /** Skip the answer cache, for a run that must call the model again. */
+  noCache?: boolean;
 };
 
-function gatewayUrl(model: string): string {
-  const acct = process.env.CLOUDFLARE_ACCOUNT_ID;
-  const gw = process.env.CLOUDFLARE_GATEWAY_ID;
-  if (!acct || !gw) throw new Error("CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_GATEWAY_ID must be set");
-  return `https://gateway.ai.cloudflare.com/v1/${acct}/${gw}/google-ai-studio/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+/**
+ * G6: the cap pauses the work (the hard stop) and also tells Kushal and Riya, once a day, by email.
+ * Sent from the team's Gmail to the team's own addresses in Settings. It never goes to a founder.
+ */
+export async function sendCapAlert(now = Date.now()): Promise<"sent" | "already" | "no_recipients" | "no_mail"> {
+  const db = createAdminClient();
+  const today = new Date(now + 330 * 60_000).toISOString().slice(0, 10); // the date in India
+  const { data: rows } = await db.from("settings").select("key, value").in("key", ["cap_alert_sent_on", "attendees", "daily_cost_cap_usd"]);
+  const get = (k: string) => rows?.find((r) => r.key === k)?.value;
+  if (get("cap_alert_sent_on") === today) return "already";
+  // Claim today's alert in one statement, so twenty paused calls send one email, not twenty.
+  const claimed = await pool().query(
+    "update public.settings set value = to_jsonb($1::text) where key = 'cap_alert_sent_on' and value is distinct from to_jsonb($1::text) returning key",
+    [today],
+  );
+  if (!claimed.rowCount) return "already";
+  const people = (get("attendees") ?? {}) as Record<string, string | null>;
+  const to = [people.kushal, people.riya].filter((e): e is string => !!e);
+  const message = `The daily AI cost cap of $${get("daily_cost_cap_usd")} was reached on ${today}. Screening is paused at a saved step. It resumes after midnight India time, or as soon as Kushal raises the cap in Settings.`;
+  await db.from("events").insert({ application_id: null, actor: "system", to_status: "cost_cap_alert", note: `${message} Recipients: ${to.length}.` });
+  if (!to.length) return "no_recipients";
+  if (!process.env.GOOGLE_REFRESH_TOKEN) return "no_mail";
+  const { sendTeamAlert } = await import("@/lib/google");
+  await sendTeamAlert({ to, team: Object.values(people), subject: "All In Capital triage: daily cost cap reached", body: message });
+  return "sent";
 }
 
 /** Midnight in India, where the fund works. The daily cap resets then. */
@@ -74,61 +101,74 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
     throw new PiiBlocked(`Founder details found in the model input (${leaks.join(", ")}). Nothing was sent.`);
   }
 
+  let busy: Error | null = null;
+
+  // G4: the same model, prompt version and input already answered. Reuse it, at no cost.
+  const cacheKey = createHash("sha256").update(JSON.stringify([args.model, args.promptVersion, args.system, args.user, args.schema])).digest("hex");
+  const { data: cacheSetting } = await db.from("settings").select("value").eq("key", "answer_cache").maybeSingle();
+  const useCache = !args.noCache && (cacheSetting?.value ?? "on") === "on";
+  if (useCache) {
+    const { data: hit } = await db.from("model_cache").select("output").eq("key", cacheKey).maybeSingle();
+    if (hit) {
+      try {
+        const value = args.validate(hit.output);
+        await db.from("llm_calls").insert({
+          application_id: args.applicationId, call_type: args.callType, model: args.model, prompt_name: args.promptName,
+          prompt_version: args.promptVersion, input_tokens: 0, output_tokens: 0, cost_usd: 0, status: "cached",
+          input, output: hit.output, run_id: args.runId ?? null,
+        });
+        return value;
+      } catch {
+        await db.from("model_cache").delete().eq("key", cacheKey); // a stale answer that no longer passes the checks
+      }
+    }
+  }
+
   const [{ data: cap }, { data: price }] = await Promise.all([
     db.from("settings").select("value").eq("key", "daily_cost_cap_usd").single(),
     db.from("model_prices").select("*").eq("model", args.model).maybeSingle(),
   ]);
   if ((await spentTodayUsd()) >= Number(cap?.value ?? process.env.DAILY_COST_CAP_USD ?? 5)) {
+    await sendCapAlert().catch((e) => console.error("cap alert:", e));
     throw new CostCapReached("The daily cost cap is reached. Work resumes tomorrow or when Kushal raises the cap.");
   }
 
   let lastError = "";
+  // Busy and server errors are retried inside sendWithBackoff (1 s, 2 s, 4 s). A bad JSON reply is retried once here.
   for (let attempt = 0; attempt < 2; attempt++) {
     const started = Date.now();
     let status: "ok" | "bad_json" | "error" = "error";
     let output: unknown = null;
     let inTok = 0;
     let outTok = 0;
+    let tries = 0;
+    let route = "";
     try {
-      const res = await fetch(gatewayUrl(args.model), {
-        method: "POST",
-        signal: AbortSignal.timeout(args.timeoutMs),
-        headers: {
-          "content-type": "application/json",
-          "x-goog-api-key": process.env.GEMINI_API_KEY ?? "",
-          "cf-aig-authorization": `Bearer ${process.env.CLOUDFLARE_AIG_TOKEN ?? ""}`,
-          "cf-aig-metadata": JSON.stringify({ application_id: args.applicationId ?? "none", call: args.callType }),
-        },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: args.system }] },
-          contents: [{ role: "user", parts: [{ text: args.user }] }],
-          generationConfig: {
-            temperature: 0,
-            maxOutputTokens: args.maxOutputTokens,
-            responseMimeType: "application/json",
-            responseSchema: args.schema,
-            ...(args.thinking ? { thinkingConfig: { thinkingLevel: args.thinking } } : {}),
-          },
-        }),
+      const reply = await sendWithBackoff({
+        model: args.model, system: args.system, user: args.user, schema: args.schema,
+        maxOutputTokens: args.maxOutputTokens, timeoutMs: args.timeoutMs, thinking: args.thinking,
+        meta: { applicationId: args.applicationId, callType: args.callType },
       });
-      const body = await res.json().catch(() => ({}));
-      inTok = body?.usageMetadata?.promptTokenCount ?? 0;
-      outTok = (body?.usageMetadata?.candidatesTokenCount ?? 0) + (body?.usageMetadata?.thoughtsTokenCount ?? 0);
-      if (!res.ok) throw new Error(`Gateway returned ${res.status}: ${String(body?.error?.message ?? "").slice(0, 200)}`);
-      const text: string = (body?.candidates?.[0]?.content?.parts ?? []).map((p: { text?: string }) => p.text ?? "").join("");
+      ({ inTok, outTok } = reply);
+      tries = reply.attempts;
+      route = reply.route;
       try {
-        output = JSON.parse(text);
+        output = JSON.parse(reply.text);
       } catch {
         status = "bad_json";
         throw new BadModelOutput("The model reply was not valid JSON");
       }
       const value = args.validate(output);
       status = "ok";
+      if (useCache) await db.from("model_cache").upsert({ key: cacheKey, model: args.model, prompt_version: args.promptVersion, output });
       return value;
     } catch (e) {
       if (e instanceof BadModelOutput) status = "bad_json";
       lastError = e instanceof Error ? e.message : String(e);
-      if (!(e instanceof BadModelOutput)) attempt = 2; // network and gateway errors are retried by the gateway itself
+      if (e instanceof ModelBusy || e instanceof ModelRefused) {
+        busy = e;
+        attempt = 2;
+      }
     } finally {
       const cost = price ? (inTok * Number(price.input_per_million_usd) + outTok * Number(price.output_per_million_usd)) / 1e6 : 0;
       const traceId = await sendSpan({
@@ -149,6 +189,8 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
           "gen_ai.request.model": args.model,
           "gen_ai.usage.input_tokens": inTok,
           "gen_ai.usage.output_tokens": outTok,
+          "allin.route": route,
+          "allin.tries": tries,
         },
       });
       await db.from("llm_calls").insert({
@@ -162,5 +204,6 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
       }
     }
   }
+  if (busy) throw busy;
   throw new BadModelOutput(lastError || "The model call failed");
 }

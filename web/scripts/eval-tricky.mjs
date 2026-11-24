@@ -5,16 +5,19 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import nextEnv from "@next/env";
+import { clearUploadCount, refuseOnLive } from "./lib/guard.mjs";
 import { createClient } from "@supabase/supabase-js";
 import { makeForm, makePdf } from "./lib/pdf.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 nextEnv.loadEnvConfig(root);
+refuseOnLive("eval-tricky");
 const BASE = process.env.APP_URL ?? "http://localhost:3000";
 const ref = new URL(process.env.SUPABASE_URL).hostname.split(".")[0];
 const db = new pg.Client({ host: process.env.SUPABASE_DB_HOST, port: 5432, user: `postgres.${ref}`, password: process.env.SUPABASE_DB_PASSWORD, database: "postgres", ssl: { rejectUnauthorized: false } });
 await db.connect();
 const q = async (sql, a = []) => (await db.query(sql, a)).rows;
+await clearUploadCount(q);
 
 const core = (name, extra = {}) => [
   ["Company", [["Company name", `${name} (${name} Pvt. Ltd.)`], ["Website", `www.${name.toLowerCase().replace(/\s/g, "")}.example`], ["Location", "Pune, Maharashtra"], ["One-line description", extra.one_line ?? "Inventory software for small pharmacies."], ["Sector (as selected)", "Fintech"], ["Stage (as selected)", "Pre-seed"]]],
@@ -46,6 +49,7 @@ const cases = [
 async function upload(c) {
   const fd = new FormData();
   fd.set("source", "public_form");
+  fd.set("consent", "yes");
   fd.set("form", new Blob([c.form], { type: "application/pdf" }), `${c.name}_Form.pdf`);
   if (c.deck) fd.set("deck", new Blob([c.deck], { type: "application/pdf" }), `${c.name}_Deck.pdf`);
   const res = await fetch(`${BASE}/api/applications`, { method: "POST", body: fd });

@@ -10,7 +10,9 @@ export async function POST(req: Request) {
   const given = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
   const ok = secret.length > 0 && given.length === secret.length && timingSafeEqual(Buffer.from(given), Buffer.from(secret));
   if (!ok) return NextResponse.json({ error: "Not allowed" }, { status: 401 });
-  return NextResponse.json(await runScreeningWorker());
+  // The database scheduler calls every minute with ?budget=55, so each run starts about one batch (G1).
+  const budget = Number(new URL(req.url).searchParams.get("budget"));
+  return NextResponse.json(await runScreeningWorker(budget > 0 ? { budgetMs: Math.min(budget, 240) * 1000 } : {}));
 }
 
 // Vercel Cron calls GET with "Authorization: Bearer $CRON_SECRET". Set CRON_SECRET to the same value as WORKER_SECRET.

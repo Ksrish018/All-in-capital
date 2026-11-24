@@ -1,6 +1,6 @@
 # All In Capital Triage System: Product Requirements Document
 
-Version 1.0. Written 19 November 2026.
+Version 1.1. Written 19 November 2026. Updated 24 November 2026 with Section 24: the version 2 plan from Case 04, Lecture 8, the feedback loop notes, Case 05 and the Seed data 2 exports.
 
 This is the build document. It turns the planning work into exact instructions. A builder should be able to read it from top to bottom and know what to make, in what order, and how to check it works.
 
@@ -37,6 +37,7 @@ It sits on top of three earlier files. Read them if a reason is unclear.
 21. Open questions
 22. Appendices
 23. How this PRD answers the case and the course
+24. Version 2 plan: production gaps, the disagreement score and fine-tuning
 
 ---
 
@@ -1815,7 +1816,12 @@ Each milestone ends with something we can show and check.
 | M7 | Production readiness | Tracing everywhere, cost page, daily cap, the 20 at once test | The volume test passes. The cap pauses and alerts. **Done.** 20 at once: all 20 accounted for (N5). `npm run eval:cap` passes 5 of 5: the cap pauses an application mid-way at a saved step, every page shows the alert, and raising the cap resumes it to a finished brief without redoing work. The cap resets at midnight India time. Dashboard (metrics and the four-light stop list), Cost page and Settings (each setting locked to its owner, style note roll back, founder data deletion) are built. Langfuse spans go out for every model call. |
 | M8 | Pilot | One real week of applications with Riya | Metrics read with Kushal against the stop list **Ready to start.** The pilot itself is for the team to run. Built for it: a password gate (`APP_PASSWORD`, Q13), scheduler wiring (`web/vercel.json`), and [PILOT.md](PILOT.md) with the day-one checklist, Riya's day, Kushal's week and the stop list. |
 
-The order matters. The Thesis Card and the back test come before outreach, because nothing should be sent on the basis of a rubric nobody has checked.
+| M9 | Safe at volume (v2) | Schedulers every minute, upload limit, Portkey with backoff retries, answer cache, separate test database, cost alert by email, data retention and consent | See 24.4. **Built (24 Nov 2026).** `npm run eval:burst` passes 8 of 8: 50 uploads in 6 seconds, all 50 accounted for, never more than 4 screened at once (worker slots, added after the first run showed about 17 at once), the upload limit and the consent box hold, $0.43 for the run. Every model call retries on busy replies after 1, 2 and 4 seconds, then waits in the queue; identical calls reuse a stored answer; the cap raises one alert a day, by email to the team's own addresses only; model inputs are cleared after 30 days by a nightly database job; the Cost page shows the calendar month and the AI cost per application against Riya's 30 minutes (about ₹6 against ₹500). **Waiting on the team:** a Portkey key (the route is built behind `AI_ROUTE=portkey`), a new Supabase project for live data (scripts already refuse to run where `DB_ROLE=live`), and a redeploy before `npm run db:schedule` points the database scheduler at the hosted app. |
+| M10 | The disagreement score (v2) | Email edit measure, weekly trend for both loops, the two exports as eval sets, "no close match" warning, approved and tagged style notes | See 24.4. **Planned.** |
+| M11 | Easier fixes first (v2) | A5 rewritten to Riya's real style, Thesis Card v3 candidate from the override reasons, a stronger model tried for drafts | See 24.4. **Planned.** |
+| M12 | Fine-tuning pilot (Case 05) | The Brief, a 300 row dataset with labelled synthetic rows, a sealed test set, one training run, cost and payback | See 24.5. **Planned.** Stopping is a valid result. |
+
+The order matters. The Thesis Card and the back test come before outreach, because nothing should be sent on the basis of a rubric nobody has checked. In version 2, the easier fixes (M11) come before fine-tuning (M12) for the same reason: we only train a model for a gap the easier fixes could not close.
 
 ---
 
@@ -1837,6 +1843,13 @@ The order matters. The Thesis Card and the back test come before outreach, becau
 | Q12 | Can you share the full portfolio list (about 80 companies)? | Kushal | Use the 25 in seed/fund/portfolio.json |
 | Q13 | The app has no login. How will we keep it private once it is online? | Team | Local only until a password is in place. Built: set `APP_PASSWORD` and every page asks for it. |
 | Q14 | Model prices in `model_prices` are estimates, set on the high side so the cost cap trips early. Check them against Google's pricing page. | Team | Keep the high estimates |
+| Q15 | Portkey or Cloudflare AI Gateway? Case 04 names Portkey. Portkey sign-in failed during the first build. | Team | Try Portkey again. Keep Cloudflare as the fallback route. |
+| Q16 | The hosted demo is public with no password. Does it stay open? | Team | Stays open for viewing until the pilot. A password and an upload limit go on before real founder data. |
+| Q17 | What consent line goes on the application form for sending the deck to an AI model? | Kushal | Draft in 24.4, checked by Kushal before the pilot |
+| Q18 | How long do we keep the full model inputs in `llm_calls`? | Kushal | 30 days, then keep only the counts, cost and prompt version |
+| Q19 | Two slots, as in Riya's sent emails, or three, as in our first email shape? | Riya | Two, from the Seed data 2 export |
+| Q20 | Row L2-030: Riya added a long paragraph about how the fund works. A one-off, or a new rule? | Riya | Treat it as a one-off and leave it out of training |
+| Q21 | Case 05 says the system drafts a first email for every application. Ours drafts only after Kushal signs off. | Kushal | Keep ours: nothing goes to a founder before Gate 2 |
 
 ---
 
@@ -1970,7 +1983,7 @@ This section checks every requirement against the PRD. "Met" means the PRD speci
 | Relevant memo passages, not every memo | Step S3, Step 10 | Met |
 | Extracted claims, not whole web pages | Step 8, rule 8.5 | Met |
 | 3. Real-world use? Task 2: 20 at once, nothing lost, a queue | 12.3, 13.3 launch day view, tests in 19.3 | Met |
-| Task 3: route every model call through Portkey with retries | Section 15.2, Cloudflare AI Gateway with retries on | Met, with a change. Portkey sign-in failed during setup. Cloudflare AI Gateway does the same job: one gateway for every call, automatic retries, logs and cost. Tested with all three models. |
+| Task 3: route every model call through Portkey with retries | Section 15.2, Cloudflare AI Gateway with retries on | Met, with a change. Portkey sign-in failed during setup. Cloudflare AI Gateway does the same job: one gateway for every call, automatic retries, logs and cost. Tested with all three models. Version 2 tries Portkey again (G3, Q15). |
 | 4. Can you operate it? Task 4: Langfuse on every call and step, with prompt version | Section 18.1, 9.5 | Met |
 | 5. Do the economics work? Task 5: cost per call, totals, cost page, daily cap that pauses and alerts | Sections 13.12, 18.2, 18.3, `llm_calls` | Met |
 | Riya does her own research if needed | Gate 1, "Add her own research" | Met |
@@ -2009,3 +2022,221 @@ This section checks every requirement against the PRD. "Met" means the PRD speci
 * **The judge model.** It is deferred. Until it is added, the blind human audit carries all quality checks that need judgment.
 * **The partners' calendars.** In version one, only one calendar is checked for free times. Kushal and Aditya are added as guests (Q3).
 * **The targets.** The 5 minute and 24 hour targets, and the back test agreement bar, still need Kushal's yes (Q1, Q2).
+
+---
+
+## 24. Version 2 plan: production gaps, the disagreement score and fine-tuning
+
+Written 24 November 2026. This section is a plan. Nothing in it is built yet. It waits for the team's go-ahead.
+
+It comes from four new inputs: Case 04 (Ready to hand over?), Lecture 8 (From prototype to production), the notes on feedback loop limits, and Case 05 (Fine-tuning), with its data in `Seed data 2/`. That folder holds real-looking founder names, so it is kept out of git.
+
+### 24.1 What the new inputs repeat
+
+Most of Case 04 and Lecture 8 asks for work that version 1 already does. In a presentation, show these as proof, not as new work.
+
+| Ask | Where it already is |
+|---|---|
+| Does it work? Kushal's test against past decisions | Section 19 evals, the back test (S4) |
+| Kill criteria | The stop list (2.5) and the Dashboard |
+| Founder ID, not email and phone | Step 4, test N6 |
+| Relevant memo passages, not every memo | Step 10, at most 3 per criterion |
+| Extracted claims, not whole pages | Step 8, rule 8.5 |
+| Outside text is data, cite every point | 16.3, the citation check (N2) |
+| No keys in code | 16.4 |
+| 20 at once, nothing lost, a queue | 12.3, test N5 |
+| Langfuse on every call, with the prompt version | 18.1 |
+| Cost per call, per application and per day, and a daily cap that pauses | 18.2, 18.3, the Cost page |
+| Corrections with a reason, kept apart as fact or rule | Loop C, 11.1 |
+
+### 24.2 What Seed data 2 shows
+
+The folder has five files. The zip is a copy of the other four. Each Excel file matches its CSV exactly.
+
+**Operating facts.**
+* About 100 applications a month. About 17 emails sent a month, and about 300 in 18 months.
+* Riya spends about 1 minute on a draft she keeps, and about 4 minutes on one she rewrites.
+* She works in the evening, 7 to 9 pm, and waits for the output.
+* Only Riya and one analyst look after the system. There is no engineer and no cloud account for hosting models.
+* AI costs under ₹1,500 a month.
+* The founder agreement says decks are not passed to outside parties without consent.
+* Kushal sees every outcome first, and nothing is advanced or rejected automatically.
+
+**Loop 1 export: 40 screening calls, May 2025 to October 2026.**
+
+* The system said Go 23 times and No-go 17 times. Riya's final call was Go 19 and No-go 21.
+* Riya overturned **12 of 40 (30 percent)**: 8 Go changed to No-go, and 4 No-go changed to Go. Every overturn has a one-line reason. No agreement has one.
+* The rate is falling slowly: 7 overturns in the first 20 rows, 5 in the last 20.
+* The system's line sits at a score of 6.5. Every Go scored 6.6 to 8.3, and every No-go 4.8 to 6.4. **9 of the 12 overturns scored within 0.7 of that line.** The borderline band is where the system is weakest.
+* The reasons fall into six groups. All but one match a partner rule already in 22.2:
+  * Pedigree over evidence (Scholara, Hawa Labs, Learnwell Plus). Rule: score the evidence, not the pedigree.
+  * A missing repeat number was skipped instead of counted against (Ghar Ghar Beauty, Learnwell Plus). Rule: a missing number should drag the score.
+  * Strong repeat behaviour was undervalued (Samarth Kirana, Hundi Hub).
+  * Who owns the risk in lending (Khet Kosh moved up, Udhaar Express moved down). Rule: the label matters less than whether the founders own the risk.
+  * Structure (DenseBox needs dense dark stores; ChainRupee needs a tax ruling to go its way). Rule: pass on structure, not people.
+  * A portfolio conflict (Notely Calls overlaps MeetRecord). Rule: check against the full portfolio list. Our A0 check already catches this one.
+* Two reasons say the thesis is moving: "we are leaning towards businesses with real repeat" and "fits what we are actually backing now".
+* Marut Dynamics (Go) and Hawa Labs (No-go) look alike: both are deeptech with no customer. The trade-off decides it: a long regulatory path is fine, but no revenue path is not. This is the "contradictory-looking outcomes" case from the lecture notes.
+
+**Loop 2 export: 60 email pairs (the system's draft and the email Riya sent), May 2025 to October 2026.**
+
+* Two rows are exact copies (L2-015 of L2-014, and L2-033 of L2-031). That leaves 58 real pairs.
+* Of the 58: **23 were sent unchanged, 9 had small edits, and 26 were rewritten (45 percent)**.
+* The small edits are the same every time: "Best regards, Riya" becomes "Riya, All In Capital", and "Hello" becomes "Hi".
+* The rewritten drafts open with praise ("Impressive technology at...") or a vanity number (followers, downloads, villages). They ask a vague question or none, and often give no time slots. Six of them paste a 100-word pitch about the fund.
+* Riya's sent emails follow one fixed shape:
+  * "Hi {first name}", then one usage or repeat fact, written as "is rare (or unusual) for a {stage} {category}" (58 of 60);
+  * one sharp question about that fact;
+  * two slots, Tuesday and Thursday afternoon (59 of 60);
+  * signed "Riya, All In Capital" (59 of 60);
+  * for deeptech only, "Our partner Aditya will join us for the technical part" (3 of 3).
+* Praise words appear 27 times in the drafts and never in the sent emails.
+* **Every hardware founder's draft was rewritten** (4 of 4, with almost nothing kept). This is the "unfamiliar case" failure from the lecture: there was little close feedback to draw on.
+* The rewrite rate spiked again in the last third of the period. The disagreement score did not fall steadily.
+* Two rows break Riya's own pattern. These are the lecture's "off-day edits" and "contradictions", and both are cleaned out before any training:
+  * L2-030 (a Tuesday in January 2026): she kept the draft but added a long paragraph about how the fund works, against her own "short" standard (Q20).
+  * L2-054 (a Monday in August 2026): she turned a good draft formal ("Dear Ms ...", "at your convenience", "Kind regards") and removed the time slots. All 57 other emails say "Hi {first name}" and offer two slots.
+* **The three checks.** The case states Riya's standard as: short, one clear ask, and no praise unless a fact backs it. Scored by code on the 58 clean pairs:
+  * the old system's drafts pass all three **35 of 58 times (60 percent)**. Hardware passes 0 of 4, services 5 of 8 and software 30 of 46;
+  * Riya's own sent emails pass **56 of 58 (97 percent)**. The two that fail are L2-030 and L2-054, which confirms the checks measure her standard;
+  * 12 drafts pass all three checks and Riya still edited them, mostly the sign-off and greeting. The three checks miss part of her voice, so we also score a few voice checks (24.8).
+* The data is lopsided: 48 software, 8 services and 4 hardware founders.
+
+**Training template.**
+* Columns: `example_id`, `source` (real or synthetic), `set` (train, validation or test), `input` and `output`.
+* Every row uses one input layout, and the live app must send the model the same layout.
+
+**What the data means for us.**
+
+1. Riya's email standard is a fixed, teachable pattern. A clear prompt and a few checks in code should close most of the gap before any training. This is the first rung of the lecture's escalation ladder.
+2. Screening misses come from not applying rules the fund already wrote down, mostly near the line. The fix is a Thesis Card v3 candidate plus a borderline eval, not fine-tuning. The thesis is also moving, which the lecture says makes training a poor fit.
+3. Hardware and deeptech are where both loops fail. They need a "no close match" warning and more examples.
+
+### 24.3 The gaps, and how we close each one
+
+| # | Gap | Source | The fix | Milestone |
+|---|---|---|---|---|
+| G1 | On the free Vercel plan, the schedulers run once a day. A failed application waits a day, and replies and follow ups are read only once a day. | Case 04 Task 2, Lecture 8 "queue it" | Supabase `pg_cron` and `pg_net` call the screening worker every minute (about 5 a minute) and the outreach worker every 10 minutes. Free, with no Vercel upgrade. | M9 |
+| G2 | The open form has no limit, and the hosted app is public. | Lecture 8 "an open form is an open door", "who can do what" | A per-visitor upload limit, 30 an hour (ten times that behind the team password), with a clear message. The password goes back on before any real founder data (Q16). | M9 |
+| G3 | Portkey is not connected. Our own retry covers only bad model output, once. | Case 04 Task 3, Lecture 8 | Route every call through Portkey, with a Portkey budget limit and up to 4 attempts: wait 1, 2 and then 4 seconds, plus a little jitter. A call that still fails leaves the application "queued", never lost. Cloudflare stays as the fallback (Q15). | M9 |
+| G4 | No cache. Re-screening the same file with the same prompt version pays again. | Lecture 8 "cache it" | Key each call by its input hash, prompt version and model, and reuse a stored answer. | M9 |
+| G5 | Test and live share one database. | Lecture 8 "test and live are separate" | A second Supabase project for evals and the demo. `.env` picks which one. | M9 |
+| G6 | The cost alert is only a banner in the app. | Case 04 Task 5 "alerts you", Lecture 8 "alert is not protection" | Keep the hard pause, and also email Kushal and Riya when the cap trips. Add calendar-month totals, and show cost per application next to Riya's 30 minutes. | M9 |
+| G7 | Full model inputs are kept with no end date: a second copy of founder data. | Lecture 8 "what's left lying around", "send less, log less" | A daily job clears `llm_calls.input` after 30 days and keeps the counts, cost and prompt version (Q18). Langfuse gets the same window. | M9 |
+| G8 | The deck goes to Gemini without the founder's consent. | Operating facts, Lecture 8 "the law" (DPDP, GDPR) | A consent line on the form and the upload page, a note on deleting data on request, and only paid API terms that do not train on our data (Q17). | M9 |
+| G9 | No disagreement score for emails. The override rate covers only screening. | Feedback loop notes | Measure each sent email against its draft: kept, small edit or rewrite. Show both loops' rates by week on the Dashboard, split by sector and founder type. | M10 |
+| G10 | No eval built from real past corrections. | Case 05 step 1, feedback loop notes | Two new eval sets from Seed data 2, which together give a baseline disagreement score. **E-L1:** the 40 screening rows, turned into one-page PDFs, sent through the real upload route, and compared with Riya's final call. **E-L2:** the 57 clean email rows, sent through A5 and checked against Riya's shape. | M10 |
+| G11 | Feedback matching is weak for unfamiliar companies. | Feedback loop notes, the drone example | When no correction or note shares a tag with the company, the brief and the draft say "no close past example", so Riya knows the system is guessing. | M10 |
+| G12 | One-off email edits can become rules. The notes are global: the latest 8 apply to everyone. | Feedback loop notes, "I heard about you from Rahul" | Riya approves each style note before it is used. Notes are tagged by founder type and sector, and only matching notes are sent. | M10 |
+| G13 | No borderline test set. | Lecture 8 Q1 | The E-L1 rows within 1 point of the line become a named borderline suite. | M10 |
+| G14 | A5's email shape does not match Riya's. The shape in 22.3 has three slots, a thank-you and "Best". | Seed data 2 | Rewrite A5 to Riya's shape in 24.2. Checks in code: one fact from the traction list, one question, two slots, no praise words, the sign-off, and Aditya only for deeptech. A draft that fails a check is fixed or flagged before Riya sees it. | M11 |
+| G15 | Screening misses near the line, on rules already written down. | Seed data 2 Loop 1 | A Thesis Card v3 candidate that gives repeat behaviour more weight, counts a missing repeat number against the company, and credits pedigree only when evidence backs it. It goes through the back test and E-L1, and only Kushal can approve it. | M11 |
+| G16 | We have not tried a stronger model for drafts. | Escalation ladder | Run E-L2 on Flash and on Pro, then keep the cheapest one that meets the pass mark. | M11 |
+| G17 | No fine-tuning work at all. | Case 05 | The pilot in 24.5. | M12 |
+| G18 | Smaller items | Lecture 8 | The volume test records the error type and time per request. Add a short pricing note: per seat, per use or per outcome. | M9 |
+
+### 24.4 Build order
+
+* **M9, Safe at volume.** Covers G1 to G8 and G18.
+  * Done when a burst of 50 uploads in a minute ends with every application scored, queued or flagged with a reason.
+  * Done when the cap sends an email.
+  * Done when the test database is separate.
+  * Done when an old input is cleared on schedule.
+M10 to M12 follow the prompt-first process in 24.8. We fine-tune only if a better prompt cannot reach the target.
+
+* **M10, Measure first.** Covers G9 to G13, and steps 1 to 3 of 24.8.
+  * Done when the Seed data 2 rows are cleaned and the test set is sealed.
+  * Done when the baseline disagreement score is measured on the sealed test set, and saved to `eval_runs` by `npm run eval:loops`. Three baselines: the old system's drafts, our current A5 prompt, and Riya's own emails as the ceiling.
+  * Done when the Dashboard shows both loops' weekly rates.
+  * Done when a hardware founder's brief shows "no close past example".
+* **M11, A better prompt in Riya's voice.** Covers G14 to G16, and steps 4 to 6 of 24.8.
+  * Done when Riya's changes in the training rows are listed by type and count.
+  * Done when A5 is rewritten in her voice, and the new prompt's score is measured on the same sealed test set.
+  * Done when E-L1 reports Thesis Card v3's agreement with Riya next to v2's, and v3 waits for Kushal.
+* **M12, Fine-tuning, only if M11 misses the target.** Covers G17, and step 7 of 24.8.
+  * Done when the Brief is filled, the data passes the four cleaning checks, and one run is measured against the M11 score.
+  * Done when a ship or stop decision is written down.
+  * If M11 meets the target, M12 is a written "stop" decision with the numbers. That is a valid result.
+
+The targets: for emails, 90 percent of the sealed test emails pass the three checks, with no founder type below 80 percent. For screening, fewer than 10 percent of calls overturned. Today the emails stand at 60 percent and screening at 30 percent overturned.
+
+### 24.5 The Fine-Tuning Brief (draft)
+
+We pick **the first email draft (A5)**, not screening. Riya's edits there repeat and follow a fixed pattern. Screening is a poor fit for four reasons:
+* the thesis is moving;
+* there are only 40 rows;
+* some reasons need facts the application does not hold, such as a portfolio overlap or a defensive answer;
+* any scoring change needs a new card version and a back test.
+
+| Line | Answer |
+|---|---|
+| 1. Task | Write Riya's first email to a founder the fund wants to meet, from the founder type, sector, stage, background and traction facts. |
+| 2. Pass mark | 90 percent of the 60 sealed test emails pass the three checks (short, one clear ask, no praise without a fact), and no founder type scores below 80 percent. |
+| 3. Baseline today | 60 percent for the old system's drafts (35 of 58). The baseline to beat is the best prompt without fine-tuning (M11), measured on the same 60 test emails. In the lecture's worked example that best prompt reached 86 percent. |
+| 4. Route | We train it ourselves on a free notebook (Colab with Unsloth), so the data stays private. It is hosted only if it wins. The fund has no cloud account and no engineer, which counts against hosting a model. |
+| 5. Base model | A small open model of about 3 billion parameters, trained with LoRA, because Riya waits for the draft in the evening. The exact model is chosen from the Unsloth catalogue on the day. |
+| 6. Data | About 300 emails Riya sent, cleaned first with the four checks in 24.8: 56 real pairs after removing the two copies and the two off-day rows (L2-030, L2-054), plus about 244 synthetic rows, each labelled `synthetic`. The synthetic rows add hardware, deeptech and services founders, because the real set is mostly software. Names become `{first_name}` and dates become `{slot_1}` and `{slot_2}`, so no founder details are trained on and the input layout matches what A5 sends in production. |
+| 7. Split | One in five held back for the final test: 60 emails, split by founder type, with as many real rows as each type allows. 24 more for validation, and the rest to train. The test set is chosen first and sealed with a hash, before anyone studies Riya's edits or writes a prompt. |
+| 8. Stop rule | Stop if the M11 prompt already meets the pass mark. Otherwise train, and stop if, after one retry, the trained model is less than 3 points better than the M11 prompt on the sealed test. Also stop if no free GPU is available after two tries. |
+| 9. Payback | About 100 drafts a month, and drafting costs only a few dollars, so the win is quality and privacy, not savings. Riya sends about 17 a month, which is about 40 minutes of editing today and about 17 minutes if every draft were perfect: around ₹400 a month at ₹1,000 an hour. A GPU host costs $300 to $600 a month. A trained model only earns its place if it clearly beats the prompt and the fund values keeping drafts off an outside API. Expected decision: the prompt fix is enough, so stop. The pilot costs ₹0 on free tools. |
+
+What we hand in: the filled Brief, the dataset file with its real and synthetic counts, the test results against both baselines, and one line on spend.
+
+### 24.6 Privacy rules for version 2
+
+* `Seed data 2/` stays out of git. Only counts, IDs and patterns go into the repo, never names or email text.
+* Training rows use placeholders for names and dates, the same as A5 in production. N6 holds for training data too.
+* Nothing from a real founder's deck goes into a training set. The pilot uses only the export rows and labelled synthetic rows.
+
+### 24.7 How to charge for it (G18)
+
+Lecture 8 asks who carries the cost risk. Our measured cost is about ₹6 per screened application against ₹500 of Riya's time. If this tool were sold to other funds:
+
+* **Per seat** is simple for the fund, but a Fund II rush of 100 applications in a day puts the volume risk on us.
+* **Per application screened** moves cost and price together. This is the safest fit, because our cost is per application and capped per day.
+* **Per first meeting booked** pays the most for real value. But we would carry the risk of founders not replying, which we do not control.
+
+Recommendation: price per application screened, with a monthly minimum. The daily cost cap protects both sides from a runaway day.
+
+### 24.8 The prompt-first process for both loops (Lecture 9)
+
+**The idea.** The disagreement score is the alarm: it says something is off, but not which step or why. The eval harness is the diagnosis: it says which step fails and what the misses look like. We fix the prompt first, and fine-tune only if the prompt cannot reach the target.
+
+**Where our loops get stuck** (the six places from the lecture, mapped to our build):
+
+| Loop | Where it gets stuck | What we do about it |
+|---|---|---|
+| 1, judgement | A fuzzy idea of "good fit" that is hard to write down | The Thesis Card keeps criteria separate, and a person decides near the line (the borderline suite, G13) |
+| 1, judgement | Trade-offs that were never written down (Marut Dynamics against Hawa Labs) | Riya's one-line reasons become candidate rules in Thesis Card v3, only after Kushal approves (G15) |
+| 1, judgement | Riya's off day corrupting a note | Rule corrections are never used until approved, and declined ones are never recalled (Loop C, 11.1) |
+| 2, emails | A founder unlike any seen before (hardware: 0 of 4 drafts passed) | The "no close past example" warning (G11), and examples matched by founder type |
+| 2, emails | Six edits squeezed into one correction pair | Each change is labelled by type when we study the edits (step 4), not stored as one blob |
+| 2, emails | What she did, but not why | Riya approves each style note in plain words before it is used (G12) |
+
+**The steps, in order. Each one ends in a number.**
+
+1. **Clean the data** (the lecture's four checks, done before anything is measured):
+   * drop the off-day edits: L2-030 and L2-054;
+   * settle contradictions: keep the version Riya would stand by today, and fix or delete the old one. Her greeting, sign-off and two slots are the same in 56 of 58 emails, so the two outliers go;
+   * cover every kind of founder: count the pairs by founder type (software 46, services 8, hardware 4 after cleaning), and add labelled synthetic rows for the thin types;
+   * remove the two exact copies (L2-015, L2-033).
+2. **Seal the test set.** One in five, 60 emails, split by founder type. It is hashed and never read while writing prompts or training. Prompts are written from the training rows only, so the score on the test set is honest.
+3. **Measure the baseline disagreement score on the sealed test set.** Three numbers per loop:
+   * **Loop 2:** the share of emails passing the three checks, the share Riya kept unchanged, and a voice score (her greeting, her sign-off, one fact written as "is rare for a {stage} {category}", two Tuesday or Thursday slots, and Aditya only for deeptech). Measured for (a) the old system's drafts from the export, today 60 percent on the three checks; (b) our current A5 prompt, run on the same test inputs; (c) Riya's own emails, today 97 percent, as the ceiling.
+   * **Loop 1:** the share of calls where the system matches Riya's final call. Today it is 70 percent (12 of 40 overturned), and 9 of the 12 misses sit within 0.7 of the line.
+4. **Set the target before changing anything.** Loop 2: 90 percent pass the three checks, no founder type below 80 percent, and the voice score at 90 percent. Loop 1: fewer than 10 percent overturned, measured separately on the borderline suite.
+5. **Study Riya's changes in the training rows.** Label each edit by type and count how often it appears: praise removed, vanity number swapped for a repeat number, vague question made specific, slots added, fund pitch cut, sign-off changed, Aditya added for deeptech. Keep only patterns that repeat, and drop one-offs.
+6. **Rewrite the prompt in Riya's voice and measure it on the same sealed test set.**
+   * The prompt states her rules in plain words. Code checks enforce them, and a draft that fails is fixed or flagged.
+   * The prompt shows two or three of her real emails as examples, picked from the training rows by founder type, so a hardware founder sees a hardware example.
+   * Then try the escalation ladder in order: better rules, better input facts, then a stronger model (Flash, then Pro). Each rung is measured, and we keep the cheapest one that meets the target.
+   * Loop 1 goes the same way: a Thesis Card v3 candidate, measured on the 40 screening rows and the back test, and approved only by Kushal.
+7. **Only if step 6 misses the target, fine-tune** (24.5). Train on the cleaned data, measure on the same sealed test set, and apply the stop rule: after one retry, stop if the gain over the best prompt is under 3 points.
+8. **After any change, keep the loop running.** The weekly disagreement score on the Dashboard watches for drift. A spike is read with the evals, and new clean pairs become material for the next round.
+
+**Loop 1: the Brief lines we cannot fill, and why** (the lecture's bottom-line question):
+* **Line 2, Pass mark.** "A good call" rests on a fuzzy fit and on trade-offs that were never written down. Two strong teams got opposite calls because of a market or a revenue path. We cannot grade an answer whose reason is not on the page.
+* **Line 6, Data.** There are only 40 rows. Some reasons need facts that are not in the application: a portfolio overlap, or a defensive answer on a call.
+* **Line 8, Stop rule.** The thesis is moving ("what we are actually backing now"). A model trained on last year's calls learns a target that has already shifted.
+
+So Loop 1 is fixed with rules, research and Thesis Card versions that people approve, never with fine-tuning.

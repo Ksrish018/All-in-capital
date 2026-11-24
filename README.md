@@ -44,6 +44,7 @@ npm install
 npm run db:migrate
 npm run db:seed
 npm run db:memos   # needs the local memo PDF in Decks/
+npm run db:schedule  # the database scheduler calls the hosted workers (needs HOSTED_URL and WORKER_SECRET)
 ```
 
 3. Start the app at http://localhost:3000. There is no login. Pick who is working in the sidebar.
@@ -74,7 +75,8 @@ npm run eval        # quick tests, tricky inputs, N6 and N1 together (app runnin
 npm run eval:seed   # the ten case applications against the gold set (after case:load)
 npm run eval:gates -- <id>   # Gate 1 and Gate 2 permissions with real cookies
 npm run eval:outreach        # the outreach agent end to end, simulate mode only
-npm run eval:cap    # the cost cap pauses and resumes cleanly
+npm run eval:cap    # the cost cap pauses and resumes cleanly, and raises one alert
+npm run eval:burst  # 50 uploads at once: none lost, at most 4 screened at a time, upload limit and consent hold
 npm run backtest    # the back test on the latest Thesis Card
 ```
 

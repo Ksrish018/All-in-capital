@@ -17,6 +17,8 @@ export type NewApplication = {
   notes?: string;
   form?: File | null;
   deck?: File | null;
+  /** G8: the person uploading confirms the founder was told an AI model reads the application. */
+  consent?: boolean;
 };
 
 /** Refuses anything that is not a real PDF of 25 MB or less, with a clear message. */
@@ -35,6 +37,7 @@ export function nameFromFile(name: string): string {
 }
 
 export async function createApplication(input: NewApplication): Promise<{ id: string; position: number }> {
+  if (!input.consent) throw new IntakeRefused("Please confirm the founder was told an AI model reads the application (the consent box).");
   if (input.source === "public_form" && !input.form) throw new IntakeRefused("A public form application needs the form PDF.");
   if (input.source === "warm_intro" && !input.companyName?.trim()) throw new IntakeRefused("A warm intro needs the company name.");
   const form = input.form ? await checkPdf(input.form, "form") : null;
@@ -50,6 +53,7 @@ export async function createApplication(input: NewApplication): Promise<{ id: st
       source: input.source,
       introduced_by: input.introducedBy?.trim() || null,
       intro_notes: input.notes?.trim() || null,
+      consent_at: new Date().toISOString(),
     })
     .select("id")
     .single();

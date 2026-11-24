@@ -10,3 +10,6 @@ __pycache__/
 # Course material stays local (repo is public)
 *.pdf
 *.pptx
+
+# Case 5 exports: real-looking founder names, never commit
+Seed data 2/

@@ -6,6 +6,16 @@ const CALL_NAME: Record<string, string> = {
   A0: "Portfolio check", A1: "Extract facts", A2: "Read research and compare", A3: "Score criteria", A4: "Summary and back test notes", A5: "Draft emails", A6: "Read replies",
 };
 const usd = (x: number) => `$${x.toFixed(x < 1 ? 3 : 2)}`;
+const inr = (x: number) => `₹${Math.round(x).toLocaleString("en-IN")}`;
+
+/** Riya's screening time, priced as in Lecture 8: about ₹50,000 for 100 applications at 30 minutes each. */
+const RIYA_INR_PER_APPLICATION = 500;
+
+/** The first day of this month in India, where the fund works. */
+function startOfIndiaMonth(now: number): Date {
+  const india = new Date(now + 330 * 60_000);
+  return new Date(Date.UTC(india.getUTCFullYear(), india.getUTCMonth(), 1) - 330 * 60_000);
+}
 
 /** One clock for the page, read with the data. */
 async function readClock() {
@@ -16,23 +26,28 @@ async function readClock() {
 export default async function CostPage() {
   const db = createAdminClient();
   const now = await readClock();
-  const since = new Date(now - 31 * 86_400_000).toISOString();
-  const [{ data: calls }, { data: cap }, { data: apps }, { count: paused }] = await Promise.all([
-    db.from("llm_calls").select("call_type, cost_usd, created_at, application_id, run_id").gte("created_at", since),
+  const monthStart = startOfIndiaMonth(now);
+  const since = new Date(Math.min(now - 31 * 86_400_000, monthStart.getTime())).toISOString();
+  const [{ data: calls }, { data: cap }, { data: apps }, { count: paused }, { data: rate }] = await Promise.all([
+    db.from("llm_calls").select("call_type, cost_usd, created_at, application_id, run_id, status").gte("created_at", since),
     db.from("settings").select("value").eq("key", "daily_cost_cap_usd").maybeSingle(),
     db.from("applications").select("id, company_name, cost_usd, status").order("cost_usd", { ascending: false }),
     db.from("applications").select("id", { count: "exact", head: true }).eq("status", "paused_cost_cap"),
+    db.from("settings").select("value").eq("key", "inr_per_usd").maybeSingle(),
   ]);
+  const inrPerUsd = Number(rate?.value ?? 85);
   const capUsd = Number(cap?.value ?? 5);
   const startOfDay = startOfIndiaDay(now);
   const rows = (calls ?? []).map((c) => ({ ...c, cost: Number(c.cost_usd) }));
   const sum = (xs: { cost: number }[]) => xs.reduce((s, x) => s + x.cost, 0);
   const today = sum(rows.filter((r) => new Date(r.created_at) >= startOfDay));
   const week = sum(rows.filter((r) => new Date(r.created_at).getTime() >= now - 7 * 86_400_000));
-  const month = sum(rows);
+  const monthRows = rows.filter((r) => new Date(r.created_at) >= monthStart);
+  const month = sum(monthRows);
+  const reused = monthRows.filter((r) => r.status === "cached").length;
   const indiaDate = (iso: string) => new Date(new Date(iso).getTime() + 330 * 60_000).toISOString().slice(0, 10);
   const byDay = [...rows.reduce((m, r) => m.set(indiaDate(r.created_at), (m.get(indiaDate(r.created_at)) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14);
-  const byType = [...rows.reduce((m, r) => m.set(r.call_type, (m.get(r.call_type) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
+  const byType = [...monthRows.reduce((m, r) => m.set(r.call_type, (m.get(r.call_type) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
   const scored = (apps ?? []).filter((a) => Number(a.cost_usd) > 0);
   const avgApp = scored.length ? scored.reduce((s, a) => s + Number(a.cost_usd), 0) / scored.length : 0;
   const maxApp = scored[0];
@@ -62,7 +77,7 @@ export default async function CostPage() {
       <section className="mt-6 grid gap-4 md:grid-cols-4">
         {[
           ["Last 7 days", usd(week)],
-          ["Last 31 days", usd(month)],
+          [`This month (${monthStart.toLocaleDateString("en-IN", { month: "long", timeZone: "Asia/Kolkata" })})`, usd(month)],
           ["Average per application", scored.length ? usd(avgApp) : "–"],
           ["Highest application", maxApp ? `${usd(Number(maxApp.cost_usd))}` : "–"],
         ].map(([k, v]) => (
@@ -72,6 +87,24 @@ export default async function CostPage() {
             {k === "Highest application" && maxApp ? <div className="mt-1 text-[12px] text-muted">{maxApp.company_name}</div> : null}
           </div>
         ))}
+      </section>
+
+      <section aria-label="Against Riya's time" className="panel mt-6 p-6">
+        <div className="eyebrow">Against Riya&apos;s time · the baseline</div>
+        <div className="mt-3 grid gap-4 md:grid-cols-3">
+          <div>
+            <div className="font-display text-[32px] leading-none tabular-nums">{scored.length ? inr(avgApp * inrPerUsd) : "–"}</div>
+            <div className="mt-1 text-[12px] text-muted">AI cost per application</div>
+          </div>
+          <div>
+            <div className="font-display text-[32px] leading-none tabular-nums">{inr(RIYA_INR_PER_APPLICATION)}</div>
+            <div className="mt-1 text-[12px] text-muted">Riya screening by hand, 30 minutes</div>
+          </div>
+          <div>
+            <div className="font-display text-[32px] leading-none tabular-nums">{scored.length ? `${((avgApp * inrPerUsd) / RIYA_INR_PER_APPLICATION * 100).toFixed(1)}%` : "–"}</div>
+            <div className="mt-1 text-[12px] text-muted">AI cost as a share of her time. {reused ? `${reused} answers reused from the cache this month, at no cost.` : ""}</div>
+          </div>
+        </div>
       </section>
 
       <section className="mt-6 grid gap-4 lg:grid-cols-3">
@@ -85,7 +118,7 @@ export default async function CostPage() {
               </li>
             ))}
           </ul>
-          {backtests ? <p className="mt-3 text-[12px] text-muted">Back tests: {usd(backtests)} of the month.</p> : null}
+          {backtests ? <p className="mt-3 text-[12px] text-muted">Back tests: {usd(backtests)} in the last 31 days.</p> : null}
         </div>
         <div className="panel p-5">
           <div className="eyebrow">By day</div>

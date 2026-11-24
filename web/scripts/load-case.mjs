@@ -7,9 +7,11 @@ import { fileURLToPath } from "node:url";
 import pg from "pg";
 import { createClient } from "@supabase/supabase-js";
 import nextEnv from "@next/env";
+import { clearUploadCount, refuseOnLive } from "./lib/guard.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 nextEnv.loadEnvConfig(root);
+refuseOnLive("load-case");
 const BASE = process.env.APP_URL ?? "http://localhost:3000";
 const decks = path.join(root, "Decks");
 const arg = (k) => process.argv.find((a) => a.startsWith(`--${k}`));
@@ -26,6 +28,7 @@ const db = new pg.Client({
   password: process.env.SUPABASE_DB_PASSWORD, database: "postgres", ssl: { rejectUnauthorized: false },
 });
 await db.connect();
+await clearUploadCount(async (sql, a = []) => (await db.query(sql, a)).rows);
 
 if (arg("clean")) {
   // Files go through the storage API. Supabase refuses direct deletes from storage tables.
@@ -51,6 +54,7 @@ async function send(co) {
   // StockSathi came in through a warm intro from a Fund I founder (case brief).
   const warm = co === "StockSathi";
   fd.set("source", warm ? "warm_intro" : "public_form");
+  fd.set("consent", "yes");
   if (warm) {
     fd.set("company_name", co);
     fd.set("introduced_by", "A founder in the Fund I portfolio");

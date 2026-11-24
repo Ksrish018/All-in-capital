@@ -12,12 +12,15 @@ Each item has an owner. The pilot does not start until every box is ticked.
 | 1 | Approve a Thesis Card version | Kushal | Back test page. Read the v2 report, set the verdicts, then Approve. v1 cannot be approved: it marks funded companies PASS with no flag. |
 | 2 | Put a password in front of the app | Team | Set `APP_PASSWORD` where the app is hosted. Every page then asks for it. Without it, the app must stay on the team's own machines. (Q13) |
 | 3 | Rotate the keys used during the build | Team | New Gemini key, new Cloudflare gateway token, new Supabase secret key. Update `.env` and the host. |
-| 4 | Turn on the schedulers | Team | Screening worker every minute, outreach agent every 10 minutes. `web/vercel.json` does this on Vercel. Set `CRON_SECRET` to the same value as `WORKER_SECRET`. |
+| 4 | Turn on the schedulers | Team | Run `npm run db:schedule` from `web/`, with `HOSTED_URL` and `WORKER_SECRET` in `.env`. The database's own scheduler (pg_cron) then calls the screening worker every minute and the outreach agent every 10 minutes. The daily crons in `web/vercel.json` stay as a backstop. Set `CRON_SECRET` to the same value as `WORKER_SECRET`. |
 | 5 | Add the call attendees' emails | Riya | Settings, Outreach. Needed before outreach goes live. |
 | 6 | One live outreach test | Riya, Kushal | Switch Outreach to live in Settings. Send one invite to a team member's own address, reply to it, and check the calendar invite arrives. Then decide whether to stay live. |
 | 7 | Check the model prices | Team | The cost table uses high estimates (Q14). Compare with Google's pricing page and update `model_prices`. |
 | 8 | Decide on live research | Kushal | Research runs on recorded results by default. For real applications, switch it to Live web in Settings. Each application uses about 10 Tavily searches. |
 | 9 | Add the CI secrets | Team | GitHub repository secrets, so the live database check and the N6 audit run on every pull request. |
+| 10 | Separate test and live databases | Team | Create a new Supabase project for the pilot, run `npm run db:migrate` and `npm run db:seed` against it, and set `DB_ROLE=live` in its `.env`. The current project stays as the test and demo database (`DB_ROLE=test`). Eval scripts refuse to run on live. |
+| 11 | Put the consent line on the public form | Kushal | The same words as the upload page's consent box: an AI model reads the form and deck for a first review, the provider does not train on it, and a person makes every decision (Q17). |
+| 12 | Raise the upload limit for announcement day | Kushal | Settings, "Uploads per visitor per hour". Behind the password the limit is already ten times the setting. |
 
 ## Riya's day
 
@@ -65,6 +68,7 @@ npm run eval -- --full  # also re-screens the ten case applications and grades t
 npm run eval:outreach   # the outreach agent end to end, simulate mode only
 npm run eval:cap        # the cost cap pauses and resumes cleanly
 npm run backtest        # the back test on the latest card (about $0.90)
+npm run eval:burst      # 50 uploads at once: none lost, the upload limit and the consent box hold
 ```
 
 ## What was checked before handing over

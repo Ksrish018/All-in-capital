@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { CONSENT_TEXT } from "@/lib/intake/consent";
 
 type Row = { key: string; company: string; form: File | null; deck: File | null; state: "ready" | "sending" | "sent" | "refused"; note?: string; id?: string };
 
@@ -45,6 +46,7 @@ function Files() {
   const [rows, setRows] = useState<Row[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
   const [over, setOver] = useState(false);
+  const [consent, setConsent] = useState(false);
   const input = useRef<HTMLInputElement>(null);
 
   function add(list: FileList | File[]) {
@@ -80,6 +82,7 @@ function Files() {
         setRows((prev) => prev.map((x, j) => (j === i ? { ...x, state: "sending" } : x)));
         const fd = new FormData();
         fd.set("source", "public_form");
+        fd.set("consent", "yes");
         fd.set("form", r.form, r.form.name);
         if (r.deck) fd.set("deck", r.deck, r.deck.name);
         const res = await fetch("/api/applications", { method: "POST", body: fd });
@@ -122,11 +125,12 @@ function Files() {
         <div className="mt-6 overflow-hidden panel">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3">
             <div className="eyebrow">{rows.length} {rows.length === 1 ? "application" : "applications"}</div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-3">
+              <Consent checked={consent} onChange={setConsent} />
               {sentCount ? <Link href="/" className="btn btn-secondary">See the pipeline</Link> : null}
               <button
                 onClick={sendAll}
-                disabled={readyCount === 0}
+                disabled={readyCount === 0 || !consent}
                 className="btn btn-primary"
               >
                 Send {readyCount || ""} to the queue
@@ -207,6 +211,9 @@ function WarmIntro() {
         <span className="eyebrow">Deck (optional)</span>
         <input name="deck" type="file" accept="application/pdf,.pdf" className="mt-2 block w-full text-[13px] text-muted file:mr-3 file:rounded-full file:border file:border-border file:bg-transparent file:px-3 file:py-1 file:text-text" />
       </label>
+      <div className="md:col-span-2">
+        <Consent name="consent" />
+      </div>
       <div className="flex flex-wrap items-center gap-4 md:col-span-2">
         <button
           disabled={state.kind === "sending"}
@@ -218,5 +225,23 @@ function WarmIntro() {
         {state.kind === "error" ? <span className="text-[13px] text-flag">{state.note}</span> : null}
       </div>
     </form>
+  );
+}
+
+/** G8: the founder was told an AI model reads the application. Required before anything is sent. */
+function Consent({ checked, onChange, name }: { checked?: boolean; onChange?: (v: boolean) => void; name?: string }) {
+  return (
+    <label className="flex max-w-xl items-start gap-2 text-[12px] leading-snug text-muted">
+      <input
+        type="checkbox"
+        name={name}
+        value="yes"
+        required={!!name}
+        checked={onChange ? checked : undefined}
+        onChange={onChange ? (e) => onChange(e.target.checked) : undefined}
+        className="mt-0.5 accent-[var(--color-brass,#b89b62)]"
+      />
+      <span>{CONSENT_TEXT}</span>
+    </label>
   );
 }

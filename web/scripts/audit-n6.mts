@@ -31,6 +31,7 @@ let leaks = 0;
 let warnings = 0;
 for (const c of calls) {
   if (c.input?.blocked) continue; // refused before sending, nothing left the system
+  if (c.input?.purged) continue; // cleared after the retention window (G7): nothing left to check
   const text = `${c.input.system ?? ""}
 ${c.input.user ?? ""}`;
   const mine = c.application_id ? own.get(c.application_id) ?? [] : [];

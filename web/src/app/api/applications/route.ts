@@ -1,6 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { IntakeRefused, createApplication } from "@/lib/intake/create";
 import { runScreeningWorker } from "@/lib/intake/screen";
+import { TooManyUploads, checkUploadLimit } from "@/lib/intake/limit";
 
 export const maxDuration = 300;
 
@@ -14,7 +15,9 @@ export async function POST(req: Request) {
   };
   const source = str("source") === "warm_intro" ? "warm_intro" : "public_form";
   try {
+    await checkUploadLimit(req);
     const res = await createApplication({
+      consent: str("consent") === "yes",
       source,
       companyName: str("company_name"),
       website: str("website"),
@@ -27,6 +30,7 @@ export async function POST(req: Request) {
     after(() => runScreeningWorker().catch((e) => console.error("screening worker:", e)));
     return NextResponse.json(res, { status: 201 });
   } catch (e) {
+    if (e instanceof TooManyUploads) return NextResponse.json({ error: e.message }, { status: 429 });
     if (e instanceof IntakeRefused) return NextResponse.json({ error: e.message }, { status: 400 });
     console.error("intake:", e);
     return NextResponse.json({ error: "The application could not be saved. Try again." }, { status: 500 });

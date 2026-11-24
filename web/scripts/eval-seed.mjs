@@ -6,9 +6,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import nextEnv from "@next/env";
+import { refuseOnLive } from "./lib/guard.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 nextEnv.loadEnvConfig(root);
+refuseOnLive("eval-seed");
 const gold = JSON.parse(fs.readFileSync(path.join(root, "evals/gold/applicants.json"), "utf8"));
 const goldList = gold.applicants ?? gold;
 const synthetic = JSON.parse(fs.readFileSync(path.join(root, "evals/fixtures/research/applicants_synthetic.json"), "utf8")).applicants;

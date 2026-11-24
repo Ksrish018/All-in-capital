@@ -36,6 +36,15 @@ export default async function SettingsPage() {
       </section>
 
       <section className="mt-8">
+        <h2 className="text-[24px]">Safety and volume</h2>
+        <div className="panel mt-3 divide-y divide-border">
+          <NumberSetting k="upload_limit_per_hour" label="Uploads per visitor per hour" hint="Stops a bot or a stuck script flooding the queue. Behind the team password the limit is ten times this. Raise it on announcement day." value={Number(v("upload_limit_per_hour") ?? 30)} step={5} editable={can("upload_limit_per_hour")} />
+          <ChoiceSetting k="answer_cache" label="Reuse identical answers" hint="The same model, prompt version and input reuse the stored answer, at no cost. Turn off only to measure a fresh run." value={String(v("answer_cache") ?? "on")} options={[["on", "On"], ["off", "Off"]]} editable={can("answer_cache")} />
+          <NumberSetting k="input_retention_days" label="Keep full model inputs for" hint="Days. After this, the stored prompt and reply are cleared each night; counts, cost and prompt version stay (Q18)." value={Number(v("input_retention_days") ?? 30)} step={1} editable={can("input_retention_days")} />
+        </div>
+      </section>
+
+      <section className="mt-8">
         <h2 className="text-[24px]">Outreach</h2>
         <div className="panel mt-3 divide-y divide-border">
           <ChoiceSetting k="outreach_mode" label="Outreach mode" hint="Simulate runs every step but sends nothing. Live sends from Riya's Gmail and makes real calendar invites." value={String(v("outreach_mode") ?? "simulate")} options={[["simulate", "Simulate"], ["live", "Live"]]} editable={can("outreach_mode")} danger="live" />

@@ -8,7 +8,7 @@ Usage: python scripts/components_map.py   (then render the PNG, see the end of t
 import html
 from pathlib import Path
 
-W, H = 2500, 3075
+W, H = 2500, 3150
 out: list[str] = []
 
 NAVY = "#1b2a4a"
@@ -57,7 +57,7 @@ ROWS = [  # key, actor, sub, tint, height
     ("m2", "Memory", "(learns Riya's style)", "#fff4e6", 170),
     ("r2", "Riya", "(sends every email)", "#f6f2fe", 200),
     ("f2", "Founder + Google", "(Gmail, Calendar)", "#eaf2fc", 200),
-    ("t2", "Team", "(after the call)", "#fdeef0", 170),
+    ("t2", "Team", "(after the call, and the checks)", "#fdeef0", 170),
 ]
 RY: dict[str, tuple[int, int]] = {}
 y = TOP
@@ -79,13 +79,14 @@ def lane(row):  # the gap under a row
 B: dict[str, dict] = {}
 
 
-def box(key, row, col, kind, title, lines, tag=None, stage=None, stage_color=None):
+def box(key, row, col, kind, title, lines, tag=None, stage=None, stage_color=None, planned=False):
     y0, h = RY[row]
     x, yy, w, hh = col_x(col) + 13, y0 + 18, CW - 26, h - 36
     B[key] = dict(x=x, y=yy, w=w, h=hh)
     fill, stroke = KIND[kind]
     width = 2.6 if kind == "person" else 1.8
-    out.append(f'<rect x="{x}" y="{yy}" width="{w}" height="{hh}" rx="10" fill="{fill}" stroke="{stroke}" stroke-width="{width}"/>')
+    dash = ' stroke-dasharray="8 5"' if planned else ""
+    out.append(f'<rect x="{x}" y="{yy}" width="{w}" height="{hh}" rx="10" fill="{fill}" stroke="{stroke}" stroke-width="{width}"{dash}/>')
     if tag:
         pill(x + w - 10, yy, tag, NAVY, anchor="end")
     if stage:
@@ -147,7 +148,7 @@ out.append("<defs>" + "".join(
 ) + "</defs>")
 out.append(f'<rect width="{W}" height="{H}" fill="#ffffff"/>')
 text(W / 2, 52, "All In Capital · Application Triage, With AI (built system)", 34, 800, NAVY, "middle")
-text(W / 2, 88, "Loop 1 screens each application up to Kushal's sign off. Loop 2 runs outreach up to the call. People decide every outcome; every correction is kept and shapes the next one.", 17, 400, MUTED, "middle")
+text(W / 2, 88, "Loop 1 screens each application up to Kushal's sign off. Loop 2 runs outreach up to the call. People decide every outcome. Dashed boxes and lines marked v2 are planned (PRD Section 24).", 17, 400, MUTED, "middle")
 
 # header
 out.append(f'<rect x="{AX}" y="110" width="{GRID_END + 110 - AX}" height="60" fill="{NAVY}"/>')
@@ -174,10 +175,10 @@ for i in range(1, 7):
     out.append(f'<line x1="{col_x(i)}" y1="{TOP}" x2="{col_x(i)}" y2="{GRID_BOTTOM}" stroke="#ffffff" stroke-width="2"/>')
 
 # ================= LOOP 1: screening
-box("intake", "r1", 0, "person", "① New application", ["Riya drops forms and decks,", "or adds a warm intro", "PDF only, up to 25 MB"], "Upload page")
+box("intake", "r1", 0, "person", "① New application", ["Riya drops forms and decks,", "or adds a warm intro · PDF, 25 MB", "v2: upload limit per visitor", "v2: consent line for the deck"], "Upload page")
 box("gate1", "r1", 5, "person", "Gate 1 · Riya reviews", ["Agree in one click, or change", "with a one-line reason", "Blind check on 1 in 10 PASS calls", "R asks for research · C corrects"], "Review page", "GATE 1")
 
-box("worker", "s1", 0, "code", "Screening worker", ["Starts on each upload", "4 applications at a time", "Daily cron as a backstop"], "Vercel")
+box("worker", "s1", 0, "code", "Screening worker", ["Starts on each upload", "4 applications at a time", "v2: Supabase cron every minute"], "Vercel")
 box("store", "s1", 1, "code", "② Store · ③ Parse · ④ Redact", ["Private storage and a queue (N5)", "Form fields read by position", "Founders become F1, F2 (N6)"], "Supabase")
 box("cheap", "s1", 2, "decision", "⑤ Cheap checks", ["Stage, sector, capital,", "excluded list, duplicate", "A hit stops early, saves cost"], "Code")
 box("suff", "s1", 3, "code", "⑦ Sufficiency", ["Lists what the deck and", "form leave unanswered", "These steer the research"], "Code")
@@ -192,8 +193,8 @@ box("a4", "a1", 5, "ai", "⑬ Brief", ["Flags first, then evidence", "What we co
 box("memo", "m1", 1, "memory", "Memo passages", ["12 past memos, 48 passages", "Build set gives context", "Test set held out for Loop A"], "Supabase")
 box("card", "m1", 2, "memory", "Thesis Card + portfolio", ["11 criteria, two lenses", "Rules that override the score", "25 portfolio companies"], "Supabase")
 box("corr", "m1", 3, "memory", "Riya's corrections", ["Fact: fixes this company", "Rule: kept as context for", "similar ones, never the card"], "Supabase", "LOOP C", C_ORANGE)
-box("packs", "m1", 4, "memory", "⑩ Context packs", ["Per criterion: its evidence,", "3 memo passages and up to", "3 matching rule corrections"], "Code")
-box("dash", "m1", 5, "service", "Dashboard · stop list", ["Review minutes, override rate", "Blind check agreement", "A red light stops the rollout"], "Code")
+box("packs", "m1", 4, "memory", "⑩ Context packs", ["Per criterion: its evidence,", "3 memo passages and up to", "3 matching rule corrections", "v2: says when no close match"], "Code")
+box("dash", "m1", 5, "service", "Dashboard · stop list", ["Review minutes, override rate", "Blind check agreement", "v2: disagreement score, both", "loops, by week (target < 10%)"], "Code")
 
 box("approve", "k1", 2, "person", "Approve a card version", ["Only after its back test", "v1 refused: funded PASS", "v2 waits for Kushal"], "Thesis page")
 box("backtest", "k1", 3, "code", "Back test", ["Memo companies at decision time", "Research off · N1 check", "Kushal sets a verdict per company"], "Code + A3", "LOOP A", C_A)
@@ -236,16 +237,16 @@ arrow([T("approve", -40), Bo("card", -40)], C_A, True, "approved version is live
 # ================= join
 b2y = RY["band2"][0]
 # ================= LOOP 2: outreach
-box("tick", "s2", 0, "code", "Agent tick", ["Starts on GO or PASS", "Then one step per run", "Cron on the host"], "Vercel")
+box("tick", "s2", 0, "code", "Agent tick", ["Starts on GO or PASS", "Then one step per run", "v2: Supabase cron every 10 min"], "Vercel")
 box("watch", "s2", 1, "code", "⑮ Read state + thread", ["Where this company is", "Reads only the stored thread,", "never other mail"], "Gmail API")
 box("rules", "s2", 2, "decision", "⑰ Follow ups · ⑱ Slots", ["No reply: day 3, then day 7", "Tue or Thu, 2 to 6 pm IST", "Never a slot already refused"], "Code", "LOOPS E · F", NAVY)
 box("next", "s2", 5, "decision", "Next step, in code", ["Book · offer new slots", "Follow up · hand to Riya", "One step per run, saved"], "Code")
 
 box("a6", "a2", 3, "ai", "⑯ Read the reply", ["Picked a slot · new time", "No time · not interested", "Below 0.75 means unclear"], "Gemini A6")
-box("a5", "a2", 5, "ai", "⑭ Draft the email", ["GO: invite with 3 free slots", "PASS: kind note, no scores", "First name added by code"], "Gemini A5")
+box("a5", "a2", 5, "ai", "⑭ Draft the email", ["v2: Riya's shape: one fact, one", "question, two Tue or Thu slots", "No praise · checked in code", "First name added by code"], "Gemini A5")
 
 box("log", "m2", 2, "service", "Outreach record", ["Every draft and sent version", "Replies, slots offered, status"], "Supabase")
-box("notes", "m2", 4, "memory", "Style notes", ["Riya's edits become notes", "for the next draft"], "Supabase", "LOOP D", C_ORANGE)
+box("notes", "m2", 4, "memory", "Style notes", ["Riya's edits become notes", "v2: Riya approves each note,", "tagged by founder type"], "Supabase", "LOOP D", C_ORANGE)
 
 box("withriya", "r2", 3, "person", "With Riya", ["Unclear reply or a bounce", "A third request for a new time", "No reply after two follow ups"], "Outreach page")
 box("gate3", "r2", 5, "person", "Gate 3 · Riya sends", ["Reads and edits the draft", "Send from her Gmail", "No send all (N4)"], "Outreach page", "GATE 3")
@@ -254,6 +255,8 @@ box("founder", "f2", 0, "service", "Founder replies", ["Email arrives from Riya"
 box("cal", "f2", 5, "service", "⑲ Book the call", ["Founder confirmed in writing", "Slot checked free again", "30 minutes, Meet link"], "Calendar API")
 
 box("call", "t2", 5, "person", "⑳ After the call", ["One tap: worth 30 minutes?", "Plus call notes"], "Outreach page")
+box("evals", "t2", 2, "code", "Measure, then fix the prompt", ["Sealed test set, one in five", "Emails: 60% pass the three checks", "Target 90% with a prompt in her voice"], "Seed data 2", "V2", "#5b6b7f", planned=True)
+box("ft", "t2", 3, "ai", "Fine-tune, only if needed", ["Only if the prompt misses 90%", "About 3B model, 300 clean emails", "Stop if under 3 points better"], "Colab + Unsloth", "V2", "#5b6b7f", planned=True)
 
 lS2, lA2, lM2, lR2 = lane("s2"), lane("a2"), lane("m2"), lane("r2")
 # join from Gate 2
@@ -272,6 +275,9 @@ arrow([Bo("gate3"), (cx("gate3"), lR2), (col_x(1), lR2), (col_x(1), cy("founder"
 arrow([T("founder"), (cx("founder"), cy("a6", 40)), (cx("watch", -60), cy("a6", 40)), Bo("watch", -60)], label="reply", at=(cx("founder"), lM2 - 60))
 arrow([R("next"), (MX1, cy("next")), (MX1, cy("cal")), R("cal")], label="slot picked: book", at=(MX1, cy("notes")))
 arrow([Bo("cal"), T("call")])
+# v2: the record feeds the evals, the evals feed the pilot
+arrow([Bo("log"), T("evals")], C_GREY, True, "draft vs sent pairs", (cx("log"), lane("f2") - 40))
+arrow([R("evals"), L("ft")], C_GREY, True, "misses target", (col_x(3), cy("evals") + 44))
 # Loop G
 MX3 = GRID_END + 85
 arrow([R("call"), (MX3, cy("call")), (MX3, b2y + 22), (cx("backtest"), b2y + 22), Bo("backtest")], C_G, True, "Loop G: call outcomes join the back test set", (col_x(4) + 40, b2y + 22), 2.6)
@@ -280,11 +286,12 @@ out.extend(labels)
 
 # ================= below the grid
 y = GRID_BOTTOM + 24
-out.append(f'<rect x="{AX}" y="{y}" width="{GRID_END + 110 - AX}" height="74" rx="8" fill="#f3f5f8" stroke="#9aa5b1" stroke-width="1.5"/>')
+out.append(f'<rect x="{AX}" y="{y}" width="{GRID_END + 110 - AX}" height="104" rx="8" fill="#f3f5f8" stroke="#9aa5b1" stroke-width="1.5"/>')
 text(AX + 20, y + 28, "ALWAYS ON · the never-fail checks, under both loops", 16, 800, "#3e4c5e")
 text(AX + 20, y + 54, "N1 no funded company marked PASS with no flag · N2 every citation exists · N3 a founder-only claim is never shown as confirmed · N4 only Riya's click sends an email · N5 no application vanishes · N6 no founder name, email or phone reaches a model · text aimed at the AI is ignored · daily cost cap pauses at a saved step, then resumes", 14.5, 400, MUTED)
+text(AX + 20, y + 84, "v2 adds: Portkey with 1, 2, 4 second retries · answer cache · a separate test database · cap alert by email · model inputs cleared after 30 days · consent line on the form", 14.5, 600, "#5b6b7f")
 
-y += 112
+y += 142
 lx = AX + 100
 for kind, label in [("person", "A person decides"), ("code", "Code step"), ("decision", "Decision in code"), ("ai", "AI call"), ("memory", "Memory"), ("service", "Data or outside service")]:
     fill, stroke = KIND[kind]
@@ -299,10 +306,13 @@ text(lx + 62, y + 2, "where it runs", 15, 400, INK)
 lx += 190
 pill(lx, y - 4, "GATE", "#6b5bd2")
 text(lx + 70, y + 2, "only people decide an outcome here", 15, 400, INK)
+lx += 400
+out.append(f'<rect x="{lx}" y="{y - 14}" width="28" height="20" rx="4" fill="#ffffff" stroke="#5b6b7f" stroke-width="2" stroke-dasharray="5 3"/>')
+text(lx + 38, y + 2, "Planned in version 2", 15, 400, INK)
 
 # the loops
 y += 40
-out.append(f'<rect x="{AX}" y="{y}" width="{GRID_END + 110 - AX}" height="252" rx="10" fill="#fbfcfd" stroke="#d5dbe3" stroke-width="1.5"/>')
+out.append(f'<rect x="{AX}" y="{y}" width="{GRID_END + 110 - AX}" height="290" rx="10" fill="#fbfcfd" stroke="#d5dbe3" stroke-width="1.5"/>')
 text(AX + 20, y + 34, "The loops", 21, 700, NAVY)
 LOOPS = [
     (C_MAIN, False, "LOOP 1 · Screening", "Upload, cheap checks, two tracks of evidence, scores, brief. Ends at Gate 2."),
@@ -315,6 +325,8 @@ LOOPS = [
     (C_G, True, "LOOP G · Real calls", "Was the call worth 30 minutes? Outcomes join the next back test."),
     (C_RED, False, "Send back · HOLD", "Kushal sends an application back to Riya. A portfolio conflict holds it: no email."),
     (C_GREY, True, "Short path", "A cheap check hits: a short brief, research skipped, Riya can still run it all."),
+    ("#5b6b7f", True, "v2 · Disagreement score", "Riya's overrides and email edits, by week. Spikes are read with the evals."),
+    ("#5b6b7f", True, "v2 · Prompt first", "Measure on a sealed test set, fix the prompt in Riya's voice, fine-tune only if it misses."),
 ]
 for i, (color, dashed, name, desc) in enumerate(LOOPS):
     colx = AX + 20 + (i % 2) * 1230
@@ -325,14 +337,14 @@ for i, (color, dashed, name, desc) in enumerate(LOOPS):
     text(colx + 52 + len(name) * 13 * 0.62 + 34, yy + 5, desc, 15, 400, INK)
 
 # the stack
-y += 276
+y += 314
 out.append(f'<rect x="{AX}" y="{y}" width="{GRID_END + 110 - AX}" height="120" rx="10" fill="#fbfcfd" stroke="#d5dbe3" stroke-width="1.5"/>')
 text(AX + 20, y + 34, "The stack", 21, 700, NAVY)
 STACK = [
     ("Vercel", "Next.js app, worker crons"), ("Supabase", "Postgres, private files, queues, RLS"),
-    ("Gemini via Cloudflare", "Flash Lite, Flash, Pro"), ("Tavily", "web research, replay mode for tests"),
+    ("Gemini via Cloudflare", "Portkey in v2 · Flash Lite, Flash, Pro"), ("Tavily", "web research, replay mode for tests"),
     ("Gmail API", "send on Riya's click, read the thread"), ("Calendar API", "free and busy, the booking"),
-    ("Langfuse", "a trace per application"), ("llm_calls log", "every model input, for the N6 audit"),
+    ("Langfuse + llm_calls", "a trace per application, N6 audit"), ("Supabase cron (v2)", "workers every minute"),
 ]
 for i, (name, desc) in enumerate(STACK):
     sx = AX + 20 + (i % 4) * 615
@@ -347,4 +359,4 @@ root = Path(__file__).resolve().parents[1]
 (root / "Components_Map.svg").write_text("\n".join(out), encoding="utf-8")
 print("wrote Components_Map.svg")
 # PNG: "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --disable-gpu --hide-scrollbars
-#      --window-size=2500,3075 --screenshot=Components_Map.png file:///<path>/Components_Map.svg
+#      --window-size=2500,3150 --screenshot=Components_Map.png file:///<path>/Components_Map.svg

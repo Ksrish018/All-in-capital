@@ -43,6 +43,24 @@ const b64url = (s: string) => Buffer.from(s, "utf8").toString("base64").replace(
 
 /** send_email. Only reachable from Riya's click (N4). */
 export async function gmailSend(input: { to: string; subject: string; body: string; threadId?: string | null; inReplyTo?: string | null }) {
+  return sendRaw(input);
+}
+
+/** The addresses a team alert may go to: only the team's own, from Settings. Never a founder (N4 covers founder email). */
+export function teamRecipients(to: string[], team: (string | null | undefined)[]): string[] {
+  const allowed = new Set(team.filter((e): e is string => !!e).map((e) => e.toLowerCase()));
+  const bad = to.filter((e) => !allowed.has(e.toLowerCase()));
+  if (bad.length) throw new GoogleError(`A team alert can only go to the team's own addresses in Settings (refused ${bad.length}).`, true);
+  return to;
+}
+
+/** An alert to the team, such as the cost cap (G6). Refuses any address that is not one of the team's. */
+export async function sendTeamAlert(input: { to: string[]; team: (string | null | undefined)[]; subject: string; body: string }) {
+  const to = teamRecipients(input.to, input.team);
+  return sendRaw({ to: to.join(", "), subject: input.subject, body: input.body });
+}
+
+async function sendRaw(input: { to: string; subject: string; body: string; threadId?: string | null; inReplyTo?: string | null }) {
   const headers = [`To: ${input.to}`, `Subject: ${input.subject}`, "Content-Type: text/plain; charset=UTF-8", ...(input.inReplyTo ? [`In-Reply-To: ${input.inReplyTo}`, `References: ${input.inReplyTo}`] : [])];
   const raw = b64url(`${headers.join("\r\n")}\r\n\r\n${input.body}`);
   return call<{ id: string; threadId: string }>("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {

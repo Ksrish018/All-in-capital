@@ -45,3 +45,25 @@ export const queue = {
     return new Map(r.rows.map((x, i) => [x.id as string, i + 1]));
   },
 };
+
+/**
+ * Worker slots (M9). Every worker, however it was started, must hold a slot for each application it screens,
+ * so no more than `max` are screened at once across all of them. A slot is leased for leaseSeconds.
+ */
+export const slots = {
+  async claim(max: number, want: number, holder: string, leaseSeconds = 600): Promise<number[]> {
+    if (want <= 0) return [];
+    const r = await pool().query(
+      `with free as (
+         select slot from public.worker_slots where slot <= $1 and until < now() order by slot limit $2 for update skip locked
+       )
+       update public.worker_slots w set holder = $3, until = now() + make_interval(secs => $4)
+         from free where w.slot = free.slot returning w.slot`,
+      [max, want, holder, leaseSeconds],
+    );
+    return r.rows.map((x) => Number(x.slot));
+  },
+  async release(slot: number, holder: string): Promise<void> {
+    await pool().query("update public.worker_slots set until = 'epoch', holder = null where slot = $1 and holder = $2", [slot, holder]);
+  },
+};
