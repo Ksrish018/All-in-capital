@@ -80,10 +80,10 @@ export function startOfIndiaDay(now = Date.now()): Date {
   return new Date(Math.floor((now + offset) / 86_400_000) * 86_400_000 - offset);
 }
 
+/** Summed in the database: reading rows through the API stops at 1,000, which would let a busy day slip past the cap. */
 export async function spentTodayUsd(): Promise<number> {
-  const db = createAdminClient();
-  const { data } = await db.from("llm_calls").select("cost_usd").gte("created_at", startOfIndiaDay().toISOString());
-  return (data ?? []).reduce((s, r) => s + Number(r.cost_usd), 0);
+  const r = await pool().query("select coalesce(sum(cost_usd), 0)::float8 as s from public.llm_calls where created_at >= $1", [startOfIndiaDay().toISOString()]);
+  return Number(r.rows[0]?.s ?? 0);
 }
 
 export async function callModel<T>(args: CallArgs<T>): Promise<T> {

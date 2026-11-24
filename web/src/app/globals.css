@@ -24,12 +24,23 @@
   --needs-human: #d9a95a;
   --flag: #d65a4c;
   --hold: #b4a0e0;
-  --stage-1: #3a3631;
-  --stage-2: #5e1d1a;
-  --stage-3: #7d221e;
-  --stage-4: #a3231f;
-  --stage-5: #b89b62;
-  --stage-6: #26231f;
+  /* Jewel tones: one per stage, chosen to sit beside oxblood and brass. */
+  --pewter: #8b8478;
+  --topaz: #e0a246;
+  --sapphire: #5b8fd9;
+  --ruby: #d04a3c;
+  --gold: #d1b06b;
+  --emerald: #4fb48a;
+  --amethyst: #a88be0;
+  --stage-1: var(--pewter);
+  --stage-2: var(--topaz);
+  --stage-3: var(--sapphire);
+  --stage-4: var(--ruby);
+  --stage-5: var(--gold);
+  --stage-6: var(--emerald);
+  --glow-1: rgba(163, 35, 31, 0.22);
+  --glow-2: rgba(91, 143, 217, 0.12);
+  --glow-3: rgba(184, 155, 98, 0.14);
   --display: var(--font-instrument), Georgia, serif;
   --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 8px 24px rgba(0, 0, 0, 0.28);
   --ring: rgba(208, 74, 60, 0.45);
@@ -54,12 +65,22 @@
     --needs-human: #94600f;
     --flag: #9b2a22;
     --hold: #5b4a91;
-    --stage-1: #d9cfbb;
-    --stage-2: #b9a98b;
-    --stage-3: #9b5a4a;
-    --stage-4: #7a1f1b;
-    --stage-5: #1b1a17;
-    --stage-6: #e0d5c1;
+    --pewter: #7d7466;
+    --topaz: #b0741a;
+    --sapphire: #2f5fa8;
+    --ruby: #9b2a22;
+    --gold: #94742f;
+    --emerald: #23744f;
+    --amethyst: #5b4a91;
+    --stage-1: var(--pewter);
+    --stage-2: var(--topaz);
+    --stage-3: var(--sapphire);
+    --stage-4: var(--ruby);
+    --stage-5: var(--gold);
+    --stage-6: var(--emerald);
+    --glow-1: rgba(122, 31, 27, 0.10);
+    --glow-2: rgba(47, 95, 168, 0.08);
+    --glow-3: rgba(156, 127, 69, 0.12);
     --display: var(--font-fraunces), Georgia, serif;
     --shadow: 0 1px 2px rgba(27, 26, 23, 0.04), 0 6px 20px rgba(27, 26, 23, 0.05);
     --ring: rgba(122, 31, 27, 0.3);
@@ -90,6 +111,13 @@
   --color-stage-4: var(--stage-4);
   --color-stage-5: var(--stage-5);
   --color-stage-6: var(--stage-6);
+  --color-pewter: var(--pewter);
+  --color-topaz: var(--topaz);
+  --color-sapphire: var(--sapphire);
+  --color-ruby: var(--ruby);
+  --color-gold: var(--gold);
+  --color-emerald: var(--emerald);
+  --color-amethyst: var(--amethyst);
   --font-sans: var(--font-inter);
   --font-display: var(--display);
   --font-mono: var(--font-mono-face);
@@ -191,9 +219,11 @@ h1, h2, h3, .font-display {
   width: 7px;
   height: 7px;
   border-radius: 9999px;
-  background: var(--accent);
+  background: var(--dot, var(--accent));
   animation: live-pulse 1.8s ease-in-out infinite;
 }
+/* Inside a tinted pill, or with .dot-current, the dot takes the colour of its text. */
+.tint .live-dot, .live-dot.dot-current { --dot: currentColor; }
 
 /* Cards settle in gently. */
 @keyframes rise {
@@ -202,8 +232,67 @@ h1, h2, h3, .font-display {
 }
 .rise { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
+/* A soft light behind page headers, in the theme's own colours. It drifts slowly. */
+.aurora { position: relative; isolation: isolate; }
+.aurora::before {
+  content: "";
+  position: absolute;
+  inset: -80px -40px auto -40px;
+  height: 340px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 60% at 12% 30%, var(--glow-1), transparent 70%),
+    radial-gradient(35% 55% at 70% 10%, var(--glow-2), transparent 70%),
+    radial-gradient(30% 50% at 92% 60%, var(--glow-3), transparent 70%);
+  filter: blur(8px);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(2%, 3%, 0) scale(1.05); }
+}
+
+/* A pill tinted by its own text colour: set text-go, text-flag and so on. */
+.tint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 9999px;
+  padding: 1px 9px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  background: color-mix(in oklab, currentColor 14%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, currentColor 28%, transparent);
+}
+
+/* Cards rise a little under the pointer. */
+.lift { transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease, border-color 0.3s ease; }
+.lift:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22); }
+
+/* A light sweeping across work in progress. */
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 30%, color-mix(in oklab, var(--sapphire) 18%, transparent) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: sweep 2.6s ease-in-out infinite;
+}
+@keyframes sweep { to { transform: translateX(100%); } }
+
+/* Bars grow into place. */
+.grow { transform-origin: left center; animation: grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* A status light that glows in its own colour. */
+.glow-dot { box-shadow: 0 0 0 3px color-mix(in oklab, currentColor 18%, transparent), 0 0 14px color-mix(in oklab, currentColor 55%, transparent); background: currentColor; }
+
 @media (prefers-reduced-motion: reduce) {
-  .live-dot, .rise { animation: none; }
+  .live-dot, .rise, .aurora::before, .sheen::after, .grow { animation: none; }
+  .lift:hover { transform: none; }
 }
 
 :focus-visible {

@@ -6,8 +6,9 @@ import {
   type PipelineApp, type PipelineEvent, type StageId, type Tone,
 } from "@/lib/pipeline";
 import { LiveRefresh } from "./live";
+import { CountUp } from "./count-up";
 
-// Flow bar shades come from the theme: quiet at intake, oxblood at the gates, brass for Kushal.
+// Each stage has its own jewel tone from the theme: pewter, topaz, sapphire, ruby, gold, emerald.
 const SHADE: Record<StageId, string> = {
   intake: "bg-stage-1",
   checks: "bg-stage-2",
@@ -17,13 +18,29 @@ const SHADE: Record<StageId, string> = {
   decided: "bg-stage-6",
 };
 
+const STAGE_TEXT: Record<StageId, string> = {
+  intake: "text-stage-1",
+  checks: "text-stage-2",
+  research: "text-stage-3",
+  riya: "text-stage-4",
+  kushal: "text-stage-5",
+  decided: "text-stage-6",
+};
+const STAGE_VAR: Record<StageId, string> = {
+  intake: "var(--stage-1)", checks: "var(--stage-2)", research: "var(--stage-3)", riya: "var(--stage-4)", kushal: "var(--stage-5)", decided: "var(--stage-6)",
+};
+const TONE_DOT: Record<Tone, string> = {
+  go: "text-go", pass: "text-pass", hold: "text-hold", flag: "text-flag",
+  "needs-human": "text-needs-human", active: "text-sapphire", plain: "text-pewter",
+};
+
 const TONE_TEXT: Record<Tone, string> = {
   go: "text-go", pass: "text-pass", hold: "text-hold", flag: "text-flag",
-  "needs-human": "text-needs-human", active: "text-accent", plain: "text-muted",
+  "needs-human": "text-needs-human", active: "text-sapphire", plain: "text-muted",
 };
 const TONE_EDGE: Record<Tone, string> = {
-  go: "before:bg-go", pass: "before:bg-transparent", hold: "before:bg-hold", flag: "before:bg-flag",
-  "needs-human": "before:bg-needs-human", active: "before:bg-accent", plain: "before:bg-transparent",
+  go: "before:bg-go", pass: "before:bg-[var(--edge)]", hold: "before:bg-hold", flag: "before:bg-flag",
+  "needs-human": "before:bg-needs-human", active: "before:bg-sapphire", plain: "before:bg-[var(--edge)]",
 };
 
 async function load(): Promise<{ apps: PipelineApp[]; events: PipelineEvent[] }> {
@@ -110,17 +127,17 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
         <div className="flex flex-col panel p-6 md:p-8">
           <div className="flex flex-wrap items-end gap-x-9 gap-y-5">
             <div>
-              <div className="font-display text-[84px] leading-[0.85] tabular-nums">{total}</div>
+              <div className="font-display text-[84px] leading-[0.85]"><CountUp value={total} /></div>
               <div className="eyebrow mt-3">In the pipeline</div>
             </div>
-            <Stat n={working} label="Being worked on" tone="text-accent" />
+            <Stat n={working} label="Being worked on" tone={working ? "text-sapphire" : "text-muted"} />
             <Stat n={attention} label="Need attention" tone={attention ? "text-needs-human" : "text-muted"} />
             {mine ? <Stat n={waiting} label={`Waiting on ${actor.name}`} tone={waiting ? "text-text" : "text-muted"} /> : null}
           </div>
 
           {/* One fine bar, one segment per stage, width by count */}
           <div
-            className="mt-8 flex h-2 w-full gap-[3px]"
+            className="mt-8 flex h-2.5 w-full gap-[3px]"
             role="img"
             aria-label={STAGES.map((s) => `${s.label}: ${byStage[s.id].length}`).join(", ")}
           >
@@ -128,7 +145,12 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
               <div className="h-full flex-1 rounded-full bg-surface-2" />
             ) : (
               STAGES.filter((s) => byStage[s.id].length > 0).map((s) => (
-                <div key={s.id} style={{ flexGrow: byStage[s.id].length }} className={`${SHADE[s.id]} h-full basis-0 rounded-full`} title={`${s.label}: ${byStage[s.id].length}`} />
+                <div
+                  key={s.id}
+                  style={{ flexGrow: byStage[s.id].length, animationDelay: `${120 + STAGES.indexOf(s) * 90}ms` }}
+                  className={`${SHADE[s.id]} grow h-full basis-0 rounded-full ${byStage[s.id].some((a) => isWorking(a.status, a.last_step)) ? "sheen" : ""}`}
+                  title={`${s.label}: ${byStage[s.id].length}`}
+                />
               ))
             )}
           </div>
@@ -136,10 +158,10 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
             {STAGES.map((s) => (
               <li key={s.id} className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className={`h-px w-4 shrink-0 ${SHADE[s.id]} h-[3px] rounded-full`} aria-hidden="true" />
-                  <span className="text-[11px] tracking-[0.12em] whitespace-nowrap text-muted uppercase">{s.label.replace("Cheap checks", "Checks")}</span>
+                  <span className={`size-2 shrink-0 rounded-full ${SHADE[s.id]}`} aria-hidden="true" />
+                  <span className={`text-[11px] tracking-[0.12em] whitespace-nowrap uppercase ${STAGE_TEXT[s.id]}`}>{s.label.replace("Cheap checks", "Checks")}</span>
                 </div>
-                <div className="mt-1 font-display text-[26px] leading-none tabular-nums">{byStage[s.id].length}</div>
+                <div className="mt-1 font-display text-[26px] leading-none"><CountUp value={byStage[s.id].length} /></div>
               </li>
             ))}
           </ol>
@@ -176,14 +198,14 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
               {events.map((e, i) => (
                 <li key={e.id} className="flex gap-3 pb-3.5 last:pb-0">
                   <div className="flex flex-col items-center">
-                    <span className={`mt-[7px] size-[7px] rounded-full ${i === 0 ? "bg-accent" : "border border-border-strong"}`} aria-hidden="true" />
+                    <span className={`mt-[7px] size-[7px] rounded-full ${TONE_DOT[toneOf(e.to_status)]} ${i === 0 ? "glow-dot" : "bg-current opacity-70"}`} aria-hidden="true" />
                     {i < events.length - 1 ? <span className="mt-1 w-px flex-1 bg-border" aria-hidden="true" /> : null}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="truncate">
                         <span className="font-display text-[16px]">{e.company}</span>{" "}
-                        <span className={`text-[13px] ${TONE_TEXT[toneOf(e.to_status)]}`}>{STATUS_LABEL[e.to_status].toLowerCase()}</span>
+                        <span className={`tint ml-1 ${TONE_TEXT[toneOf(e.to_status)]}`}>{STATUS_LABEL[e.to_status].toLowerCase()}</span>
                       </span>
                       <span className="shrink-0 text-[11px] text-muted tabular-nums">{ago(e.at, now)}</span>
                     </div>
@@ -210,7 +232,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
             <h2 className="mt-1 text-[32px] leading-none">The board</h2>
           </div>
           <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-muted">
-            <span><span className="live-dot mr-1.5 align-middle" aria-hidden="true" />working now</span>
+            <span><span className="live-dot dot-current mr-1.5 align-middle text-sapphire" aria-hidden="true" />working now</span>
             <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-flag align-middle" />flagged</span>
             <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-needs-human align-middle" />needs attention</span>
             <span><span className="mr-1.5 inline-block h-3 w-[2px] bg-hold align-middle" />held</span>
@@ -225,15 +247,16 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
               return (
                 <div
                   key={s.id}
-                  className={`flex min-h-72 flex-col rounded-[14px] border p-3 ${yours ? "border-brass/70 bg-surface" : "border-border bg-surface-2/40"}`}
+                  style={{ borderTopColor: STAGE_VAR[s.id] }}
+                  className={`flex min-h-72 flex-col rounded-[14px] border border-t-[3px] p-3 ${yours ? "border-x-brass/70 border-b-brass/70 bg-surface" : "border-x-border border-b-border bg-surface-2/40"}`}
                 >
                   <div className="px-1 pt-1 pb-3">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="font-display text-[20px] leading-none">
-                        <span className="mr-1.5 text-[13px] text-muted italic">{["i", "ii", "iii", "iv", "v", "vi"][i]}</span>
+                        <span className={`mr-1.5 text-[13px] italic ${STAGE_TEXT[s.id]}`}>{["i", "ii", "iii", "iv", "v", "vi"][i]}</span>
                         {s.label}
                       </span>
-                      <span className="font-display text-[20px] leading-none text-muted tabular-nums">{cards.length}</span>
+                      <span className={`font-display text-[20px] leading-none ${cards.length ? STAGE_TEXT[s.id] : "text-muted"}`}><CountUp value={cards.length} /></span>
                     </div>
                     <div className={`mt-1.5 text-[11px] tracking-[0.12em] uppercase ${yours ? "text-brass" : "text-muted"}`}>
                       {yours ? "Waiting on you" : s.hint}
@@ -245,7 +268,7 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
                         Nothing here
                       </div>
                     ) : (
-                      cards.map((a, j) => <Card key={a.id} a={a} now={now} delay={200 + j * 60} />)
+                      cards.map((a, j) => <Card key={a.id} a={a} now={now} delay={200 + j * 60} edge={STAGE_VAR[s.id]} />)
                     )}
                   </div>
                 </div>
@@ -275,21 +298,21 @@ export default async function PipelinePage({ searchParams }: PageProps<"/">) {
 function Stat({ n, label, tone }: { n: number; label: string; tone: string }) {
   return (
     <div>
-      <div className={`font-display text-[40px] leading-[0.9] tabular-nums ${tone}`}>{n}</div>
+      <div className={`font-display text-[40px] leading-[0.9] ${tone}`}><CountUp value={n} /></div>
       <div className="eyebrow mt-2">{label}</div>
     </div>
   );
 }
 
-function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number }) {
+function Card({ a, now, delay, edge }: { a: PipelineApp; now: number; delay: number; edge: string }) {
   const tone = toneOf(a.status, a.short_circuit_flags, a.last_step);
   const working = isWorking(a.status, a.last_step);
   const statusTone: Tone = working ? "active" : tone === "flag" ? "plain" : tone;
   return (
     <Link
       href={a.id.startsWith("s") && a.id.length < 4 ? "#" : `/applications/${a.id}`}
-      style={{ animationDelay: `${delay}ms` }}
-      className={`rise relative block overflow-hidden panel-sm p-3.5 pl-4 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-[2px] hover:border-brass/70 ${TONE_EDGE[tone]}`}
+      style={{ animationDelay: `${delay}ms`, ["--edge" as string]: edge }}
+      className={`rise lift relative block overflow-hidden panel-sm p-3.5 pl-4 before:absolute before:inset-y-0 before:left-0 before:w-[3px] hover:border-brass/70 ${TONE_EDGE[tone]} ${working ? "sheen" : ""}`}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
         <h3 className="min-w-0 text-[19px] leading-tight break-words">{a.company_name}</h3>
@@ -297,15 +320,17 @@ function Card({ a, now, delay }: { a: PipelineApp; now: number; delay: number })
           <span className="text-[10px] tracking-[0.14em] text-brass uppercase">Warm intro</span>
         ) : null}
       </div>
-      <div className={`mt-1 flex items-center gap-1.5 text-[12px] ${TONE_TEXT[statusTone]}`}>
-        {working ? <span className="live-dot" aria-hidden="true" /> : null}
-        <span>{a.last_step === "cheap_checks_done" ? "Checks done, waiting" : STATUS_LABEL[a.status]}</span>
+      <div className="mt-1.5">
+        <span className={`tint ${statusTone === "active" ? "text-sapphire" : TONE_TEXT[statusTone]}`}>
+          {working ? <span className="live-dot" aria-hidden="true" /> : null}
+          {a.last_step === "cheap_checks_done" ? "Checks done, waiting" : STATUS_LABEL[a.status]}
+        </span>
       </div>
       {a.status_reason && a.last_step !== "cheap_checks_done" ? <p className="mt-1.5 line-clamp-2 text-[12px] text-muted">{a.status_reason}</p> : null}
       {a.short_circuit_flags.length > 0 ? (
         <div className="mt-2.5 flex flex-wrap gap-1">
           {a.short_circuit_flags.map((f) => (
-            <span key={f} className="rounded-[3px] border border-flag/40 px-1.5 py-px text-[10.5px] leading-snug text-flag">{flagLabel(f)}</span>
+            <span key={f} className="tint text-[10.5px] text-flag">{flagLabel(f)}</span>
           ))}
         </div>
       ) : null}

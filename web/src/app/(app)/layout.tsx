@@ -16,7 +16,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       <Sidebar role={actor.role} />
-      <main className="min-w-0 flex-1 px-4 py-6 md:px-10 md:py-8">
+      <main className="aurora min-w-0 flex-1 overflow-x-clip px-4 py-6 md:px-10 md:py-8">
         {alert ? (
           <div role="alert" className="mx-auto mb-6 flex max-w-[1400px] flex-wrap items-center justify-between gap-3 rounded-[12px] border border-flag/60 bg-flag/10 px-5 py-3 text-[13px] text-flag">
             <span>{alert}</span>

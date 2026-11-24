@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { createAdminClient } from "@/lib/supabase/server";
-import { startOfIndiaDay } from "@/lib/ai/gemini";
+import { pool } from "@/lib/db";
 
 const CALL_NAME: Record<string, string> = {
   A0: "Portfolio check", A1: "Extract facts", A2: "Read research and compare", A3: "Score criteria", A4: "Summary and back test notes", A5: "Draft emails", A6: "Read replies",
+};
+const CALL_HUE: Record<string, string> = {
+  A0: "bg-pewter", A1: "bg-topaz", A2: "bg-sapphire", A3: "bg-ruby", A4: "bg-gold", A5: "bg-emerald", A6: "bg-amethyst",
 };
 const usd = (x: number) => `$${x.toFixed(x < 1 ? 3 : 2)}`;
 const inr = (x: number) => `₹${Math.round(x).toLocaleString("en-IN")}`;
@@ -28,8 +31,14 @@ export default async function CostPage() {
   const now = await readClock();
   const monthStart = startOfIndiaMonth(now);
   const since = new Date(Math.min(now - 31 * 86_400_000, monthStart.getTime())).toISOString();
-  const [{ data: calls }, { data: cap }, { data: apps }, { count: paused }, { data: rate }] = await Promise.all([
-    db.from("llm_calls").select("call_type, cost_usd, created_at, application_id, run_id, status").gte("created_at", since),
+  // Summed in the database. Reading the rows instead stops at the API's 1,000 row limit and under-counts busy days.
+  const [{ rows: groups }, { data: cap }, { data: apps }, { count: paused }, { data: rate }] = await Promise.all([
+    pool().query<{ day: string; call_type: string; bt: boolean; cached: boolean; cost: number; n: number }>(
+      `select ((created_at at time zone 'Asia/Kolkata')::date)::text as day, call_type, run_id is not null as bt,
+              status = 'cached' as cached, coalesce(sum(cost_usd), 0)::float8 as cost, count(*)::int as n
+         from public.llm_calls where created_at >= $1 group by 1, 2, 3, 4`,
+      [since],
+    ),
     db.from("settings").select("value").eq("key", "daily_cost_cap_usd").maybeSingle(),
     db.from("applications").select("id, company_name, cost_usd, status").order("cost_usd", { ascending: false }),
     db.from("applications").select("id", { count: "exact", head: true }).eq("status", "paused_cost_cap"),
@@ -37,21 +46,23 @@ export default async function CostPage() {
   ]);
   const inrPerUsd = Number(rate?.value ?? 85);
   const capUsd = Number(cap?.value ?? 5);
-  const startOfDay = startOfIndiaDay(now);
-  const rows = (calls ?? []).map((c) => ({ ...c, cost: Number(c.cost_usd) }));
+  const indiaDate = (ms: number) => new Date(ms + 330 * 60_000).toISOString().slice(0, 10);
+  const todayDate = indiaDate(now);
+  const weekFrom = indiaDate(now - 6 * 86_400_000);
+  const monthFrom = indiaDate(monthStart.getTime());
+  const rows = groups.map((g) => ({ ...g, cost: Number(g.cost) }));
   const sum = (xs: { cost: number }[]) => xs.reduce((s, x) => s + x.cost, 0);
-  const today = sum(rows.filter((r) => new Date(r.created_at) >= startOfDay));
-  const week = sum(rows.filter((r) => new Date(r.created_at).getTime() >= now - 7 * 86_400_000));
-  const monthRows = rows.filter((r) => new Date(r.created_at) >= monthStart);
+  const today = sum(rows.filter((r) => r.day === todayDate));
+  const week = sum(rows.filter((r) => r.day >= weekFrom));
+  const monthRows = rows.filter((r) => r.day >= monthFrom);
   const month = sum(monthRows);
-  const reused = monthRows.filter((r) => r.status === "cached").length;
-  const indiaDate = (iso: string) => new Date(new Date(iso).getTime() + 330 * 60_000).toISOString().slice(0, 10);
-  const byDay = [...rows.reduce((m, r) => m.set(indiaDate(r.created_at), (m.get(indiaDate(r.created_at)) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14);
+  const reused = monthRows.filter((r) => r.cached).reduce((s, r) => s + r.n, 0);
+  const byDay = [...rows.reduce((m, r) => m.set(r.day, (m.get(r.day) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[0].localeCompare(a[0])).slice(0, 14);
   const byType = [...monthRows.reduce((m, r) => m.set(r.call_type, (m.get(r.call_type) ?? 0) + r.cost), new Map<string, number>())].sort((a, b) => b[1] - a[1]);
   const scored = (apps ?? []).filter((a) => Number(a.cost_usd) > 0);
   const avgApp = scored.length ? scored.reduce((s, a) => s + Number(a.cost_usd), 0) / scored.length : 0;
   const maxApp = scored[0];
-  const backtests = sum(rows.filter((r) => r.run_id));
+  const backtests = sum(rows.filter((r) => r.bt));
   const used = Math.min(1, today / capUsd);
 
   return (
@@ -69,7 +80,7 @@ export default async function CostPage() {
         </div>
         <div className="mt-3 font-display text-[48px] leading-none tabular-nums">{usd(today)}<span className="text-[20px] text-muted"> of {usd(capUsd)}</span></div>
         <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-surface-2" role="img" aria-label={`${Math.round(used * 100)} percent of the cap used`}>
-          <div className={`h-full rounded-full ${used >= 1 ? "bg-flag" : used > 0.8 ? "bg-needs-human" : "bg-go"}`} style={{ width: `${Math.max(2, used * 100)}%` }} />
+          <div className="grow h-full rounded-full" style={{ width: `${Math.max(2, used * 100)}%`, background: used >= 1 ? "var(--flag)" : "linear-gradient(90deg, var(--emerald), var(--topaz) 70%, var(--ruby))", backgroundSize: `${100 / Math.max(used, 0.02)}% 100%` }} />
         </div>
         {paused ? <p className="mt-3 text-[13px] text-flag">{paused} application{paused === 1 ? " is" : "s are"} paused by the cap. They resume tomorrow, or as soon as Kushal raises it.</p> : null}
       </section>
@@ -113,8 +124,8 @@ export default async function CostPage() {
           <ul className="mt-3 space-y-2">
             {byType.map(([t, v]) => (
               <li key={t}>
-                <div className="flex justify-between text-[13px]"><span>{t} · {CALL_NAME[t] ?? t}</span><span className="tabular-nums">{usd(v)}</span></div>
-                <div className="mt-1 h-1 rounded-full bg-surface-2"><div className="h-1 rounded-full bg-brass" style={{ width: `${month ? (v / month) * 100 : 0}%` }} /></div>
+                <div className="flex justify-between text-[13px]"><span className="flex items-center gap-2"><span className={`size-2 rounded-full ${CALL_HUE[t] ?? "bg-brass"}`} aria-hidden="true" />{t} · {CALL_NAME[t] ?? t}</span><span className="tabular-nums">{usd(v)}</span></div>
+                <div className="mt-1 h-1.5 rounded-full bg-surface-2"><div className={`grow h-1.5 rounded-full ${CALL_HUE[t] ?? "bg-brass"}`} style={{ width: `${month ? (v / month) * 100 : 0}%` }} /></div>
               </li>
             ))}
           </ul>

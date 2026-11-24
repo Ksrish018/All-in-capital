@@ -4,11 +4,13 @@ import { STOP, avg, blindAgreement, byWeek, overrideRate, overrideStop, reviewSt
 const pct = (x: number | null) => (x === null ? "none yet" : `${Math.round(x * 100)}%`);
 const fmtWeek = (w: string) => new Date(w).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
 
-function Tile({ label, value, sub, bad }: { label: string; value: string; sub: string; bad?: boolean }) {
+/** Each metric keeps its own jewel tone, so the eye finds it again next week. */
+function Tile({ label, value, sub, bad, hue = "text-gold" }: { label: string; value: string; sub: string; bad?: boolean; hue?: string }) {
   return (
-    <div className={`panel p-5 ${bad ? "border-flag/60" : ""}`}>
+    <div className={`panel lift relative overflow-hidden p-5 ${bad ? "border-flag/60" : ""}`}>
+      <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[3px] bg-current ${bad ? "text-flag" : hue}`} />
       <div className="eyebrow">{label}</div>
-      <div className={`mt-2 font-display text-[40px] leading-none tabular-nums ${bad ? "text-flag" : ""}`}>{value}</div>
+      <div className={`mt-2 font-display text-[40px] leading-none tabular-nums ${bad ? "text-flag" : hue}`}>{value}</div>
       <p className="mt-2 text-[12px] text-muted">{sub}</p>
     </div>
   );
@@ -79,7 +81,7 @@ export default async function DashboardPage() {
         <div className="mt-3 grid gap-3 md:grid-cols-4">
           {lights.map((l) => (
             <div key={l.label} className="panel flex items-start gap-3 p-4">
-              <span aria-hidden="true" className={`mt-1 size-3 shrink-0 rounded-full ${l.red === null ? "bg-border-strong" : l.red ? "bg-flag" : "bg-go"}`} />
+              <span aria-hidden="true" className={`mt-1 size-3 shrink-0 rounded-full ${l.red === null ? "bg-border-strong" : `glow-dot ${l.red ? "text-flag" : "text-go"}`}`} />
               <div>
                 <div className="text-[13px]">{l.label}</div>
                 <div className={`text-[12px] ${l.red ? "text-flag" : "text-muted"}`}>{l.red === null ? "Not measured yet. " : l.red ? "Red. " : "Green. "}{l.note}</div>
@@ -90,12 +92,12 @@ export default async function DashboardPage() {
       </section>
 
       <section aria-label="Metrics" className="mt-8 grid gap-4 md:grid-cols-3">
-        <Tile label="Review minutes per application" value={allMinutes === null ? "–" : allMinutes.toFixed(1)} sub={`Target about 5. Stop line ${STOP.reviewMinutes}. From ${reviews.length} reviews.`} bad={(allMinutes ?? 0) > STOP.reviewMinutes} />
-        <Tile label="Brief ready within 24 hours" value={pct(within24)} sub={`Target 100%. Median ${timed.length ? [...timed].sort((a, b) => a - b)[Math.floor(timed.length / 2)].toFixed(1) : "–"} hours from arrival.`} bad={within24 !== null && within24 < 1} />
-        <Tile label="Heard back within 3 days" value={decided.length ? pct(share(heard, decided.length)) : "–"} sub={`The fund's public promise. ${heard} of ${decided.length} decided applicants.`} bad={decided.length > 0 && heard < decided.length} />
-        <Tile label="Override rate" value={pct(overrideRate(reviews))} sub="Riya choosing differently from a system that took a side. Stop line 40%." bad={(overrideRate(reviews) ?? 0) > STOP.overrideRate} />
-        <Tile label="Blind check agreement" value={blind.of ? `${blind.matched}/${blind.of}` : "–"} sub={`Riya's own first view matched the system. ${blind.changedAfterReveal} changed after the reveal.`} />
-        <Tile label="Calls worth 30 minutes" value={pct(worth)} sub={`The world signal, from ${(calls ?? []).length} calls. Read weekly.`} />
+        <Tile hue="text-sapphire" label="Review minutes per application" value={allMinutes === null ? "–" : allMinutes.toFixed(1)} sub={`Target about 5. Stop line ${STOP.reviewMinutes}. From ${reviews.length} reviews.`} bad={(allMinutes ?? 0) > STOP.reviewMinutes} />
+        <Tile hue="text-emerald" label="Brief ready within 24 hours" value={pct(within24)} sub={`Target 100%. Median ${timed.length ? [...timed].sort((a, b) => a - b)[Math.floor(timed.length / 2)].toFixed(1) : "–"} hours from arrival.`} bad={within24 !== null && within24 < 1} />
+        <Tile hue="text-gold" label="Heard back within 3 days" value={decided.length ? pct(share(heard, decided.length)) : "–"} sub={`The fund's public promise. ${heard} of ${decided.length} decided applicants.`} bad={decided.length > 0 && heard < decided.length} />
+        <Tile hue="text-ruby" label="Override rate" value={pct(overrideRate(reviews))} sub="Riya choosing differently from a system that took a side. Stop line 40%." bad={(overrideRate(reviews) ?? 0) > STOP.overrideRate} />
+        <Tile hue="text-amethyst" label="Blind check agreement" value={blind.of ? `${blind.matched}/${blind.of}` : "–"} sub={`Riya's own first view matched the system. ${blind.changedAfterReveal} changed after the reveal.`} />
+        <Tile hue="text-topaz" label="Calls worth 30 minutes" value={pct(worth)} sub={`The world signal, from ${(calls ?? []).length} calls. Read weekly.`} />
       </section>
 
       <section aria-label="By week" className="mt-8">
@@ -112,7 +114,14 @@ export default async function DashboardPage() {
                     <td className="px-4 py-2.5">{fmtWeek(w.w)}</td>
                     <td className="px-4 py-2.5 tabular-nums">{w.n}</td>
                     <td className={`px-4 py-2.5 tabular-nums ${(w.minutes ?? 0) > STOP.reviewMinutes ? "text-flag" : ""}`}>{w.minutes?.toFixed(1) ?? "–"}</td>
-                    <td className={`px-4 py-2.5 tabular-nums ${(w.override ?? 0) > STOP.overrideRate ? "text-flag" : ""}`}>{pct(w.override)}</td>
+                    <td className={`px-4 py-2.5 tabular-nums ${(w.override ?? 0) > STOP.overrideRate ? "text-flag" : ""}`}>
+                      <div className="flex items-center gap-3">
+                        <span className="min-w-16 whitespace-nowrap">{pct(w.override)}</span>
+                        <span className="h-1.5 w-28 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
+                          <span className={`grow block h-full rounded-full ${(w.override ?? 0) > STOP.overrideRate ? "bg-flag" : "bg-ruby/80"}`} style={{ width: `${Math.round((w.override ?? 0) * 100)}%` }} />
+                        </span>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>

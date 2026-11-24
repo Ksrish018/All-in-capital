@@ -93,7 +93,7 @@ export function Criteria({ scores, names, evidence, memos, correctFor = null }: 
                       <span key={d} className={`size-2 rounded-full ${d <= s.rating ? (s.rating >= 3 ? "bg-go" : s.rating === 2 ? "bg-needs-human" : "bg-flag") : "bg-border"}`} />
                     ))}
                   </div>
-                  <div className="mt-1 text-[12px] whitespace-nowrap">{RATING[s.rating]} <span className="text-muted">({s.rating})</span></div>
+                  <div className="mt-1 text-[12px] whitespace-nowrap"><span className={`tint ${s.rating >= 3 ? "text-go" : s.rating === 2 ? "text-needs-human" : "text-flag"}`}>{RATING[s.rating]} ({s.rating})</span></div>
                 </div>
               </summary>
               <div className="space-y-2 border-t border-border bg-surface-2/30 px-5 py-4">
