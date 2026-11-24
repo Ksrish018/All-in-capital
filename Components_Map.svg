@@ -1,316 +1,508 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1660" viewBox="0 0 2400 1660" font-family="Segoe UI, Inter, Arial, sans-serif">
-<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334e68"/></marker><marker id="ml" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d97706"/></marker><marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f766e"/></marker></defs>
-<rect width="2400" height="1660" fill="#ffffff"/>
-<text x="40" y="52" font-size="32" font-weight="800" fill="#1f2933" text-anchor="start">All In Capital Triage: Components Map</text>
-<text x="40" y="82" font-size="17" font-weight="400" fill="#52606d" text-anchor="start">The built system, 21 November 2026. Two loops joined at Kushal&#x27;s sign off. People decide every outcome; the system shows its work.</text>
-<rect x="1360" y="34" width="22" height="18" rx="4" fill="#eef2f7" stroke="#334e68" stroke-width="2"/>
-<text x="1390" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Code</text>
-<rect x="1560" y="34" width="22" height="18" rx="4" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
-<text x="1590" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">AI call (Gemini)</text>
-<rect x="1760" y="34" width="22" height="18" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
-<text x="1790" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">A person decides</text>
-<rect x="1960" y="34" width="22" height="18" rx="4" fill="#e6f6f4" stroke="#0f766e" stroke-width="2"/>
-<text x="1990" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Data or outside service</text>
-<rect x="2160" y="34" width="22" height="18" rx="4" fill="#fff7e6" stroke="#b7791f" stroke-width="2"/>
-<text x="2190" y="49" font-size="14" font-weight="500" fill="#52606d" text-anchor="start">Set up before screening</text>
-<line x1="1360" y1="76" x2="1400" y2="76" stroke="#d97706" stroke-width="2.5" stroke-dasharray="8 6"/>
-<text x="1410" y="81" font-size="14" font-weight="500" fill="#d97706" text-anchor="start">Learning loop: what people decide comes back in (Loops A to G)</text>
-<rect x="40" y="150" width="300" height="150" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
-<text x="328" y="174" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S1</text>
-<text x="54" y="177" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Thesis Card</text>
-<text x="54" y="201" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">11 criteria, rated 0 to 4</text>
-<text x="54" y="221" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two lenses: public, revealed</text>
-<text x="54" y="241" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Rules that override the score</text>
-<text x="54" y="261" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">v2: a PASS needs a failure</text>
-<rect x="40" y="320" width="300" height="110" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
-<text x="328" y="344" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S2</text>
-<text x="54" y="347" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Portfolio list</text>
-<text x="54" y="371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">25 companies with tags</text>
-<text x="54" y="391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Used for the conflict check</text>
-<rect x="40" y="450" width="300" height="130" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
-<text x="328" y="474" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S3</text>
-<text x="54" y="477" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Memo passages</text>
-<text x="54" y="501" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">12 memos, 48 tagged passages</text>
-<text x="54" y="521" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Build set gives context</text>
-<text x="54" y="541" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Test set held out</text>
-<rect x="40" y="600" width="300" height="150" rx="12" fill="#fff7e6" stroke="#b7791f" stroke-width="1.6"/>
-<text x="328" y="624" font-size="12" font-weight="700" fill="#b7791f" text-anchor="end">S4</text>
-<text x="54" y="627" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Back test (Loop A)</text>
-<text x="54" y="651" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Memo companies at decision</text>
-<text x="54" y="671" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">time, research off</text>
-<text x="54" y="691" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N1: no funded PASS unflagged</text>
-<text x="54" y="711" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Kushal approves a version</text>
-<polyline points="40,690 24,690 24,225 38,225" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
-<rect x="370" y="128" width="1360" height="830" rx="22" fill="none" stroke="#334e68" stroke-width="2.5" stroke-dasharray="2 0"/>
-<rect x="394" y="112" width="474.6" height="32" rx="16" fill="#334e68"/>
-<text x="410" y="134" font-size="18" font-weight="800" fill="#ffffff" text-anchor="start">LOOP 1  Screening</text>
-<text x="609" y="134" font-size="14" font-weight="500" fill="#ffffff" text-anchor="start">once per application, about $0.10</text>
-<rect x="400" y="160" width="240" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="628" y="184" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
-<text x="414" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">1 Intake</text>
-<text x="414" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Riya drops forms and decks</text>
-<text x="414" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">or adds a warm intro</text>
-<text x="414" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">PDF only, 25 MB</text>
-<rect x="665" y="160" width="240" height="130" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="893" y="184" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Supabase</text>
-<text x="679" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">2 Store and queue</text>
-<text x="679" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Private file storage</text>
-<text x="679" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Queue: none get lost (N5)</text>
-<text x="679" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">4 at a time</text>
-<rect x="930" y="160" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="944" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">3 Parse</text>
-<text x="944" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads form fields by</text>
-<text x="944" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">position on the page</text>
-<text x="944" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck kept page by page</text>
-<rect x="1195" y="160" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="1209" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">4 Redact</text>
-<text x="1209" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Founders become F1, F2</text>
-<text x="1209" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Emails, phones, links</text>
-<text x="1209" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">become tags (N6)</text>
-<rect x="1460" y="160" width="250" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="1698" y="184" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A0</text>
-<text x="1474" y="187" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">5 Cheap checks</text>
-<text x="1474" y="211" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Later stage, sector, capital,</text>
-<text x="1474" y="231" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">excluded, duplicate: code</text>
-<text x="1474" y="251" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Portfolio conflict: A0</text>
-<polyline points="640,225 663,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="905,225 928,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1170,225 1193,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1435,225 1458,225" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="400" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="628" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A1</text>
-<text x="414" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">6 Track 1</text>
-<text x="414" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck and form read as</text>
-<text x="414" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">the founder&#x27;s claims</text>
-<text x="414" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every quote checked</text>
-<rect x="665" y="330" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="679" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">7 Sufficiency</text>
-<text x="679" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Code lists the open</text>
-<text x="679" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">questions the deck and</text>
-<text x="679" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">form leave unanswered</text>
-<rect x="930" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="1158" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A2</text>
-<text x="944" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">8 Track 2 research</text>
-<text x="944" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Our own checks: exists,</text>
-<text x="944" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">founders, market, news,</text>
-<text x="944" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">red flags. 12 fetches max</text>
-<rect x="1195" y="330" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="1423" y="354" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A2</text>
-<text x="1209" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">9 Compare</text>
-<text x="1209" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Confirmed, founder says,</text>
-<text x="1209" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">conflict, found by us</text>
-<text x="1209" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Deck vs form: 5% rule</text>
-<rect x="1460" y="330" width="250" height="130" rx="12" fill="#ffffff" stroke="#9aa5b1" stroke-width="1.6"/>
-<text x="1474" y="357" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Stopped early</text>
-<text x="1474" y="381" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Short brief with the flag</text>
-<text x="1474" y="401" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Research skipped to save</text>
-<text x="1474" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">cost. Riya can run it all</text>
-<polyline points="1585,290 1585,328" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="1539.4" y="302" width="91.2" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1585" y="317" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">a check hit</text>
-<polyline points="1520,290 1520,310 520,310 520,328" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="968.4" y="297" width="163.20000000000002" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1050" y="312" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">clean: full screening</text>
-<polyline points="640,395 663,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="905,395 928,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1170,395 1193,395" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="400" y="500" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="414" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">10 Context packs</text>
-<text x="414" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Per criterion: its evidence,</text>
-<text x="414" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">3 memo passages, up to</text>
-<text x="414" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">3 of Riya&#x27;s rule corrections</text>
-<rect x="665" y="500" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="893" y="524" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A3</text>
-<text x="679" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">11 Score 11 criteria</text>
-<text x="679" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Rating 0 to 4 with reason</text>
-<text x="679" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Made-up citation fails (N2)</text>
-<text x="679" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Strong needs an outside source</text>
-<rect x="930" y="500" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="944" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">12 Recommend</text>
-<text x="944" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Code, never the model</text>
-<text x="944" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO, PASS, needs a person,</text>
-<text x="944" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">or HOLD, on both lenses</text>
-<rect x="1195" y="500" width="240" height="130" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="1423" y="524" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A4</text>
-<text x="1209" y="527" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">13 Brief</text>
-<text x="1209" y="551" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flags first, then evidence</text>
-<text x="1209" y="571" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">What we could not find</text>
-<text x="1209" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two-line summary</text>
-<polyline points="1315,460 1315,480 520,480 520,498" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="640,565 663,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="905,565 928,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1170,565 1193,565" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="340,225 356,225 356,530 398,530" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="340,515 356,515" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="665" y="700" width="400" height="170" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="1053" y="724" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
-<text x="679" y="727" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 1  Riya reviews</text>
-<text x="679" y="751" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Evidence first, oldest first</text>
-<text x="679" y="771" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Agree in one click, or change with a reason</text>
-<text x="679" y="791" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Blind check on 1 in 10 PASS calls</text>
-<text x="679" y="811" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Correct a rating: fact or rule</text>
-<text x="679" y="831" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Time on page recorded</text>
-<rect x="1195" y="700" width="400" height="170" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="1583" y="724" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Kushal</text>
-<text x="1209" y="727" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 2  Kushal signs off</text>
-<text x="1209" y="751" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Board in four columns</text>
-<text x="1209" y="771" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Bulk sign off only where Riya agreed</text>
-<text x="1209" y="791" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">and nothing is flagged</text>
-<text x="1209" y="811" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO, PASS, hold, or send back</text>
-<text x="1209" y="831" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Portfolio conflicts come here first</text>
-<polyline points="1315,630 1315,660 965,660 965,698" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1585,460 1585,640 1005,640 1005,698" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="1539.4" y="527" width="91.2" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1585" y="542" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">short brief</text>
-<polyline points="1065,770 1193,770" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="1070.0" y="747" width="120.0" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1130" y="762" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">Riya&#x27;s decision</text>
-<polyline points="1193,830 1067,830" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#mg)"/>
-<rect x="1091.6" y="827" width="76.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1130" y="842" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">send back</text>
-<polyline points="1710,255 1715,255 1715,720 1597,720" fill="none" stroke="#c0392b" stroke-width="2" marker-end="url(#mg)"/>
-<rect x="1658.6" y="467" width="112.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1715" y="482" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">conflict: HOLD</text>
-<polyline points="705,700 705,660 1182,660 1182,440 1172,440" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
-<rect x="772.6" y="647" width="184.8" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="865" y="662" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop B: ask for research</text>
-<polyline points="675,740 460,740 460,632" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
-<rect x="401.2" y="727" width="177.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="490" y="742" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop C: rule correction</text>
-<polyline points="1395,870 1395,985 520,985 520,1058" fill="none" stroke="#c0392b" stroke-width="3" marker-end="url(#mg)"/>
-<rect x="762.0" y="972" width="336.0" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="930" y="987" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">GO or PASS starts outreach   (HOLD: no email)</text>
-<rect x="370" y="1040" width="1360" height="470" rx="22" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-dasharray="2 0"/>
-<rect x="394" y="1024" width="666.4000000000001" height="32" rx="16" fill="#0f766e"/>
-<text x="410" y="1046" font-size="18" font-weight="800" fill="#ffffff" text-anchor="start">LOOP 2  Outreach agent</text>
-<text x="664" y="1046" font-size="14" font-weight="500" fill="#ffffff" text-anchor="start">one step every 10 minutes, nothing sent without Riya</text>
-<rect x="400" y="1075" width="240" height="150" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="628" y="1099" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A5</text>
-<text x="414" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">14 Draft the email</text>
-<text x="414" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">GO: invite with 3 slots</text>
-<text x="414" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">PASS: kind note, what would</text>
-<text x="414" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">change our view. No scores</text>
-<text x="414" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">First name added by code</text>
-<rect x="665" y="1075" width="240" height="150" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="893" y="1099" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
-<text x="679" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Gate 3  Riya sends</text>
-<text x="679" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads and edits</text>
-<text x="679" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">&quot;Send from your Gmail&quot;</text>
-<text x="679" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">No send all (N4)</text>
-<text x="679" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Simulate mode until live</text>
-<rect x="930" y="1075" width="240" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1158" y="1099" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Gmail</text>
-<text x="944" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">15 Watch the thread</text>
-<text x="944" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Reads only the stored</text>
-<text x="944" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">thread, never other mail</text>
-<text x="944" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every 10 minutes</text>
-<rect x="1195" y="1075" width="240" height="150" rx="12" fill="#f3e8ff" stroke="#7c3aed" stroke-width="1.6"/>
-<text x="1423" y="1099" font-size="12" font-weight="700" fill="#7c3aed" text-anchor="end">A6</text>
-<text x="1209" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">16 Read the reply</text>
-<text x="1209" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Picked a slot, new time,</text>
-<text x="1209" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">no time, not interested,</text>
-<text x="1209" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">out of office, or unclear</text>
-<text x="1209" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Below 0.75 means unclear</text>
-<rect x="1460" y="1075" width="250" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1698" y="1099" font-size="12" font-weight="700" fill="#0f766e" text-anchor="end">Calendar</text>
-<text x="1474" y="1102" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">19 Book</text>
-<text x="1474" y="1126" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Founder confirmed in writing</text>
-<text x="1474" y="1146" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Slot checked free again</text>
-<text x="1474" y="1166" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">30 minutes, Meet link</text>
-<text x="1474" y="1186" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Aditya added for deeptech</text>
-<polyline points="640,1150 663,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="905,1150 928,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1170,1150 1193,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1435,1150 1458,1150" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="665" y="1300" width="240" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="893" y="1324" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Riya</text>
-<text x="679" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">With Riya</text>
-<text x="679" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Unclear reply, a bounce,</text>
-<text x="679" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">a third new time, or no</text>
-<text x="679" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">reply after two follow ups</text>
-<rect x="930" y="1300" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="944" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">17 Follow ups</text>
-<text x="944" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">No reply: day 3 and day 7</text>
-<text x="944" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Then no response</text>
-<text x="944" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Never more than two</text>
-<rect x="1195" y="1300" width="240" height="130" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="1209" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">18 Scheduling</text>
-<text x="1209" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">New slots, never a refused</text>
-<text x="1209" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">one. Tue or Thu, 2 to 6 pm</text>
-<text x="1209" y="1391" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Two rounds, then Riya</text>
-<rect x="1460" y="1300" width="250" height="130" rx="12" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
-<text x="1698" y="1324" font-size="12" font-weight="700" fill="#c0392b" text-anchor="end">Team</text>
-<text x="1474" y="1327" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">20 After the call</text>
-<text x="1474" y="1351" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">One tap: worth 30 minutes?</text>
-<text x="1474" y="1371" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Plus call notes</text>
-<polyline points="1585,1225 1585,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="1315,1225 1315,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="1280.2" y="1230" width="69.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1315" y="1245" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">new time</text>
-<polyline points="1225,1225 1225,1260 865,1260 865,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="948.8" y="1247" width="62.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="980" y="1262" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">unclear</text>
-<polyline points="1050,1225 1050,1298" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="1045.2" y="1230" width="69.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="1080" y="1245" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">no reply</text>
-<polyline points="1435,1400 1450,1400 1450,1460 560,1460 560,1227" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<rect x="714.2" y="1447" width="141.6" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="785" y="1462" font-size="13" font-weight="600" fill="#334e68" text-anchor="middle">new draft for Riya</text>
-<polyline points="970,1430 970,1460" fill="none" stroke="#334e68" stroke-width="2" marker-end="url(#m)"/>
-<polyline points="785,1225 785,1275 460,1275 460,1227" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#ml)"/>
-<rect x="458.8" y="1262" width="242.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="580" y="1277" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop D: edits become style notes</text>
-<polyline points="1710,1365 1745,1365 1745,1560 190,1560 190,752" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ml)"/>
-<rect x="640.8" y="1547" width="638.4" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
-<text x="960" y="1562" font-size="13" font-weight="600" fill="#d97706" text-anchor="middle">Loop G: call outcomes join the back test set, so the Thesis Card learns from real calls</text>
-<rect x="1780" y="150" width="580" height="200" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1794" y="177" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Supabase (Postgres, storage, queues)</text>
-<text x="1794" y="201" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">applications, documents, founders (names stay here)</text>
-<text x="1794" y="221" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">evidence by track, research fetches, scores, briefs</text>
-<text x="1794" y="241" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">reviews, corrections, outreach, emails, replies</text>
-<text x="1794" y="261" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">thesis cards, back test results, model calls, events</text>
-<text x="1794" y="281" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Row Level Security on every table</text>
-<text x="1794" y="301" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Queues: screening and outreach</text>
-<rect x="1780" y="370" width="580" height="150" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1794" y="397" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Cloudflare AI Gateway to Gemini</text>
-<text x="1794" y="421" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flash Lite: A0, A2, A6 (cheap reads)</text>
-<text x="1794" y="441" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Flash: A1 extract, A4 summary, A5 drafts</text>
-<text x="1794" y="461" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Pro: A3 scoring, thinking kept low</text>
-<text x="1794" y="481" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">JSON schema on every call, retry once</text>
-<rect x="1780" y="540" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1794" y="567" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Tavily research</text>
-<text x="1794" y="591" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Replay mode for tests, live web when switched on</text>
-<text x="1794" y="611" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Never LinkedIn, social or contact-data sites</text>
-<rect x="1780" y="670" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1794" y="697" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Google Gmail and Calendar</text>
-<text x="1794" y="721" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Send only from Riya&#x27;s click. Read only stored threads</text>
-<text x="1794" y="741" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Free and busy times, then the booked event</text>
-<rect x="1780" y="800" width="580" height="110" rx="12" fill="#e6f6f4" stroke="#0f766e" stroke-width="1.6"/>
-<text x="1794" y="827" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Langfuse and our own logs</text>
-<text x="1794" y="851" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">A trace per application, a span per model call</text>
-<text x="1794" y="871" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Every model input logged, so N6 can be audited</text>
-<rect x="1780" y="940" width="580" height="262" rx="12" fill="#eef2f7" stroke="#334e68" stroke-width="1.6"/>
-<text x="1794" y="967" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Guards that are always on</text>
-<text x="1794" y="991" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N1  No funded company marked PASS with no flag</text>
-<text x="1794" y="1011" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N2  Every citation exists</text>
-<text x="1794" y="1031" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N3  A founder-only claim is never shown as confirmed</text>
-<text x="1794" y="1051" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N4  Only Riya&#x27;s click sends an email</text>
-<text x="1794" y="1071" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N5  No application vanishes, 20 at once tested</text>
-<text x="1794" y="1091" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">N6  No founder name, email or phone reaches a model</text>
-<text x="1794" y="1111" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Text aimed at the AI is flagged and ignored</text>
-<text x="1794" y="1131" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Daily cost cap: pause at a saved step, then resume</text>
-<text x="1794" y="1151" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">APP_PASSWORD before the app goes online</text>
-<text x="1794" y="1171" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Scores and recommendation decided in code</text>
-<rect x="1780" y="1222" width="580" height="288" rx="12" fill="#ffffff" stroke="#9aa5b1" stroke-width="1.6"/>
-<text x="1794" y="1249" font-size="17" font-weight="700" fill="#1f2933" text-anchor="start">Screens</text>
-<text x="1794" y="1273" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Pipeline: live flow bar, feed and board</text>
-<text x="1794" y="1293" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Review: Riya&#x27;s queue (J, K, A, C, R keys)</text>
-<text x="1794" y="1313" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Sign off: Kushal&#x27;s four columns</text>
-<text x="1794" y="1333" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Outreach: to send, live, with Riya, done</text>
-<text x="1794" y="1353" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Thesis Card: criteria, rules, pending corrections</text>
-<text x="1794" y="1373" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Back test: per company, verdicts, approve</text>
-<text x="1794" y="1393" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Dashboard: metrics and the stop list</text>
-<text x="1794" y="1413" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Cost: spend against the cap</text>
-<text x="1794" y="1433" font-size="14" font-weight="400" fill="#52606d" text-anchor="start">Settings: each one owned by one person</text>
-<text x="40" y="1625" font-size="15" font-weight="400" fill="#52606d" text-anchor="start">Steps are numbered as in PRD Section 5. Loops as in PRD Section 11. Gates are the only places an outcome is decided, always by a person.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="2500" height="3075" viewBox="0 0 2500 3075" font-family="Segoe UI, Inter, Arial, sans-serif">
+<defs><marker id="m0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b2a4a"/></marker><marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="m3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0f8a7a"/></marker><marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e08a1e"/></marker><marker id="m5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6fdb"/></marker><marker id="m6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a3"/></marker></defs>
+<rect width="2500" height="3075" fill="#ffffff"/>
+<text x="1250.0" y="52" font-size="34" font-weight="800" fill="#1b2a4a" text-anchor="middle">All In Capital · Application Triage, With AI (built system)</text>
+<text x="1250.0" y="88" font-size="17" font-weight="400" fill="#4a5563" text-anchor="middle">Loop 1 screens each application up to Kushal&#x27;s sign off. Loop 2 runs outreach up to the call. People decide every outcome; every correction is kept and shapes the next one.</text>
+<rect x="20" y="110" width="2456" height="60" fill="#1b2a4a"/>
+<text x="125.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Actor</text>
+<text x="408.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Trigger</text>
+<text x="764.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Input</text>
+<text x="1120.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Context</text>
+<text x="1476.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Processing</text>
+<text x="1832.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">AI</text>
+<text x="2188.0" y="148" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">Output</text>
+<rect x="20" y="170" width="2456" height="56" fill="#e9edf3"/>
+<rect x="40.0" y="183" width="187.4" height="22" rx="11" fill="#1b2a4a"/>
+<text x="133.7" y="198.5" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP 1 · Screening</text>
+<text x="243.4" y="199" font-size="15" font-weight="500" fill="#4a5563" text-anchor="start">once per application, about $0.10</text>
+<rect x="230" y="226" width="2246" height="200" fill="#f6f2fe"/>
+<rect x="20" y="226" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="226" x2="2476" y2="226" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="324.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Riya</text>
+<text x="125.0" y="348.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(analyst: uploads, reviews)</text>
+<rect x="230" y="426" width="2246" height="200" fill="#fffaeb"/>
+<rect x="20" y="426" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="426" x2="2476" y2="426" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="524.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">System</text>
+<text x="125.0" y="548.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(code on Vercel)</text>
+<rect x="230" y="626" width="2246" height="200" fill="#eef7f0"/>
+<rect x="20" y="626" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="626" x2="2476" y2="626" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="724.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">AI</text>
+<text x="125.0" y="748.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(Gemini)</text>
+<rect x="230" y="826" width="2246" height="200" fill="#fff4e6"/>
+<rect x="20" y="826" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="826" x2="2476" y2="826" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="924.0" font-size="20" font-weight="700" fill="#f2b45a" text-anchor="middle">Memory</text>
+<text x="125.0" y="948.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(what the fund knows)</text>
+<rect x="230" y="1026" width="2246" height="200" fill="#f6f2fe"/>
+<rect x="20" y="1026" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="1026" x2="2476" y2="1026" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="1124.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Kushal</text>
+<text x="125.0" y="1148.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(partner: signs off, owns the card)</text>
+<rect x="20" y="1226" width="2456" height="72" fill="#e9edf3"/>
+<rect x="40.0" y="1237" width="233.9" height="22" rx="11" fill="#0f766e"/>
+<text x="156.95" y="1252.5" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP 2 · Outreach agent</text>
+<text x="289.9" y="1253" font-size="15" font-weight="500" fill="#4a5563" text-anchor="start">one step per run, nothing sent without Riya</text>
+<rect x="230" y="1298" width="2246" height="200" fill="#fffaeb"/>
+<rect x="20" y="1298" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="1298" x2="2476" y2="1298" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="1396.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">System</text>
+<text x="125.0" y="1420.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(outreach agent)</text>
+<rect x="230" y="1498" width="2246" height="200" fill="#eef7f0"/>
+<rect x="20" y="1498" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="1498" x2="2476" y2="1498" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="1596.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">AI</text>
+<text x="125.0" y="1620.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(Gemini)</text>
+<rect x="230" y="1698" width="2246" height="170" fill="#fff4e6"/>
+<rect x="20" y="1698" width="210" height="170" fill="#1b2a4a"/>
+<line x1="20" y1="1698" x2="2476" y2="1698" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="1781.0" font-size="20" font-weight="700" fill="#f2b45a" text-anchor="middle">Memory</text>
+<text x="125.0" y="1805.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(learns Riya&#x27;s style)</text>
+<rect x="230" y="1868" width="2246" height="200" fill="#f6f2fe"/>
+<rect x="20" y="1868" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="1868" x2="2476" y2="1868" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="1966.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Riya</text>
+<text x="125.0" y="1990.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(sends every email)</text>
+<rect x="230" y="2068" width="2246" height="200" fill="#eaf2fc"/>
+<rect x="20" y="2068" width="210" height="200" fill="#1b2a4a"/>
+<line x1="20" y1="2068" x2="2476" y2="2068" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="2166.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Founder + Google</text>
+<text x="125.0" y="2190.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(Gmail, Calendar)</text>
+<rect x="230" y="2268" width="2246" height="170" fill="#fdeef0"/>
+<rect x="20" y="2268" width="210" height="170" fill="#1b2a4a"/>
+<line x1="20" y1="2268" x2="2476" y2="2268" stroke="#ffffff" stroke-width="2"/>
+<text x="125.0" y="2351.0" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Team</text>
+<text x="125.0" y="2375.0" font-size="12.5" font-weight="400" fill="#c8d1de" text-anchor="middle">(after the call)</text>
+<line x1="586" y1="170" x2="586" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<line x1="942" y1="170" x2="942" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<line x1="1298" y1="170" x2="1298" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<line x1="1654" y1="170" x2="1654" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<line x1="2010" y1="170" x2="2010" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<line x1="2366" y1="170" x2="2366" y2="2438" stroke="#ffffff" stroke-width="2"/>
+<rect x="243" y="244" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="461.2" y="233" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="512.0799999999999" y="248.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Upload page</text>
+<text x="408.0" y="284" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">① New application</text>
+<text x="408.0" y="308" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Riya drops forms and decks,</text>
+<text x="408.0" y="329" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">or adds a warm intro</text>
+<text x="408.0" y="350" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">PDF only, up to 25 MB</text>
+<rect x="2023" y="244" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="2241.2" y="233" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2292.08" y="248.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Review page</text>
+<rect x="2033.0" y="233" width="64.6" height="22" rx="11" fill="#6b5bd2"/>
+<text x="2065.32" y="248.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">GATE 1</text>
+<text x="2188.0" y="284" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Gate 1 · Riya reviews</text>
+<text x="2188.0" y="308" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Agree in one click, or change</text>
+<text x="2188.0" y="329" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">with a one-line reason</text>
+<text x="2188.0" y="350" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Blind check on 1 in 10 PASS calls</text>
+<text x="2188.0" y="371" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">R asks for research · C corrects</text>
+<rect x="243" y="444" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="498.4" y="433" width="64.6" height="22" rx="11" fill="#1b2a4a"/>
+<text x="530.6800000000001" y="448.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Vercel</text>
+<text x="408.0" y="484" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Screening worker</text>
+<text x="408.0" y="508" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Starts on each upload</text>
+<text x="408.0" y="529" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">4 applications at a time</text>
+<text x="408.0" y="550" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Daily cron as a backstop</text>
+<rect x="599" y="444" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="839.5" y="433" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="879.24" y="448.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<text x="764.0" y="484" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">② Store · ③ Parse · ④ Redact</text>
+<text x="764.0" y="508" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Private storage and a queue (N5)</text>
+<text x="764.0" y="529" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Form fields read by position</text>
+<text x="764.0" y="550" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Founders become F1, F2 (N6)</text>
+<rect x="955" y="444" width="330" height="164" rx="10" fill="#fff7df" stroke="#c9930c" stroke-width="1.8"/>
+<rect x="1225.2" y="433" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1250.1200000000001" y="448.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="1120.0" y="484" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑤ Cheap checks</text>
+<text x="1120.0" y="508" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Stage, sector, capital,</text>
+<text x="1120.0" y="529" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">excluded list, duplicate</text>
+<text x="1120.0" y="550" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">A hit stops early, saves cost</text>
+<rect x="1311" y="444" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="1581.2" y="433" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1606.1200000000001" y="448.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="1476.0" y="484" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑦ Sufficiency</text>
+<text x="1476.0" y="508" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Lists what the deck and</text>
+<text x="1476.0" y="529" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">form leave unanswered</text>
+<text x="1476.0" y="550" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">These steer the research</text>
+<rect x="1667" y="444" width="330" height="164" rx="10" fill="#fff7df" stroke="#c9930c" stroke-width="1.8"/>
+<rect x="1937.2" y="433" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1962.1200000000001" y="448.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="1832.0" y="484" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑫ Recommend</text>
+<text x="1832.0" y="508" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Decided in code, never the model</text>
+<text x="1832.0" y="529" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">GO · PASS · needs a person · HOLD</text>
+<text x="1832.0" y="550" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Read on both lenses</text>
+<rect x="599" y="644" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="832.0" y="633" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="875.52" y="648.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A0</text>
+<text x="764.0" y="684" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Portfolio conflict</text>
+<text x="764.0" y="708" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Three yes or no questions</text>
+<text x="764.0" y="729" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Code decides the overlap</text>
+<text x="764.0" y="750" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Conflict: HOLD, Kushal sees it</text>
+<rect x="955" y="644" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="1188.0" y="633" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1231.52" y="648.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A1</text>
+<text x="1120.0" y="684" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑥ Track 1: the founder&#x27;s claims</text>
+<text x="1120.0" y="708" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Deck and form read as</text>
+<text x="1120.0" y="729" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">what the founder says</text>
+<text x="1120.0" y="750" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Every quote checked on its page</text>
+<rect x="1311" y="644" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="1529.2" y="633" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1580.0800000000002" y="648.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tavily + A2</text>
+<text x="1476.0" y="684" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑧ Research · ⑨ Compare</text>
+<text x="1476.0" y="708" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Our own web checks, 12 fetches max</text>
+<text x="1476.0" y="729" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Never LinkedIn or login sites</text>
+<text x="1476.0" y="750" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Confirmed · founder says · conflict</text>
+<rect x="1667" y="644" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="1900.0" y="633" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1943.52" y="648.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A3</text>
+<text x="1832.0" y="684" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑪ Score 11 criteria</text>
+<text x="1832.0" y="708" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Rating 0 to 4 with a reason</text>
+<text x="1832.0" y="729" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Made-up citation fails (N2)</text>
+<text x="1832.0" y="750" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Strong needs an outside source</text>
+<rect x="2023" y="644" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="2256.0" y="633" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2299.52" y="648.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A4</text>
+<text x="2188.0" y="684" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑬ Brief</text>
+<text x="2188.0" y="708" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Flags first, then evidence</text>
+<text x="2188.0" y="729" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">What we could not find</text>
+<text x="2188.0" y="750" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">A two-line summary</text>
+<rect x="599" y="844" width="330" height="164" rx="10" fill="#fff0de" stroke="#e08a1e" stroke-width="1.8"/>
+<rect x="839.5" y="833" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="879.24" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<text x="764.0" y="884" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Memo passages</text>
+<text x="764.0" y="908" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">12 past memos, 48 passages</text>
+<text x="764.0" y="929" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Build set gives context</text>
+<text x="764.0" y="950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Test set held out for Loop A</text>
+<rect x="955" y="844" width="330" height="164" rx="10" fill="#fff0de" stroke="#e08a1e" stroke-width="1.8"/>
+<rect x="1195.5" y="833" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1235.24" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<text x="1120.0" y="884" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Thesis Card + portfolio</text>
+<text x="1120.0" y="908" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">11 criteria, two lenses</text>
+<text x="1120.0" y="929" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Rules that override the score</text>
+<text x="1120.0" y="950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">25 portfolio companies</text>
+<rect x="1311" y="844" width="330" height="164" rx="10" fill="#fff0de" stroke="#e08a1e" stroke-width="1.8"/>
+<rect x="1551.5" y="833" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1591.24" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<rect x="1321.0" y="833" width="64.6" height="22" rx="11" fill="#e08a1e"/>
+<text x="1353.32" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP C</text>
+<text x="1476.0" y="884" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Riya&#x27;s corrections</text>
+<text x="1476.0" y="908" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Fact: fixes this company</text>
+<text x="1476.0" y="929" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Rule: kept as context for</text>
+<text x="1476.0" y="950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">similar ones, never the card</text>
+<rect x="1667" y="844" width="330" height="164" rx="10" fill="#fff0de" stroke="#e08a1e" stroke-width="1.8"/>
+<rect x="1937.2" y="833" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1962.1200000000001" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="1832.0" y="884" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑩ Context packs</text>
+<text x="1832.0" y="908" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Per criterion: its evidence,</text>
+<text x="1832.0" y="929" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">3 memo passages and up to</text>
+<text x="1832.0" y="950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">3 matching rule corrections</text>
+<rect x="2023" y="844" width="330" height="164" rx="10" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="1.8"/>
+<rect x="2293.2" y="833" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2318.12" y="848.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="2188.0" y="884" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Dashboard · stop list</text>
+<text x="2188.0" y="908" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Review minutes, override rate</text>
+<text x="2188.0" y="929" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Blind check agreement</text>
+<text x="2188.0" y="950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">A red light stops the rollout</text>
+<rect x="955" y="1044" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="1173.2" y="1033" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1224.0800000000002" y="1048.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Thesis page</text>
+<text x="1120.0" y="1084" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Approve a card version</text>
+<text x="1120.0" y="1108" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Only after its back test</text>
+<text x="1120.0" y="1129" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">v1 refused: funded PASS</text>
+<text x="1120.0" y="1150" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">v2 waits for Kushal</text>
+<rect x="1311" y="1044" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="1544.0" y="1033" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1587.52" y="1048.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code + A3</text>
+<rect x="1321.0" y="1033" width="64.6" height="22" rx="11" fill="#7c3aed"/>
+<text x="1353.32" y="1048.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP A</text>
+<text x="1476.0" y="1084" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Back test</text>
+<text x="1476.0" y="1108" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Memo companies at decision time</text>
+<text x="1476.0" y="1129" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Research off · N1 check</text>
+<text x="1476.0" y="1150" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Kushal sets a verdict per company</text>
+<rect x="2023" y="1044" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="2226.3" y="1033" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2284.6400000000003" y="1048.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Sign off page</text>
+<rect x="2033.0" y="1033" width="64.6" height="22" rx="11" fill="#6b5bd2"/>
+<text x="2065.32" y="1048.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">GATE 2</text>
+<text x="2188.0" y="1084" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Gate 2 · Kushal signs off</text>
+<text x="2188.0" y="1108" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Board in four columns</text>
+<text x="2188.0" y="1129" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Bulk only where Riya agreed</text>
+<text x="2188.0" y="1150" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">and nothing is flagged</text>
+<text x="2188.0" y="1171" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">GO · PASS · hold · send back</text>
+<polyline points="573.0,326.0 764.0,326.0 764.0,444.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="573.0,526.0 599.0,526.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="929.0,526.0 955.0,526.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1060.0,608.0 1060.0,626.0 764.0,626.0 764.0,644.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="929.0,726.0 955.0,726.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1190.0,644.0 1190.0,626.0 1406.0,626.0 1406.0,608.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1516.0,608.0 1516.0,644.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1641.0,726.0 1667.0,726.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1832.0,844.0 1832.0,808.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1641.0,926.0 1667.0,926.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="764.0,1008.0 764.0,1026.0 1892.0,1026.0 1892.0,1008.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1180.0,1008.0 1180.0,1026.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1030.0,844.0 1030.0,826.0 804.0,826.0 804.0,808.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1832.0,644.0 1832.0,608.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1997.0,526.0 2010.0,526.0 2010.0,684.0 2023.0,684.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2188.0,644.0 2188.0,408.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1120.0,444.0 1120.0,278.0 2023.0,278.0" fill="none" stroke="#8a94a3" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m6)"/>
+<polyline points="2353.0,306.0 2396.0,306.0 2396.0,1106.0 2353.0,1106.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2353.0,1156.0 2421.0,1156.0 2421.0,356.0 2353.0,356.0" fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m1)"/>
+<polyline points="2023.0,326.0 1647.0,326.0 1647.0,672.0 1641.0,672.0" fill="none" stroke="#0f8a7a" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m3)"/>
+<polyline points="2023.0,371.0 1661.0,371.0 1661.0,826.0 1556.0,826.0 1556.0,844.0" fill="none" stroke="#e08a1e" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m4)"/>
+<polyline points="1311.0,1126.0 1285.0,1126.0" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m2)"/>
+<polyline points="1080.0,1044.0 1080.0,1008.0" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m2)"/>
+<rect x="243" y="1316" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="498.4" y="1305" width="64.6" height="22" rx="11" fill="#1b2a4a"/>
+<text x="530.6800000000001" y="1320.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Vercel</text>
+<text x="408.0" y="1356" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Agent tick</text>
+<text x="408.0" y="1380" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Starts on GO or PASS</text>
+<text x="408.0" y="1401" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Then one step per run</text>
+<text x="408.0" y="1422" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Cron on the host</text>
+<rect x="599" y="1316" width="330" height="164" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
+<rect x="832.0" y="1305" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="875.52" y="1320.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gmail API</text>
+<text x="764.0" y="1356" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑮ Read state + thread</text>
+<text x="764.0" y="1380" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Where this company is</text>
+<text x="764.0" y="1401" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Reads only the stored thread,</text>
+<text x="764.0" y="1422" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">never other mail</text>
+<rect x="955" y="1316" width="330" height="164" rx="10" fill="#fff7df" stroke="#c9930c" stroke-width="1.8"/>
+<rect x="1225.2" y="1305" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1250.1200000000001" y="1320.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<rect x="965.0" y="1305" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1015.92" y="1320.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LOOPS E · F</text>
+<text x="1120.0" y="1356" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑰ Follow ups · ⑱ Slots</text>
+<text x="1120.0" y="1380" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">No reply: day 3, then day 7</text>
+<text x="1120.0" y="1401" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Tue or Thu, 2 to 6 pm IST</text>
+<text x="1120.0" y="1422" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Never a slot already refused</text>
+<rect x="2023" y="1316" width="330" height="164" rx="10" fill="#fff7df" stroke="#c9930c" stroke-width="1.8"/>
+<rect x="2293.2" y="1305" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2318.12" y="1320.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Code</text>
+<text x="2188.0" y="1356" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Next step, in code</text>
+<text x="2188.0" y="1380" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Book · offer new slots</text>
+<text x="2188.0" y="1401" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Follow up · hand to Riya</text>
+<text x="2188.0" y="1422" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">One step per run, saved</text>
+<rect x="1311" y="1516" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="1544.0" y="1505" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1587.52" y="1520.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A6</text>
+<text x="1476.0" y="1556" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑯ Read the reply</text>
+<text x="1476.0" y="1580" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Picked a slot · new time</text>
+<text x="1476.0" y="1601" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">No time · not interested</text>
+<text x="1476.0" y="1622" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Below 0.75 means unclear</text>
+<rect x="2023" y="1516" width="330" height="164" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8"/>
+<rect x="2256.0" y="1505" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2299.52" y="1520.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A5</text>
+<text x="2188.0" y="1556" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑭ Draft the email</text>
+<text x="2188.0" y="1580" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">GO: invite with 3 free slots</text>
+<text x="2188.0" y="1601" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">PASS: kind note, no scores</text>
+<text x="2188.0" y="1622" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">First name added by code</text>
+<rect x="955" y="1716" width="330" height="134" rx="10" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="1.8"/>
+<rect x="1195.5" y="1705" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1235.24" y="1720.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<text x="1120.0" y="1752" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Outreach record</text>
+<text x="1120.0" y="1776" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Every draft and sent version</text>
+<text x="1120.0" y="1797" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Replies, slots offered, status</text>
+<rect x="1667" y="1716" width="330" height="134" rx="10" fill="#fff0de" stroke="#e08a1e" stroke-width="1.8"/>
+<rect x="1907.5" y="1705" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1947.24" y="1720.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<rect x="1677.0" y="1705" width="64.6" height="22" rx="11" fill="#e08a1e"/>
+<text x="1709.32" y="1720.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP D</text>
+<text x="1832.0" y="1752" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Style notes</text>
+<text x="1832.0" y="1776" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Riya&#x27;s edits become notes</text>
+<text x="1832.0" y="1797" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">for the next draft</text>
+<rect x="1311" y="1886" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="1514.3" y="1875" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1572.6399999999999" y="1890.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Outreach page</text>
+<text x="1476.0" y="1926" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">With Riya</text>
+<text x="1476.0" y="1950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Unclear reply or a bounce</text>
+<text x="1476.0" y="1971" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">A third request for a new time</text>
+<text x="1476.0" y="1992" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">No reply after two follow ups</text>
+<rect x="2023" y="1886" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="2226.3" y="1875" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2284.6400000000003" y="1890.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Outreach page</text>
+<rect x="2033.0" y="1875" width="64.6" height="22" rx="11" fill="#6b5bd2"/>
+<text x="2065.32" y="1890.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">GATE 3</text>
+<text x="2188.0" y="1926" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Gate 3 · Riya sends</text>
+<text x="2188.0" y="1950" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Reads and edits the draft</text>
+<text x="2188.0" y="1971" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Send from her Gmail</text>
+<text x="2188.0" y="1992" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">No send all (N4)</text>
+<rect x="243" y="2086" width="330" height="164" rx="10" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="1.8"/>
+<rect x="505.8" y="2075" width="57.2" height="22" rx="11" fill="#1b2a4a"/>
+<text x="534.4" y="2090.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gmail</text>
+<text x="408.0" y="2126" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Founder replies</text>
+<text x="408.0" y="2150" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Email arrives from Riya</text>
+<text x="408.0" y="2171" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Founder picks a slot,</text>
+<text x="408.0" y="2192" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">asks for a new time, or not</text>
+<rect x="2023" y="2086" width="330" height="164" rx="10" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="1.8"/>
+<rect x="2233.7" y="2075" width="109.3" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2288.3599999999997" y="2090.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Calendar API</text>
+<text x="2188.0" y="2126" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑲ Book the call</text>
+<text x="2188.0" y="2150" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Founder confirmed in writing</text>
+<text x="2188.0" y="2171" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Slot checked free again</text>
+<text x="2188.0" y="2192" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">30 minutes, Meet link</text>
+<rect x="2023" y="2286" width="330" height="134" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
+<rect x="2226.3" y="2275" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
+<text x="2284.6400000000003" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Outreach page</text>
+<text x="2188.0" y="2322" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑳ After the call</text>
+<text x="2188.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">One tap: worth 30 minutes?</text>
+<text x="2188.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Plus call notes</text>
+<polyline points="2188.0,1208.0 2188.0,1278.0 408.0,1278.0 408.0,1316.0" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round" marker-end="url(#m1)"/>
+<polyline points="573.0,1398.0 599.0,1398.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="929.0,1398.0 955.0,1398.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1285.0,1398.0 2023.0,1398.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="814.0,1480.0 814.0,1598.0 1311.0,1598.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1476.0,1516.0 1476.0,1438.0 2023.0,1438.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1476.0,1680.0 1476.0,1886.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2188.0,1480.0 2188.0,1516.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="1832.0,1716.0 1832.0,1698.0 2118.0,1698.0 2118.0,1680.0" fill="none" stroke="#e08a1e" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m4)"/>
+<polyline points="2238.0,1680.0 2238.0,1886.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2023.0,1968.0 1832.0,1968.0 1832.0,1850.0" fill="none" stroke="#e08a1e" stroke-width="2.2" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m4)"/>
+<polyline points="2188.0,2050.0 2188.0,2068.0 586.0,2068.0 586.0,2138.0 573.0,2138.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="408.0,2086.0 408.0,1638.0 704.0,1638.0 704.0,1480.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2353.0,1398.0 2396.0,1398.0 2396.0,2168.0 2353.0,2168.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2188.0,2250.0 2188.0,2286.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
+<polyline points="2353.0,2353.0 2451.0,2353.0 2451.0,1248.0 1476.0,1248.0 1476.0,1208.0" fill="none" stroke="#2f6fdb" stroke-width="2.6" stroke-dasharray="9 6" stroke-linejoin="round" marker-end="url(#m5)"/>
+<rect x="812.1" y="614" width="143.8" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="884.0" y="629.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">portfolio overlap?</text>
+<rect x="916.2" y="692.0" width="51.5" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="942.0" y="707.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">clean</text>
+<rect x="1458.3" y="616" width="115.4" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1516.0" y="631.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">open questions</text>
+<rect x="1799.2" y="814" width="65.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1832.0" y="829.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">context</text>
+<rect x="1224.8" y="1014" width="186.4" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1318.0" y="1029.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">criteria + memo passages</text>
+<rect x="874.3" y="814" width="115.4" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="932.0" y="829.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">portfolio list</text>
+<rect x="1799.2" y="614" width="65.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1832.0" y="629.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">ratings</text>
+<rect x="2162.2" y="514" width="51.5" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="2188.0" y="529.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">brief</text>
+<rect x="1180.9" y="266" width="314.2" height="21" rx="5" fill="#ffffff" stroke="#8a94a3" stroke-width="0.8" opacity="0.97"/>
+<text x="1338.0" y="281.5" font-size="13" font-weight="600" fill="#8a94a3" text-anchor="middle">a check hit: short brief, research skipped</text>
+<rect x="2334.8" y="914.0" width="122.5" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="2396.0" y="929.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">Riya&#x27;s decision</text>
+<rect x="2381.1" y="714.0" width="79.9" height="21" rx="5" fill="#ffffff" stroke="#c0392b" stroke-width="0.8" opacity="0.97"/>
+<text x="2421.0" y="729.5" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">send back</text>
+<rect x="1680.8" y="314.0" width="186.4" height="21" rx="5" fill="#ffffff" stroke="#0f8a7a" stroke-width="0.8" opacity="0.97"/>
+<text x="1774.0" y="329.5" font-size="13" font-weight="600" fill="#0f8a7a" text-anchor="middle">Loop B: ask for research</text>
+<rect x="1684.3" y="359.0" width="179.3" height="21" rx="5" fill="#ffffff" stroke="#e08a1e" stroke-width="0.8" opacity="0.97"/>
+<text x="1774.0" y="374.5" font-size="13" font-weight="600" fill="#e08a1e" text-anchor="middle">Loop C: rule correction</text>
+<rect x="986.8" y="1016" width="186.4" height="21" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="0.8" opacity="0.97"/>
+<text x="1080.0" y="1031.5" font-size="13" font-weight="600" fill="#7c3aed" text-anchor="middle">approved version is live</text>
+<rect x="834.2" y="1266" width="335.5" height="21" rx="5" fill="#ffffff" stroke="#c0392b" stroke-width="0.8" opacity="0.97"/>
+<text x="1002.0" y="1281.5" font-size="13" font-weight="600" fill="#c0392b" text-anchor="middle">GO or PASS starts outreach   (HOLD: no email)</text>
+<rect x="1585.7" y="1386.0" width="136.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1654.0" y="1401.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">what is due today</text>
+<rect x="962.0" y="1586.0" width="79.9" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1002.0" y="1601.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">new reply</text>
+<rect x="1595.0" y="1426.0" width="158.0" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1674.0" y="1441.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">the founder&#x27;s intent</text>
+<rect x="1443.2" y="1856" width="65.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1476.0" y="1871.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">unclear</text>
+<rect x="2137.4" y="1486" width="101.2" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="2188.0" y="1501.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">draft needed</text>
+<rect x="1665.7" y="1956.0" width="136.7" height="21" rx="5" fill="#ffffff" stroke="#e08a1e" stroke-width="0.8" opacity="0.97"/>
+<text x="1734.0" y="1971.5" font-size="13" font-weight="600" fill="#e08a1e" text-anchor="middle">Loop D: her edits</text>
+<rect x="1194.2" y="2056" width="207.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="1298.0" y="2071.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">sent from Riya&#x27;s Gmail (N4)</text>
+<rect x="382.2" y="1796" width="51.5" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="408.0" y="1811.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">reply</text>
+<rect x="2327.7" y="1771.0" width="136.7" height="21" rx="5" fill="#ffffff" stroke="#1b2a4a" stroke-width="0.8" opacity="0.97"/>
+<text x="2396.0" y="1786.5" font-size="13" font-weight="600" fill="#1b2a4a" text-anchor="middle">slot picked: book</text>
+<rect x="1529.8" y="1236" width="328.4" height="21" rx="5" fill="#ffffff" stroke="#2f6fdb" stroke-width="0.8" opacity="0.97"/>
+<text x="1694.0" y="1251.5" font-size="13" font-weight="600" fill="#2f6fdb" text-anchor="middle">Loop G: call outcomes join the back test set</text>
+<rect x="20" y="2462" width="2456" height="74" rx="8" fill="#f3f5f8" stroke="#9aa5b1" stroke-width="1.5"/>
+<text x="40" y="2490" font-size="16" font-weight="800" fill="#3e4c5e" text-anchor="start">ALWAYS ON · the never-fail checks, under both loops</text>
+<text x="40" y="2516" font-size="14.5" font-weight="400" fill="#4a5563" text-anchor="start">N1 no funded company marked PASS with no flag · N2 every citation exists · N3 a founder-only claim is never shown as confirmed · N4 only Riya&#x27;s click sends an email · N5 no application vanishes · N6 no founder name, email or phone reaches a model · text aimed at the AI is ignored · daily cost cap pauses at a saved step, then resumes</text>
+<rect x="120" y="2560" width="28" height="20" rx="4" fill="#efeafd" stroke="#6b5bd2" stroke-width="2"/>
+<text x="158" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">A person decides</text>
+<rect x="311.2" y="2560" width="28" height="20" rx="4" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="2"/>
+<text x="349.2" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Code step</text>
+<rect x="445.0" y="2560" width="28" height="20" rx="4" fill="#fff7df" stroke="#c9930c" stroke-width="2"/>
+<text x="483.0" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Decision in code</text>
+<rect x="636.2" y="2560" width="28" height="20" rx="4" fill="#fdebf1" stroke="#d6487e" stroke-width="2"/>
+<text x="674.2" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">AI call</text>
+<rect x="753.6" y="2560" width="28" height="20" rx="4" fill="#fff0de" stroke="#e08a1e" stroke-width="2"/>
+<text x="791.6" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Memory</text>
+<rect x="862.8" y="2560" width="28" height="20" rx="4" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="900.8" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Data or outside service</text>
+<line x1="1111.3999999999999" y1="2570" x2="1159.3999999999999" y2="2570" stroke="#1b2a4a" stroke-width="2.4" marker-end="url(#m0)"/>
+<text x="1169.3999999999999" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Main flow</text>
+<rect x="1271.4" y="2559" width="49.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1296.28" y="2574.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tool</text>
+<text x="1333.3999999999999" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">where it runs</text>
+<rect x="1461.4" y="2559" width="49.8" height="22" rx="11" fill="#6b5bd2"/>
+<text x="1486.28" y="2574.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">GATE</text>
+<text x="1531.3999999999999" y="2576" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">only people decide an outcome here</text>
+<rect x="20" y="2614" width="2456" height="252" rx="10" fill="#fbfcfd" stroke="#d5dbe3" stroke-width="1.5"/>
+<text x="40" y="2648" font-size="21" font-weight="700" fill="#1b2a4a" text-anchor="start">The loops</text>
+<line x1="40" y1="2688" x2="80" y2="2688" stroke="#1b2a4a" stroke-width="3"/>
+<rect x="92.0" y="2677" width="165.1" height="22" rx="11" fill="#1b2a4a"/>
+<text x="174.54000000000002" y="2692.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP 1 · Screening</text>
+<text x="271.08000000000004" y="2693" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Upload, cheap checks, two tracks of evidence, scores, brief. Ends at Gate 2.</text>
+<line x1="1270" y1="2688" x2="1310" y2="2688" stroke="#0f766e" stroke-width="3"/>
+<rect x="1322.0" y="2677" width="157.0" height="22" rx="11" fill="#0f766e"/>
+<text x="1400.51" y="2692.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP 2 · Outreach</text>
+<text x="1493.02" y="2693" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Draft, Riya sends, read the reply, book or offer new slots. Ends at the call.</text>
+<line x1="40" y1="2726" x2="80" y2="2726" stroke="#7c3aed" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="92.0" y="2715" width="165.1" height="22" rx="11" fill="#7c3aed"/>
+<text x="174.54000000000002" y="2730.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP A · Back test</text>
+<text x="271.08000000000004" y="2731" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">A new card version is scored on past memo companies before Kushal can approve it.</text>
+<line x1="1270" y1="2726" x2="1310" y2="2726" stroke="#0f8a7a" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="1322.0" y="2715" width="197.3" height="22" rx="11" fill="#0f8a7a"/>
+<text x="1420.66" y="2730.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP B · Research more</text>
+<text x="1533.32" y="2731" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Riya asks for more research on one application; it goes back to Track 2.</text>
+<line x1="40" y1="2764" x2="80" y2="2764" stroke="#e08a1e" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="92.0" y="2753" width="213.4" height="22" rx="11" fill="#e08a1e"/>
+<text x="198.72" y="2768.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP C · Rule correction</text>
+<text x="319.44" y="2769" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Riya&#x27;s rule corrections come back as context for similar companies.</text>
+<line x1="1270" y1="2764" x2="1310" y2="2764" stroke="#e08a1e" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="1322.0" y="2753" width="181.2" height="22" rx="11" fill="#e08a1e"/>
+<text x="1412.6" y="2768.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP D · Style notes</text>
+<text x="1517.2" y="2769" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">What Riya changes in a draft shapes the next draft.</text>
+<line x1="40" y1="2802" x2="80" y2="2802" stroke="#1b2a4a" stroke-width="3"/>
+<rect x="92.0" y="2791" width="261.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="222.9" y="2806.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOPS E · F · Follow up, slots</text>
+<text x="367.8" y="2807" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">No reply: follow up on day 3 and 7. New time: new slots, two rounds, then Riya.</text>
+<line x1="1270" y1="2802" x2="1310" y2="2802" stroke="#2f6fdb" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="1322.0" y="2791" width="173.1" height="22" rx="11" fill="#2f6fdb"/>
+<text x="1408.57" y="2806.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP G · Real calls</text>
+<text x="1509.1399999999999" y="2807" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Was the call worth 30 minutes? Outcomes join the next back test.</text>
+<line x1="40" y1="2840" x2="80" y2="2840" stroke="#c0392b" stroke-width="3"/>
+<rect x="92.0" y="2829" width="149.0" height="22" rx="11" fill="#c0392b"/>
+<text x="166.48000000000002" y="2844.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Send back · HOLD</text>
+<text x="254.96" y="2845" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Kushal sends an application back to Riya. A portfolio conflict holds it: no email.</text>
+<line x1="1270" y1="2840" x2="1310" y2="2840" stroke="#8a94a3" stroke-width="3" stroke-dasharray="9 6"/>
+<rect x="1322.0" y="2829" width="100.6" height="22" rx="11" fill="#8a94a3"/>
+<text x="1372.3" y="2844.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Short path</text>
+<text x="1436.6" y="2845" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">A cheap check hits: a short brief, research skipped, Riya can still run it all.</text>
+<rect x="20" y="2890" width="2456" height="120" rx="10" fill="#fbfcfd" stroke="#d5dbe3" stroke-width="1.5"/>
+<text x="40" y="2924" font-size="21" font-weight="700" fill="#1b2a4a" text-anchor="start">The stack</text>
+<rect x="40.0" y="2947" width="68.4" height="22" rx="11" fill="#1b2a4a"/>
+<text x="74.18" y="2962.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Vercel</text>
+<text x="120.36" y="2963" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Next.js app, worker crons</text>
+<rect x="655.0" y="2947" width="84.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="697.24" y="2962.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
+<text x="751.48" y="2963" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Postgres, private files, queues, RLS</text>
+<rect x="1270.0" y="2947" width="189.3" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1364.63" y="2962.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini via Cloudflare</text>
+<text x="1471.26" y="2963" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">Flash Lite, Flash, Pro</text>
+<rect x="1885.0" y="2947" width="68.4" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1919.18" y="2962.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Tavily</text>
+<text x="1965.36" y="2963" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">web research, replay mode for tests</text>
+<rect x="40.0" y="2979" width="92.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="86.27000000000001" y="2994.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Gmail API</text>
+<text x="144.54000000000002" y="2995" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">send on Riya&#x27;s click, read the thread</text>
+<rect x="655.0" y="2979" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
+<text x="713.36" y="2994.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Calendar API</text>
+<text x="783.72" y="2995" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">free and busy, the booking</text>
+<rect x="1270.0" y="2979" width="84.5" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1312.24" y="2994.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Langfuse</text>
+<text x="1366.48" y="2995" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">a trace per application</text>
+<rect x="1885.0" y="2979" width="124.8" height="22" rx="11" fill="#1b2a4a"/>
+<text x="1947.39" y="2994.5" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">llm_calls log</text>
+<text x="2021.78" y="2995" font-size="15" font-weight="400" fill="#1f2933" text-anchor="start">every model input, for the N6 audit</text>
+<text x="20" y="3057" font-size="14" font-weight="400" fill="#4a5563" text-anchor="start">Steps are numbered as in PRD Section 5. Loops as in PRD Section 11. Gates are the only places an outcome is decided, always by a person.</text>
 </svg>
