@@ -1818,8 +1818,8 @@ Each milestone ends with something we can show and check.
 
 | M9 | Safe at volume (v2) | Schedulers every minute, upload limit, Portkey with backoff retries, answer cache, separate test database, cost alert by email, data retention and consent | See 24.4. **Built (24 Nov 2026).** `npm run eval:burst` passes 8 of 8: 50 uploads in 6 seconds, all 50 accounted for, never more than 4 screened at once (worker slots, added after the first run showed about 17 at once), the upload limit and the consent box hold, $0.43 for the run. Every model call retries on busy replies after 1, 2 and 4 seconds, then waits in the queue; identical calls reuse a stored answer; the cap raises one alert a day, by email to the team's own addresses only; model inputs are cleared after 30 days by a nightly database job; the Cost page shows the calendar month and the AI cost per application against Riya's 30 minutes (about ₹6 against ₹500). **Waiting on the team:** a Portkey key (the route is built behind `AI_ROUTE=portkey`), a new Supabase project for live data (scripts already refuse to run where `DB_ROLE=live`), and a redeploy before `npm run db:schedule` points the database scheduler at the hosted app. |
 | M10 | Measure first (v2) | Email edit measure, weekly trend for both loops, the two exports as eval sets, "no close match" warning, approved and tagged style notes | See 24.4 and 24.9. **Built (24 Nov 2026).** Seed data 2 cleaned (two copies and two off-day rows out) and the test sets sealed in `evals/loops/split.json`. `npm run eval:loops` measured the baseline on the sealed rows: emails, our A5 prompt passes the three checks on 0 of 20 (the old system's drafts 12 of 20, Riya 20 of 20); screening, our system agrees with Riya on 2 of the latest 12 and makes no call on 8 (the old system agreed on 8). The Dashboard shows both loops' disagreement. Briefs and drafts say "no close past example" when nothing similar exists. Style notes wait for Riya's approval and carry the company's sector. Found and fixed on the way: A5 drafts could loop until cut off (token room raised, a little temperature for writing, a second try at higher temperature). |
-| M11 | Easier fixes first (v2) | A5 rewritten to Riya's real style, Thesis Card v3 candidate from the override reasons, a stronger model tried for drafts | See 24.4. **Planned.** |
-| M12 | Fine-tuning pilot (Case 05) | The Brief, a 300 row dataset with labelled synthetic rows, a sealed test set, one training run, cost and payback | See 24.5. **Planned.** Stopping is a valid result. |
+| M11 | Easier fixes first (v2) | A5 rewritten to Riya's real style, Thesis Card v3 candidate from the override reasons, a stronger model tried for drafts | See 24.10. **Built (24 Nov 2026).** Emails: A5 v2 passes the three checks on 18 of 20 sealed emails (90%, from 0%), every founder type at 80% or above. The model writes the fact line and the question; code builds the rest and checks it. A stronger model was not needed. Screening: Thesis Card v3 (four partner rules from Riya's overturn reasons) is safer but not yet more useful: on the latest 12 calls it agrees 1, makes no call on 11, and takes the wrong side on none (v2: 2, 8, 2). v3 waits for its back test and Kushal. |
+| M12 | Fine-tuning pilot (Case 05) | The Brief, a 300 row dataset with labelled synthetic rows, a sealed test set, one training run, cost and payback | **Stopped, by the stop rule (24 Nov 2026).** The prompt met the 90% pass mark, so there is no training run. The filled brief is in `evals/loops/FINE_TUNING_BRIEF.md`. The dataset (56 real rows: 30 train, 6 validation, 20 test, in the production layout) is in the gitignored `Seed data 2` folder. |
 
 The order matters. The Thesis Card and the back test come before outreach, because nothing should be sent on the basis of a rubric nobody has checked. In version 2, the easier fixes (M11) come before fine-tuning (M12) for the same reason: we only train a model for a gap the easier fixes could not close.
 
@@ -2277,3 +2277,28 @@ Our system rarely takes a side on these rows, and that is by design. The rows ar
 * a temperature of 0.4 for writing (judging stays at 0);
 * a second try at 0.6;
 * the end of a bad reply is now kept in the error log.
+
+### 24.10 Results after the prompt fix (M11, 24 Nov 2026)
+
+**Loop 2, emails.** The new prompt meets the target.
+
+| | Three checks | Voice | Software | Services | Hardware |
+|---|---|---|---|---|---|
+| Old system's drafts | 60% | 35% | | | |
+| a5-v1 | 0% | 0% | 0 of 15 | 0 of 3 | 0 of 2 |
+| **a5-v2** | **90%** | **90%** | 13 of 15 | 3 of 3 | 2 of 2 |
+
+* Both misses are fact lines with the number written in words. Code flagged them for Riya. We did not tune on them, so the test set stays honest.
+* Invites now offer two slots, as Riya does (Q19). Rescheduling emails still offer three.
+
+**Loop 1, screening.** Thesis Card v3 adds four partner rules that write down Riya's trade-offs: repeat behaviour, a missing repeat number, credit risk ownership in lending, and the deeptech approval-path trade-off.
+
+On the 12 sealed calls:
+* it never takes the wrong side (v2 called PASS twice where Riya said Go);
+* it agrees once, and leaves 11 to a person.
+
+On two-line summaries with research off, the system rarely has enough evidence to call GO or PASS. Thin input is not a rubric problem: rules alone cannot raise Loop 1 agreement here. What would:
+* full applications, with research on;
+* a person deciding near the line, which is the design.
+
+v3 is a candidate only, and Kushal decides after reading its back test.

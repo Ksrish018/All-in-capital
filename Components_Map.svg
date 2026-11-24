@@ -297,10 +297,10 @@
 <rect x="2256.0" y="1505" width="87.0" height="22" rx="11" fill="#1b2a4a"/>
 <text x="2299.52" y="1520.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Gemini A5</text>
 <text x="2188.0" y="1556" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑭ Draft the email</text>
-<text x="2188.0" y="1580" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">v2: Riya&#x27;s shape: one fact, one</text>
-<text x="2188.0" y="1601" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">question, two Tue or Thu slots</text>
-<text x="2188.0" y="1622" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">No praise · checked in code</text>
-<text x="2188.0" y="1643" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">First name added by code</text>
+<text x="2188.0" y="1580" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">v2: model writes the fact line</text>
+<text x="2188.0" y="1601" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">and one sharp question only</text>
+<text x="2188.0" y="1622" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Code adds greeting, two slots,</text>
+<text x="2188.0" y="1643" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Aditya line, sign-off · checked</text>
 <rect x="955" y="1716" width="330" height="134" rx="10" fill="#e7f0fb" stroke="#3b6fc4" stroke-width="1.8"/>
 <rect x="1195.5" y="1705" width="79.5" height="22" rx="11" fill="#1b2a4a"/>
 <text x="1235.24" y="1720.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Supabase</text>
@@ -313,9 +313,9 @@
 <rect x="1677.0" y="1705" width="64.6" height="22" rx="11" fill="#e08a1e"/>
 <text x="1709.32" y="1720.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">LOOP D</text>
 <text x="1832.0" y="1752" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Style notes</text>
-<text x="1832.0" y="1776" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Riya&#x27;s edits become notes</text>
-<text x="1832.0" y="1797" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">v2: Riya approves each note,</text>
-<text x="1832.0" y="1818" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">tagged by founder type</text>
+<text x="1832.0" y="1776" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Edits propose notes</text>
+<text x="1832.0" y="1797" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Riya approves each one,</text>
+<text x="1832.0" y="1818" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">for its sector or for all</text>
 <rect x="1311" y="1886" width="330" height="164" rx="10" fill="#efeafd" stroke="#6b5bd2" stroke-width="2.6"/>
 <rect x="1514.3" y="1875" width="116.7" height="22" rx="11" fill="#1b2a4a"/>
 <text x="1572.6399999999999" y="1890.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Outreach page</text>
@@ -352,24 +352,24 @@
 <text x="2188.0" y="2322" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">⑳ After the call</text>
 <text x="2188.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">One tap: worth 30 minutes?</text>
 <text x="2188.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Plus call notes</text>
-<rect x="955" y="2286" width="330" height="134" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8" stroke-dasharray="8 5"/>
+<rect x="955" y="2286" width="330" height="134" rx="10" fill="#eaf5ec" stroke="#3d9a5b" stroke-width="1.8"/>
 <rect x="1173.2" y="2275" width="101.8" height="22" rx="11" fill="#1b2a4a"/>
 <text x="1224.0800000000002" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Seed data 2</text>
-<rect x="965.0" y="2275" width="34.9" height="22" rx="11" fill="#5b6b7f"/>
-<text x="982.44" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">V2</text>
+<rect x="965.0" y="2275" width="87.0" height="22" rx="11" fill="#0f766e"/>
+<text x="1008.48" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">M10 · M11</text>
 <text x="1120.0" y="2322" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Measure, then fix the prompt</text>
-<text x="1120.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Sealed test set, one in five</text>
-<text x="1120.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Emails: 60% pass the three checks</text>
-<text x="1120.0" y="2388" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Target 90% with a prompt in her voice</text>
+<text x="1120.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Sealed tests: 20 emails, 12 calls</text>
+<text x="1120.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Emails 0% to 90% on three checks</text>
+<text x="1120.0" y="2388" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">npm run eval:loops</text>
 <rect x="1311" y="2286" width="330" height="134" rx="10" fill="#fdebf1" stroke="#d6487e" stroke-width="1.8" stroke-dasharray="8 5"/>
 <rect x="1499.4" y="2275" width="131.6" height="22" rx="11" fill="#1b2a4a"/>
 <text x="1565.2" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Colab + Unsloth</text>
-<rect x="1321.0" y="2275" width="34.9" height="22" rx="11" fill="#5b6b7f"/>
-<text x="1338.44" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">V2</text>
-<text x="1476.0" y="2322" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Fine-tune, only if needed</text>
-<text x="1476.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Only if the prompt misses 90%</text>
-<text x="1476.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">About 3B model, 300 clean emails</text>
-<text x="1476.0" y="2388" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Stop if under 3 points better</text>
+<rect x="1321.0" y="2275" width="42.3" height="22" rx="11" fill="#5b6b7f"/>
+<text x="1342.16" y="2290.5" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">M12</text>
+<text x="1476.0" y="2322" font-size="17" font-weight="700" fill="#1f2933" text-anchor="middle">Fine-tune: stopped</text>
+<text x="1476.0" y="2346" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">The prompt met the 90% pass mark</text>
+<text x="1476.0" y="2367" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Brief and dataset handed in</text>
+<text x="1476.0" y="2388" font-size="14" font-weight="400" fill="#4a5563" text-anchor="middle">Reopen if the weekly score rises</text>
 <polyline points="2188.0,1208.0 2188.0,1278.0 408.0,1278.0 408.0,1316.0" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round" marker-end="url(#m1)"/>
 <polyline points="573.0,1398.0 599.0,1398.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>
 <polyline points="929.0,1398.0 955.0,1398.0" fill="none" stroke="#1b2a4a" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#m0)"/>

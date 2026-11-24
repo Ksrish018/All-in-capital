@@ -2,6 +2,7 @@ import "server-only";
 import { BadModelOutput, SHARED_RULES, callModel } from "@/lib/ai/gemini";
 import { redactText, type FounderRef } from "@/lib/intake/redact";
 import { formatSlot, settleLabel, type Label, type Slot } from "./rules";
+import { INVITE_SCHEMA, INVITE_VERSION, InviteLineError, buildInvite, checkInviteLines, inviteSystem, inviteUser } from "./invite";
 
 // A5 drafts emails (Steps 14, 17, 18). A6 reads replies (Step 16).
 // The founder's first name is added by code after the draft is written. The model never sees it.
@@ -32,7 +33,20 @@ export async function draftEmail(args: {
   joining: string[];
   styleNotes: string[];
   founders: FounderRef[];
-}): Promise<{ subject: string; body: string }> {
+  /** For a first invite: the company's facts (traction, background) and a one-line profile (stage, sector). Turns on A5 v2. */
+  facts?: string;
+  profile?: string;
+}): Promise<{ subject: string; body: string; note?: string }> {
+  if (args.kind === "invite" && args.facts?.trim()) {
+    try {
+      return await draftInvite({ ...args, facts: args.facts });
+    } catch (e) {
+      if (!(e instanceof BadModelOutput)) throw e;
+      // Two tries could not meet Riya's standard. Fall back to the plain draft and say so: never hide it.
+      const plain = await draftEmail({ ...args, facts: undefined });
+      return { ...plain, note: `This draft misses Riya's usual shape (${e.message.replace(/^.*?: /, "")}). Check the opening line and the ask.` };
+    }
+  }
   const system = `${SHARED_RULES}
 
 Task: write an email from Riya at All In Capital, a pre-seed fund, to the founders of ${args.company}.
@@ -130,5 +144,35 @@ ${text}
       const refused = (o.refused_slots ?? []).map((id) => args.offered[Number(String(id).replace(/\D/g, "")) - 1]).filter(Boolean);
       return { label: settleLabel(o.label, confidence), confidence, proposed, refused, returnDate: o.return_date && /^\d{4}-\d{2}-\d{2}$/.test(o.return_date) ? o.return_date : null };
     },
+  });
+}
+
+/** A5 v2: the model writes the fact line and the question; code builds the email around them (PRD 24.8, M11). */
+async function draftInvite(args: { applicationId: string | null; company: string; slots: Slot[]; joining: string[]; styleNotes: string[]; founders: FounderRef[]; facts: string; profile?: string }) {
+  const lines = await callModel({
+    callType: "A5",
+    model: process.env.MODEL_DRAFT ?? "gemini-3-flash-preview",
+    promptName: "draft_invite",
+    promptVersion: INVITE_VERSION,
+    system: inviteSystem(SHARED_RULES, args.styleNotes),
+    user: inviteUser({ company: args.company, profile: args.profile ?? "", facts: args.facts }),
+    schema: INVITE_SCHEMA,
+    maxOutputTokens: 2000,
+    temperature: 0.4,
+    timeoutMs: 30_000,
+    thinking: "low",
+    applicationId: args.applicationId,
+    founders: args.founders,
+    validate: (v) => {
+      try {
+        return checkInviteLines(v);
+      } catch (e) {
+        throw new BadModelOutput(e instanceof InviteLineError ? `A5 lines missed Riya's standard: ${e.message}` : String(e));
+      }
+    },
+  });
+  return buildInvite({
+    firstNamePlaceholder: FIRST_NAME, fact: lines.fact_line, question: lines.question, slots: args.slots,
+    aditya: args.joining.some((j) => /aditya/i.test(j)), company: args.company,
   });
 }

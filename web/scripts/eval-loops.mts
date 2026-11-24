@@ -73,6 +73,9 @@ if (!process.argv.includes("--skip-l2")) {
       joining: deeptech ? ["Aditya, a partner, for the technical part"] : [],
       styleNotes,
       founders: [{ id: "F1", name: r.founder_name, linkedin: null }],
+      // The same inputs production gives a first invite: the traction facts and a one-line profile (A5 v2).
+      facts: [...r.traction_facts.split(/;\s*/).map((f) => `- ${f}`), `- Founder background: ${r.founder_background}`].join("\n"),
+      profile: [`Stage: ${r.stage}`, `Sector: ${r.sector}`, `Founder type: ${r.founder_type}`].join("\n"),
     }).catch((e: Error) => ({ subject: "", body: `(no draft: ${e.message})` }));
     ours.push(score(r.row_id, r.founder_type, personalise(d.body, first), r.riya_final_email, deeptech));
     process.stdout.write(".");

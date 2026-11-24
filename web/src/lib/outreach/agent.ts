@@ -30,6 +30,19 @@ async function allStyleNotes(): Promise<string[]> {
   const { data } = await db().from("style_notes").select("notes").eq("active", true).order("version", { ascending: false }).limit(1).maybeSingle();
   return (data?.notes as string[]) ?? [];
 }
+/** What the first invite is written from: the traction facts on record (already redacted) and a one-line profile. */
+async function inviteFacts(appId: string): Promise<{ facts: string; profile: string } | null> {
+  const [{ data: ev }, { data: doc }] = await Promise.all([
+    db().from("evidence").select("field, quote, value, track").eq("application_id", appId).or("field.like.traction.%,field.like.unit.%"),
+    db().from("documents").select("redacted").eq("application_id", appId).eq("kind", "form").maybeSingle(),
+  ]);
+  const lines = [...new Set((ev ?? []).map((e) => String(e.quote ?? e.value ?? "").trim()).filter((q) => q && q !== "null"))].slice(0, 8);
+  if (!lines.length) return null;
+  const fields = ((doc?.redacted as { fields?: { key: string; value: string }[] } | null)?.fields ?? []);
+  const get = (k: string) => fields.find((x) => x.key === k)?.value ?? "";
+  return { facts: lines.map((l) => `- ${l}`).join("\n"), profile: [`Stage: ${get("stage")}`, `Sector: ${get("sector")}`, `What it does: ${get("one_line")}`].join("\n") };
+}
+
 /** The company's sector, as the tag style notes and corrections share. */
 async function sectorTag(appId: string): Promise<string | null> {
   const { data } = await db().from("documents").select("redacted").eq("application_id", appId).eq("kind", "form").maybeSingle();
@@ -55,11 +68,21 @@ async function writeDraft(o: { id: string; application_id: string; reason: strin
   const joining = kind === "invite" || kind === "scheduling" || kind === "followup" ? ["Riya", "Kushal", ...(o.aditya ? ["Aditya"] : [])] : [];
   const tag = await sectorTag(o.application_id);
   const all = await allStyleNotes();
-  const d = await draftEmail({ applicationId: o.application_id, kind, company: app!.company_name, reason: o.reason ?? "", slots, joining, styleNotes: notesFor(all, tag), founders: f.refs });
+  // A first invite offers two slots, as Riya does (Q19). Later scheduling emails still offer three.
+  const offer = kind === "invite" ? slots.slice(0, 2) : slots;
+  const facts = kind === "invite" ? await inviteFacts(o.application_id) : null;
+  const d = await draftEmail({
+    applicationId: o.application_id, kind, company: app!.company_name, reason: o.reason ?? "", slots: offer, joining,
+    styleNotes: notesFor(all, tag), founders: f.refs, facts: facts?.facts, profile: facts?.profile,
+  });
   const kindName = tag?.replace("sector:", "") ?? null;
+  const notes = [
+    d.note ?? null,
+    noCloseNote(all, tag) ? `No close past example: none of your style notes is for ${kindName} companies yet, so this draft leans on general habits. Read it with more care.` : null,
+  ].filter(Boolean);
   await db().from("emails").insert({
-    outreach_id: o.id, kind, draft_subject: d.subject, draft_body: personalise(d.body, f.first), slots, to_address: to ?? f.email,
-    draft_note: noCloseNote(all, tag) ? `No close past example: none of your style notes is for ${kindName} companies yet, so this draft leans on general habits. Read it with more care.` : null,
+    outreach_id: o.id, kind, draft_subject: d.subject, draft_body: personalise(d.body, f.first), slots: offer, to_address: to ?? f.email,
+    draft_note: notes.length ? notes.join(" ") : null,
   });
 }
 

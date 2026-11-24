@@ -243,10 +243,10 @@ box("rules", "s2", 2, "decision", "⑰ Follow ups · ⑱ Slots", ["No reply: day
 box("next", "s2", 5, "decision", "Next step, in code", ["Book · offer new slots", "Follow up · hand to Riya", "One step per run, saved"], "Code")
 
 box("a6", "a2", 3, "ai", "⑯ Read the reply", ["Picked a slot · new time", "No time · not interested", "Below 0.75 means unclear"], "Gemini A6")
-box("a5", "a2", 5, "ai", "⑭ Draft the email", ["v2: Riya's shape: one fact, one", "question, two Tue or Thu slots", "No praise · checked in code", "First name added by code"], "Gemini A5")
+box("a5", "a2", 5, "ai", "⑭ Draft the email", ["v2: model writes the fact line", "and one sharp question only", "Code adds greeting, two slots,", "Aditya line, sign-off · checked"], "Gemini A5")
 
 box("log", "m2", 2, "service", "Outreach record", ["Every draft and sent version", "Replies, slots offered, status"], "Supabase")
-box("notes", "m2", 4, "memory", "Style notes", ["Riya's edits become notes", "v2: Riya approves each note,", "tagged by founder type"], "Supabase", "LOOP D", C_ORANGE)
+box("notes", "m2", 4, "memory", "Style notes", ["Edits propose notes", "Riya approves each one,", "for its sector or for all"], "Supabase", "LOOP D", C_ORANGE)
 
 box("withriya", "r2", 3, "person", "With Riya", ["Unclear reply or a bounce", "A third request for a new time", "No reply after two follow ups"], "Outreach page")
 box("gate3", "r2", 5, "person", "Gate 3 · Riya sends", ["Reads and edits the draft", "Send from her Gmail", "No send all (N4)"], "Outreach page", "GATE 3")
@@ -255,8 +255,8 @@ box("founder", "f2", 0, "service", "Founder replies", ["Email arrives from Riya"
 box("cal", "f2", 5, "service", "⑲ Book the call", ["Founder confirmed in writing", "Slot checked free again", "30 minutes, Meet link"], "Calendar API")
 
 box("call", "t2", 5, "person", "⑳ After the call", ["One tap: worth 30 minutes?", "Plus call notes"], "Outreach page")
-box("evals", "t2", 2, "code", "Measure, then fix the prompt", ["Sealed test set, one in five", "Emails: 60% pass the three checks", "Target 90% with a prompt in her voice"], "Seed data 2", "V2", "#5b6b7f", planned=True)
-box("ft", "t2", 3, "ai", "Fine-tune, only if needed", ["Only if the prompt misses 90%", "About 3B model, 300 clean emails", "Stop if under 3 points better"], "Colab + Unsloth", "V2", "#5b6b7f", planned=True)
+box("evals", "t2", 2, "code", "Measure, then fix the prompt", ["Sealed tests: 20 emails, 12 calls", "Emails 0% to 90% on three checks", "npm run eval:loops"], "Seed data 2", "M10 · M11", "#0f766e")
+box("ft", "t2", 3, "ai", "Fine-tune: stopped", ["The prompt met the 90% pass mark", "Brief and dataset handed in", "Reopen if the weekly score rises"], "Colab + Unsloth", "M12", "#5b6b7f", planned=True)
 
 lS2, lA2, lM2, lR2 = lane("s2"), lane("a2"), lane("m2"), lane("r2")
 # join from Gate 2

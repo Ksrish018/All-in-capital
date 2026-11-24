@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import { editClass, threeChecks, voiceChecks } from "@/lib/outreach/checks";
 import { cleanEmails, parseCsv, seal, splitEmails, splitScreens, type EmailRow, type ScreenRow } from "@/lib/loops/data";
 import { noCloseNote, notesFor, parseNote, tagged } from "@/lib/outreach/notes";
+import { InviteLineError, buildInvite, checkInviteLines } from "@/lib/outreach/invite";
 import { tag } from "../helpers";
 
 const RIYA = ["Hi Asha,", "", "62% of shops reordering every week is rare for a pre-seed ledger app.", "", "How many of those reorders come from your first fifty shops?", "", "Could we do 30 minutes on Tuesday 3 March or Thursday 5 March, in the afternoon?", "", "Riya", "All In Capital"].join("\n");
@@ -87,5 +88,27 @@ describe("tagged style notes (G12)", () => {
     expect(noCloseNote(["Keep it short"], "sector:deeptech")).toBe(true);
     expect(noCloseNote([tagged("x", "sector:deeptech")], "sector:deeptech")).toBe(false);
     expect(noCloseNote(["Keep it short"], null)).toBe(false);
+  });
+});
+
+describe("A5 v2: the invite built in Riya's voice (M11)", () => {
+  const slots = [{ start: "2026-12-01T09:30:00Z", end: "2026-12-01T10:00:00Z" }, { start: "2026-12-03T10:30:00Z", end: "2026-12-03T11:00:00Z" }];
+  const lines = { fact_line: "58% of shop owners logging sales every day is rare for a pre-seed ledger app", question: "How many of those came through your distributor?" };
+  it(tag("Critical", "L13", "the built email passes the three checks and every voice check"), () => {
+    const l = checkInviteLines(lines);
+    const e = buildInvite({ firstNamePlaceholder: "Asha", fact: l.fact_line, question: l.question, slots, aditya: false, company: "Ledgerly" });
+    expect(e.body).toContain("Tuesday 1 December at 3 pm or Thursday 3 December at 4 pm");
+    expect(threeChecks(e.body).all).toBe(true);
+    expect(voiceChecks(e.body, { deeptech: false }).all).toBe(true);
+  });
+  it(tag("High", "L14", "the Aditya line goes in for deeptech only"), () => {
+    const e = buildInvite({ firstNamePlaceholder: "Asha", fact: `${lines.fact_line}.`, question: lines.question, slots, aditya: true, company: "X" });
+    expect(voiceChecks(e.body, { deeptech: true }).all).toBe(true);
+  });
+  it(tag("Critical", "L15", "lines with praise, no number, or talk of the call are refused, so A5 tries again"), () => {
+    expect(() => checkInviteLines({ ...lines, fact_line: "Impressive traction is rare for a pre-seed ledger app" })).toThrow(InviteLineError);
+    expect(() => checkInviteLines({ ...lines, fact_line: "An amazing 58% of shops is rare for a pre-seed app" })).toThrow(InviteLineError);
+    expect(() => checkInviteLines({ ...lines, question: "Could we talk on Tuesday?" })).toThrow(InviteLineError);
+    expect(() => checkInviteLines({ ...lines, fact_line: "58% of shops log sales daily" })).toThrow(InviteLineError);
   });
 });
