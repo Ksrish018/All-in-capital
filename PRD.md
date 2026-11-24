@@ -2302,3 +2302,13 @@ On two-line summaries with research off, the system rarely has enough evidence t
 * a person deciding near the line, which is the design.
 
 v3 is a candidate only, and Kushal decides after reading its back test.
+
+**Thesis Card v3 back test (24 Nov 2026).**
+
+| | v2 | v3 |
+|---|---|---|
+| N1: a funded company marked PASS with no flag | 0, pass | 0, pass |
+| Build set agreement | 3 of 8 | 4 of 8 |
+| Held-out agreement | 1 of 4 | 1 of 4 |
+
+**For Kushal before he approves anything.** v3 marks ePlane, a company the fund invested in, as PASS. It is flagged rather than silent: two criteria fail, path to market (C8) and capital fits the model (C9). So N1 holds, but the new deeptech rule ("no revenue path fails path to market") fires on a real deeptech investment. That is the trade-off the rule writes down, and only Kushal can say whether it is right. Until he approves a version, the app uses the newest draft, which is v3.
