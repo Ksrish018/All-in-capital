@@ -45,6 +45,8 @@ export type CallArgs<T> = {
   runId?: string;
   /** Skip the answer cache, for a run that must call the model again. */
   noCache?: boolean;
+  /** 0 by default. Drafting uses a little more: at 0 a long JSON reply can loop until it is cut off. */
+  temperature?: number;
 };
 
 /**
@@ -104,7 +106,7 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
   let busy: Error | null = null;
 
   // G4: the same model, prompt version and input already answered. Reuse it, at no cost.
-  const cacheKey = createHash("sha256").update(JSON.stringify([args.model, args.promptVersion, args.system, args.user, args.schema])).digest("hex");
+  const cacheKey = createHash("sha256").update(JSON.stringify([args.model, args.promptVersion, args.temperature ?? 0, args.system, args.user, args.schema])).digest("hex");
   const { data: cacheSetting } = await db.from("settings").select("value").eq("key", "answer_cache").maybeSingle();
   const useCache = !args.noCache && (cacheSetting?.value ?? "on") === "on";
   if (useCache) {
@@ -147,6 +149,8 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
       const reply = await sendWithBackoff({
         model: args.model, system: args.system, user: args.user, schema: args.schema,
         maxOutputTokens: args.maxOutputTokens, timeoutMs: args.timeoutMs, thinking: args.thinking,
+        // A second try after an unreadable reply gets a little more variety, so it does not loop the same way.
+        temperature: attempt === 0 ? (args.temperature ?? 0) : Math.max(args.temperature ?? 0, 0.6),
         meta: { applicationId: args.applicationId, callType: args.callType },
       });
       ({ inTok, outTok } = reply);
@@ -156,7 +160,8 @@ export async function callModel<T>(args: CallArgs<T>): Promise<T> {
         output = JSON.parse(reply.text);
       } catch {
         status = "bad_json";
-        throw new BadModelOutput("The model reply was not valid JSON");
+        const tail = reply.text.slice(-120).replace(/\s+/g, " ");
+        throw new BadModelOutput(`The model reply was not valid JSON (${reply.text.length} characters, ending "${tail}")`);
       }
       const value = args.validate(output);
       status = "ok";

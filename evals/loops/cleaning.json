@@ -1,0 +1,12 @@
+{
+  "note": "PRD 24.8 step 1. Rows removed before anything is measured or trained. Exact copies are found by code; the rows below are named on purpose, each with its reason.",
+  "email": {
+    "drop": [
+      { "row_id": "L2-030", "why": "off-day edit: a long paragraph about the fund added to a draft she otherwise kept, against her own 'short' standard (Q20)" },
+      { "row_id": "L2-054", "why": "contradiction: a formal 'Dear Ms ...' with no slots, where all 57 other emails say 'Hi {first name}' and offer two Tuesday or Thursday slots" }
+    ]
+  },
+  "screening": {
+    "drop": []
+  }
+}

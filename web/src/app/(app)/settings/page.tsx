@@ -1,16 +1,17 @@
 import { createAdminClient } from "@/lib/supabase/server";
 import { currentActor } from "@/lib/actor";
 import { SETTINGS } from "@/lib/settings";
-import { AttendeesForm, ChoiceSetting, DeleteFounderData, NumberSetting, StyleNotes } from "./forms";
+import { AttendeesForm, ChoiceSetting, DeleteFounderData, NumberSetting, ProposedNotes, StyleNotes } from "./forms";
 
 /** Settings (PRD 13.13). Each setting can be changed only by the person who owns it. */
 export default async function SettingsPage() {
   const actor = await currentActor();
   const db = createAdminClient();
-  const [{ data: rows }, { data: notes }, { data: apps }] = await Promise.all([
+  const [{ data: rows }, { data: notes }, { data: apps }, { data: proposed }] = await Promise.all([
     db.from("settings").select("key, value"),
     db.from("style_notes").select("version, notes, active, created_at").order("version", { ascending: false }),
     db.from("applications").select("id, company_name").order("company_name"),
+    db.from("style_note_candidates").select("id, note, tag, created_at").eq("status", "pending").order("created_at"),
   ]);
   const v = (k: string) => rows?.find((r) => r.key === k)?.value;
   const can = (k: string) => SETTINGS[k].who.includes(actor.role);
@@ -58,7 +59,8 @@ export default async function SettingsPage() {
 
       <section className="mt-8">
         <h2 className="text-[24px]">Riya&apos;s style notes</h2>
-        <p className="mt-1 text-[13px] text-muted">Learned from her edits before sending (Loop D). Every change is a new version she can roll back.</p>
+        <p className="mt-1 text-[13px] text-muted">Learned from her edits before sending (Loop D). Each edit proposes a note; nothing reaches a draft until Riya approves it, for that kind of company or for every founder. Every change is a new version she can roll back.</p>
+        <ProposedNotes notes={(proposed ?? []) as { id: string; note: string; tag: string | null; created_at: string }[]} editable={actor.role === "riya"} />
         <StyleNotes versions={(notes ?? []) as { version: number; notes: string[]; active: boolean; created_at: string }[]} editable={actor.role === "riya"} />
       </section>
 

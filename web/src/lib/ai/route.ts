@@ -11,6 +11,8 @@ export type ModelRequest = {
   maxOutputTokens: number;
   timeoutMs: number;
   thinking?: "minimal" | "low" | "medium" | "high";
+  /** 0 for judging and reading. A little more for writing, which can loop at 0. */
+  temperature?: number;
   meta: { applicationId: string | null; callType: string };
 };
 
@@ -64,7 +66,7 @@ export function buildRequest(route: Route, r: ModelRequest, env: Record<string, 
         },
         body: JSON.stringify({
           model: r.model,
-          temperature: 0,
+          temperature: r.temperature ?? 0,
           max_tokens: r.maxOutputTokens,
           messages: [
             { role: "system", content: r.system },
@@ -98,7 +100,7 @@ export function buildRequest(route: Route, r: ModelRequest, env: Record<string, 
         systemInstruction: { parts: [{ text: r.system }] },
         contents: [{ role: "user", parts: [{ text: r.user }] }],
         generationConfig: {
-          temperature: 0,
+          temperature: r.temperature ?? 0,
           maxOutputTokens: r.maxOutputTokens,
           responseMimeType: "application/json",
           responseSchema: r.schema,

@@ -6,6 +6,8 @@ import type { FounderRef } from "@/lib/intake/redact";
 import { GoogleError, calendarBook, calendarBusy, gmailReadThread, gmailSend } from "@/lib/google";
 import { draftEmail, personalise, readReply, type EmailKind } from "./ai";
 import { formatSlot, nextOnReply, nextWithoutReply, pickSlots, type Slot } from "./rules";
+import { companyTags } from "@/lib/gates";
+import { noCloseNote, notesFor, tagged } from "./notes";
 
 // The reply and scheduling agent (PRD Section 10). A state machine in the database.
 // Each run reads the state, does one step, writes the new state and stops. It never loops inside a run.
@@ -23,9 +25,16 @@ async function mode(): Promise<Mode> {
   const { data } = await db().from("settings").select("value").eq("key", "outreach_mode").maybeSingle();
   return data?.value === "live" ? "live" : "simulate";
 }
-async function styleNotes(): Promise<string[]> {
+/** The active notes, as stored (general ones plain, kind-specific ones with a [tag] in front). */
+async function allStyleNotes(): Promise<string[]> {
   const { data } = await db().from("style_notes").select("notes").eq("active", true).order("version", { ascending: false }).limit(1).maybeSingle();
   return (data?.notes as string[]) ?? [];
+}
+/** The company's sector, as the tag style notes and corrections share. */
+async function sectorTag(appId: string): Promise<string | null> {
+  const { data } = await db().from("documents").select("redacted").eq("application_id", appId).eq("kind", "form").maybeSingle();
+  const fields = ((data?.redacted as { fields?: { key: string; value: string }[] } | null)?.fields ?? []);
+  return companyTags({ sector: fields.find((f) => f.key === "sector")?.value }).find((t) => t.startsWith("sector:")) ?? null;
 }
 async function founderRefs(appId: string): Promise<{ refs: FounderRef[]; first: string | null; email: string | null }> {
   const { data } = await db().from("founders").select("founder_key, name, email, phone, linkedin_url").eq("application_id", appId).order("founder_key");
@@ -44,9 +53,13 @@ async function writeDraft(o: { id: string; application_id: string; reason: strin
   const { data: app } = await db().from("applications").select("company_name").eq("id", o.application_id).single();
   const f = await founderRefs(o.application_id);
   const joining = kind === "invite" || kind === "scheduling" || kind === "followup" ? ["Riya", "Kushal", ...(o.aditya ? ["Aditya"] : [])] : [];
-  const d = await draftEmail({ applicationId: o.application_id, kind, company: app!.company_name, reason: o.reason ?? "", slots, joining, styleNotes: await styleNotes(), founders: f.refs });
+  const tag = await sectorTag(o.application_id);
+  const all = await allStyleNotes();
+  const d = await draftEmail({ applicationId: o.application_id, kind, company: app!.company_name, reason: o.reason ?? "", slots, joining, styleNotes: notesFor(all, tag), founders: f.refs });
+  const kindName = tag?.replace("sector:", "") ?? null;
   await db().from("emails").insert({
     outreach_id: o.id, kind, draft_subject: d.subject, draft_body: personalise(d.body, f.first), slots, to_address: to ?? f.email,
+    draft_note: noCloseNote(all, tag) ? `No close past example: none of your style notes is for ${kindName} companies yet, so this draft leans on general habits. Read it with more care.` : null,
   });
 }
 
@@ -114,11 +127,12 @@ export async function sendEmail(input: { emailId: string; role: string; to: stri
   await db().from("outreach").update(next).eq("id", o.id);
 
   // Loop D: Riya's edits become short style notes, versioned so she can roll them back.
-  if (input.body.trim() !== String(email.draft_body ?? "").trim()) await learnStyle(String(email.draft_body ?? ""), input.body).catch(() => {});
+  if (input.body.trim() !== String(email.draft_body ?? "").trim()) await learnStyle(String(email.draft_body ?? ""), input.body, await sectorTag(o.application_id), input.emailId).catch(() => {});
 }
 
-async function learnStyle(draft: string, sent: string) {
-  const current = await styleNotes();
+/** Loop D, G12: an edit proposes a note. Nothing reaches a draft until Riya approves it in Settings. */
+async function learnStyle(draft: string, sent: string, tag: string | null, emailId: string) {
+  const current = notesFor(await allStyleNotes(), tag);
   const note = await callModel({
     callType: "A5", model: process.env.MODEL_EXTRACT ?? "gemini-3.1-flash-lite", promptName: "style_note", promptVersion: "a5-style-v1",
     system: `${SHARED_RULES}\n\nTask: Riya edited an email draft before sending. Write one short style note (under 15 words) that captures the lasting habit in her edit, or an empty string if the edit was only about facts for this one email.`,
@@ -132,9 +146,25 @@ async function learnStyle(draft: string, sent: string) {
     },
   });
   if (!note || current.some((c) => c.toLowerCase() === note.toLowerCase())) return;
+  const { data: pending } = await db().from("style_note_candidates").select("note").eq("status", "pending");
+  if ((pending ?? []).some((p) => p.note.toLowerCase() === note.toLowerCase())) return;
+  await db().from("style_note_candidates").insert({ note, tag, email_id: emailId });
+}
+
+/**
+ * Riya approves or declines a proposed note (G12). Approving makes a new version, so she can still roll back.
+ * scope "kind" keeps the note to companies of the same sector; "all" applies it to every founder.
+ */
+export async function decideStyleNote(input: { id: string; decision: "approve" | "decline"; scope: "kind" | "all"; role: string }) {
+  if (input.role !== "riya") throw new OutreachError("Only Riya decides on her style notes.", 403);
+  const { data: c } = await db().from("style_note_candidates").select("*").eq("id", input.id).maybeSingle();
+  if (!c || c.status !== "pending") throw new OutreachError("That note is not waiting for a decision.", 404);
+  await db().from("style_note_candidates").update({ status: input.decision === "approve" ? "approved" : "declined", decided_at: new Date().toISOString() }).eq("id", c.id);
+  if (input.decision === "decline") return;
+  const current = await allStyleNotes();
   const { data: last } = await db().from("style_notes").select("version").order("version", { ascending: false }).limit(1).maybeSingle();
   await db().from("style_notes").update({ active: false }).eq("active", true);
-  await db().from("style_notes").insert({ version: (last?.version ?? 0) + 1, notes: [...current, note].slice(-8), active: true });
+  await db().from("style_notes").insert({ version: (last?.version ?? 0) + 1, notes: [...current, tagged(c.note, input.scope === "kind" ? c.tag : null)].slice(-24), active: true });
 }
 
 /** Simulate mode only: record a founder reply so every step of the agent can be tried without real email. */

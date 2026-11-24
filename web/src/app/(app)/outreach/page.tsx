@@ -23,7 +23,7 @@ export default async function OutreachPage() {
     db.from("settings").select("value").eq("key", "outreach_mode").maybeSingle(),
   ]);
   const mode = modeRow?.value === "live" ? "live" : "simulate";
-  type Email = { id: string; kind: string; draft_subject: string; draft_body: string; sent_subject: string | null; sent_at: string | null; to_address: string | null; slots: Slot[]; created_at: string };
+  type Email = { id: string; kind: string; draft_subject: string; draft_body: string; draft_note?: string | null; sent_subject: string | null; sent_at: string | null; to_address: string | null; slots: Slot[]; created_at: string };
   type Reply = { id: string; body: string; label: string | null; confidence: number | null; received_at: string };
   type Row = {
     id: string; application_id: string; outcome: string; status: string; reason: string | null; founder_email: string | null; paused: boolean;
@@ -71,6 +71,7 @@ export default async function OutreachPage() {
                 </div>
                 {o.reason ? <p className="mt-1 line-clamp-2 text-[12px] text-muted">{o.reason}</p> : null}
                 {e.slots?.length ? <div className="mt-3 flex flex-wrap gap-1.5">{e.slots.map((s) => <span key={s.start} className="rounded-full border border-brass/60 px-2.5 py-0.5 text-[11.5px] text-brass">{formatSlot(s)}</span>)}</div> : null}
+                {e.draft_note ? <p className="tint mb-2 text-needs-human">{e.draft_note}</p> : null}
                 <Composer id={e.id} to={e.to_address ?? o.founder_email ?? ""} subject={e.draft_subject} body={e.draft_body} canSend={isRiya} live={mode === "live"} />
               </article>
             ))}

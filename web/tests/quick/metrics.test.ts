@@ -1,6 +1,8 @@
 // M7 quick tests: the dashboard metrics, the stop list, and who may change each setting.
 import { describe, expect, it } from "vitest";
 import { blindAgreement, overrideRate, overrideStop, reviewStop, weekOf, type Gate1 } from "@/lib/metrics";
+import { emailEdits } from "@/lib/metrics";
+import { editClass } from "@/lib/outreach/checks";
 import { checkSetting } from "@/lib/settings";
 import { tag } from "../helpers";
 
@@ -49,5 +51,19 @@ describe("settings permissions (PRD 13.13)", () => {
     expect(checkSetting("attendees", "riya", { riya: "not-an-email" })).toMatchObject({ ok: false, status: 400 });
     expect(checkSetting("attendees", "riya", { riya: "riya@fund.com" })).toMatchObject({ ok: true });
     expect(checkSetting("no_such_thing", "kushal", 1)).toMatchObject({ ok: false, status: 404 });
+  });
+});
+
+describe("Loop 2 disagreement (G9)", () => {
+  it(tag("High", "D1", "counts sent emails as kept, small edit or rewrite; unsent drafts do not count"), () => {
+    const draft = ["Hi Ana,", "", "41% of buyers return within 30 days, which is rare at seed.", "", "Could we do 30 minutes on Tuesday?", "", "Riya", "All In Capital"].join("\n");
+    const e = emailEdits([
+      { kind: "invite", draft_body: draft, sent_body: draft, sent_at: "2026-11-24" },
+      { kind: "invite", draft_body: draft, sent_body: draft.replace("Ana", "Anaya"), sent_at: "2026-11-24" },
+      { kind: "invite", draft_body: draft, sent_body: "Hello, a completely different note about meeting soon.", sent_at: "2026-11-24" },
+      { kind: "invite", draft_body: draft, sent_body: null, sent_at: null },
+    ], editClass);
+    expect(e).toMatchObject({ n: 3, kept: 1, small: 1, rewrite: 1 });
+    expect(e.rewriteRate).toBeCloseTo(1 / 3);
   });
 });

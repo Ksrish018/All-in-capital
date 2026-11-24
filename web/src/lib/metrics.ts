@@ -61,3 +61,14 @@ export function blindAgreement(rows: Gate1[]): { matched: number; of: number; ch
     changedAfterReveal: blind.filter((r) => r.blind_first_view !== "unsure" && r.blind_first_view !== r.decision).length,
   };
 }
+
+// Loop 2's disagreement score (PRD 24.3 G9): how much Riya changes each draft before she sends it.
+export type SentEmail = { kind: string; draft_body: string | null; sent_body: string | null; sent_at: string | null };
+
+/** Counts sent emails by how much Riya changed them. The rate is the share she rewrote; a small edit is not a disagreement. */
+export function emailEdits(rows: SentEmail[], classify: (draft: string, sent: string) => "kept" | "small" | "rewrite") {
+  const sent = rows.filter((r) => r.sent_at && r.draft_body && r.sent_body);
+  const out = { n: sent.length, kept: 0, small: 0, rewrite: 0 };
+  for (const r of sent) out[classify(r.draft_body!, r.sent_body!)]++;
+  return { ...out, rewriteRate: share(out.rewrite, out.n), changedRate: share(out.small + out.rewrite, out.n) };
+}

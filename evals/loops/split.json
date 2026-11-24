@@ -1,0 +1,147 @@
+{
+  "note": "PRD 24.8. Test rows are never read while writing prompts or rules. The seal is a SHA-256 over the test rows' full content; eval:loops refuses to run if it does not match.",
+  "sealed_at": "2026-11-24",
+  "email": {
+    "rows_in_export": 60,
+    "dropped": [
+      {
+        "row_id": "L2-015",
+        "why": "exact copy of L2-014"
+      },
+      {
+        "row_id": "L2-030",
+        "why": "off-day edit: a long paragraph about the fund added to a draft she otherwise kept, against her own 'short' standard (Q20)"
+      },
+      {
+        "row_id": "L2-033",
+        "why": "exact copy of L2-031"
+      },
+      {
+        "row_id": "L2-054",
+        "why": "contradiction: a formal 'Dear Ms ...' with no slots, where all 57 other emails say 'Hi {first name}' and offer two Tuesday or Thursday slots"
+      }
+    ],
+    "clean": 56,
+    "test": [
+      "L2-001",
+      "L2-002",
+      "L2-005",
+      "L2-006",
+      "L2-011",
+      "L2-013",
+      "L2-014",
+      "L2-016",
+      "L2-025",
+      "L2-026",
+      "L2-027",
+      "L2-028",
+      "L2-029",
+      "L2-040",
+      "L2-041",
+      "L2-045",
+      "L2-046",
+      "L2-050",
+      "L2-052",
+      "L2-057"
+    ],
+    "train": [
+      "L2-003",
+      "L2-004",
+      "L2-007",
+      "L2-008",
+      "L2-009",
+      "L2-010",
+      "L2-012",
+      "L2-017",
+      "L2-018",
+      "L2-019",
+      "L2-020",
+      "L2-021",
+      "L2-022",
+      "L2-023",
+      "L2-024",
+      "L2-031",
+      "L2-032",
+      "L2-034",
+      "L2-035",
+      "L2-036",
+      "L2-037",
+      "L2-038",
+      "L2-039",
+      "L2-042",
+      "L2-043",
+      "L2-044",
+      "L2-047",
+      "L2-048",
+      "L2-049",
+      "L2-051",
+      "L2-053",
+      "L2-055",
+      "L2-056",
+      "L2-058",
+      "L2-059",
+      "L2-060"
+    ],
+    "test_by_type": {
+      "software": 15,
+      "hardware": 2,
+      "services": 3
+    },
+    "train_by_type": {
+      "services": 5,
+      "software": 29,
+      "hardware": 2
+    },
+    "seal": "0c1ce1b062c9bb1e95ecbd42ff745df7b160e3dfe1190ba0c25928d438da007a"
+  },
+  "screening": {
+    "rows_in_export": 40,
+    "clean": 40,
+    "rule": "the latest 30 percent by date",
+    "test": [
+      "L1-29",
+      "L1-30",
+      "L1-31",
+      "L1-32",
+      "L1-33",
+      "L1-34",
+      "L1-35",
+      "L1-36",
+      "L1-37",
+      "L1-38",
+      "L1-39",
+      "L1-40"
+    ],
+    "train": [
+      "L1-01",
+      "L1-02",
+      "L1-03",
+      "L1-04",
+      "L1-05",
+      "L1-06",
+      "L1-07",
+      "L1-08",
+      "L1-09",
+      "L1-10",
+      "L1-11",
+      "L1-12",
+      "L1-13",
+      "L1-14",
+      "L1-15",
+      "L1-16",
+      "L1-17",
+      "L1-18",
+      "L1-19",
+      "L1-20",
+      "L1-21",
+      "L1-22",
+      "L1-23",
+      "L1-24",
+      "L1-25",
+      "L1-26",
+      "L1-27",
+      "L1-28"
+    ],
+    "seal": "008264340dd0fea9d4f78fef9f075a23e538ab0a3af7eca4cebddd540e78d023"
+  }
+}

@@ -245,6 +245,23 @@ export async function runScreening(id: string, mode: "full" | "short"): Promise<
       }),
     ...open.map((q) => ({ item: q, note: "The deck and form do not say. Code checked the fields that settle it." })),
   ];
+  // G11: when none of Riya's past rule corrections share a tag with this company, the system is on its own.
+  // Say so, so she reads the ratings with more care (the "defence drone" case, PRD 24.8).
+  const myTags = companyTags({
+    sector: form?.find((f) => f.key === "sector")?.value,
+    sellsToBusinesses: valueOf("company.sells_to_businesses")?.status === "yes" ? true : valueOf("company.sells_to_businesses")?.status === "no" ? false : null,
+    revenueType: String(valueOf("traction.revenue_type")?.value ?? ""),
+  });
+  const { data: pastRules } = await db.from("corrections").select("tags, rule_status").eq("kind", "rule").neq("application_id", id);
+  const close = (pastRules ?? []).filter((c) => c.rule_status !== "declined" && (c.tags as string[]).some((t) => myTags.includes(t)));
+  if (close.length === 0) {
+    gaps.push({
+      item: "No close past example",
+      note: (pastRules ?? []).length
+        ? `None of Riya's ${(pastRules ?? []).length} past rule corrections match this company's sector or business model${myTags.length ? ` (${myTags.join(", ")})` : ""}. The ratings lean on the Thesis Card alone, so read them with more care.`
+        : "There are no past rule corrections yet. The ratings lean on the Thesis Card alone.",
+    });
+  }
   const ratingFlags: CodeFlag[] = [];
   if (ratings.C1 === 0) ratingFlags.push({ id: "later_stage", label: "Later stage", severity: "High", short_circuit: false, why: "Rated as later stage than the fund invests in.", evidence: [] });
   if (ratings.C3 === 0) ratingFlags.push({ id: "regulatory_bet", label: "Regulatory bet", severity: "High", short_circuit: false, why: "The model depends on regulation or partners becoming friendlier. It cannot be GO.", evidence: [] });

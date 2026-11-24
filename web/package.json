@@ -22,7 +22,9 @@
     "eval:outreach": "node scripts/eval-outreach.mjs",
     "eval:cap": "node scripts/eval-cap.mjs",
     "db:schedule": "node scripts/schedule.mjs",
-    "eval:burst": "node scripts/eval-burst.mjs"
+    "eval:burst": "node scripts/eval-burst.mjs",
+    "loops:split": "tsx scripts/loops-split.mts",
+    "eval:loops": "tsx --conditions=react-server scripts/eval-loops.mts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

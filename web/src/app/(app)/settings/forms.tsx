@@ -123,3 +123,39 @@ export function DeleteFounderData({ apps, editable }: { apps: { id: string; comp
     </div>
   );
 }
+
+/** G12: notes Riya's edits proposed. A one-off edit is declined; a habit is approved for its kind or for all. */
+export function ProposedNotes({ notes, editable }: { notes: { id: string; note: string; tag: string | null; created_at: string }[]; editable: boolean }) {
+  const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+  if (!notes.length) return <p className="mt-3 text-[13px] text-muted">No proposed notes waiting.</p>;
+  const decide = async (id: string, decision: "approve" | "decline", scope: "kind" | "all") => {
+    const res = await fetch("/api/style-notes", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ candidate_id: id, decision, scope }) });
+    const b = await res.json().catch(() => ({}));
+    setError(res.ok ? null : b.error ?? "Could not save.");
+    router.refresh();
+  };
+  return (
+    <div className="mt-3 panel border-needs-human/50 p-4">
+      <div className="eyebrow text-needs-human">Waiting for Riya · {notes.length}</div>
+      <ul className="mt-2 divide-y divide-border">
+        {notes.map((n) => (
+          <li key={n.id} className="flex flex-wrap items-center justify-between gap-3 py-2.5">
+            <span className="text-[13px]">
+              {n.note}
+              {n.tag ? <span className="tint ml-2 text-sapphire">{n.tag.replace("sector:", "")}</span> : null}
+            </span>
+            {editable ? (
+              <span className="flex flex-wrap gap-2">
+                {n.tag ? <button className="btn btn-secondary" onClick={() => decide(n.id, "approve", "kind")}>Use for {n.tag.replace("sector:", "")}</button> : null}
+                <button className="btn btn-secondary" onClick={() => decide(n.id, "approve", "all")}>Use for everyone</button>
+                <button className="btn btn-secondary" onClick={() => decide(n.id, "decline", "kind")}>One-off, decline</button>
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+      {error ? <p className="mt-2 text-[12px] text-flag">{error}</p> : null}
+    </div>
+  );
+}

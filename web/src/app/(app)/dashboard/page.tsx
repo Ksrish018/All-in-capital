@@ -1,5 +1,6 @@
 import { createAdminClient } from "@/lib/supabase/server";
-import { STOP, avg, blindAgreement, byWeek, overrideRate, overrideStop, reviewStop, share, type Gate1 } from "@/lib/metrics";
+import { STOP, avg, blindAgreement, byWeek, emailEdits, weekOf, overrideRate, overrideStop, reviewStop, share, type Gate1, type SentEmail } from "@/lib/metrics";
+import { editClass } from "@/lib/outreach/checks";
 
 const pct = (x: number | null) => (x === null ? "none yet" : `${Math.round(x * 100)}%`);
 const fmtWeek = (w: string) => new Date(w).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
@@ -19,14 +20,24 @@ function Tile({ label, value, sub, bad, hue = "text-gold" }: { label: string; va
 /** Dashboard (PRD 13.11): the metrics Kushal reads, and the stop list. */
 export default async function DashboardPage() {
   const db = createAdminClient();
-  const [{ data: g1 }, { data: apps }, { data: outreach }, { data: calls }, { data: card }, { data: badRefs }] = await Promise.all([
+  const [{ data: g1 }, { data: apps }, { data: outreach }, { data: calls }, { data: card }, { data: badRefs }, { data: sentEmails }, { data: loopRuns }] = await Promise.all([
     db.from("reviews").select("created_at, seconds_spent, agreed_with_system, system_recommendation, decision, blind, blind_first_view").eq("gate", 1),
     db.from("applications").select("id, received_at, brief_ready_at, status"),
     db.from("outreach").select("application_id, first_sent_at, outcome, emails(sent_at)"),
     db.from("call_outcomes").select("worth_it, note, created_at"),
     db.from("thesis_cards").select("version, status, backtest_run_id").order("status", { ascending: true }).order("version", { ascending: false }),
     db.rpc("count_missing_citations").then((r) => r, () => ({ data: null })),
+    db.from("emails").select("kind, draft_body, sent_body, sent_at").not("sent_at", "is", null),
+    db.from("eval_runs").select("detail, created_at").eq("kind", "loops").order("created_at", { ascending: false }).limit(1),
   ]);
+  // The disagreement score for both loops (PRD 24.8): live from Riya's work, and the latest sealed-test baseline.
+  const emails = (sentEmails ?? []) as SentEmail[];
+  const edits = emailEdits(emails, editClass);
+  const firstEmails = emailEdits(emails.filter((e) => e.kind === "invite"), editClass);
+  const latestLoops = (loopRuns?.[0]?.detail ?? null) as null | {
+    loop2?: { a5_current: { n: number; three_checks: number } };
+    loop1?: { n: number; ours_agree: number; old_agree: number };
+  };
   const reviews = (g1 ?? []) as Gate1[];
 
   // Review minutes and override rate, by week.
@@ -35,6 +46,7 @@ export default async function DashboardPage() {
     w, n: rs.length,
     minutes: avg(rs.filter((r) => r.seconds_spent).map((r) => (r.seconds_spent ?? 0) / 60)),
     override: overrideRate(rs),
+    emails: emailEdits(emails.filter((e) => e.sent_at && weekOf(e.sent_at) === w), editClass),
   }));
   const allMinutes = avg(reviews.filter((r) => r.seconds_spent).map((r) => (r.seconds_spent ?? 0) / 60));
 
@@ -97,6 +109,8 @@ export default async function DashboardPage() {
         <Tile hue="text-gold" label="Heard back within 3 days" value={decided.length ? pct(share(heard, decided.length)) : "–"} sub={`The fund's public promise. ${heard} of ${decided.length} decided applicants.`} bad={decided.length > 0 && heard < decided.length} />
         <Tile hue="text-ruby" label="Override rate" value={pct(overrideRate(reviews))} sub="Riya choosing differently from a system that took a side. Stop line 40%." bad={(overrideRate(reviews) ?? 0) > STOP.overrideRate} />
         <Tile hue="text-amethyst" label="Blind check agreement" value={blind.of ? `${blind.matched}/${blind.of}` : "–"} sub={`Riya's own first view matched the system. ${blind.changedAfterReveal} changed after the reveal.`} />
+        <Tile hue="text-sapphire" label="Loop 1 disagreement · screening" value={pct(overrideRate(reviews))} sub={`Riya overturning a call the system made. Target under 10%. Sealed test: ${latestLoops?.loop1 ? `ours ${latestLoops.loop1.ours_agree}/${latestLoops.loop1.n} agree, old ${latestLoops.loop1.old_agree}/${latestLoops.loop1.n}` : "not run yet (npm run eval:loops)"}.`} bad={(overrideRate(reviews) ?? 0) > 0.1 && reviews.length >= 10} />
+        <Tile hue="text-emerald" label="Loop 2 disagreement · emails" value={edits.n ? pct(edits.rewriteRate) : "–"} sub={`Share of sent emails Riya rewrote (${edits.kept} kept, ${edits.small} small edits, ${edits.rewrite} rewrites${firstEmails.n !== edits.n ? `; first emails ${firstEmails.rewrite}/${firstEmails.n}` : ""}). Target under 10%. Sealed test: ${latestLoops?.loop2 ? `${latestLoops.loop2.a5_current.three_checks}/${latestLoops.loop2.a5_current.n} pass the three checks` : "not run yet"}.`} bad={(edits.rewriteRate ?? 0) > 0.1 && edits.n >= 10} />
         <Tile hue="text-topaz" label="Calls worth 30 minutes" value={pct(worth)} sub={`The world signal, from ${(calls ?? []).length} calls. Read weekly.`} />
       </section>
 
@@ -106,7 +120,7 @@ export default async function DashboardPage() {
           <div className="panel mt-3 overflow-x-auto">
             <table className="w-full min-w-[560px] text-[13px]">
               <thead className="text-left text-muted">
-                <tr className="border-b border-border"><th className="px-4 py-2.5 font-normal">Week of</th><th className="px-4 py-2.5 font-normal">Reviews</th><th className="px-4 py-2.5 font-normal">Minutes each</th><th className="px-4 py-2.5 font-normal">Override rate</th></tr>
+                <tr className="border-b border-border"><th className="px-4 py-2.5 font-normal">Week of</th><th className="px-4 py-2.5 font-normal">Reviews</th><th className="px-4 py-2.5 font-normal">Minutes each</th><th className="px-4 py-2.5 font-normal">Override rate</th><th className="px-4 py-2.5 font-normal">Emails rewritten</th></tr>
               </thead>
               <tbody>
                 {weekly.map((w) => (
@@ -122,6 +136,7 @@ export default async function DashboardPage() {
                         </span>
                       </div>
                     </td>
+                    <td className="px-4 py-2.5 tabular-nums">{w.emails.n ? `${w.emails.rewrite} of ${w.emails.n}` : "–"}</td>
                   </tr>
                 ))}
               </tbody>

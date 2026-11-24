@@ -24,7 +24,7 @@ const BRIEF: Record<EmailKind, string> = {
 };
 
 export async function draftEmail(args: {
-  applicationId: string;
+  applicationId: string | null;
   kind: EmailKind;
   company: string;
   reason: string;
@@ -55,7 +55,9 @@ ${args.joining.length ? `Joining the call: ${args.joining.join(", ")}` : ""}
     system,
     user,
     schema: DRAFT_SCHEMA,
-    maxOutputTokens: 1500,
+    // Thinking counts towards this. At 1,500 a longer draft was cut off mid-reply and failed twice (eval:loops, 24 Nov).
+    maxOutputTokens: 4000,
+    temperature: 0.4,
     timeoutMs: 30_000,
     thinking: "low",
     applicationId: args.applicationId,

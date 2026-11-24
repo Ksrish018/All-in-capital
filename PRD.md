@@ -1817,7 +1817,7 @@ Each milestone ends with something we can show and check.
 | M8 | Pilot | One real week of applications with Riya | Metrics read with Kushal against the stop list **Ready to start.** The pilot itself is for the team to run. Built for it: a password gate (`APP_PASSWORD`, Q13), scheduler wiring (`web/vercel.json`), and [PILOT.md](PILOT.md) with the day-one checklist, Riya's day, Kushal's week and the stop list. |
 
 | M9 | Safe at volume (v2) | Schedulers every minute, upload limit, Portkey with backoff retries, answer cache, separate test database, cost alert by email, data retention and consent | See 24.4. **Built (24 Nov 2026).** `npm run eval:burst` passes 8 of 8: 50 uploads in 6 seconds, all 50 accounted for, never more than 4 screened at once (worker slots, added after the first run showed about 17 at once), the upload limit and the consent box hold, $0.43 for the run. Every model call retries on busy replies after 1, 2 and 4 seconds, then waits in the queue; identical calls reuse a stored answer; the cap raises one alert a day, by email to the team's own addresses only; model inputs are cleared after 30 days by a nightly database job; the Cost page shows the calendar month and the AI cost per application against Riya's 30 minutes (about ₹6 against ₹500). **Waiting on the team:** a Portkey key (the route is built behind `AI_ROUTE=portkey`), a new Supabase project for live data (scripts already refuse to run where `DB_ROLE=live`), and a redeploy before `npm run db:schedule` points the database scheduler at the hosted app. |
-| M10 | The disagreement score (v2) | Email edit measure, weekly trend for both loops, the two exports as eval sets, "no close match" warning, approved and tagged style notes | See 24.4. **Planned.** |
+| M10 | Measure first (v2) | Email edit measure, weekly trend for both loops, the two exports as eval sets, "no close match" warning, approved and tagged style notes | See 24.4 and 24.9. **Built (24 Nov 2026).** Seed data 2 cleaned (two copies and two off-day rows out) and the test sets sealed in `evals/loops/split.json`. `npm run eval:loops` measured the baseline on the sealed rows: emails, our A5 prompt passes the three checks on 0 of 20 (the old system's drafts 12 of 20, Riya 20 of 20); screening, our system agrees with Riya on 2 of the latest 12 and makes no call on 8 (the old system agreed on 8). The Dashboard shows both loops' disagreement. Briefs and drafts say "no close past example" when nothing similar exists. Style notes wait for Riya's approval and carry the company's sector. Found and fixed on the way: A5 drafts could loop until cut off (token room raised, a little temperature for writing, a second try at higher temperature). |
 | M11 | Easier fixes first (v2) | A5 rewritten to Riya's real style, Thesis Card v3 candidate from the override reasons, a stronger model tried for drafts | See 24.4. **Planned.** |
 | M12 | Fine-tuning pilot (Case 05) | The Brief, a 300 row dataset with labelled synthetic rows, a sealed test set, one training run, cost and payback | See 24.5. **Planned.** Stopping is a valid result. |
 
@@ -2240,3 +2240,40 @@ Recommendation: price per application screened, with a monthly minimum. The dail
 * **Line 8, Stop rule.** The thesis is moving ("what we are actually backing now"). A model trained on last year's calls learns a target that has already shifted.
 
 So Loop 1 is fixed with rules, research and Thesis Card versions that people approve, never with fine-tuning.
+
+### 24.9 Baseline disagreement scores (M10, 24 Nov 2026)
+
+Measured by `npm run eval:loops` on the sealed test sets. These are the numbers M11 must beat. The test rows were never read while writing prompts or rules.
+
+**Loop 2, first emails: 20 sealed rows (15 software, 3 services, 2 hardware).**
+
+| | Pass the three checks | Riya's voice | Kept / small edit / rewrite, against what Riya sent |
+|---|---|---|---|
+| The old system's drafts (from the export) | 12 of 20 (60%) | 35% | 9 / 3 / 8 |
+| Our A5 prompt today (`a5-v1`) | 0 of 20 (0%) | 0% | 0 / 0 / 20 |
+| Riya's own emails (the ceiling) | 20 of 20 (100%) | 90% | 20 / 0 / 0 |
+
+Why our A5 prompt scores 0:
+* it was written to the email shape in 22.3 (a thank-you, a bullet list of three slots, "Best, Riya"), not to Riya's real habits;
+* every draft fails her clear ask, because the slots sit in a bullet list rather than in one question;
+* every draft fails her sign-off, and every draft fails her fact opener;
+* 17 of 20 drafts are too long, and 9 open with praise that no fact backs.
+
+So the target is plain: rewrite the prompt in her voice (M11).
+
+**Loop 1, screening: the latest 12 calls, Thesis Card v2, research off.**
+
+| | Agrees with Riya's final call | No call (a person decides) | Takes the other side |
+|---|---|---|---|
+| The old system (from the export) | 8 of 12 | 0 | 4 |
+| Our system | 2 of 12 | 8 | 2 |
+
+Our system rarely takes a side on these rows, and that is by design. The rows are short summaries with research off: GO needs outside evidence, and PASS needs a criterion that fails on evidence (the v2 rule). So this eval mostly measures how often we hand the call to a person, which is safe but not yet helpful.
+
+10 of the 12 rows sit within 1 point of the old line, so this is mostly the borderline suite. The two rows where we said PASS and Riya said Go (L1-32, L1-37) are the first thing M11 reads: each shows a failing criterion, so neither is a silent PASS.
+
+**Found while measuring.** A5 drafts could repeat themselves until the reply was cut off, and the email was then lost to a retry loop. The fixes:
+* more token room;
+* a temperature of 0.4 for writing (judging stays at 0);
+* a second try at 0.6;
+* the end of a bad reply is now kept in the error log.
